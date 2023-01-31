@@ -26,4 +26,18 @@ https://trello.com/b/ggomNP2X/idealtrip
  - Permisos de los usuarios:  
     - Anónimos: Podrá únicamente realizar una búsqueda simple, sin determinados filtros y sin poder reservar. 
     - Registrados: Disponen de todas las funcionalidades permitidas, como reservar, opinar y demás. Además, también disponen de los filtros, según el destino puedes filtrar por gastronomía, cultura, entretenimiento, etc. Sin embargo, no tendrán el control total de la aplicación web. 
-    - Administrador: Tendrá el control total sobre la información de la web. Por ejemplo, revisar y controlar las opiniones, o subir la base de datos con los diferentes alojamientos, transportes u opiniones sobre los lugares. 
+    - Administrador: Tendrá el control total sobre la información de la web. Por ejemplo, revisar y controlar las opiniones, o subir la base de datos con los diferentes alojamientos, transportes u opiniones sobre los lugares.
+
+- Imágenes: 
+    - xx
+  
+- Gráficos:  
+    - Destinos más visitados
+    - Cuantos viajes se realizan cada mes
+    - Medio de transporte más utilizado
+    
+- Tecnología complementaria:
+    - Google Maps con puntos interesantes dependiendo del filtro
+    - Envío correos electrónicos con novedades en destinos. (Newsletter) (método de suscripción para recibir correos)
+    - Generador de PDF (Ticket de viajes) (Factura/Itinerario al reservar)
+
