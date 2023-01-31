@@ -30,6 +30,7 @@ https://trello.com/b/ggomNP2X/idealtrip
 
 - Imágenes: 
     - xx
+    - xx
   
 - Gráficos:  
     - Destinos más visitados
