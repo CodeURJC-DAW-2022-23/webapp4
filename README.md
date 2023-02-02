@@ -21,6 +21,8 @@ https://trello.com/b/ggomNP2X/idealtrip
     - Destino 
     - Alojamiento 
     - Transporte
+
+<image src="/images/relations.png" alt="entities relations">
  
  La relación de entidades podría ser: Un **usuario** va a un destino mediante un **transporte** y se hospeda en un **alojamiento**
  - Permisos de los usuarios:  
