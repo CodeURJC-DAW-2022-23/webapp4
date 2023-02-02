@@ -21,10 +21,12 @@ https://trello.com/b/ggomNP2X/idealtrip
     - Destino 
     - Alojamiento 
     - Transporte
+    
+## Relaciones entre entidades
 
-<image src="/images/relations.png" alt="entities relations">
- 
- La relación de entidades podría ser: Un **usuario** va a un destino mediante un **transporte** y se hospeda en un **alojamiento**
+- <image src="/images/relations.png" alt="entities relations">
+    La relación de entidades podría ser: Un **usuario** va a un destino mediante un **transporte** y se hospeda en un **alojamiento**
+    
  - Permisos de los usuarios:  
     - Anónimos: Podrá únicamente realizar una búsqueda simple, sin determinados filtros y sin poder reservar. 
     - Registrados: Disponen de todas las funcionalidades permitidas, como reservar, opinar y demás. Además, también disponen de los filtros, según el destino puedes filtrar por gastronomía, cultura, entretenimiento, etc. Sin embargo, no tendrán el control total de la aplicación web. 
