@@ -18,6 +18,8 @@ Agencia de planificación de viajes, recomendaciones y opiniones por usuarios.
 ## Trello:
 https://trello.com/b/ggomNP2X/idealtrip
 
+# Fase 0: Formación del equipo y definición de las funcionalidades de la web
+
 ## Aspectos principales de la web:
 - Entidades: 
     - Usuario 
