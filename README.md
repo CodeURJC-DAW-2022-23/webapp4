@@ -25,12 +25,13 @@ https://trello.com/b/ggomNP2X/idealtrip
     - Usuario 
     - Destino 
     - Alojamiento 
-    - Transporte
+    - Comprar
+
     
 ## Relaciones entre entidades
 <image src="/images/relations.png" alt="entities relations">
 
-La relación de entidades podría ser: Un **usuario** va a un destino mediante un **transporte** y se hospeda en un **alojamiento**
+La relación de entidades podría ser: Un **usuario** selecciona un **destino** y **compra** un alquiler para hospedarse en un **alojamiento**
     
 - Permisos de los usuarios:  
     - Anónimos: Podrá únicamente realizar una búsqueda simple, sin determinados filtros y sin poder reservar. 
