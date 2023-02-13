@@ -23,13 +23,16 @@ body {
 }
 
 h5 {
-    display: inline-block;
+    display: flex;
+    justify-content: center;
 }
 
 #review-add-btn {
     padding: 0;
     font-size: 1.6em;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
 }
 
 /* ====================== Review Form ====================== */
