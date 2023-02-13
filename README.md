@@ -84,3 +84,7 @@ La relación de entidades podría ser: Un **usuario** selecciona un **destino** 
     <image src="/images/Contact.jpg" alt="entities relations">
     - Administrador: Esta ventana permite al usuario con el rol de administrador gestionar a todos los usuarios registrados.
     <image src="/images/Admin.jpg" alt="entities relations">
+    - Opinión: Esta ventana nos permite añadir una valoración del destino además de una reseña. También se nos permitirá ver las opniniones de los demás usuarios
+    <image src="/images/AddReview.jpg" alt="entities relations">
+    -Restauración: Esta ventana al igual que la de turismo, nos mostrará imágenes de la gastronomía típica del destino preseleccionado junto a una pequeña descricpción cuando coloquemos el cursor encima de la imagen
+        <image src="/images/Catering.jpg" alt="entities relations">
