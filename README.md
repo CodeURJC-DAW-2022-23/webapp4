@@ -61,7 +61,7 @@ La relación de entidades podría ser: Un **usuario** selecciona un **destino** 
     - Algoritmo de ordenación basado en filtros
     
     
-# Fase 0: Formación del equipo y definición de las funcionalidades de la web
+# Fase 1: Maquetación de páginas con HTML y CSS
     
     
 - Descripción ventanas:
@@ -77,7 +77,7 @@ La relación de entidades podría ser: Un **usuario** selecciona un **destino** 
     - Turismo: Esta ventana contiene varias imágenes de monumentos y sitios de interés del destino previamente escogido, acompañados de una breve descripción si ponemos el cursor encima de las fotos.
     <image src="/images/Place.jpg" alt="entities relations">
     - Alojamientos: Esta ventana nos muestra una descripción del alojamiento del destino escogido, además de varias imágenes del mismo. Además, se nos brinda la oportunidad de cerrar ya nuestra reserva si pulsamos el botón de compra que nos destinara a la ventana de pago.
-    <image src="/images/house.jpg" alt="entities relations">
+    <image src="/images/House.jpg" alt="entities relations">
     - Pago: Esta ventana, nos proporcionará un breve resumen sobre la reserva que hemos realizado, así como el destino, el precio y los días que hemos elegido. Se nos dará la opción de escoger el método de pago. Una vez escogido, tendremos que introducir los datos y darle a confirmar para que se efectúe el pago.
     <image src="/images/Payment.jpg" alt="entities relations">
     - Contáctanos: Esta ventana muestra la información de la compañía, así como dónde se ubica, el número de teléfono, y la ubicación en Google Maps. También se facilita un formulario para que el usuario se pueda comunicar con nosotros.
