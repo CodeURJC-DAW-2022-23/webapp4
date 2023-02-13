@@ -25,7 +25,7 @@ https://trello.com/b/ggomNP2X/idealtrip
     - Usuario 
     - Destino 
     - Alojamiento 
-    - Comprar
+    - Reserva
 
     
 ## Relaciones entre entidades
