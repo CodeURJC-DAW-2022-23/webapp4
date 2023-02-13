@@ -47,7 +47,7 @@ La relación de entidades podría ser: Un **usuario** selecciona un **destino** 
     - Imágenes creativas que apliquen una buena armonía.
   
 - Gráficos:  
-    - Destinos más visitados (diagramad de barras)
+    - Destinos más visitados (diagrama de barras)
     - Cuántos viajes se realizan cada mes a un destino (diagrama de barras)
     
 - Tecnología complementaria:
@@ -63,28 +63,32 @@ La relación de entidades podría ser: Un **usuario** selecciona un **destino** 
     
 # Fase 1: Maquetación de páginas con HTML y CSS
     
+En esta fase hemos, diseñado y maquetado la aplicación mediante HTML, CSS y Javascrip. Además hemos definido las relaciones entre las diferentes pantallas, y que tipos de usuarios tendrán acceso a estas.
     
-- Descripción ventanas:
-    - Inicio: Esta ventana contiene un buscador con un desplegable para escoger entre varios destinos del catálogo, además de tener un widget para escoger la fecha en la que se desea viajar. También dispone de un menú horizontal en la parte superior donde puedes navegar a otras ventanas como es a la de destinos o a la de contacto. También nos facilita un botón donde podremos iniciar sesión o registrarnos. Por último, dispondremos de un catálogo de todos los destinos de los que disponemos con un breve resumen.
+- Descripción de pantallas:
+    - Inicio: Esta pantalla contiene un buscador con un desplegable para escoger entre varios destinos del catálogo, además de tener un widget para escoger la fecha en la que se desea viajar. También dispone de un menú horizontal en la parte superior donde puedes navegar a otras ventanas como es a la de destinos o a la de contacto. También nos facilita un botón donde podremos iniciar sesión o registrarnos. Por último, dispondremos de un catálogo de todos los destinos de los que disponemos con un breve resumen.
     <image src="/images/Principal.jpg" alt="entities relations">
-    - Destinos: Esta ventana también tiene en la parte superior el menú para facilitar la navegación. El objetivo de esta es poder escoger entre todos los destinos de los que disponemos para que el usuario haga “click” encima del que quiera descubrir más información.
+    - Destinos: Esta panatalla también tiene en la parte superior el menú para facilitar la navegación. El objetivo de esta es poder escoger entre todos los destinos de los que disponemos para que el usuario haga “click” encima del que quiera descubrir más información.
     <image src="/images/Destinations.jpg" alt="entities relations">
-    - Inicio de sesión/Registro: En esta ventana se le permitirá al usuario no registrado poder registrarse, o bien si ya está registrado poder iniciar sesión.
+    - Inicio de sesión/Registro: En esta pantalla se le permitirá al usuario no registrado poder registrarse, o bien si ya está registrado poder iniciar sesión.
     <image src="/images/Login.jpg" alt="entities relations">
     <image src="/images/Login2.jpg" alt="entities relations">
-    - Menú del destino: Esta ventana nos facilita un menú con 4 opciones: restauración, turismo, opiniones y alojamientos. También nos aparecerá debajo una gráfica que muestra la cantidad de gente que ha escogido ese destino en los diferentes meses del año. 
+    - Menú del destino: Esta pantalla nos facilita un menú con 4 opciones: restauración, turismo, opiniones y alojamientos. También nos aparecerá debajo una gráfica que muestra la cantidad de gente que ha escogido ese destino en los diferentes meses del año. 
     <image src="/images/EachDestination.jpg" alt="entities relations">
-    - Turismo: Esta ventana contiene varias imágenes de monumentos y sitios de interés del destino previamente escogido, acompañados de una breve descripción si ponemos el cursor encima de las fotos.
+    - Turismo: Esta pantalla contiene varias imágenes de monumentos y sitios de interés del destino previamente escogido, acompañados de una breve descripción si ponemos el cursor encima de las fotos.
     <image src="/images/Place.jpg" alt="entities relations">
-    - Alojamientos: Esta ventana nos muestra una descripción del alojamiento del destino escogido, además de varias imágenes del mismo. Además, se nos brinda la oportunidad de cerrar ya nuestra reserva si pulsamos el botón de compra que nos destinara a la ventana de pago.
+    - Alojamientos: Esta pantalla nos muestra una descripción del alojamiento del destino escogido, además de varias imágenes del mismo. Además, se nos brinda la oportunidad de cerrar ya nuestra reserva si pulsamos el botón de compra que nos destinara a la ventana de pago.
     <image src="/images/House.jpg" alt="entities relations">
-    - Pago: Esta ventana, nos proporcionará un breve resumen sobre la reserva que hemos realizado, así como el destino, el precio y los días que hemos elegido. Se nos dará la opción de escoger el método de pago. Una vez escogido, tendremos que introducir los datos y darle a confirmar para que se efectúe el pago.
+    - Pago: Esta pantalla, nos proporcionará un breve resumen sobre la reserva que hemos realizado, así como el destino, el precio y los días que hemos elegido. Se nos dará la opción de escoger el método de pago. Una vez escogido, tendremos que introducir los datos y darle a confirmar para que se efectúe el pago.
     <image src="/images/Payment.jpg" alt="entities relations">
-    - Contáctanos: Esta ventana muestra la información de la compañía, así como dónde se ubica, el número de teléfono, y la ubicación en Google Maps. También se facilita un formulario para que el usuario se pueda comunicar con nosotros.
+    - Contáctanos: Esta pantalla muestra la información de la compañía, así como dónde se ubica, el número de teléfono, y la ubicación en Google Maps. También se facilita un formulario para que el usuario se pueda comunicar con nosotros.
     <image src="/images/Contact.jpg" alt="entities relations">
-    - Administrador: Esta ventana permite al usuario con el rol de administrador gestionar a todos los usuarios registrados.
+    - Administrador: Esta pantalla permite al usuario con el rol de administrador gestionar a todos los usuarios registrados.
     <image src="/images/Admin.jpg" alt="entities relations">
-    - Opinión: Esta ventana nos permite añadir una valoración del destino además de una reseña. También se nos permitirá ver las opniniones de los demás usuarios
+    - Opinión: Esta pantalla nos permite añadir una valoración del destino además de una reseña. También se nos permitirá ver las opniniones de los demás usuarios
     <image src="/images/AddReview.jpg" alt="entities relations">
-    -Restauración: Esta ventana al igual que la de turismo, nos mostrará imágenes de la gastronomía típica del destino preseleccionado junto a una pequeña descricpción cuando coloquemos el cursor encima de la imagen
+    -Restauración: Esta pantalla al igual que la de turismo, nos mostrará imágenes de la gastronomía típica del destino preseleccionado junto a una pequeña descricpción cuando coloquemos el cursor encima de la imagen
         <image src="/images/Catering.jpg" alt="entities relations">
+            
+ - Relación entre las distintas pantallas de la aplicación web:
+          <image src="/images/IdealTrip.jpg" alt="entities relations">  
