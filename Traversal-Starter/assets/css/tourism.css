@@ -3,77 +3,29 @@
     margin-top: 130px;
     color: black; 
     text-align: center; 
-
 }
-.tourismImage1{
+
+.gallery{
+    display: grid;
+    grid-gap: 10px;
+    grid-template-areas: 'first first . .' 'first first . .';
+    margin:50px;
+   }
+   
+   .gallery div img{
+    width: 100%;
+    display: block;
+    border-radius: 10px;
+   }
+
+.tourismImage{
     width: 100%;
     display: flex; 
-    justify-content:left;
-    margin-top: 100px;
-    margin-left: 200px;
-    align-items:self-start;
-    height: 100vh;
-}
-.tourismImage1 figure{
-    position: relative; 
-    height: 350px;
-    width: 450px;
-    overflow: hidden; 
-    border-radius: 6px;
-    box-shadow: 0px 15px 25px 
-    rgba(0,0,0,0.50); 
-    cursor: pointer; 
-}
-.tourismImage1 figure img{
-    width: 100%;
-    height: 100%;
-    transition: all 500ms ease-out;
-}
-.tourismImage1 figure .capa{
-    position: absolute; 
-    top: 0; 
-    width: 100%;
-    height: 100%;
-    background: rgba(0,103,123,0.6); 
-    opacity: 0; 
-    visibility: hidden; 
-    text-align: center; 
-}
-.tourismImage1 figure:hover > .capa{
-    opacity: 1; 
-    visibility: visible; 
-
-}
-.tourismImage1 figure:hover > .capa h3{
-    margin-top: 100px; 
-    margin-bottom: 15px;
-}
-.tourismImage1 figure .capa h3{
-    color: white; 
-    font-weight: 400;
-    margin-bottom: 120px;
-    transition: all 500ms ease-out; 
-    margin-top: 30px; 
-}
-.tourismImage1 figure .capa p{
-    color: white; 
-    font-size: 15px;
-    line-height: 1.5;
-    width: 100%;
-    max-width: 220px;
-    margin: auto; 
-}
-
-.tourismImage2{
-    width: 100%;
-    display: flex; 
-    justify-content:right;
-    margin-top: 100px;
-    margin-left: 200px;
+    margin-left: 50px;
+    margin-right: 30px;
     align-items:normal;
-    height: 100vh;
 }
-.tourismImage2 figure{
+.tourismImage figure{
     position: relative; 
     height: 350px;
     width: 450px;
@@ -83,12 +35,12 @@
     rgba(0,0,0,0.50); 
     cursor: pointer; 
 }
-.tourismImage2 figure img{
+.tourismImage figure img{
     width: 100%;
     height: 100%;
     transition: all 500ms ease-out;
 }
-.tourismImage2 figure .capa{
+.tourismImage figure .capa{
     position: absolute; 
     top: 0; 
     width: 100%;
@@ -98,27 +50,36 @@
     visibility: hidden; 
     text-align: center; 
 }
-.tourismImage2 figure:hover > .capa{
+.tourismImage figure:hover > .capa{
     opacity: 1; 
     visibility: visible; 
 
 }
-.tourismImage2 figure:hover > .capa h3{
+.tourismImage figure:hover > .capa h3{
     margin-top: 100px; 
     margin-bottom: 15px;
 }
-.tourismImage2 figure .capa h3{
+.tourismImage figure .capa h3{
     color: white; 
     font-weight: 400;
     margin-bottom: 120px;
     transition: all 500ms ease-out; 
     margin-top: 30px; 
 }
-.tourismImage2 figure .capa p{
+.tourismImage figure .capa p{
     color: white; 
     font-size: 15px;
     line-height: 1.5;
     width: 100%;
     max-width: 220px;
     margin: auto; 
+}
+
+.gallery1{
+    margin-top: 10px;
+    margin-left: 335px;
+}
+.gallery2{
+    margin-top: 10px;
+    margin-right: 335px; 
 }
