@@ -1,11 +1,15 @@
-const open = document.getElementById('open');
-const modal_container = document.getElementById('modal_container');
-const close = document.getElementById('close');
+var btnAbrirPopup2 = document.getElementById('btn-abrir-popup'),
+	overlay2 = document.getElementById('overlay'),
+	popup2 = document.getElementById('popup'),
+	btnCerrarPopup2 = document.getElementById('btn-cerrar-popup');
 
-open.addEventListener('click', () => {
-  modal_container.show;  
+btnAbrirPopup2.addEventListener('click', function(){
+	overlay2.classList.add('active');
+	popup2.classList.add('active');
 });
 
-close.addEventListener('click', () => {
-  modal_container.close;
+btnCerrarPopup2.addEventListener('click', function(e){
+	e.preventDefault();
+	overlay2.classList.remove('active');
+	popup2.classList.remove('active');
 });
