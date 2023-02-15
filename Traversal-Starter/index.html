@@ -93,20 +93,20 @@ Author URL: http://w3layouts.com
               <h3>No tienes que irte lejos para encontrar lo que importa</h3>
               <h6 class="mb-3">Descubre tu nueva aventura</h6>
               <div class="flex-wrap search-wthree-field mt-md-5 mt-4">
-                <form action="#" method="post" class="booking-form">
+                <div class="booking-form">
                   <div class="row book-form">
                     <div class="form-input col-md-4 mt-md-0 mt-3">
 
-                      <select name="selectpicker" class="selectpicker">
+                      <select id = "menuDesplegable" class="selectpicker">
                         <option value="">Destino</option>
-                        <option value="Paris">París</option>
-                        <option value="Bangkok">Bangkok</option>
-                        <option value="Maldivas">Maldivas</option>
-                        <option value="Atenas">Atenas</option>
-                        <option value="Londres">Londres</option>
-                        <option value="Alpes-Julianos">Alpes Julianos</option>
-                        <option value="Santa-Marta">Santa Marta</option>
-                        <option value="Singapur">Singapur</option>
+                        <option value="PARIS/informationParis.html">París</option>
+                        <option value="BANGKOK/informationBangkok.html">Bangkok</option>
+                        <option value="MALDIVAS/informationMaldivas.html">Maldivas</option>
+                        <option value="ATENAS/informationAtenas.html">Atenas</option>
+                        <option value="LONDRES/informationLondres.html">Londres</option>
+                        <option value="Alpes-Julianos1.html">Alpes Julianos</option>
+                        <option value="SANTAMARTA/informationSantaMarta.html">Santa Marta</option>
+                        <option value="SINGAPUR/informationSingapur.html">Singapur</option>
                       </select>
 
                     </div>
@@ -115,11 +115,12 @@ Author URL: http://w3layouts.com
                       <input type="date" name="" placeholder="Date" required="">
                     </div>
                     <div class="bottom-btn col-md-4 mt-md-0 mt-3">
-                      <button class="btn btn-style btn-secondary"><span class="fa fa-search mr-3"
+                      <button id ="btn" type="submit" onclick="irAPagina()" class="btn btn-style btn-secondary"><span class="fa fa-search mr-3"
                           aria-hidden="true"></span> Buscar</button>
                     </div>
                   </div>
-                </form>
+                </div>
+
               </div>
             </div>
           </div>
@@ -141,7 +142,7 @@ Author URL: http://w3layouts.com
   <!--/row-grids-->
         <div class="col-lg-6 subject-card mt-lg-0 mt-4">
           <div class="subject-card-header p-4">
-            <a href="paris1.html" class="card_title p-lg-4d-block">
+            <a href="PARIS/informationParis.html" class="card_title p-lg-4d-block">
               <div class="row align-items-center">
                 <div class="col-sm-5 subject-img">
                   <img src="assets/images/g1.jpg" class="img-fluid" alt="">
@@ -161,7 +162,7 @@ Author URL: http://w3layouts.com
         </div>
         <div class="col-lg-6 subject-card mt-lg-0 mt-4">
           <div class="subject-card-header p-4">
-            <a href="bangkok1.html" class="card_title p-lg-4d-block">
+            <a href="BANGKOK/informationBangkok.html" class="card_title p-lg-4d-block">
               <div class="row align-items-center">
                 <div class="col-sm-5 subject-img">
                   <img src="assets/images/g2.jpg" class="img-fluid" alt="">
@@ -183,7 +184,7 @@ Author URL: http://w3layouts.com
             <!--/row-grids-->
         <div class="col-lg-6 subject-card mt-4">
           <div class="subject-card-header p-4">
-            <a href="maldivas1.html" class="card_title p-lg-4d-block">
+            <a href="MALDIVAS/informationMaldivas.html" class="card_title p-lg-4d-block">
               <div class="row align-items-center">
                 <div class="col-sm-5 subject-img">
                   <img src="assets/images/g3.jpg" class="img-fluid" alt="">
@@ -203,7 +204,7 @@ Author URL: http://w3layouts.com
         </div>
         <div class="col-lg-6 subject-card mt-4">
           <div class="subject-card-header p-4">
-            <a href="atenas1.html" class="card_title p-lg-4d-block">
+            <a href="ATENAS/informationAtenas.html" class="card_title p-lg-4d-block">
               <div class="row align-items-center">
                 <div class="col-sm-5 subject-img">
                   <img src="assets/images/g4.jpg" class="img-fluid" alt="">
@@ -225,7 +226,7 @@ Author URL: http://w3layouts.com
             <!--/row-grids-->
         <div class="col-lg-6 subject-card mt-4">
           <div class="subject-card-header p-4">
-            <a href="londres1.html" class="card_title p-lg-4d-block">
+            <a href="LONDRES/informationLondres.html" class="card_title p-lg-4d-block">
               <div class="row align-items-center">
                 <div class="col-sm-5 subject-img">
                   <img src="assets/images/g5.jpg" class="img-fluid" alt="">
@@ -267,7 +268,7 @@ Author URL: http://w3layouts.com
                   <!--/row-grids-->
         <div class="col-lg-6 subject-card mt-4">
           <div class="subject-card-header p-4">
-            <a href="santamarta1.html" class="card_title p-lg-4d-block">
+            <a href="SANTAMARTA/informationSantaMarta.html" class="card_title p-lg-4d-block">
               <div class="row align-items-center">
                 <div class="col-sm-5 subject-img">
                   <img src="assets/images/g7.jpg" class="img-fluid" alt="">
@@ -287,7 +288,7 @@ Author URL: http://w3layouts.com
         </div>
         <div class="col-lg-6 subject-card mt-4">
           <div class="subject-card-header p-4">
-            <a href="singapur.html" class="card_title p-lg-4d-block">
+            <a href="SINGAPUR/informationSingapur.html" class="card_title p-lg-4d-block">
               <div class="row align-items-center">
                 <div class="col-sm-5 subject-img">
                   <img src="assets/images/g8.jpg" class="img-fluid" alt="">
@@ -441,6 +442,13 @@ Author URL: http://w3layouts.com
   <!--//MENU-JS-->
 
   <script src="assets/js/bootstrap.min.js"></script>
+  <<script>
+  function irAPagina() {
+    var menuDesplegable = document.getElementById("menuDesplegable");
+    var valorSeleccionado = menuDesplegable.options[menuDesplegable.selectedIndex].value;
+    window.location.href = valorSeleccionado;
+  }
+  </script>
 
 </body>
 
