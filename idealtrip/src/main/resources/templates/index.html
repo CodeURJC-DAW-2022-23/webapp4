@@ -1,0 +1,455 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+-->
+<!doctype html>
+<html lang="zxx">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>IdealTrip</title>
+  <link rel="icon" href="assets/images/favicon.png" type="image/png" />
+  <!-- google fonts -->
+  <link href="//fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap"
+    rel="stylesheet">
+  <!-- google fonts -->
+  <!-- Template CSS -->
+  <link rel="stylesheet" href="assets/css/style-starter.css">
+  <!-- Template CSS -->
+</head>
+
+<body>
+  <!--header-->
+  <header id="site-header" class="fixed-top">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg stroke">
+        <h1><a class="navbar-brand mr-lg-5" href="index.html">
+            IdealTrip
+          </a></h1>
+        <!-- if logo is image enable this   
+      <a class="navbar-brand" href="#index.html">
+          <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+      </a> -->
+        <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse"
+          data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+          <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+          </span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Inicio <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="services.html">Destinos</a>
+            </li>
+    
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contacto</a>
+            </li>
+            <!-- <li class="nav-itme">
+              <a class="nav-link" href="login.html">Login</a>
+            </li> -->
+          </ul>
+        </div>
+        <div class="d-lg-block d-none">
+          <a href="login.html" class="btn btn-style btn-secondary">Iniciar sesión</a>
+        </div>
+        <!-- toggle switch for light and dark theme -->
+        <div class="mobile-position">
+          <nav class="navigation">
+            <div class="theme-switch-wrapper">
+              <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox">
+                <div class="mode-container">
+                  <i class="gg-sun"></i>
+                  <i class="gg-moon"></i>
+                </div>
+              </label>
+            </div>
+          </nav>
+        </div>
+        <!-- //toggle switch for light and dark theme -->
+      </nav>
+    </div>
+  </header>
+  <!-- //header -->
+  <!--banner-slider-->
+  <!-- main-slider -->
+  <section class="w3l-main-slider" id="home">
+    <div class="banner-content">
+      <div id="demo-1"
+        data-zs-src='["assets/images/banner1.jpg", "assets/images/banner2.jpg","assets/images/banner3.jpg", "assets/images/banner4.jpg"]'
+        data-zs-overlay="dots">
+        <div class="demo-inner-content">
+          <div class="container">
+            <div class="banner-infhny">
+              <h3>No tienes que irte lejos para encontrar lo que importa</h3>
+              <h6 class="mb-3">Descubre tu nueva aventura</h6>
+              <div class="flex-wrap search-wthree-field mt-md-5 mt-4">
+                <div class="booking-form">
+                  <div class="row book-form">
+                    <div class="form-input col-md-4 mt-md-0 mt-3">
+
+                      <select id = "menuDesplegable" class="selectpicker">
+                        <option value="">Destino</option>
+                        <option value="PARIS/informationParis.html">París</option>
+                        <option value="BANGKOK/informationBangkok.html">Bangkok</option>
+                        <option value="MALDIVAS/informationMaldivas.html">Maldivas</option>
+                        <option value="ATENAS/informationAtenas.html">Atenas</option>
+                        <option value="LONDRES/informationLondres.html">Londres</option>
+                        <option value="Alpes-Julianos1.html">Alpes Julianos</option>
+                        <option value="SANTAMARTA/informationSantaMarta.html">Santa Marta</option>
+                        <option value="SINGAPUR/informationSingapur.html">Singapur</option>
+                      </select>
+
+                    </div>
+                    <div class="form-input col-md-4 mt-md-0 mt-3">
+
+                      <input type="date" name="" placeholder="Date" required="">
+                    </div>
+                    <div class="bottom-btn col-md-4 mt-md-0 mt-3">
+                      <button id ="btn" type="submit" onclick="irAPagina()" class="btn btn-style btn-secondary"><span class="fa fa-search mr-3"
+                          aria-hidden="true"></span> Buscar</button>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /main-slider -->
+  <!-- //banner-slider-->
+
+  <!--/grids-->
+  <section class="w3l-grids-3 py-5">
+    <div class="container py-md-5">
+      <div class="title-content text-left mb-lg-5 mb-4">
+        <h6 class="sub-title">Visitar</h6>
+        <h3 class="hny-title">Destinos populares</h3>
+      </div>
+      <div class="row bottom-ab-grids">
+  <!--/row-grids-->
+        <div class="col-lg-6 subject-card mt-lg-0 mt-4">
+          <div class="subject-card-header p-4">
+            <a href="PARIS/informationParis.html" class="card_title p-lg-4d-block">
+              <div class="row align-items-center">
+                <div class="col-sm-5 subject-img">
+                  <img src="assets/images/g1.jpg" class="img-fluid" alt="">
+                </div>
+                <div class="col-sm-7 subject-content mt-sm-0 mt-4">
+                  <h4>París</h4>
+                  <p>La ciudad del amor</p>
+                  <div class="dst-btm">
+                    <h6 class=""> Precio recomendado: </h6>
+                    <span>100€</span>
+                  </div>
+                  <p class="sub-para">Por persona</p>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-6 subject-card mt-lg-0 mt-4">
+          <div class="subject-card-header p-4">
+            <a href="BANGKOK/informationBangkok.html" class="card_title p-lg-4d-block">
+              <div class="row align-items-center">
+                <div class="col-sm-5 subject-img">
+                  <img src="assets/images/g2.jpg" class="img-fluid" alt="">
+                </div>
+                <div class="col-sm-7 subject-content mt-sm-0 mt-4">
+                  <h4>Bangkok</h4>
+                  <p>El corazón vibrante de Tailandia</p>
+                  <div class="dst-btm">
+                    <h6 class=""> Precio recomendado: </h6>
+                    <span>30€</span>
+                  </div>
+                  <p class="sub-para">Por persona</p>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+          <!--//row-grids-->
+            <!--/row-grids-->
+        <div class="col-lg-6 subject-card mt-4">
+          <div class="subject-card-header p-4">
+            <a href="MALDIVAS/informationMaldivas.html" class="card_title p-lg-4d-block">
+              <div class="row align-items-center">
+                <div class="col-sm-5 subject-img">
+                  <img src="assets/images/g3.jpg" class="img-fluid" alt="">
+                </div>
+                <div class="col-sm-7 subject-content mt-sm-0 mt-4">
+                  <h4>Maldivas</h4>
+                  <p>Un oasis de belleza natural</p>
+                  <div class="dst-btm">
+                    <h6 class=""> Precio recomendado: </h6>
+                    <span>150€</span>
+                  </div>
+                  <p class="sub-para">Por persona</p>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-6 subject-card mt-4">
+          <div class="subject-card-header p-4">
+            <a href="ATENAS/informationAtenas.html" class="card_title p-lg-4d-block">
+              <div class="row align-items-center">
+                <div class="col-sm-5 subject-img">
+                  <img src="assets/images/g4.jpg" class="img-fluid" alt="">
+                </div>
+                <div class="col-sm-7 subject-content mt-sm-0 mt-4">
+                  <h4>Atenas</h4>
+                  <p>Civilización antigua</p>
+                  <div class="dst-btm">
+                    <h6 class=""> Precio recomendado: </h6>
+                    <span>120€</span>
+                  </div>
+                  <p class="sub-para">Por persona</p>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+          <!--//row-grids-->
+            <!--/row-grids-->
+        <div class="col-lg-6 subject-card mt-4">
+          <div class="subject-card-header p-4">
+            <a href="LONDRES/informationLondres.html" class="card_title p-lg-4d-block">
+              <div class="row align-items-center">
+                <div class="col-sm-5 subject-img">
+                  <img src="assets/images/g5.jpg" class="img-fluid" alt="">
+                </div>
+                <div class="col-sm-7 subject-content mt-sm-0 mt-4">
+                  <h4>Londres</h4>
+                  <p>Vibrante, Histórica y Diversa</p>
+                  <div class="dst-btm">
+                    <h6 class=""> Precio recomendado: </h6>
+                    <span>250€</span>
+                  </div>
+                  <p class="sub-para">Por persona</p>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-6 subject-card mt-4">
+          <div class="subject-card-header p-4">
+            <a href="ALPESJULIANOS/informationAlpesJulianos.html" class="card_title p-lg-4d-block">
+              <div class="row align-items-center">
+                <div class="col-sm-5 subject-img">
+                  <img src="assets/images/g6.jpg" class="img-fluid" alt="">
+                </div>
+                <div class="col-sm-7 subject-content mt-sm-0 mt-4">
+                  <h4>Alpes Julianos</h4>
+                  <p>Montañas salvajes y majestuosas</p>
+                  <div class="dst-btm">
+                    <h6 class=""> Precio recomendado: </h6>
+                    <span>300€</span>
+                  </div>
+                  <p class="sub-para">Por persona</p>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+          <!--//row-grids-->
+                  <!--/row-grids-->
+        <div class="col-lg-6 subject-card mt-4">
+          <div class="subject-card-header p-4">
+            <a href="SANTAMARTA/informationSantaMarta.html" class="card_title p-lg-4d-block">
+              <div class="row align-items-center">
+                <div class="col-sm-5 subject-img">
+                  <img src="assets/images/g7.jpg" class="img-fluid" alt="">
+                </div>
+                <div class="col-sm-7 subject-content mt-sm-0 mt-4">
+                  <h4>Santa Marta</h4>
+                  <p>Vibrante, Costera y Diversa</p>
+                  <div class="dst-btm">
+                    <h6 class=""> Precio recomendado: </h6>
+                    <span>500€</span>
+                  </div>
+                  <p class="sub-para">Por persona</p>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-6 subject-card mt-4">
+          <div class="subject-card-header p-4">
+            <a href="SINGAPUR/informationSingapur.html" class="card_title p-lg-4d-block">
+              <div class="row align-items-center">
+                <div class="col-sm-5 subject-img">
+                  <img src="assets/images/g8.jpg" class="img-fluid" alt="">
+                </div>
+                <div class="col-sm-7 subject-content mt-sm-0 mt-4">
+                  <h4>Singapur</h4>
+                  <p>Moderna, Cosmopolita y Contraste</p>
+                  <div class="dst-btm">
+                    <h6 class=""> Precio recomendado:</h6>
+                    <span>240€</span>
+                  </div>
+                  <p class="sub-para">Por persona</p>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+          <!--//row-grids-->
+      </div>
+    </div>
+  </section>
+  <!--//grids-->
+ 
+  <section>
+    <img src="assets/images/informacion/barChart.png" alt="BarChart of number of people who visited the destination">
+  </section>
+  
+
+  <!--/w3l-footer-29-main-->
+  <footer>
+    <!-- footer -->
+    <section class="w3l-footer">
+      <div class="w3l-footer-16-main py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 column">
+              <div class="row">
+                <div class="col-md-4 column">
+                  <h3>Página web</h3>
+                  <ul class="footer-gd-16">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="services.html">Destinos</a></li>
+                    <li><a href="contact.html">Contacto</a></li>
+                  </ul>
+                </div>
+                <div class="col-md-4 column mt-md-0 mt-4">
+                  <h3>Nuestros servicios</h3>
+                  <ul class="footer-gd-16">
+                    <li><a href="privacyPolicy.html">Política de privacidad</a></li>
+                    <li><a href="#url">Términos</a></li>
+                    <li><a href="services.html">Servicios</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-12 column pl-lg-5 column4 mt-lg-0 mt-5">
+              <h3>Boletín informanivo </h3>
+              <div class="end-column">
+                <h4>Entérate de nuestras últimas ofertas</h4>
+                <form action="#" class="subscribe" method="post">
+                  <input type="email" name="email" placeholder="Email" required="">
+                  <button type="submit">¡Vamos!</button>
+                </form>
+                <p>Regístrese para recibir nuestras últimas noticias y artículos. No le enviaremos correos no deseados.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex below-section justify-content-between align-items-center pt-4 mt-5">
+            <div class="columns text-lg-left text-center">
+              <p>&copy; 2020 IdealTrip. All rights reserved.Design by <a href="https://w3layouts.com/" target="_blank">
+                  W3Layouts</a>
+              </p>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </footer>
+  <!-- Template JavaScript -->
+  <script src="assets/js/jquery-3.3.1.min.js"></script>
+  <script src="assets/js/theme-change.js"></script>
+  <!--/slider-js-->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/modernizr-2.6.2.min.js"></script>
+  <script src="assets/js/jquery.zoomslider.min.js"></script>
+  <!--//slider-js-->
+  <script src="assets/js/owl.carousel.js"></script>
+  <!-- script for tesimonials carousel slider -->
+  <script>
+    $(document).ready(function () {
+      $("#owl-demo1").owlCarousel({
+        loop: true,
+        margin: 20,
+        nav: false,
+        responsiveClass: true,
+        responsive: {
+          0: {
+            items: 1,
+            nav: false
+          },
+          736: {
+            items: 1,
+            nav: false
+          },
+          1000: {
+            items: 1,
+            nav: false,
+            loop: true
+          }
+        }
+      })
+    })
+  </script>
+  <!-- //script for tesimonials carousel slider -->
+  <!-- stats number counter-->
+  <script src="assets/js/jquery.waypoints.min.js"></script>
+  <script src="assets/js/jquery.countup.js"></script>
+  <script>
+    $('.counter').countUp();
+  </script>
+  <!-- //stats number counter -->
+
+  <!--/MENU-JS-->
+  <script>
+    $(window).on("scroll", function () {
+      var scroll = $(window).scrollTop();
+
+      if (scroll >= 80) {
+        $("#site-header").addClass("nav-fixed");
+      } else {
+        $("#site-header").removeClass("nav-fixed");
+      }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function () {
+      $("header").toggleClass("active");
+    });
+    $(document).on("ready", function () {
+      if ($(window).width() > 991) {
+        $("header").removeClass("active");
+      }
+      $(window).on("resize", function () {
+        if ($(window).width() > 991) {
+          $("header").removeClass("active");
+        }
+      });
+    });
+  </script>
+  <!--//MENU-JS-->
+
+  <script src="assets/js/bootstrap.min.js"></script>
+  <<script>
+  function irAPagina() {
+    var menuDesplegable = document.getElementById("menuDesplegable");
+    var valorSeleccionado = menuDesplegable.options[menuDesplegable.selectedIndex].value;
+    window.location.href = valorSeleccionado;
+  }
+  </script>
+
+</body>
+
+</html>
