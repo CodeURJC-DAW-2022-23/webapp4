@@ -11,11 +11,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity(name = "userTable")
 public class User {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -26,14 +24,14 @@ public class User {
     private String password;
 
     @ElementCollection(fetch = FetchType.EAGER)
-	private List<String> roles;
+    private List<String> roles;
 
     @Lob
-    @JsonIgnore
     private Blob profileAvatarFile;
-    private String profileAvatar;
 
-    public User(){
+    private boolean profileAvatar;
+
+    public User() {
 
     }
 
@@ -44,7 +42,6 @@ public class User {
         this.password = password;
     }
 
-    
     public User(String name, String password, List<String> roles) {
         this.name = name;
         this.password = password;
@@ -99,11 +96,11 @@ public class User {
         this.profileAvatarFile = profileAvatarFile;
     }
 
-    public String getProfileAvatar() {
-        return profileAvatar;
+    public boolean getProfileAvatar() {
+        return this.profileAvatar;
     }
 
-    public void setProfileAvatar(String profileAvatar) {
+    public void setProfileAvatar(boolean profileAvatar) {
         this.profileAvatar = profileAvatar;
     }
 
@@ -115,6 +112,4 @@ public class User {
         this.roles = roles;
     }
 
-    
-    
 }
