@@ -1,8 +1,11 @@
 package com.idealtrip.idealTrip.model;
 
 import java.sql.Blob;
+import java.util.List;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -10,7 +13,7 @@ import javax.persistence.Lob;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-@Entity
+@Entity(name = "userTable")
 public class User {
     
     @Id
@@ -21,6 +24,9 @@ public class User {
     private String name;
     private String lastName;
     private String password;
+
+    @ElementCollection(fetch = FetchType.EAGER)
+	private List<String> roles;
 
     @Lob
     @JsonIgnore
@@ -36,6 +42,13 @@ public class User {
         this.name = name;
         this.lastName = lastName;
         this.password = password;
+    }
+
+    
+    public User(String name, String password, List<String> roles) {
+        this.name = name;
+        this.password = password;
+        this.roles = roles;
     }
 
     public Long getId() {
@@ -92,6 +105,14 @@ public class User {
 
     public void setProfileAvatar(String profileAvatar) {
         this.profileAvatar = profileAvatar;
+    }
+
+    public List<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
     }
 
     

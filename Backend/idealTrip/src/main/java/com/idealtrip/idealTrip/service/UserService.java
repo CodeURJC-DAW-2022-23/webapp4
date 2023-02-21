@@ -19,6 +19,10 @@ public class UserService {
         users.save(user);
     }
     
+    public void delete(Long id){
+        users.deleteById(id);
+    }
+
     public Optional<User> findByEmail(String email){
         return users.findByEmail(email);
     }
@@ -40,5 +44,7 @@ public class UserService {
     public List<User> findAll() {
 		return users.findAll();
 	}
+
+
     // public List<Review> findReviewsOfUser(Long userId, pagable)
 }
