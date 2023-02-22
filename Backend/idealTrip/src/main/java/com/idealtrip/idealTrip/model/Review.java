@@ -2,10 +2,13 @@ package com.idealtrip.idealTrip.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity(name = "reviewTable")
 public class Review {
@@ -14,15 +17,16 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    
+    private String titleReview;
+    private int ratingReview;
+    
     @ManyToOne
     private User user;
 
-    @ManyToOne
-    private Destination destination;
-
-    private String titleReview;
-    private int ratingReview;
-
+    // @ManyToMany
+    // private Destination destination;
+    
     @Column(columnDefinition = "TEXT")
     private String contentReview;
 
@@ -32,8 +36,8 @@ public class Review {
     public Review(Long id, User user, Destination destination, String titleReview, int ratingReview,
             String contentReview) {
         this.id = id;
-        this.user = user;
-        this.destination = destination;
+        // this.user = user;
+        // this.destination = destination;
         this.titleReview = titleReview;
         this.ratingReview = ratingReview;
         this.contentReview = contentReview;
@@ -47,21 +51,21 @@ public class Review {
         this.id = id;
     }
 
-    public User getUser() {
-        return user;
-    }
+    // public User getUser() {
+    //     return user;
+    // }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
+    // public void setUser(User user) {
+    //     this.user = user;
+    // }
 
-    public Destination getDestination() {
-        return destination;
-    }
+    // public Destination getDestination() {
+    //     return destination;
+    // }
 
-    public void setDestination(Destination destination) {
-        this.destination = destination;
-    }
+    // public void setDestination(Destination destination) {
+    //     this.destination = destination;
+    // }
 
     public String getTitleReview() {
         return titleReview;

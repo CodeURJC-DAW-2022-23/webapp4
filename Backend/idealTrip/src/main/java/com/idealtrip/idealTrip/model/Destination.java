@@ -3,6 +3,7 @@ package com.idealtrip.idealTrip.model;
 import java.sql.Blob;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,10 +11,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity(name = "destinationTable")
 public class Destination {
@@ -23,17 +25,16 @@ public class Destination {
     private Long id;
 
     @Lob
-    @JsonIgnore
     private Blob imageDestination;
     private String contentDestination;
 
     private String nameDestination;
 
-    @ManyToOne
-    private House house;
+    // @OneToOne(mappedBy = "destino", cascade = CascadeType.ALL)
+    // private House house;
 
-    @OneToMany
-    private Review review;
+    // @ManyToMany(mappedBy = "destino")
+    // private Review reviews;
 
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> prices;
@@ -50,6 +51,7 @@ public class Destination {
         this.prices = prices;
     }
 
+    
     public Long getId() {
         return id;
     }
@@ -89,5 +91,13 @@ public class Destination {
     public void setPrices(List<String> prices) {
         this.prices = prices;
     }
+
+    // public Review getReview() {
+    //     return review;
+    // }
+
+    // public void setReview(Review review) {
+    //     this.review = review;
+    // }
 
 }

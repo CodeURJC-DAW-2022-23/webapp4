@@ -3,6 +3,7 @@ package com.idealtrip.idealTrip.model;
 import java.sql.Blob;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity(name = "userTable")
@@ -32,14 +34,14 @@ public class User {
 
     private boolean profileAvatar;
 
-    @OneToMany
-    private Destination destination;
+    // @OneToMany
+    // private Destination destination;
 
-    @OneToMany
-    private Purchase purchase;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Purchase> purchases;
 
-    @OneToMany
-    private Review review;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Review> reviews;
 
     public User() {
 
@@ -58,21 +60,21 @@ public class User {
         this.roles = roles;
     }
 
-    public Destination getDestination() {
-        return destination;
-    }
+    // public Destination getDestination() {
+    //     return destination;
+    // }
 
-    public void setDestination(Destination destination) {
-        this.destination = destination;
-    }
+    // public void setDestination(Destination destination) {
+    //     this.destination = destination;
+    // }
 
-    public Purchase getPurchase() {
-        return purchase;
-    }
+    // public Purchase getPurchase() {
+    //     return purchase;
+    // }
 
-    public void setPurchase(Purchase purchase) {
-        this.purchase = purchase;
-    }
+    // public void setPurchase(Purchase purchase) {
+    //     this.purchase = purchase;
+    // }
 
     public Long getId() {
         return id;
@@ -138,12 +140,12 @@ public class User {
         this.roles = roles;
     }
 
-    public Review getReview() {
-        return review;
-    }
+    // public Review getReview() {
+    //     return review;
+    // }
 
-    public void setReview(Review review) {
-        this.review = review;
-    }
+    // public void setReview(Review review) {
+    //     this.review = review;
+    // }
 
 }

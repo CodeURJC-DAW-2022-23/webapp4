@@ -1,14 +1,18 @@
 package com.idealtrip.idealTrip.model;
 
 import java.sql.Blob;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -22,12 +26,14 @@ public class House {
 
     private String nameHouse;
 
-    @OneToOne
-    private Destination destination;
+    // @OneToOne
+    // private Destination destination;
 
     @Column(columnDefinition = "TEXT")
     private String contentHouse;
 
+    // @OneToMany(mappedBy = "purchase", cascade = CascadeType.ALL)
+    // private List<Purchase> purchases;
 
     @Lob
     @JsonIgnore
@@ -40,7 +46,7 @@ public class House {
         this.id = id;
         this.nameHouse = nameHouse;
         this.contentHouse = contentHouse;
-        this.destination = destination;
+        // this.destination = destination;
         this.imagesHouse = imagesHouse;
     }
 
@@ -68,13 +74,13 @@ public class House {
         this.contentHouse = contentHouse;
     }
 
-    public Destination getDestination() {
-        return destination;
-    }
+    // public Destination getDestination() {
+    //     return destination;
+    // }
 
-    public void setDestination(Destination destination) {
-        this.destination = destination;
-    }
+    // public void setDestination(Destination destination) {
+    //     this.destination = destination;
+    // }
 
     public List<Blob> getImagesHouse() {
         return imagesHouse;
