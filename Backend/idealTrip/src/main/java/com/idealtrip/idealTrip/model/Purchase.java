@@ -17,7 +17,7 @@ public class Purchase {
     private User user;
 
     @OneToOne
-    private Destination destination;
+    private House house;
 
     public Purchase() {
     }

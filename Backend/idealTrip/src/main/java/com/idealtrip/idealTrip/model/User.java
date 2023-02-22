@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 
 @Entity(name = "userTable")
 public class User {
@@ -31,6 +32,15 @@ public class User {
 
     private boolean profileAvatar;
 
+    @OneToMany
+    private Destination destination;
+
+    @OneToMany
+    private Purchase purchase;
+
+    @OneToMany
+    private Review review;
+
     public User() {
 
     }
@@ -46,6 +56,22 @@ public class User {
         this.name = name;
         this.password = password;
         this.roles = roles;
+    }
+
+    public Destination getDestination() {
+        return destination;
+    }
+
+    public void setDestination(Destination destination) {
+        this.destination = destination;
+    }
+
+    public Purchase getPurchase() {
+        return purchase;
+    }
+
+    public void setPurchase(Purchase purchase) {
+        this.purchase = purchase;
     }
 
     public Long getId() {
@@ -110,6 +136,14 @@ public class User {
 
     public void setRoles(List<String> roles) {
         this.roles = roles;
+    }
+
+    public Review getReview() {
+        return review;
+    }
+
+    public void setReview(Review review) {
+        this.review = review;
     }
 
 }

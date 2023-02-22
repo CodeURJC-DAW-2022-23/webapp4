@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -26,6 +28,12 @@ public class Destination {
     private String contentDestination;
 
     private String nameDestination;
+
+    @ManyToOne
+    private House house;
+
+    @OneToMany
+    private Review review;
 
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> prices;

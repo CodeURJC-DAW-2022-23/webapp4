@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -20,6 +21,8 @@ public class House {
     private Long id;
 
     private String nameHouse;
+
+    @OneToOne
     private Destination destination;
 
     @Column(columnDefinition = "TEXT")
