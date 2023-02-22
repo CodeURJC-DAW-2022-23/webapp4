@@ -1,9 +1,9 @@
 package com.idealtrip.idealTrip.model;
 
 import java.sql.Blob;
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,11 +11,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-
 
 @Entity(name = "destinationTable")
 public class Destination {
@@ -25,7 +20,8 @@ public class Destination {
     private Long id;
 
     @Lob
-    private Blob imageDestination;
+    @ElementCollection(fetch = FetchType.LAZY)
+    private List<Blob> imageDestination = new ArrayList<>();
     private String contentDestination;
 
     private String nameDestination;
@@ -33,8 +29,8 @@ public class Destination {
     // @OneToOne(mappedBy = "destino", cascade = CascadeType.ALL)
     // private House house;
 
-    // @ManyToMany(mappedBy = "destino")
-    // private Review reviews;
+    // @OneToMany(mappedBy = "destination")
+    // private List<Review> reviews = new ArrayList<>();
 
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> prices;
@@ -42,16 +38,16 @@ public class Destination {
     public Destination() {
     }
 
-    public Destination(Long id, Blob imageDestination, String contentDestination, String nameDestination,
-            List<String> prices) {
+    public Destination(Long id, List<Blob> imageDestination, String contentDestination, String nameDestination,
+            List<Review> reviews, List<String> prices) {
         this.id = id;
         this.imageDestination = imageDestination;
         this.contentDestination = contentDestination;
         this.nameDestination = nameDestination;
+        // this.reviews = reviews;
         this.prices = prices;
     }
 
-    
     public Long getId() {
         return id;
     }
@@ -60,13 +56,21 @@ public class Destination {
         this.id = id;
     }
 
-    public Blob getImageDestination() {
+    public List<Blob> getImageDestination() {
         return imageDestination;
     }
 
-    public void setImageDestination(Blob imageDestination) {
+    public void setImageDestination(List<Blob> imageDestination) {
         this.imageDestination = imageDestination;
     }
+
+    // public List<Review> getReviews() {
+    //     return reviews;
+    // }
+
+    // public void setReviews(List<Review> reviews) {
+    //     this.reviews = reviews;
+    // }
 
     public String getContentDestination() {
         return contentDestination;
@@ -93,11 +97,11 @@ public class Destination {
     }
 
     // public Review getReview() {
-    //     return review;
+    // return review;
     // }
 
     // public void setReview(Review review) {
-    //     this.review = review;
+    // this.review = review;
     // }
 
 }

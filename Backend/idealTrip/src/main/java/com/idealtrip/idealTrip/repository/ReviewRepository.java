@@ -1,16 +1,19 @@
-// package com.idealtrip.idealTrip.repository;
+package com.idealtrip.idealTrip.repository;
 
-// import java.util.List;
+import java.util.List;
+import java.util.Optional;
 
-// import org.springframework.data.jpa.repository.JpaRepository;
-// // import org.springframework.data.jpa.repository.Query;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
+// import org.springframework.data.jpa.repository.Query;
 
-// import com.idealtrip.idealTrip.model.Review;
-// import com.idealtrip.idealTrip.model.User;
+import com.idealtrip.idealTrip.model.Destination;
+import com.idealtrip.idealTrip.model.Review;
+import com.idealtrip.idealTrip.model.User;
 
-// public interface ReviewRepository extends JpaRepository<Review, Long> {
-//     List<Review> findReviewByUser(User user, Review review);
-//     // @Query("SELECT")
-//     // List<Review>findByDestination(Destination destination);
-    
-// }
+public interface ReviewRepository extends JpaRepository<Review, Long> {
+    // Optional<Review> findByUserAndDestination(User user, Destination destination);
+    // @Query("SELECT")
+    // List<Review>findByDestination(Destination destination);
+    // List<Review> findByDestination (Destination destination, Pageable pageable);
+}

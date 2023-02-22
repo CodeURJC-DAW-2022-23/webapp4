@@ -2,13 +2,10 @@ package com.idealtrip.idealTrip.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 @Entity(name = "reviewTable")
 public class Review {
@@ -24,7 +21,7 @@ public class Review {
     @ManyToOne
     private User user;
 
-    // @ManyToMany
+    // @ManyToOne
     // private Destination destination;
     
     @Column(columnDefinition = "TEXT")

@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-IdealTripApplication<idealtrip>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.idealtrip.idealTrip.IdealTripApplication",
+            "projectName": "idealtrip",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
