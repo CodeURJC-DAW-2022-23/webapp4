@@ -23,7 +23,11 @@ public class NewsletterService {
         newsletters.deleteById(id);
     }
 
-    public Optional<Newsletter> findByEmail(String email){
-        return newsletters.findByEmail(email);
+    public Optional<Newsletter> findById(Long id) {
+        return newsletters.findById(id);
     }
+    
+    // public Optional<Newsletter> findByEmail(String email){
+    //     return newsletters.findByEmail(email);
+    // }
 }

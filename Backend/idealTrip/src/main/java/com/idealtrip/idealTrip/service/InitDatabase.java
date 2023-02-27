@@ -67,25 +67,25 @@ public class InitDatabase {
         for (House house : initedHouses) {
             houses.save(house);
         }
-        List<Catering> initedCatering = generateCatering();
+        // List<Catering> initedCatering = generateCatering();
 
-        for (Catering catering : initedCatering) {
-            caterings.save(catering);
-        }
+        // for (Catering catering : initedCatering) {
+        //     caterings.save(catering);
+        // }
 
     }
 
-    private List<Catering> generateCatering() {
-        List<Catering> catering = new ArrayList<>();
-        List<String> nameFood = new ArrayList<>();
-        nameFood.add("Ratatouille");
-        nameFood.add("Crepe");
-        nameFood.add("Cassoulet");
-        nameFood.add("Boeuf Bourguignon");
-        nameFood.add("Quiche Lorraine");
-        nameFood.add("Escargots");
-        return catering;
-    }
+    // private List<Catering> generateCatering() {
+    //     List<Catering> catering = new ArrayList<>();
+    //     List<String> nameFood = new ArrayList<>();
+    //     nameFood.add("Ratatouille");
+    //     nameFood.add("Crepe");
+    //     nameFood.add("Cassoulet");
+    //     nameFood.add("Boeuf Bourguignon");
+    //     nameFood.add("Quiche Lorraine");
+    //     nameFood.add("Escargots");
+    //     return catering;
+    // }
 
     List<String> cities = new ArrayList<>();
 
