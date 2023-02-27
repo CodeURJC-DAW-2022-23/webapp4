@@ -1,5 +1,6 @@
 package com.idealtrip.idealTrip.model;
 
+import java.io.Console;
 import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import org.aspectj.weaver.ArrayAnnotationValue;
 
 @Entity(name = "userTable")
 public class User {
@@ -34,7 +38,7 @@ public class User {
     private String profileAvatar;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Purchase> purchases = new ArrayList<>();
+    private List<Purchase> purchases;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Review> reviews = new ArrayList<>();
@@ -71,26 +75,6 @@ public class User {
     // public void setPurchase(Purchase purchase) {
     //     this.purchase = purchase;
     // }
-
-    public void setRoles(List<String> roles) {
-        this.roles = roles;
-    }
-
-    public List<Purchase> getPurchases() {
-        return purchases;
-    }
-
-    public void setPurchases(List<Purchase> purchases) {
-        this.purchases = purchases;
-    }
-
-    public List<Review> getReviews() {
-        return reviews;
-    }
-
-    public void setReviews(List<Review> reviews) {
-        this.reviews = reviews;
-    }
 
     public Long getId() {
         return id;

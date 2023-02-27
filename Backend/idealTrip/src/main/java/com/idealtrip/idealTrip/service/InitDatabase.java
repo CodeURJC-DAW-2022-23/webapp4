@@ -184,6 +184,13 @@ public class InitDatabase {
     // image.contentLength()));
     // }
 
+    // private void setDestinationImage(Destination destination, String path) throws
+    // IOException {
+    // Resource image = new ClassPathResource(path);
+    // destination.setImageDestination(BlobProxy.generateProxy(image.getInputStream(),
+    // image.contentLength()));
+    // }
+
     // private List<Review> initReviews(List<Destination> initDestinations,
     // List<User> initUsers) {
     // List<Review> reviews = new ArrayList<>();

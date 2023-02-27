@@ -6,7 +6,9 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,6 +30,10 @@ public class Destination {
     private Blob titleImageFile;
     private String titleImage;
 
+    // @Lob
+    // @ElementCollection(fetch = FetchType.LAZY)
+    // private List<Blob> imageDestination = new ArrayList<>();
+
     @Column(name = "contentDestination", columnDefinition = "TEXT")
     private String contentDestination;
 
@@ -36,8 +42,8 @@ public class Destination {
     @OneToOne(mappedBy = "destination", cascade = CascadeType.ALL)
     private House house;
 
-    @OneToMany(mappedBy = "destination", cascade = CascadeType.ALL)
-    private List<Review> reviews = new ArrayList<>();
+    // @OneToMany(mappedBy = "destination")
+    // private Review reviews;
 
     private float price;
 
@@ -49,7 +55,7 @@ public class Destination {
         this.id = id;
         this.contentDestination = contentDestination;
         this.nameDestination = nameDestination;
-        this.reviews = reviews;
+        // this.reviews = reviews;
         this.price = price;
     }
 
@@ -77,6 +83,22 @@ public class Destination {
         this.id = id;
     }
 
+    // public List<Blob> getImageDestination() {
+    //     return imageDestination;
+    // }
+
+    // public void setImageDestination(List<Blob> imageDestination) {
+    //     this.imageDestination = imageDestination;
+    // }
+
+    // public List<Review> getReviews() {
+    //     return reviews;
+    // }
+
+    // public void setReviews(List<Review> reviews) {
+    //     this.reviews = reviews;
+    // }
+
     public String getContentDestination() {
         return contentDestination;
     }
@@ -101,20 +123,12 @@ public class Destination {
         this.price = price;
     }
 
-    public House getHouse() {
-        return house;
-    }
+    // public Review getReview() {
+    // return review;
+    // }
 
-    public void setHouse(House house) {
-        this.house = house;
-    }
-
-    public List<Review> getReviews() {
-        return reviews;
-    }
-
-    public void setReviews(List<Review> reviews) {
-        this.reviews = reviews;
-    }
+    // public void setReview(Review review) {
+    // this.review = review;
+    // }
         
 }

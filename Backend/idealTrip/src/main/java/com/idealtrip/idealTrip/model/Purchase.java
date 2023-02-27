@@ -17,8 +17,8 @@ public class Purchase {
     @ManyToOne
     private User user;
 
-    @OneToOne
-    private House house;
+    // @OneToOne
+    // private House house;
 
     public Purchase() {
     }
