@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.OneToOne;
 
 @Entity(name = "cateringTable")
 public class Catering {
@@ -18,22 +19,42 @@ public class Catering {
     private String nameFood;
     private String contentFood;
 
+    private String nameDestination;
 
-    // private Destination destination;
+    @OneToOne
+    private Destination destination;
 
     @Lob
-    private Blob imageFood;
+    private Blob imageFoodFile;
+    private String imageFoodUrl;
+
 
     public Catering(){
 
     }
 
-    public Catering(Long id, String nameFood, String contentFood, Blob imageFood, Destination destination) {
+    public Catering(Long id, String nameFood, String contentFood, Blob imageFoodFile, Destination destination) {
         this.id = id;
         this.nameFood = nameFood;
         this.contentFood = contentFood;
-        this.imageFood = imageFood;
-        // this.destination = destination;
+        this.imageFoodFile = imageFoodFile;
+        this.destination = destination;
+    }
+
+    public Blob getImageFoodFile() {
+        return imageFoodFile;
+    }
+
+    public void setImageFoodFile(Blob imageFoodFile) {
+        this.imageFoodFile = imageFoodFile;
+    }
+
+    public String getImageFoodUrl() {
+        return imageFoodUrl;
+    }
+
+    public void setImageFoodUrl(String imageFoodUrl) {
+        this.imageFoodUrl = imageFoodUrl;
     }
 
     public Long getId() {
@@ -42,6 +63,22 @@ public class Catering {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getNameDestination() {
+        return nameDestination;
+    }
+
+    public void setNameDestination(String nameDestination) {
+        this.nameDestination = nameDestination;
+    }
+
+    public Destination getDestination() {
+        return destination;
+    }
+
+    public void setDestination(Destination destination) {
+        this.destination = destination;
     }
 
     public String getNameFood() {
@@ -61,11 +98,11 @@ public class Catering {
     }
 
     public Blob getImageFood() {
-        return imageFood;
+        return imageFoodFile;
     }
 
-    public void setImageFood(Blob imageFood) {
-        this.imageFood = imageFood;
+    public void setImageFood(Blob imageFoodFile) {
+        this.imageFoodFile = imageFoodFile;
     }
 
     // public Destination getDestination() {
