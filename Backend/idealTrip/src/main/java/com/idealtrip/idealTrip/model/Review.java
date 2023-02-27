@@ -21,8 +21,8 @@ public class Review {
     @ManyToOne
     private User user;
 
-    // @ManyToOne
-    // private Destination destination;
+    @ManyToOne
+    private Destination destination;
     
     @Column(columnDefinition = "TEXT")
     private String contentReview;
