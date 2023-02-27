@@ -26,8 +26,8 @@ public class House {
 
     private String nameHouse;
 
-    // @OneToOne
-    // private Destination destination;
+    @OneToOne
+    private Destination destination;
 
     @Column(columnDefinition = "TEXT")
     private String contentHouse;

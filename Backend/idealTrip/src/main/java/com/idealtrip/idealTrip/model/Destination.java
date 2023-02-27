@@ -4,6 +4,8 @@ import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,6 +13,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity(name = "destinationTable")
 public class Destination {
@@ -20,32 +26,53 @@ public class Destination {
     private Long id;
 
     @Lob
-    @ElementCollection(fetch = FetchType.LAZY)
-    private List<Blob> imageDestination = new ArrayList<>();
+    @JsonIgnore
+    private Blob titleImageFile;
+    private String titleImage;
+
+    // @Lob
+    // @ElementCollection(fetch = FetchType.LAZY)
+    // private List<Blob> imageDestination = new ArrayList<>();
+
+    @Column(name = "contentDestination", columnDefinition = "TEXT")
     private String contentDestination;
 
     private String nameDestination;
 
-    // @OneToOne(mappedBy = "destino", cascade = CascadeType.ALL)
-    // private House house;
+    @OneToOne(mappedBy = "destination", cascade = CascadeType.ALL)
+    private House house;
 
     // @OneToMany(mappedBy = "destination")
-    // private List<Review> reviews = new ArrayList<>();
+    // private Review reviews;
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    private List<String> prices;
+    private float price;
 
     public Destination() {
     }
 
-    public Destination(Long id, List<Blob> imageDestination, String contentDestination, String nameDestination,
-            List<Review> reviews, List<String> prices) {
+    public Destination(Long id, String contentDestination, String nameDestination,
+            List<Review> reviews, float price) {
         this.id = id;
-        this.imageDestination = imageDestination;
         this.contentDestination = contentDestination;
         this.nameDestination = nameDestination;
         // this.reviews = reviews;
-        this.prices = prices;
+        this.price = price;
+    }
+
+    public Blob getTitleImageFile() {
+        return titleImageFile;
+    }
+
+    public void setTitleImageFile(Blob titleImageFile) {
+        this.titleImageFile = titleImageFile;
+    }
+
+    public String getTitleImage() {
+        return titleImage;
+    }
+
+    public void setTitleImage(String titleImage) {
+        this.titleImage = titleImage;
     }
 
     public Long getId() {
@@ -56,13 +83,13 @@ public class Destination {
         this.id = id;
     }
 
-    public List<Blob> getImageDestination() {
-        return imageDestination;
-    }
+    // public List<Blob> getImageDestination() {
+    //     return imageDestination;
+    // }
 
-    public void setImageDestination(List<Blob> imageDestination) {
-        this.imageDestination = imageDestination;
-    }
+    // public void setImageDestination(List<Blob> imageDestination) {
+    //     this.imageDestination = imageDestination;
+    // }
 
     // public List<Review> getReviews() {
     //     return reviews;
@@ -88,12 +115,12 @@ public class Destination {
         this.nameDestination = nameDestination;
     }
 
-    public List<String> getPrices() {
-        return prices;
+    public float getPrice() {
+        return price;
     }
 
-    public void setPrices(List<String> prices) {
-        this.prices = prices;
+    public void setPrice(float price) {
+        this.price = price;
     }
 
     // public Review getReview() {
@@ -103,5 +130,5 @@ public class Destination {
     // public void setReview(Review review) {
     // this.review = review;
     // }
-
+        
 }

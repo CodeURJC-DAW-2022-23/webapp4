@@ -7,8 +7,8 @@
 // @Controller
 // public class IndexController {
     
-//     // @GetMapping("/")
-//     // public String showIndex(Model model){
-//     //     return "index.html";
-//     // }
+//     @GetMapping("/")
+//     public String showIndex(Model model){
+//         return "index";
+//     }
 // }

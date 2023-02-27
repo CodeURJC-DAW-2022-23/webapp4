@@ -10,6 +10,6 @@ import com.idealtrip.idealTrip.model.Destination;
 
 public interface DestinationRepository extends JpaRepository<Destination, Long> {
     // List<Destination>findDestination(String name);
-
+    
     
 }

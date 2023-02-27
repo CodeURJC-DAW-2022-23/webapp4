@@ -33,7 +33,7 @@ public class Review {
     public Review(Long id, User user, Destination destination, String titleReview, int ratingReview,
             String contentReview) {
         this.id = id;
-        // this.user = user;
+        this.user = user;
         // this.destination = destination;
         this.titleReview = titleReview;
         this.ratingReview = ratingReview;
@@ -48,13 +48,13 @@ public class Review {
         this.id = id;
     }
 
-    // public User getUser() {
-    //     return user;
-    // }
+    public User getUser() {
+        return user;
+    }
 
-    // public void setUser(User user) {
-    //     this.user = user;
-    // }
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     // public Destination getDestination() {
     //     return destination;

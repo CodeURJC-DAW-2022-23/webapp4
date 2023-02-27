@@ -30,4 +30,5 @@ public class DestinationService {
         return purchases.save(entity);
     }
     
+    
 }

@@ -1,6 +1,8 @@
 package com.idealtrip.idealTrip.model;
 
+import java.io.Console;
 import java.sql.Blob;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -14,6 +16,8 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.aspectj.weaver.ArrayAnnotationValue;
+
 @Entity(name = "userTable")
 public class User {
 
@@ -24,40 +28,36 @@ public class User {
     private String email;
     private String name;
     private String lastName;
-    private String password;
+    private String encodedPassword;
 
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> roles;
 
     @Lob
     private Blob profileAvatarFile;
-
-    private boolean profileAvatar;
-
-    // @OneToMany
-    // private Destination destination;
+    private String profileAvatar;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Purchase> purchases;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Review> reviews;
+    private List<Review> reviews = new ArrayList<>();
 
     public User() {
 
     }
 
-    public User(String email, String name, String lastName, String password) {
+    public User(String email, String name, String lastName, String encodedPassword) {
         this.email = email;
         this.name = name;
         this.lastName = lastName;
-        this.password = password;
+        this.encodedPassword = encodedPassword;
     }
 
-    public User(String name, String password, List<String> roles) {
+    public User(String name, String encodedPassword, String ... roles) {
         this.name = name;
-        this.password = password;
-        this.roles = roles;
+        this.encodedPassword = encodedPassword;
+        this.roles = List.of(roles);
     }
 
     // public Destination getDestination() {
@@ -108,12 +108,12 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getPassword() {
-        return password;
+    public String getEncodedPassword() {
+        return encodedPassword;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setEncodedPassword(String encodedPassword) {
+        this.encodedPassword = encodedPassword;
     }
 
     public Blob getProfileAvatarFile() {
@@ -124,20 +124,23 @@ public class User {
         this.profileAvatarFile = profileAvatarFile;
     }
 
-    public boolean getProfileAvatar() {
+    public String getProfileAvatar() {
         return this.profileAvatar;
     }
 
-    public void setProfileAvatar(boolean profileAvatar) {
+    public void setProfileAvatar(String profileAvatar) {
         this.profileAvatar = profileAvatar;
     }
 
     public List<String> getRoles() {
-        return roles;
+        // for (String rol :roles){
+        //     console
+        // }
+        return this.roles;
     }
 
-    public void setRoles(List<String> roles) {
-        this.roles = roles;
+    public void setRoles(String ... roles) {
+        this.roles = List.of(roles);
     }
 
     // public Review getReview() {
