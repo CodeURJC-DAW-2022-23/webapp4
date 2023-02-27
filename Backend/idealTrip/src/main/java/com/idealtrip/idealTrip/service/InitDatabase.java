@@ -177,7 +177,6 @@ public class InitDatabase {
 
         return randomName;
     }
-
     // private void setDestinationImage(Destination destination, String path) throws
     // IOException {
     // Resource image = new ClassPathResource(path);
