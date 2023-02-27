@@ -1,8 +1,10 @@
 package com.idealtrip.idealTrip.model;
 
 import java.sql.Blob;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,12 +12,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.OneToMany;
 
 @Entity(name = "userTable")
 public class User {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -23,32 +24,72 @@ public class User {
     private String email;
     private String name;
     private String lastName;
-    private String password;
+    private String encodedPassword;
 
     @ElementCollection(fetch = FetchType.EAGER)
-	private List<String> roles;
+    private List<String> roles;
 
     @Lob
-    @JsonIgnore
     private Blob profileAvatarFile;
     private String profileAvatar;
 
-    public User(){
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Purchase> purchases = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Review> reviews = new ArrayList<>();
+
+    public User() {
 
     }
 
-    public User(String email, String name, String lastName, String password) {
+    public User(String email, String name, String lastName, String encodedPassword) {
         this.email = email;
         this.name = name;
         this.lastName = lastName;
-        this.password = password;
+        this.encodedPassword = encodedPassword;
     }
 
-    
-    public User(String name, String password, List<String> roles) {
+    public User(String name, String encodedPassword, String ... roles) {
         this.name = name;
-        this.password = password;
+        this.encodedPassword = encodedPassword;
+        this.roles = List.of(roles);
+    }
+
+    // public Destination getDestination() {
+    //     return destination;
+    // }
+
+    // public void setDestination(Destination destination) {
+    //     this.destination = destination;
+    // }
+
+    // public Purchase getPurchase() {
+    //     return purchase;
+    // }
+
+    // public void setPurchase(Purchase purchase) {
+    //     this.purchase = purchase;
+    // }
+
+    public void setRoles(List<String> roles) {
         this.roles = roles;
+    }
+
+    public List<Purchase> getPurchases() {
+        return purchases;
+    }
+
+    public void setPurchases(List<Purchase> purchases) {
+        this.purchases = purchases;
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
     }
 
     public Long getId() {
@@ -83,12 +124,12 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getPassword() {
-        return password;
+    public String getEncodedPassword() {
+        return encodedPassword;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setEncodedPassword(String encodedPassword) {
+        this.encodedPassword = encodedPassword;
     }
 
     public Blob getProfileAvatarFile() {
@@ -100,7 +141,7 @@ public class User {
     }
 
     public String getProfileAvatar() {
-        return profileAvatar;
+        return this.profileAvatar;
     }
 
     public void setProfileAvatar(String profileAvatar) {
@@ -108,13 +149,22 @@ public class User {
     }
 
     public List<String> getRoles() {
-        return roles;
+        // for (String rol :roles){
+        //     console
+        // }
+        return this.roles;
     }
 
-    public void setRoles(List<String> roles) {
-        this.roles = roles;
+    public void setRoles(String ... roles) {
+        this.roles = List.of(roles);
     }
 
-    
-    
+    // public Review getReview() {
+    //     return review;
+    // }
+
+    // public void setReview(Review review) {
+    //     this.review = review;
+    // }
+
 }

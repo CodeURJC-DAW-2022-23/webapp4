@@ -4,8 +4,10 @@ import java.util.Optional;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.idealtrip.idealTrip.model.Review;
 import com.idealtrip.idealTrip.model.User;
 import com.idealtrip.idealTrip.repository.UserRepository;
 
@@ -16,7 +18,7 @@ public class UserService {
     private UserRepository users;
 
     public void save(User user){
-        users.save(user);
+        this.users.save(user);
     }
     
     public void delete(Long id){
@@ -46,5 +48,7 @@ public class UserService {
 	}
 
 
-    // public List<Review> findReviewsOfUser(Long userId, pagable)
+    // public List<Review> findReviewsOfUser(Long userId, Pageable pageable){
+    //     return users.findReviewsOfUser(userId, pageable);
+    // }
 }
