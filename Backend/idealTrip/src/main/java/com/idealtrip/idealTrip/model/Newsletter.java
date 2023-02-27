@@ -9,6 +9,8 @@ import javax.persistence.Id;
 public class Newsletter {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    
     private String email;
 
     public Newsletter() {
