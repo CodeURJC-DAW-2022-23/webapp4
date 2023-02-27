@@ -39,9 +39,6 @@ public class Destination {
     @OneToMany(mappedBy = "destination", cascade = CascadeType.ALL)
     private List<Review> reviews = new ArrayList<>();
 
-    @OneToOne(mappedBy = "destination", cascade = CascadeType.ALL)
-    private Catering catering;
-
     private float price;
 
     public Destination() {

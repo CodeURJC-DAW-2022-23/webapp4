@@ -13,7 +13,6 @@ import org.springframework.core.io.Resource;
 // import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.idealtrip.idealTrip.model.Catering;
 import com.idealtrip.idealTrip.model.Destination;
 import com.idealtrip.idealTrip.model.User;
 
@@ -21,15 +20,6 @@ import com.idealtrip.idealTrip.model.User;
 public class InitDatabase {
     @Autowired
     private DestinationService destinations;
-
-    @Autowired
-    private CateringService caterings;
-
-    // @Autowired
-    // private TourismService tourisms;
-
-    // @Autowired
-    // private NewsletterService newsletters;
 
     @Autowired
     private PurchaseService purchases;
@@ -56,32 +46,6 @@ public class InitDatabase {
         for(Destination destination : initedDestinations){
             destinations.save(destination);
         }
-<<<<<<< Updated upstream
-=======
-        List<House> initedHouses = generateHouse();
-
-        for (House house : initedHouses) {
-            houses.save(house);
-        }
-        List<Catering> initedCatering = generateCatering();
-
-        for (Catering catering: initedCatering){
-            caterings.save(catering);
-        }
-
-    }
-
-    private List<Catering> generateCatering() {
-        List<Catering> catering = new ArrayList<>();
-        List<String> nameFood = new ArrayList<>();
-        nameFood.add("Ratatouille");
-        nameFood.add("Crepe");
-        nameFood.add("Cassoulet");
-        nameFood.add("Boeuf Bourguignon");
-        nameFood.add("Quiche Lorraine"); 
-        nameFood.add("Escargots");
-        return catering;
->>>>>>> Stashed changes
     }
 
     private List<Destination> generateDestination() {
