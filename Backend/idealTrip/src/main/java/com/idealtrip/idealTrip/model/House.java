@@ -6,13 +6,13 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -25,29 +25,99 @@ public class House {
     private Long id;
 
     private String nameHouse;
-
-    @OneToOne
-    private Destination destination;
-
     @Column(columnDefinition = "TEXT")
     private String contentHouse;
-
-    // @OneToMany(mappedBy = "purchase", cascade = CascadeType.ALL)
-    // private List<Purchase> purchases;
+    private float price;
 
     @Lob
     @JsonIgnore
-    private List<Blob> imagesHouse;
+    @ElementCollection(fetch = FetchType.LAZY)
+    private List<Blob> imagesHouseFile = new ArrayList<>();
+
+    @ElementCollection(fetch = FetchType.LAZY)
+    private List<String> imagesHouse = new ArrayList<>();
+
+    private String hostName;
+    @Lob
+    private Blob hostImageFile;
+    private String hostImage;
+
+    @OneToOne(mappedBy = "house", cascade = CascadeType.ALL)
+    private Purchase purchase;
+    @OneToOne
+    private Destination destination;
+    private String destinationName;
 
     public House() {
     }
 
-    public House(Long id, String nameHouse, String contentHouse, Destination destination, List<Blob> imagesHouse) {
+    public House(Long id, String nameHouse, Destination destination, String contentHouse, String hostName,
+            Purchase purchase, List<Blob> imagesHouseFile, List<String> imagesHouse, float price) {
         this.id = id;
         this.nameHouse = nameHouse;
+        this.destination = destination;
         this.contentHouse = contentHouse;
-        // this.destination = destination;
+        this.hostName = hostName;
+        this.purchase = purchase;
+        this.imagesHouseFile = imagesHouseFile;
         this.imagesHouse = imagesHouse;
+        this.price = price;
+    }
+
+    public List<Blob> getImagesHouseFile() {
+        return imagesHouseFile;
+    }
+
+    public void setImagesHouseFile(List<Blob> imagesHouseFile) {
+        this.imagesHouseFile = imagesHouseFile;
+    }
+
+    public List<String> getImagesHouse() {
+        return imagesHouse;
+    }
+
+    public void setImagesHouse(List<String> imagesHouse) {
+        this.imagesHouse = imagesHouse;
+    }
+
+    public Blob getHostImageFile() {
+        return hostImageFile;
+    }
+
+    public void setHostImageFile(Blob hostImageFile) {
+        this.hostImageFile = hostImageFile;
+    }
+
+    public String getHostImage() {
+        return hostImage;
+    }
+
+    public void setHostImage(String hostImage) {
+        this.hostImage = hostImage;
+    }
+
+    public Destination getDestination() {
+        return destination;
+    }
+
+    public void setDestination(Destination destination) {
+        this.destination = destination;
+    }
+
+    public Purchase getPurchase() {
+        return purchase;
+    }
+
+    public void setPurchase(Purchase purchase) {
+        this.purchase = purchase;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
     }
 
     public Long getId() {
@@ -74,20 +144,21 @@ public class House {
         this.contentHouse = contentHouse;
     }
 
-    // public Destination getDestination() {
-    //     return destination;
-    // }
-
-    // public void setDestination(Destination destination) {
-    //     this.destination = destination;
-    // }
-
-    public List<Blob> getImagesHouse() {
-        return imagesHouse;
+    public String getHostName() {
+        return hostName;
     }
 
-    public void setImagesHouse(List<Blob> imagesHouse) {
-        this.imagesHouse = imagesHouse;
+    public void setHostName(String hostName) {
+        this.hostName = hostName;
+    }
+
+  
+    public String getDestinationName() {
+        return destinationName;
+    }
+
+    public void setDestinationName(String destinationName) {
+        this.destinationName = destinationName;
     }
 
 }
