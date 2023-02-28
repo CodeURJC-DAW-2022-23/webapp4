@@ -8,7 +8,7 @@
  public class IndexController {
     
      @GetMapping("/index")
-     public String showIndex(Model model){
+     public String index(Model model){
          return "index";
      }
  }
