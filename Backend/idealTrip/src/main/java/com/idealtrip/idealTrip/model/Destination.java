@@ -41,6 +41,8 @@ public class Destination {
 
     @OneToOne(mappedBy = "destination", cascade = CascadeType.ALL)
     private Catering catering;
+    @OneToOne(mappedBy = "destination", cascade = CascadeType.ALL)
+    private Tourism tourism;
 
     private float price;
 

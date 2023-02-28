@@ -2,6 +2,7 @@ package com.idealtrip.idealTrip.model;
 
 import java.sql.Blob;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,6 +18,7 @@ public class Catering {
     private Long id;
 
     private String nameFood;
+    @Column(name = "contentFood", columnDefinition = "TEXT")
     private String contentFood;
 
     private String nameDestination;

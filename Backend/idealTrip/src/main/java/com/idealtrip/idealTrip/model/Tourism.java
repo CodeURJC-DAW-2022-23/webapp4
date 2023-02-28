@@ -2,11 +2,13 @@ package com.idealtrip.idealTrip.model;
 
 import java.sql.Blob;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.OneToOne;
 
 @Entity(name = "tourismTable")
 public class Tourism {
@@ -14,22 +16,27 @@ public class Tourism {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    private String nameDestination;
     private String nameTourism;
+    @Column(name = "contentTourism", columnDefinition = "TEXT")
     private String contentTourism;
-    // private Destination destination;
+
+    @OneToOne
+    private Destination destination;
 
     @Lob
-    private Blob imageTourism;
+    private Blob imageTourismFile;
+    private String imageTourismURL;
 
     public Tourism() {
     }
 
-    public Tourism(Long id, String nameTourism, String contentTourism, Destination destination, Blob imageTourism) {
+    public Tourism(Long id, String nameTourism, String contentTourism, Destination destination, Blob imageTourismFile) {
         this.id = id;
         this.nameTourism = nameTourism;
         this.contentTourism = contentTourism;
         // this.destination = destination;
-        this.imageTourism = imageTourism;
+        this.imageTourismFile = imageTourismFile;
     }
 
     public Long getId() {
@@ -64,12 +71,36 @@ public class Tourism {
     //     this.destination = destination;
     // }
 
-    public Blob getImageTourism() {
-        return imageTourism;
+    public Blob getImageTourismFile() {
+        return imageTourismFile;
     }
 
-    public void setImageTourism(Blob imageTourism) {
-        this.imageTourism = imageTourism;
+    public Destination getDestination() {
+        return destination;
+    }
+
+    public void setDestination(Destination destination) {
+        this.destination = destination;
+    }
+
+    public String getImageTourismURL() {
+        return imageTourismURL;
+    }
+
+    public void setImageTourismURL(String imageTourismURL) {
+        this.imageTourismURL = imageTourismURL;
+    }
+
+    public void setImageTourismFile(Blob imageTourismFile) {
+        this.imageTourismFile = imageTourismFile;
+    }
+
+    public String getNameDestination() {
+        return nameDestination;
+    }
+
+    public void setNameDestination(String nameDestination) {
+        this.nameDestination = nameDestination;
     }
 
     
