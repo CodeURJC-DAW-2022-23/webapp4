@@ -1,9 +1,7 @@
 package com.idealtrip.idealTrip.service;
 
 import com.idealtrip.idealTrip.model.Newsletter;
-import com.idealtrip.idealTrip.model.User;
 import com.idealtrip.idealTrip.repository.NewsletterRepository;
-import com.idealtrip.idealTrip.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

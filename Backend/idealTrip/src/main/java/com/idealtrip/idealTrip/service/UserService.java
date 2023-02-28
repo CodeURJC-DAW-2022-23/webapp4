@@ -4,10 +4,8 @@ import java.util.Optional;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.idealtrip.idealTrip.model.Review;
 import com.idealtrip.idealTrip.model.User;
 import com.idealtrip.idealTrip.repository.UserRepository;
 

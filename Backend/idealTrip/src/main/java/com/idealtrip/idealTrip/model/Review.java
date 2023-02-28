@@ -87,6 +87,14 @@ public class Review {
     public void setContentReview(String contentReview) {
         this.contentReview = contentReview;
     }
+
+    public Destination getDestination() {
+        return destination;
+    }
+
+    public void setDestination(Destination destination) {
+        this.destination = destination;
+    }
     
 
     
