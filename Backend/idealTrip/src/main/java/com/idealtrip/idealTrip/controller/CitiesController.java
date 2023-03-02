@@ -105,4 +105,37 @@ public class CitiesController {
   }
 
 
+
+  // Atenas
+  @GetMapping("/services/Atenas")
+  public String servicesAtenas(Model model) {
+    return "ATENAS/informationAtenas";
+  }
+
+  @GetMapping("/ATENAS/informationAtenas")
+  public String servicesAtenasInfo(Model model) {
+    return "ATENAS/informationAtenas";
+  }
+
+  @GetMapping("/ATENAS/cateringAtenas")
+  public String servicesAtenasCatering(Model model) {
+    return "ATENAS/cateringAtenas";
+  }
+
+  @GetMapping("/ATENAS/tourismAtenas")
+  public String servicesAtenastourism(Model model) {
+    return "ATENAS/tourismAtenas";
+  }
+
+  @GetMapping("/ATENAS/reviewAtenas")
+  public String servicesAtenasreview(Model model) {
+    return "ATENAS/reviewAtenas";
+  }
+
+  @GetMapping("/ATENAS/atenas1")
+  public String servicesAtenasHouse(Model model) {
+    return "ATENAS/atenas1";
+  }
+
+
 }
