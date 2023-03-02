@@ -29,8 +29,9 @@ public class NewsletterController {
         String email = newsletter.getEmail();
         newsletter.setEmail(email);
         newsletterService.save(newsletter);
+        
         // model.addAttribute("newsletterId", newsletter.getId());
-        return "/services";
+        return "index";
     }
     
 }
