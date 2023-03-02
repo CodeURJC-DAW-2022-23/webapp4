@@ -241,4 +241,38 @@ public class CitiesController {
   }
 
 
+
+
+  // Singapur
+  @GetMapping("/services/Singapur")
+  public String servicesSingapur(Model model) {
+    return "SINGAPUR/informationSingapur";
+  }
+
+  @GetMapping("/SINGAPUR/informationSingapur")
+  public String servicesSingapurInfo(Model model) {
+    return "SINGAPUR/informationSingapur";
+  }
+
+  @GetMapping("/SINGAPUR/cateringSingapur")
+  public String servicesSingapurCatering(Model model) {
+    return "SINGAPUR/cateringSingapur";
+  }
+
+  @GetMapping("/SINGAPUR/tourismSingapur")
+  public String servicesSingapurtourism(Model model) {
+    return "SINGAPUR/tourismSingapur";
+  }
+
+  @GetMapping("/SINGAPUR/reviewSingapur")
+  public String servicesSingapurreview(Model model) {
+    return "SINGAPUR/reviewSingapur";
+  }
+
+  @GetMapping("/SINGAPUR/singapur")
+  public String servicesSingapurHouse(Model model) {
+    return "SINGAPUR/singapur";
+  }
+
+
 }
