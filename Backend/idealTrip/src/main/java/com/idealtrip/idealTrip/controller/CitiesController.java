@@ -72,4 +72,37 @@ public class CitiesController {
   }
 
 
+
+  // Maldivas
+  @GetMapping("/services/Maldivas")
+  public String servicesMaldivas(Model model) {
+    return "MALDIVAS/informationMaldivas";
+  }
+
+  @GetMapping("/MALDIVAS/informationMaldivas")
+  public String servicesMaldivasInfo(Model model) {
+    return "MALDIVAS/informationMaldivas";
+  }
+
+  @GetMapping("/MALDIVAS/cateringMaldivas")
+  public String servicesMaldivasCatering(Model model) {
+    return "MALDIVAS/cateringMaldivas";
+  }
+
+  @GetMapping("/MALDIVAS/tourismMaldivas")
+  public String servicesMaldivastourism(Model model) {
+    return "MALDIVAS/tourismMaldivas";
+  }
+
+  @GetMapping("/MALDIVAS/reviewMaldivas")
+  public String servicesMaldivasreview(Model model) {
+    return "MALDIVAS/reviewMaldivas";
+  }
+
+  @GetMapping("/MALDIVAS/Maldivas1")
+  public String servicesMaldivasHouse(Model model) {
+    return "MALDIVAS/Maldivas1";
+  }
+
+
 }
