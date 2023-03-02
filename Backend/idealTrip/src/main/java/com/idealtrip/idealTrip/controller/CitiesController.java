@@ -173,4 +173,39 @@ public class CitiesController {
   }
 
 
+
+
+
+  // Alpes_Julianos
+  @GetMapping("/services/AlpesJulianos")
+  public String servicesAlpesJulianos(Model model) {
+    return "ALPESJULIANOS/informationAlpesJulianos";
+  }
+
+  @GetMapping("/ALPESJULIANOS/informationAlpesJulianos")
+  public String servicesAlpesJulianosInfo(Model model) {
+    return "ALPESJULIANOS/informationAlpesJulianos";
+  }
+
+  @GetMapping("/ALPESJULIANOS/cateringAlpesJulianos")
+  public String servicesAlpesJulianosCatering(Model model) {
+    return "ALPESJULIANOS/cateringAlpesJulianos";
+  }
+
+  @GetMapping("/ALPESJULIANOS/tourismAlpesJulianos")
+  public String servicesAlpesJulianostourism(Model model) {
+    return "ALPESJULIANOS/tourismAlpesJulianos";
+  }
+
+  @GetMapping("/ALPESJULIANOS/reviewAlpesJulianos")
+  public String servicesAlpesJulianosreview(Model model) {
+    return "ALPESJULIANOS/reviewAlpesJulianos";
+  }
+
+  @GetMapping("/ALPESJULIANOS/alpesjulianos1")
+  public String servicesAlpesJulianosHouse(Model model) {
+    return "ALPESJULIANOS/alpesjulianos1";
+  }
+
+
 }
