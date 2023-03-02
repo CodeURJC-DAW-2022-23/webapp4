@@ -5,111 +5,22 @@
       <div class="container">
           <h3 class="hny-title mb-5">Destinos</h3>
           <div class="row">
+            {{#services}}
               <div class="col-lg-4 col-md-4 col-6">
                   <div class="column">
-                      <a href="PARIS/informationParis"><img src="assets/images/Cities/Paris.jpg" alt="" class="img-fluid"></a>
+                      <a href="/services/{{id}}"><img src="assets/images/Cities/{{nameDestination}}.jpg" alt="" class="img-fluid"></a>
                       <div class="info">
-                          <h4><a href="PARIS/informationParis">París</a></h4>
-                          <p>La ciudad del amor </p>
+                          <h4><a href="/services/{{id}}">{{nameDestination}}</a></h4>
+                          <p>{{contentDestination}} </p>
                           <div class="dst-btm">
                             <h6 class="">Desde</h6>
-                            <span>&euro;100</span>
+                            <span>&euro;{{price}}</span>
                           </div>
                       </div>
                   </div>
+                  <br><br>
               </div>
-              <div class="col-lg-4 col-md-4 col-6 mt-md-0">
-                  <div class="column">
-                      <a href="BANGKOK/informationBangkok"><img src="assets/images/Cities/Bangkok.jpg" alt="" class="img-fluid"></a>
-                      <div class="info">
-                          <h4><a href="BANGKOK/informationBangkok">Bangkok</a></h4>
-                          <p>El corazón vibrante de Tailandia </p>
-                          <div class="dst-btm">
-                            <h6 class="">Desde </h6>
-                            <span>&euro;30</span>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-lg-4 col-md-4 col-6 mt-md-0 mt-4">
-                  <div class="column">
-                      <a href="MALDIVAS/informationMaldivas"><img src="assets/images/Cities/Maldivas.jpg" alt="" class="img-fluid"></a>
-                      <div class="info">
-                          <h4><a href="MALDIVAS/informationMaldivas">Maldivas</a></h4>
-                          <p>Un oasis de belleza natural </p>
-                          <div class="dst-btm">
-                            <h6 class="">Desde </h6>
-                            <span>&euro;150</span>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-lg-4 col-md-4 col-6 mt-lg-5 mt-4">
-                  <div class="column">
-                      <a href="ATENAS/informationAtenas"><img src="assets/images/Cities/Atenas.jpg" alt="" class="img-fluid"></a>
-                      <div class="info">
-                          <h4><a href="ATENAS/informationAtenas">Atenas</a></h4>
-                          <p>Civilización antigua</p>
-                          <div class="dst-btm">
-                            <h6 class="">Desde </h6>
-                            <span>&euro;120</span>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-lg-4 col-md-4 col-6 mt-lg-5 mt-4">
-                  <div class="column">
-                      <a href="LONDRES/informationLondres"><img src="assets/images/Cities/Londres.jpg" alt="" class="img-fluid"></a>
-                      <div class="info">
-                          <h4><a href="LONDRES/informationLondres">Londres</a></h4>
-                          <p>Vibrante, Histórica y Diversa</p>
-                          <div class="dst-btm">
-                            <h6 class="">Desde </h6>
-                            <span>&euro;250</span>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-lg-4 col-md-4 col-6 mt-lg-5 mt-4">
-                  <div class="column">
-                      <a href="ALPESJULIANOS/informationAlpesJulianos"><img src="assets/images/Cities/Alpes-Julianos.jpg" alt="" class="img-fluid"></a>
-                      <div class="info">
-                          <h4><a href="ALPESJULIANOS/informationAlpesJulianos">Alpes Julianos</a></h4>
-                          <p>Montañas salvajes y majestuosas</p>
-                          <div class="dst-btm">
-                          <h6 class=""> Desde</h6>
-                          <span>&euro;300</span>
-                        </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-lg-4 col-md-4 col-6 mt-lg-5 mt-4">
-                <div class="column">
-                    <a href="SANTAMARTA/informationSantaMarta"><img src="assets/images/Cities/Santa-Marta.jpg" alt="" class="img-fluid"></a>
-                    <div class="info">
-                        <h4><a href="SANTAMARTA/informationSantaMarta">Santa Marta</a></h4>
-                        <p>Vibrante, Costera y Diversa</p>
-                        <div class="dst-btm">
-                          <h6 class="">Desde </h6>
-                          <span>&euro;500</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-6 mt-lg-5 mt-4">
-                <div class="column">
-                    <a href="SINGAPUR/informationSingapur"><img src="assets/images/Cities/Singapur.jpg" alt="" class="img-fluid"></a>
-                    <div class="info">
-                        <h4><a href="SINGAPUR/informationSingapur">Singapur</a></h4>
-                        <p>Moderna, Cosmopolita y Contraste</p>
-                        <div class="dst-btm">
-                          <h6 class="">Desde </h6>
-                          <span>&euro;240</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
+              {{/services}}
           </div>
       </div>
 </div></section>

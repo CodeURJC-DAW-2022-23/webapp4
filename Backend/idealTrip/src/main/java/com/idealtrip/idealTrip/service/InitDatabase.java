@@ -470,22 +470,32 @@ public class InitDatabase {
 
     private List<Destination> generateDestination() {
         List<Destination> destinations = new ArrayList<>();
+        List<String> titleDestination = new ArrayList<>();
         cities.add("");
+        titleDestination.add("");
         cities.add("Paris");
+        titleDestination.add("La ciudad del amor");
         cities.add("Bangkok");
+        titleDestination.add("El corazón vibrante de Tailandia");
         cities.add("Maldivas");
+        titleDestination.add("Un oasis de belleza natural");
         cities.add("Atenas");
+        titleDestination.add("Civilización antigua");
         cities.add("Londres");
-        cities.add("Alpes Julianos");
-        cities.add("Santa Marta");
+        titleDestination.add("Vibrante, Histórica y Diversa");
+        cities.add("Alpes-Julianos");
+        titleDestination.add("Montañas salvajes y majestuosas");
+        cities.add("Santa-Marta");
+        titleDestination.add("Vibrante, Costera y Diversa");
         cities.add("Singapur");
+        titleDestination.add("Moderna, Cosmopolita y Contraste");
 
         for (int i = 1; i < cities.size(); i++) {
             Destination destination = new Destination();
             String city = cities.get(i);
+            String title = titleDestination.get(i);
             destination.setNameDestination(city);
-            destination.setContentDestination(
-                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was");
+            destination.setContentDestination(title);
             destination.setPrice(100.99f);
             String file = destination.getNameDestination().replace(' ', '-');
             destination.setTitleImage("/static/assets/images/Cities/" + file + ".jpg");
