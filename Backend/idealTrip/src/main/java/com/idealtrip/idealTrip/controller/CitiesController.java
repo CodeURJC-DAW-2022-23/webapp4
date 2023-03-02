@@ -138,4 +138,39 @@ public class CitiesController {
   }
 
 
+
+
+
+  // Londres
+  @GetMapping("/services/Londres")
+  public String servicesLondres(Model model) {
+    return "Londres/informationLondres";
+  }
+
+  @GetMapping("/LONDRES/informationLondres")
+  public String servicesLondresInfo(Model model) {
+    return "Londres/informationLondres";
+  }
+
+  @GetMapping("/LONDRES/cateringLondres")
+  public String servicesLondresCatering(Model model) {
+    return "Londres/cateringLondres";
+  }
+
+  @GetMapping("/LONDRES/tourismLondres")
+  public String servicesLondrestourism(Model model) {
+    return "Londres/tourismLondres";
+  }
+
+  @GetMapping("/LONDRES/reviewLondres")
+  public String servicesLondresreview(Model model) {
+    return "Londres/reviewLondres";
+  }
+
+  @GetMapping("/LONDRES/londres1")
+  public String servicesLondresHouse(Model model) {
+    return "Londres/londres1";
+  }
+
+
 }
