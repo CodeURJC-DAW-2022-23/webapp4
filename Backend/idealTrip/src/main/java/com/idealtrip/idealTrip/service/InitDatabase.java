@@ -50,8 +50,8 @@ public class InitDatabase {
     @Autowired
     private UserService users;
 
-    // @Autowired(required = false)
-    // private PasswordEncoder passwordEncoder;
+//     @Autowired(required = true)
+//     private PasswordEncoder passwordEncoder;
 
     @PostConstruct
     public void init() throws IOException {
@@ -492,7 +492,6 @@ public class InitDatabase {
             try {
                 setCityImage(destination, destination.getTitleImage());
             } catch (IOException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
             destinations.add(destination);
@@ -532,7 +531,6 @@ public class InitDatabase {
             try {
                 setHostImageB(house, house.getHostImage());
             } catch (IOException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
             List<String> auxList = new ArrayList<>();
@@ -544,7 +542,6 @@ public class InitDatabase {
             try {
                 setImagesHouseB(house, house.getImagesHouse());
             } catch (IOException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
 
@@ -577,14 +574,13 @@ public class InitDatabase {
             user.setName(name);
             user.setLastName(lastName);
             user.setEmail(lastName + i + "@gmail.com");
-            // user.setEncodedPassword(passwordEncoder.encode("1234"));
+        //     user.setEncodedPassword(passwordEncoder.encode("1234"));
             user.setEncodedPassword("12345");
             user.setRoles("USER");
             user.setProfileAvatar("/static/assets/images/c1.jpg");
             try {
                 setProfileAvatarContent(user, user.getProfileAvatar());
             } catch (IOException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
             users.add(user);
@@ -596,14 +592,13 @@ public class InitDatabase {
             user.setName(name);
             user.setLastName(lastName);
             user.setEmail(name + "@gmail.com");
-            // user.setEncodedPassword(passwordEncoder.encode("adminPass"));
+        //     user.setEncodedPassword(passwordEncoder.encode("adminPass"));
             user.setEncodedPassword("123456");
             user.setRoles("USER", "ADMIN");
             user.setProfileAvatar("/static/assets/images/c1.jpg");
             try {
                 setProfileAvatarContent(user, user.getProfileAvatar());
             } catch (IOException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
             users.add(user);
