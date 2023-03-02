@@ -208,4 +208,37 @@ public class CitiesController {
   }
 
 
+
+  // Santa_Marta
+  @GetMapping("/services/SantaMarta")
+  public String servicesSantaMarta(Model model) {
+    return "SANTAMARTA/informationSantaMarta";
+  }
+
+  @GetMapping("/SANTAMARTA/informationSantaMarta")
+  public String servicesSantaMartaInfo(Model model) {
+    return "SANTAMARTA/informationSantaMarta";
+  }
+
+  @GetMapping("/SANTAMARTA/cateringSantaMarta")
+  public String servicesSantaMartaCatering(Model model) {
+    return "SANTAMARTA/cateringSantaMarta";
+  }
+
+  @GetMapping("/SANTAMARTA/tourismSantaMarta")
+  public String servicesSantaMartatourism(Model model) {
+    return "SANTAMARTA/tourismSantaMarta";
+  }
+
+  @GetMapping("/SANTAMARTA/reviewSantaMarta")
+  public String servicesSantaMartareview(Model model) {
+    return "SANTAMARTA/reviewSantaMarta";
+  }
+
+  @GetMapping("/SANTAMARTA/santamarta1")
+  public String servicesSantaMartaHouse(Model model) {
+    return "SANTAMARTA/santamarta1";
+  }
+
+
 }
