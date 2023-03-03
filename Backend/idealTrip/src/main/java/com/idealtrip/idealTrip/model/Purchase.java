@@ -5,8 +5,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
-@Entity
+@Entity(name = "purchaseTable")
 public class Purchase {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -14,6 +15,9 @@ public class Purchase {
 
     @ManyToOne
     private User user;
+
+    @OneToOne
+    private House house;
 
     public Purchase() {
     }
@@ -36,6 +40,14 @@ public class Purchase {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public House getHouse() {
+        return house;
+    }
+
+    public void setHouse(House house) {
+        this.house = house;
     }
 
     

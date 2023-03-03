@@ -14,11 +14,15 @@ public class UserService {
     
     @Autowired
     private UserRepository users;
-
+    
     public void save(User user){
-        users.save(user);
+        this.users.save(user);
     }
     
+    public void delete(Long id){
+        users.deleteById(id);
+    }
+
     public Optional<User> findByEmail(String email){
         return users.findByEmail(email);
     }
@@ -40,5 +44,9 @@ public class UserService {
     public List<User> findAll() {
 		return users.findAll();
 	}
-    // public List<Review> findReviewsOfUser(Long userId, pagable)
+
+
+    // public List<Review> findReviewsOfUser(Long userId, Pageable pageable){
+    //     return users.findReviewsOfUser(userId, pageable);
+    // }
 }

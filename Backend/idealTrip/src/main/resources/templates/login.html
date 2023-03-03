@@ -27,7 +27,7 @@ Author URL: http://w3layouts.com
   <header id="site-header" class="fixed-top">
     <div class="container">
       <nav class="navbar navbar-expand-lg stroke">
-        <h1><a class="navbar-brand mr-lg-5" href="index.html">
+        <h1><a class="navbar-brand mr-lg-5" href="index">
             IdealTrip
           </a></h1>
         <!-- if logo is image enable this   
@@ -45,14 +45,14 @@ Author URL: http://w3layouts.com
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="index.html">Inicio <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="index">Inicio <span class="sr-only">(current)</span></a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="services.html">Destinos</a>
+              <a class="nav-link" href="services">Destinos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contacto</a>
+              <a class="nav-link" href="contact">Contacto</a>
             </li>
           </ul>
         </div>
@@ -84,23 +84,27 @@ Author URL: http://w3layouts.com
                 <img src="./assets/images/favicon.png" alt="">
             </div>
         </div>
+        <form action="/addUser" method="post">
         <!-- signin box -->
         <div class="register-form">
             <!-- input box -->
             <div class="title-box">
                 <h1>Crear tu cuenta</h1>
             </div>
+            <form action="/addUser" method="post"></form>
             <div class="input-box">
-                <input type="text" placeholder="Usuario">
-                <input type="password" placeholder="Contraseña">
-                <input type="password" placeholder="Confirmar Contraseña">
+                <input type="text" placeholder="Usuario" id="username">
+                <input type="password" placeholder="Contraseña" id="password">
+                <input type="email" placeholder="Correo electrónico" id="email">
             </div>
             <!-- btn box -->
             <div class="btn-box">
-                <button class="box_btn">Registrarse</button>
+                <button type="submit" class="box_btn">Registrarse</button>
                 <p onclick="slip()">Iniciar Sesión</p>
             </div>
+          </form>
         </div>
+
         <!-- signup box -->
         <div class="login-form">
             <!-- title box -->
@@ -108,9 +112,10 @@ Author URL: http://w3layouts.com
                 <h1>Iniciar Sesión</h1>
             </div>
             <!-- input box-->
+            <form action="/loginUser" method="post"></form>
             <div class="input-box">
-                <input type="text" placeholder="Usuario">
-                <input type="password" placeholder="Contraseña">
+                <input type="text" placeholder="Usuario" id="username">
+                <input type="password" placeholder="Contraseña" id="password">
             </div>
             <!-- btn box -->
             <div class="btn-box">
