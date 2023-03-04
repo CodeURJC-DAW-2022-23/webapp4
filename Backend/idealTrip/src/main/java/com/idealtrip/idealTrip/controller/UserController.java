@@ -14,7 +14,7 @@
 // //           return "login";
 // //       } 
 // @Controller
-//  public class UsersController{
+//  public class UserController{
 //     @RequestMapping("/error")
 // 	public String error() {
 // 		return "error";
