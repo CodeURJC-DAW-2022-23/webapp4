@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch IdealTripApplication",
+            "request": "launch",
+            "mainClass": "com.idealtrip.idealTrip.IdealTripApplication",
+            "projectName": "idealTrip"
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-IdealTripApplication<idealtrip>",
             "request": "launch",
             "cwd": "${workspaceFolder}",

@@ -12,6 +12,7 @@ import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
+import org.springframework.security.crypto.password.PasswordEncoder;
 // import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +24,7 @@ import com.idealtrip.idealTrip.model.Purchase;
 import com.idealtrip.idealTrip.model.Review;
 import com.idealtrip.idealTrip.model.Tourism;
 import com.idealtrip.idealTrip.model.User;
+import com.idealtrip.idealTrip.repository.UserRepository;
 
 @Service
 public class InitDatabase {
@@ -50,8 +52,11 @@ public class InitDatabase {
     @Autowired
     private UserService users;
 
-//     @Autowired(required = true)
-//     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private UserRepository userRepository; 
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @PostConstruct
     public void init() throws IOException {

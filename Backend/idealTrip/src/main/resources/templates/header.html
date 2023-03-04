@@ -53,14 +53,22 @@ Author URL: http://w3layouts.com
             <li class="nav-item">
               <a class="nav-link" href="contact">Contacto</a>
             </li>
-            <!-- <li class="nav-itme">
-              <a class="nav-link" href="login.html">Login</a>
-            </li> -->
           </ul>
         </div>
-        <div class="d-lg-block d-none">
-          <a href="login" class="btn btn-style btn-secondary">Iniciar sesión</a>
-        </div>
+        {{^logged}}
+        <form action="/login" method="post">
+          <div class="d-lg-block d-none">
+            <a href="login" class="btn btn-style btn-secondary">Iniciar sesión</a>
+          </div>
+        </form>  
+        {{/logged}} 
+        {{#logged}}
+        <form action="/logout" method="post">
+          <div class="d-lg-block d-none">
+            <button class="btn btn-style btn-secondary">Cerrar sesión</button>
+          </div>
+        </form> 
+        {{/logged}}
         <!-- toggle switch for light and dark theme -->
         <div class="mobile-position">
           <nav class="navigation">
