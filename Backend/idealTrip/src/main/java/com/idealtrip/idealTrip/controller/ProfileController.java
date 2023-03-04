@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.idealtrip.idealTrip.model.Review;
 import com.idealtrip.idealTrip.repository.ReviewRepository;
@@ -20,8 +21,9 @@ public class ProfileController {
   @Autowired
   private ReviewRepository myRepository;
 
-  @GetMapping("/profile")
-  public String showProfile(Model model) {
+  @GetMapping("/profile") //Añadir /{id} cuando este disponible la función de iniciar sesión
+  public String showProfile(Model model) { //Añadir @PathVariable Long id con la id de arriba
+    //Cambiar por findAllById cuando este disponible la función de iniciar sesión
     List<Review> reviews = myRepository.findAll();
     model.addAttribute("review", reviews);
     return "profile";
