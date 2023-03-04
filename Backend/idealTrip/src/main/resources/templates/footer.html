@@ -31,6 +31,7 @@
                 <form action="/newsletter" class="subscribe" method="post">
                   <input type="email" name="email" placeholder="Email" required="">
                   <button type="submit">¡Vamos!</button>
+                  <input type="hidden" name="_csrf" value="{{token}}"/>
                 </form>
                 <p>Regístrese para recibir nuestras últimas noticias y artículos. No le enviaremos correos no deseados.
                 </p>
