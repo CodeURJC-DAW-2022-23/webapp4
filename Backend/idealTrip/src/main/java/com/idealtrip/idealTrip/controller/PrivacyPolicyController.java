@@ -5,7 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class PrivacyPolicy {
+public class PrivacyPolicyController {
 
   @GetMapping("/privacyPolicy")
   public String privacyPolicy(Model model) {
