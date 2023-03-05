@@ -46,7 +46,7 @@ public class LoginController {
 			model.addAttribute("email", currentUser.getEmail());
 			model.addAttribute("admin", request.isUserInRole("ADMIN"));
 		} else {
-			model.addAttribute("logged", false);
+			model.addAttribute("logged", true);
 		}
 	}
 
@@ -80,4 +80,5 @@ public class LoginController {
 			return "login";
 		}
 	}
+
 }
