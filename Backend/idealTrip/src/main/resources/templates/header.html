@@ -13,8 +13,7 @@ Author URL: http://w3layouts.com
   <link rel="icon" href="assets/images/favicon.png" type="image/png" />
   <!-- google fonts -->
   <link href="//fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link href="//fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap"
-    rel="stylesheet">
+  <link href="//fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
   <!-- google fonts -->
   <!-- Template CSS -->
   <link rel="stylesheet" href="assets/css/style-starter.css">
@@ -49,7 +48,7 @@ Author URL: http://w3layouts.com
             <li class="nav-item">
               <a class="nav-link" href="services">Destinos</a>
             </li>
-    
+
             <li class="nav-item">
               <a class="nav-link" href="contact">Contacto</a>
             </li>
@@ -60,14 +59,16 @@ Author URL: http://w3layouts.com
           <div class="d-lg-block d-none">
             <a href="login" class="btn btn-style btn-secondary">Iniciar sesión</a>
           </div>
-        </form>  
-        {{/logged}} 
+          <input type="hidden" name="_csrf" value="{{token}}"/>
+        </form>
+        {{/logged}}
         {{#logged}}
-        <form action="/logout" method="post">
+        <form action="/profile" method="get">
           <div class="d-lg-block d-none">
-            <button class="btn btn-style btn-secondary">Cerrar sesión</button>
+            <button class="btn btn-style btn-secondary">Mi perfil</button>
           </div>
-        </form> 
+          <input type="hidden" name="_csrf" value="{{token}}" />
+        </form>
         {{/logged}}
         <!-- toggle switch for light and dark theme -->
         <div class="mobile-position">

@@ -36,9 +36,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/login").permitAll();
         http.authorizeRequests().antMatchers("/loginerror").permitAll();
         http.authorizeRequests().antMatchers("/logout").permitAll();
+        // http.authorizeRequests().antMatchers("/profile").permitAll();
         // http.authorizeRequests().antMatchers("/error").permitAll(); 
 
         // Private pages
+        http.authorizeRequests().antMatchers("/profile").hasAnyRole("ADMIN", "USER");
         // http.authorizeRequests().antMatchers("/newbook").hasAnyRole("USER");
         // http.authorizeRequests().antMatchers("/editbook/*").hasAnyRole("USER");
         // http.authorizeRequests().antMatchers("/removebook/*").hasAnyRole("ADMIN");
@@ -47,7 +49,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.formLogin().loginPage("/login");
         http.formLogin().usernameParameter("username");
         http.formLogin().passwordParameter("password");
-        http.formLogin().defaultSuccessUrl("/");
+        http.formLogin().defaultSuccessUrl("/index");
         http.formLogin().failureUrl("/loginerror");
 
         // Logout
