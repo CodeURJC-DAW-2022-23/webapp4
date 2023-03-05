@@ -73,6 +73,7 @@
                         <form action="/updateDates" method="post">
                             <div class="d-lg-block d-none">
                                 <a href="profile" class="btn btn-primary">Guardar cambios</a>
+                                <br><br>
                             </div>
                             <input type="hidden" name="_csrf" value="{{token}}" />
                         </form>
@@ -82,7 +83,7 @@
                             </form> -->
                         <form action="/logout" method="post">
                             <div class="d-lg-block d-none">
-                                <a href="login" class="btn btn-primary">Cerrar sesión</a>
+                                <a href="logout" class="btn btn-primary">Cerrar sesión</a>
                             </div>
                             <input type="hidden" name="_csrf" value="{{token}}" />
                         </form>
