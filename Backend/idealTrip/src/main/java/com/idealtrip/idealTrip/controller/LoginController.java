@@ -17,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -42,6 +43,7 @@ public class LoginController {
 			users.findByEmail(principal.getName()).ifPresent(us -> currentUser = us);
 			model.addAttribute("logged", true);
 			model.addAttribute("currentUser", currentUser);
+			model.addAttribute("email", currentUser.getEmail());
 			model.addAttribute("admin", request.isUserInRole("ADMIN"));
 		} else {
 			model.addAttribute("logged", false);
@@ -60,11 +62,16 @@ public class LoginController {
 	}
 
 	@GetMapping("/register")
+	public String showRegister(){
+		return "register";
+	}
+	@PostMapping("/register")
 	public String register(Model model, User user) throws IOException {
 		if(!users.existEmail(user.getEmail())){
-			Resource image = (Resource) new ClassPathResource("/static/assets/images/c1.jpg");
-			user.setProfileAvatarFile(BlobProxy.generateProxy(((ServletRequest) image).getInputStream(), ((AbstractFileResolvingResource) image).contentLength()));
-			user.setProfileAvatar("/static/assets/images/c1.jpg");
+			// Resource image = (Resource) new ClassPathResource("/static/assets/images/c1.jpg");
+			// user.setProfileAvatarFile(BlobProxy.generateProxy(((ServletRequest) image).getInputStream(), ((AbstractFileResolvingResource) image).contentLength()));
+			// user.setProfileAvatar("/static/assets/images/c1.jpg");
+			// user.setEmail(user.getEmail());
 			user.setEncodedPassword(passwordEncoder.encode(user.getEncodedPassword()));
 			users.save(user);
 			return "redirect:/login";
