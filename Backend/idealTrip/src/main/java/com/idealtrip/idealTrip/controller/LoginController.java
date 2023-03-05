@@ -46,7 +46,7 @@ public class LoginController {
 			model.addAttribute("email", currentUser.getEmail());
 			model.addAttribute("admin", request.isUserInRole("ADMIN"));
 		} else {
-			model.addAttribute("logged", true);
+			model.addAttribute("logged", false);
 		}
 	}
 
@@ -65,19 +65,22 @@ public class LoginController {
 	public String showRegister(){
 		return "register";
 	}
+
 	@PostMapping("/register")
 	public String register(Model model, User user) throws IOException {
 		if(!users.existEmail(user.getEmail())){
-			// Resource image = (Resource) new ClassPathResource("/static/assets/images/c1.jpg");
-			// user.setProfileAvatarFile(BlobProxy.generateProxy(((ServletRequest) image).getInputStream(), ((AbstractFileResolvingResource) image).contentLength()));
-			// user.setProfileAvatar("/static/assets/images/c1.jpg");
-			// user.setEmail(user.getEmail());
+			user.setName(user.getName());
+			user.setLastName(user.getLastName());
+			// Resource image = new ClassPathResource("/static/assets/images/c1.jpg");
+			// user.setProfileAvatarFile(BlobProxy.generateProxy( image.getInputStream(),  image.contentLength()));
+			user.setProfileAvatar("/static/assets/images/c1.jpg");
+			user.setEmail(user.getEmail());
 			user.setEncodedPassword(passwordEncoder.encode(user.getEncodedPassword()));
 			users.save(user);
 			return "redirect:/login";
 		}else{
-			model.addAttribute("error", true);
-			return "login";
+			// model.addAttribute("error", true);
+			return "index";
 		}
 	}
 

@@ -35,7 +35,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 			model.addAttribute("email", currentUser.getEmail());
 			model.addAttribute("admin", request.isUserInRole("ADMIN"));
 		} else {
-			model.addAttribute("logged", true);
+			model.addAttribute("logged", false);
 		}
 	}
 

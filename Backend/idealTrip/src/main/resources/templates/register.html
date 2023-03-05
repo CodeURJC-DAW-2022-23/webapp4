@@ -1,4 +1,4 @@
-{{>header}}
+{{>headerLogin}}
 <link rel="stylesheet" href="assets/css/style-login.css">
 
 <!-- login box -->
@@ -24,15 +24,16 @@
             </div>
             <!-- input box-->
             <div class="input-box">
-                <input type="text" placeholder="Email" name="username" />
-                <input type="password" placeholder="Contraseña" name="password" />
-                <input type="password" placeholder="Repetir Contraseña" name="repassword" />
-
+                <input type="text" placeholder="Nombre*" name="name" required/>
+                <input type="text" placeholder="Apellido" name="lastName"/>
+                <input type="text" placeholder="Email*" name="email" required/>
+                <input type="password" placeholder="Contraseña*" name="encodedPassword" required/>
+                <input type="password" placeholder="Repetir Contraseña*" name="repassword" required/>
             </div>
             <!-- btn box -->
             <div class="btn-box">
                 <a href="/login" class="box_btn">Iniciar Sesión</a>
-                <button class="box_btn" onclick="confirmPassword()">Registrarse</button>
+                <button class="box_btn" >Registrarse</button>
             </div>
             <input type="hidden" name="_csrf" value="{{token}}" />
         </form>
@@ -129,7 +130,7 @@
     });
 
     function confirmPassword() {
-        var password = document.getElementByName("password")[0].value;
+        var password = document.getElementByName("encodedPassword")[0].value;
         var repassword = document.getElementByName("repassword")[0].value;
         if (password !== repassword) {
             return false;
