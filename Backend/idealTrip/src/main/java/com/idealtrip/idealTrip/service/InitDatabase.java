@@ -589,8 +589,8 @@ public class InitDatabase {
             user.setName(name);
             user.setLastName(lastName);
             user.setEmail(lastName + i + "@gmail.com");
-        //     user.setEncodedPassword(passwordEncoder.encode("1234"));
-            user.setEncodedPassword("12345");
+            user.setEncodedPassword(passwordEncoder.encode("12345"));
+        //     user.setEncodedPassword("12345");
             user.setRoles("USER");
             user.setProfileAvatar("/static/assets/images/c1.jpg");
             try {
@@ -607,8 +607,8 @@ public class InitDatabase {
             user.setName(name);
             user.setLastName(lastName);
             user.setEmail(name + "@gmail.com");
-        //     user.setEncodedPassword(passwordEncoder.encode("adminPass"));
-            user.setEncodedPassword("123456");
+            user.setEncodedPassword(passwordEncoder.encode("123456"));
+        //     user.setEncodedPassword("123456");
             user.setRoles("USER", "ADMIN");
             user.setProfileAvatar("/static/assets/images/c1.jpg");
             try {

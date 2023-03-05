@@ -111,15 +111,15 @@ Author URL: http://w3layouts.com
               </div>
               <!-- input box-->
               <div class="input-box">
-                  <input type="text" placeholder="Usuario">
-                  <input type="password" placeholder="Contraseña">
-                  <input type="hidden" name="_csrf" value="{{token}}"/>
-              </div>
-              <!-- btn box -->
-              <div class="btn-box">
+                  <input type="text" placeholder="Email" name="username"/>
+                  <input type="password" placeholder="Contraseña" name="password"/>
+                </div>
+                <!-- btn box -->
+                <div class="btn-box">
                   <button class="box_btn">Iniciar Sesión</button>
                   <p onclick="slip()">Registrate!</p>
-              </div>
+                </div>
+                <input type="hidden" name="_csrf" value="{{token}}"/>
             </form>
           </div>
         
