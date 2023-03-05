@@ -59,9 +59,6 @@ public class LoginController {
 		return "loginerror";
 	}
 
-<<<<<<< Updated upstream
-	
-=======
 	@GetMapping("/register")
 	public String register(Model model, User user) throws IOException {
 		if(!users.existEmail(user.getEmail())){
@@ -76,5 +73,4 @@ public class LoginController {
 			return "login";
 		}
 	}
->>>>>>> Stashed changes
 }
