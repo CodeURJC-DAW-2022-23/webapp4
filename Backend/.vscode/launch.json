@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "IdealTripApplication",
+            "request": "launch",
+            "mainClass": "com.idealtrip.idealTrip.IdealTripApplication",
+            "projectName": "idealtrip"
+        },
+        {
+            "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}"

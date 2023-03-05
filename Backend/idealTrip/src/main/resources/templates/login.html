@@ -10,15 +10,14 @@ Author URL: http://w3layouts.com
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>IdealTrip</title>
-  <link rel="icon" href="../static/assets/images/favicon.png" type="image/png" />
+  <link rel="icon" href="assets/images/favicon.png" type="image/png" />
   <!-- google fonts -->
   <link href="//fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link href="//fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap"
-    rel="stylesheet">
+  <link href="//fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
   <!-- google fonts -->
   <!-- Template CSS -->
-  <link rel="stylesheet" href="../static/assets/css/style-login.css">
-  <link rel="stylesheet" href="../static/assets/css/style-starter.css">
+  <link rel="stylesheet" href="assets/css/style-login.css">
+  <link rel="stylesheet" href="assets/css/style-starter.css">
   <!-- Template CSS -->
 </head>
 
@@ -27,7 +26,7 @@ Author URL: http://w3layouts.com
   <header id="site-header" class="fixed-top">
     <div class="container">
       <nav class="navbar navbar-expand-lg stroke">
-        <h1><a class="navbar-brand mr-lg-5" href="index.html">
+        <h1><a class="navbar-brand mr-lg-5" href="index">
             IdealTrip
           </a></h1>
         <!-- if logo is image enable this   
@@ -45,14 +44,14 @@ Author URL: http://w3layouts.com
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="index.html">Inicio <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="index">Inicio <span class="sr-only">(current)</span></a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="services.html">Destinos</a>
+              <a class="nav-link" href="services">Destinos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contacto</a>
+              <a class="nav-link" href="contact">Contacto</a>
             </li>
           </ul>
         </div>
@@ -75,142 +74,146 @@ Author URL: http://w3layouts.com
     </div>
   </header>
 
-     <!-- login box -->
-     <div class="box">
-        <!-- slip box -->
-        <div class="pre-box">
-            <h1>IdealTrip</h1>
-            <div class="img-box">
-                <img src="../static/assets/images/favicon.png" alt="">
-            </div>
-        </div>
-        <!-- signin box -->
-        <div class="register-form">
-            <!-- input box -->
-            <div class="title-box">
-                <h1>Crear tu cuenta</h1>
-            </div>
-            <div class="input-box">
-                <input type="text" placeholder="Usuario">
-                <input type="password" placeholder="Contraseña">
-                <input type="password" placeholder="Confirmar Contraseña">
-            </div>
-            <!-- btn box -->
-            <div class="btn-box">
-                <button class="box_btn">Registrarse</button>
-                <p onclick="slip()">Iniciar Sesión</p>
-            </div>
-        </div>
-        <!-- signup box -->
-        <div class="login-form">
-            <!-- title box -->
-            <div class="title-box">
-                <h1>Iniciar Sesión</h1>
-            </div>
-            <!-- input box-->
-            <div class="input-box">
-                <input type="text" placeholder="Usuario">
-                <input type="password" placeholder="Contraseña">
-            </div>
-            <!-- btn box -->
-            <div class="btn-box">
-                <button class="box_btn">Iniciar Sesión</button>
-                <p onclick="slip()">Registrate!</p>
-            </div>
-        </div>
-       </div>
+  <!-- login box -->
+  <div class="box">
+    <!-- slip box -->
+    <div class="pre-box">
+      <h1>IdealTrip</h1>
+      <div class="img-box">
+        <img src="./assets/images/favicon.png" alt="">
+      </div>
+    </div>
+    <!-- signin box -->
+    <div class="register-form">
+      
+    </div>
+    <!-- signup box -->
 
-       <script>
-             let flag=true
-             const slip=()=>{
-                if(flag){
-                    $(".pre-box").css("transform","translateX(100%)")
-                    $(".pre-box").css("background-color","#E74C3C")
-                    $("img").attr("src","./assets/images/plane.png")
-                }
-                else {
-                    $(".pre-box").css("transform","translateX(0%)")
-                    $(".pre-box").css("background-color","#AED6F1")
-                    $("img").attr("src","./assets/images/favicon.png")
-                }
-                flag=!flag
-             }
-       </script>
-</div>
-    <!-- Template JavaScript -->
-    <script src="../static/assets/js/jquery-3.3.1.min.js"></script>
-    <script src="../static/assets/js/theme-change.js"></script>
-    <!--/slider-js-->
-    <script src="../static/assets/js/jquery.min.js"></script>
-    <script src="../static/assets/js/modernizr-2.6.2.min.js"></script>
-    <script src="../static/assets/js/jquery.zoomslider.min.js"></script>
-    <!--//slider-js-->
-    <script src="../static/assets/js/owl.carousel.js"></script>
-    <!-- script for tesimonials carousel slider -->
-    <script>
-      $(document).ready(function () {
-        $("#owl-demo1").owlCarousel({
-          loop: true,
-          margin: 20,
-          nav: false,
-          responsiveClass: true,
-          responsive: {
-            0: {
-              items: 1,
-              nav: false
-            },
-            736: {
-              items: 1,
-              nav: false
-            },
-            1000: {
-              items: 1,
-              nav: false,
-              loop: true
-            }
+    <div class="login-form">
+      <form action="/login" method="post">
+        <!-- title box -->
+        <div class="title-box">
+          <h1>Iniciar Sesión</h1>
+        </div>
+        <!-- input box-->
+        <div class="input-box">
+          <input type="text" placeholder="Email" name="username" />
+          <input type="password" placeholder="Contraseña" name="password" />
+        </div>
+        <!-- btn box -->
+        <div class="btn-box">
+          <button class="box_btn">Iniciar Sesión</button>
+          <a href="/register" class="box_btn">Registrate!</a>
+        </div>
+        <input type="hidden" name="_csrf" value="{{token}}" />
+      </form>
+    </div>
+
+  </div>
+
+  <!-- <script>
+    let flag = true
+    const slip = () => {
+      if (flag) {
+        $(".pre-box").css("transform", "translateX(100%)")
+        $(".pre-box").css("background-color", "#E74C3C")
+        $("img").attr("src", "./assets/images/plane.png")
+      }
+      else {
+        $(".pre-box").css("transform", "translateX(0%)")
+        $(".pre-box").css("background-color", "#AED6F1")
+        $("img").attr("src", "./assets/images/favicon.png")
+      }
+      flag = !flag
+    }
+  </script> -->
+  </div>
+  <!-- Template JavaScript -->
+  <script src="assets/js/jquery-3.3.1.min.js"></script>
+  <script src="assets/js/theme-change.js"></script>
+  <!--/slider-js-->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/modernizr-2.6.2.min.js"></script>
+  <script src="assets/js/jquery.zoomslider.min.js"></script>
+  <!--//slider-js-->
+  <script src="assets/js/owl.carousel.js"></script>
+  <!-- script for tesimonials carousel slider -->
+  <script>
+    $(document).ready(function () {
+      $("#owl-demo1").owlCarousel({
+        loop: true,
+        margin: 20,
+        nav: false,
+        responsiveClass: true,
+        responsive: {
+          0: {
+            items: 1,
+            nav: false
+          },
+          736: {
+            items: 1,
+            nav: false
+          },
+          1000: {
+            items: 1,
+            nav: false,
+            loop: true
           }
-        })
-      })
-    </script>
-    <!-- //script for tesimonials carousel slider -->
-    <!-- stats number counter-->
-    <script src="../static/assets/js/jquery.waypoints.min.js"></script>
-    <script src="../static/assets/js/jquery.countup.js"></script>
-    <script>
-      $('.counter').countUp();
-    </script>
-    <!-- //stats number counter -->
-  
-    <!--/MENU-JS-->
-    <script>
-      $(window).on("scroll", function () {
-        var scroll = $(window).scrollTop();
-  
-        if (scroll >= 80) {
-          $("#site-header").addClass("nav-fixed");
-        } else {
-          $("#site-header").removeClass("nav-fixed");
         }
-      });
-  
-      //Main navigation Active Class Add Remove
-      $(".navbar-toggler").on("click", function () {
-        $("header").toggleClass("active");
-      });
-      $(document).on("ready", function () {
+      })
+    })
+  </script>
+  <!-- //script for tesimonials carousel slider -->
+  <!-- stats number counter-->
+  <script src="assets/js/jquery.waypoints.min.js"></script>
+  <script src="assets/js/jquery.countup.js"></script>
+  <script>
+    $('.counter').countUp();
+  </script>
+  <!-- //stats number counter -->
+
+  <!--/MENU-JS-->
+  <script>
+    $(window).on("scroll", function () {
+      var scroll = $(window).scrollTop();
+
+      if (scroll >= 80) {
+        $("#site-header").addClass("nav-fixed");
+      } else {
+        $("#site-header").removeClass("nav-fixed");
+      }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function () {
+      $("header").toggleClass("active");
+    });
+    $(document).on("ready", function () {
+      if ($(window).width() > 991) {
+        $("header").removeClass("active");
+      }
+      $(window).on("resize", function () {
         if ($(window).width() > 991) {
           $("header").removeClass("active");
         }
-        $(window).on("resize", function () {
-          if ($(window).width() > 991) {
-            $("header").removeClass("active");
-          }
-        });
       });
-    </script>
-    <!--//MENU-JS-->
-  
-    <script src="../static/assets/js/bootstrap.min.js"></script>
+    });
+
+    function confirmPassword() {
+      var password = document.getElementByName("password")[0].value;
+      var repassword = document.getElementByName("repassword")[0].value;
+      if (password !== repassword) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+  </script>
+  <!--//MENU-JS-->
+
+
+  <script src="assets/js/bootstrap.min.js"></script>
 
 </body>
+
 </html>

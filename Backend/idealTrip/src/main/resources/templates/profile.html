@@ -1,438 +1,229 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
--->
-<!doctype html>
-<html lang="zxx">
+{{>header}}
+<!--banner-slider-->
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>IdealTrip</title>
-    <link rel="icon" href="assets/images/favicon.png" type="image/png" />
-    <!-- google fonts -->
-    <link href="//fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link href="//fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap"
-        rel="stylesheet">
-    <!-- google fonts -->
-    <!-- Template CSS -->
-    <link rel="stylesheet" href="../static/assets/css/style-starter.css">
-    <link rel="stylesheet" href="../static/assets/css/style-profile.css">
-    <!-- Template CSS -->
-</head>
+<!-- PROFILE CONTENT -->
+<div class="container-xl px-4 mt-4">
+    <br><br><br><br>
+    <hr class="mt-0 mb-4">
+    <div class="row">
+        <div class="col-xl-4">
+            <!-- Profile picture card-->
+            <div class="card mb-4 mb-xl-0">
+                <div class="card-header">Foto de perfil</div>
+                <div class="card-body text-center">
+                    <img src="http://bootdey.com/img/Content/avatar/avatar1.png"
+                        class="img-account-profile rounded-circle mb-2">
+                    <div class="small font-italic text-muted mb-4">JPG o PNG no mayor de 5 MB</div>
+                    <button id="selectButton" class="btn btn-primary">Cambiar imagen</button>
+                    <input type="file" id="inputFile" style="display: none;"
+                        accept="image/jpeg,image/png,image/jpg Required">
+                    <!-- <script>
+                        const selectButton = document.getElementById("selectButton");
+                        const inputFile = document.getElementById("inputFile");
+                        const previewImage = document.getElementById("previewImage");
 
-<body>
+                        selectButton.addEventListener("click", function () {
+                            inputFile.click();
+                        });
 
+                        inputFile.addEventListener("change", function () {
+                            const file = this.files[0];
+                            const reader = new FileReader();
 
-    <!--header-->
-    <header id="site-header" class="fixed-top">
-        <div class="container">
-            <nav class="navbar navbar-expand-lg stroke">
-                <h1><a class="navbar-brand mr-lg-5" href="index.html">
-                        IdealTrip
-                    </a></h1>
-                <!-- if logo is image enable this   
-      <a class="navbar-brand" href="#index.html">
-          <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
-      </a> -->
-                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse"
-                    data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
-                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
-                    </span>
-                </button>
+                            reader.onloadend = function () {
+                                previewImage.src = reader.result;
+                            };
 
-                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="index.html">Inicio <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="services.html">Destinos</a>
-                        </li>
+                            reader.readAsDataURL(file);
+                        });
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contacto</a>
-                        </li>
-
-                    </ul>
+                    </script> -->
                 </div>
-                <div class="d-lg-block d-none">
-                    <a href="index.html" class="btn btn-style btn-secondary">Volver al inicio</a>
-                </div>
-                <!-- toggle switch for light and dark theme -->
-                <div class="mobile-position">
-                    <nav class="navigation">
-                        <div class="theme-switch-wrapper">
-                            <label class="theme-switch" for="checkbox">
-                                <input type="checkbox" id="checkbox">
-                                <div class="mode-container">
-                                    <i class="gg-sun"></i>
-                                    <i class="gg-moon"></i>
-                                </div>
-                            </label>
+            </div>
+        </div>
+        <div class="col-xl-8">
+            <!-- Account details card-->
+            <div class="card mb-4">
+                <div class="card-header">Detalles de la cuenta</div>
+                <div class="card-body">
+                    {{#currentUser}}
+                    <form>
+                        <!-- Form Group (username)-->
+                        <div class="mb-3">
+                            <label class="small mb-1" for="inputUsername">Usuario (Email)</label>
+                            <input class="form-control" id="inputUsername" type="text" placeholder="email@gmail.com"
+                                value="{{email}}">
                         </div>
-                    </nav>
-                </div>
-                <!-- //toggle switch for light and dark theme -->
-            </nav>
-        </div>
-    </header>
-    <!-- //header -->
-    <!--banner-slider-->
-
-    <!-- PROFILE CONTENT -->
-    <div class="container-xl px-4 mt-4">
-        <br><br><br><br>
-        <hr class="mt-0 mb-4">
-        <div class="row">
-            <div class="col-xl-4">
-                <!-- Profile picture card-->
-                <div class="card mb-4 mb-xl-0">
-                    <div class="card-header">Foto de perfil</div>
-                    <div class="card-body text-center">
-                        <img id="previewImage" src="http://bootdey.com/img/Content/avatar/avatar1.png"
-                            class="img-account-profile rounded-circle mb-2">
-                        <div class="small font-italic text-muted mb-4">JPG o PNG no mayor de 5 MB</div>
-                        <button id="selectButton" class="btn btn-primary">Cambiar imagen</button>
-                        <input type="file" id="inputFile" style="display: none;"
-                            accept="image/jpeg,image/png,image/jpg Required">
-                        <script>
-                            const selectButton = document.getElementById("selectButton");
-                            const inputFile = document.getElementById("inputFile");
-                            const previewImage = document.getElementById("previewImage");
-
-                            selectButton.addEventListener("click", function () {
-                                inputFile.click();
-                            });
-
-                            inputFile.addEventListener("change", function () {
-                                const file = this.files[0];
-                                const reader = new FileReader();
-
-                                reader.onloadend = function () {
-                                    previewImage.src = reader.result;
-                                };
-
-                                reader.readAsDataURL(file);
-                            });
-
-                        </script>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-8">
-                <!-- Account details card-->
-                <div class="card mb-4">
-                    <div class="card-header">Detalles de la cuenta</div>
-                    <div class="card-body">
-                        <form>
-                            <!-- Form Group (username)-->
-                            <div class="mb-3">
-                                <label class="small mb-1" for="inputUsername">Usuario (Como aparecerá tu nombre
-                                    a otros usuarios)</label>
-                                <input class="form-control" id="inputUsername" type="text"
-                                    placeholder="Escribe tu nombre de usuario" value="">
+                        <!-- Form Row-->
+                        <div class="row gx-3 mb-3">
+                            <!-- Form Group (first name)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputFirstName">Nombre</label>
+                                <input class="form-control" id="inputFirstName" type="text"
+                                    placeholder="Escribe tu nombre" value="{{name}}">
                             </div>
-                            <!-- Form Row-->
-                            <div class="row gx-3 mb-3">
-                                <!-- Form Group (first name)-->
-                                <div class="col-md-6">
-                                    <label class="small mb-1" for="inputFirstName">Nombre</label>
-                                    <input class="form-control" id="inputFirstName" type="text"
-                                        placeholder="Escribe tu nombre" value="">
-                                </div>
-                                <!-- Form Group (last name)-->
-                                <div class="col-md-6">
-                                    <label class="small mb-1" for="inputLastName">Apellido</label>
-                                    <input class="form-control" id="inputLastName" type="text"
-                                        placeholder="Escribe tus apellidos" value="">
-                                </div>
+                            <!-- Form Group (last name)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputLastName">Apellido</label>
+                                <input class="form-control" id="inputLastName" type="text"
+                                    placeholder="Escribe tus apellidos" value="{{lastName}}">
                             </div>
-                            <!-- Form Row        -->
-                            <div class="row gx-3 mb-3">
-                                <!-- Form Group (location)-->
-                                <div class="col-md-12">
-                                    <label class="small mb-1" for="inputLocation">Dirección</label>
-                                    <input class="form-control" id="inputLocation" type="text"
-                                        placeholder="Escribe tu dirección" value="">
-                                </div>
+                        </div>
+                        <!-- Save changes button-->
+                        <form action="/updateDates" method="post">
+                            <div class="d-lg-block d-none">
+                                <a href="profile" class="btn btn-primary">Guardar cambios</a>
                             </div>
-                            <!-- Form Group (email address)-->
-                            <div class="mb-3">
-                                <label class="small mb-1" for="inputEmailAddress">Correo electrónico</label>
-                                <input class="form-control" id="inputEmailAddress" type="email"
-                                    placeholder="Escribe tu correo electrónico" value="">
-                            </div>
-                            <!-- Form Row-->
-                            <div class="row gx-3 mb-3">
-                                <!-- Form Group (phone number)-->
-                                <div class="col-md-6">
-                                    <label class="small mb-1" for="inputPhone">Número de teléfono</label>
-                                    <input class="form-control" id="inputPhone" type="tel"
-                                        placeholder="Escribe tu número de teléfono" value="">
-                                </div>
-                                <!-- Form Group (birthday)-->
-                                <div class="col-md-6">
-                                    <label class="small mb-1" for="inputBirthday">Fecha de nacimiento</label>
-                                    <input class="form-control" id="inputBirthday" type="text" name="birthday"
-                                        placeholder="Escribe tu fecha de nacimiento" value="">
-                                </div>
-                            </div>
-                            <!-- Save changes button-->
-                            <button class="btn btn-primary" type="button">Guardar cambios</button>
+                            <input type="hidden" name="_csrf" value="{{token}}" />
                         </form>
-                    </div>
+                        <!-- <form>
+                                <button class="btn btn-primary" type="button">Guardar cambios</button>
+                                
+                            </form> -->
+                        <form action="/logout" method="post">
+                            <div class="d-lg-block d-none">
+                                <a href="login" class="btn btn-primary">Cerrar sesión</a>
+                            </div>
+                            <input type="hidden" name="_csrf" value="{{token}}" />
+                        </form>
+                    </form>
+                    {{/currentUser}}
                 </div>
             </div>
         </div>
     </div>
-    <div class="container-xl px-4 mt-4">
-        <hr class="mt-0 mb-4">
-        <div class="row">
-            <div class="col-lg-12">
-                <!-- Change password card-->
-                <div class="card mb-4">
-                    <div class="card-header">Cambiar contraseña</div>
-                    <div class="card-body">
-                        <form>
-                            <!-- Form Group (current password)-->
-                            <div class="mb-3">
-                                <label class="small mb-1" for="currentPassword">Contraseña actual</label>
-                                <input class="form-control" id="currentPassword" type="password"
-                                    placeholder="Escribe tu contraseña actual">
-                            </div>
-                            <!-- Form Group (new password)-->
-                            <div class="mb-3">
-                                <label class="small mb-1" for="newPassword">Nueva contraseña</label>
-                                <input class="form-control" id="newPassword" type="password"
-                                    placeholder="Escribe tu nueva contraseña">
-                            </div>
-                            <!-- Form Group (confirm password)-->
-                            <div class="mb-3">
-                                <label class="small mb-1" for="confirmPassword">Confirmación de contraseña</label>
-                                <input class="form-control" id="confirmPassword" type="password"
-                                    placeholder="Confirma la contraseña">
-                            </div>
-                            <button class="btn btn-primary" type="button">Guardar</button>
-                        </form>
-                    </div>
+</div>
+<div class="container-xl px-4 mt-4">
+    <hr class="mt-0 mb-4">
+    <div class="row">
+        <div class="col-lg-12">
+            <!-- Change password card-->
+            <div class="card mb-4">
+                <div class="card-header">Cambiar contraseña</div>
+                <div class="card-body">
+                    <form>
+                        <!-- Form Group (current password)-->
+                        <div class="mb-3">
+                            <label class="small mb-1" for="currentPassword">Contraseña actual</label>
+                            <input class="form-control" id="currentPassword" type="password"
+                                placeholder="Escribe tu contraseña actual">
+                        </div>
+                        <!-- Form Group (new password)-->
+                        <div class="mb-3">
+                            <label class="small mb-1" for="newPassword">Nueva contraseña</label>
+                            <input class="form-control" id="newPassword" type="password"
+                                placeholder="Escribe tu nueva contraseña">
+                        </div>
+                        <!-- Form Group (confirm password)-->
+                        <div class="mb-3">
+                            <label class="small mb-1" for="confirmPassword">Confirmación de contraseña</label>
+                            <input class="form-control" id="confirmPassword" type="password"
+                                placeholder="Confirma la contraseña">
+                        </div>
+                        <button class="btn btn-primary" type="button">Guardar</button>
+                    </form>
                 </div>
-                <div class="card mb-4">
-                    <div class="card-header">Opiniones realizadas</div>
-                    <div class="card-body">
-                        <!-- testimonials -->
-                        <section class="w3l-clients" id="clients">
-                            <!-- /grids -->
-                            <div class="cusrtomer-layout py-5">
-                                <div class="container py-lg-4 py-md-3 pb-lg-0">
-                                    
-                                    <!-- /grids -->
-                                    <div class="testimonial-width">
-                                        <div id="owl-demo1" class="owl-two owl-carousel owl-theme">
-                                            <div class="item">
-                                                <div class="testimonial-content">
-                                                    <div class="testimonial">
-                                                        <blockquote>
-                                                            <span class="fa fa-quote-left" aria-hidden="true"></span>
-                                                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                            Velit beatae laudantium
-                                                            voluptate rem ullam dolore nisi voluptatibus esse quasi.
-                                                            Integer sit amet .Lorem
-                                                            ipsum dolor sit
-                                                            amet adipisicing elit. Laborum dolor facere ipsum
-                                                            adipisicingelit.
-                                                        </blockquote>
-                                                        <div class="testi-des">
-                                                            <div class="test-img"><img src="assets/images/c1.jpg"
-                                                                    class="img-fluid" alt="client-img">
-                                                            </div>
-                                                            <div class="peopl align-self">
-                                                                <h3>Rohit Paul</h3>
-                                                                <p class="indentity">Example City</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="item">
-                                                <div class="testimonial-content">
-                                                    <div class="testimonial">
-                                                        <blockquote>
-                                                            <span class="fa fa-quote-left" aria-hidden="true"></span>
-                                                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                            Velit beatae laudantium
-                                                            voluptate rem ullam dolore nisi voluptatibus esse quasi.
-                                                            Integer sit amet .Lorem
-                                                            ipsum dolor sit
-                                                            amet adipisicing elit. Laborum dolor facere ipsum
-                                                            adipisicingelit.
-                                                        </blockquote>
-                                                        <div class="testi-des">
-                                                            <div class="test-img"><img src="assets/images/c2.jpg"
-                                                                    class="img-fluid" alt="client-img">
-                                                            </div>
-                                                            <div class="peopl align-self">
-                                                                <h3>Shveta</h3>
-                                                                <p class="indentity">Example City</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="item">
-                                                <div class="testimonial-content">
-                                                    <div class="testimonial">
-                                                        <blockquote>
-                                                            <span class="fa fa-quote-left" aria-hidden="true"></span>
-                                                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                            Velit beatae laudantium
-                                                            voluptate rem ullam dolore nisi voluptatibus esse quasi.
-                                                            Integer sit amet .Lorem
-                                                            ipsum dolor sit
-                                                            amet adipisicing elit. Laborum dolor facere ipsum
-                                                            adipisicingelit.
-                                                        </blockquote>
-                                                        <div class="testi-des">
-                                                            <div class="test-img"><img src="assets/images/c3.jpg"
-                                                                    class="img-fluid" alt="client-img">
-                                                            </div>
-                                                            <div class="peopl align-self">
-                                                                <h3>Roy Linderson</h3>
-                                                                <p class="indentity">Example City</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="item">
-                                                <div class="testimonial-content">
-                                                    <div class="testimonial">
-                                                        <blockquote>
-                                                            <span class="fa fa-quote-left" aria-hidden="true"></span>
-                                                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                            Velit beatae laudantium
-                                                            voluptate rem ullam dolore nisi voluptatibus esse quasi.
-                                                            Integer sit amet .Lorem
-                                                            ipsum dolor sit
-                                                            amet adipisicing elit. Laborum dolor facere ipsum
-                                                            adipisicingelit.
-                                                        </blockquote>
-                                                        <div class="testi-des">
-                                                            <div class="test-img"><img src="assets/images/c4.jpg"
-                                                                    class="img-fluid" alt="client-img">
-                                                            </div>
-                                                            <div class="peopl align-self">
-                                                                <h3>Mike Thyson</h3>
-                                                                <p class="indentity">Example City</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /grids -->
-                            </div>
-                            <!-- //grids -->
-                        </section>
-                        <!-- //testimonials -->
-                    </div>
+            </div>
+            <div class="card mb-4">
+                <div class="card-header">Opiniones realizadas</div>
+                <div class="card-body">
+                    {{#review}}
+                    <p>{{titleReview}} - {{contentReview}}</p>
+                    {{/review}}
+                    {{^review}}
+                    <p>No hay reviews disponibles por este usuario.</p>
+                    {{/review}}
                 </div>
-                <!-- Delete account card-->
-                <div class="card mb-4">
-                    <div class="card-header">Eliminar cuenta</div>
-                    <div class="card-body">
-                        <p>Elminar tu cuenta es una accion permante y no puede rehacerse.
-                            Si está seguro de que quiere eliminar su cuenta, presione el botón de debajo.</p>
-                        <button class="btn btn-danger-soft text-danger" type="button">Entendido. Eliminar mi
-                            cuenta</button>
-                    </div>
+            </div>
+            <!-- Delete account card-->
+            <div class="card mb-4">
+                <div class="card-header">Eliminar cuenta</div>
+                <div class="card-body">
+                    <p>Elminar tu cuenta es una accion permante y no puede rehacerse.
+                        Si está seguro de que quiere eliminar su cuenta, presione el botón de debajo.</p>
+                    <button class="btn btn-danger-soft text-danger" type="button">Entendido. Eliminar mi
+                        cuenta</button>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 
-    <!-- Template JavaScript -->
-    <script src="../static/assets/js/jquery-3.3.1.min.js"></script>
-    <script src="../static/assets/js/theme-change.js"></script>
-    <!--/slider-js-->
-    <script src="../static/assets/js/jquery.min.js"></script>
-    <script src="../static/assets/js/modernizr-2.6.2.min.js"></script>
-    <script src="../static/assets/js/jquery.zoomslider.min.js"></script>
-    <!--//slider-js-->
-    <script src="../static/assets/js/owl.carousel.js"></script>
-    <!-- script for tesimonials carousel slider -->
-    <script>
-        $(document).ready(function () {
-            $("#owl-demo1").owlCarousel({
-                loop: true,
-                margin: 20,
-                nav: false,
-                responsiveClass: true,
-                responsive: {
-                    0: {
-                        items: 1,
-                        nav: false
-                    },
-                    736: {
-                        items: 1,
-                        nav: false
-                    },
-                    1000: {
-                        items: 1,
-                        nav: false,
-                        loop: true
-                    }
+<!-- Template JavaScript -->
+<script src="../static/assets/js/jquery-3.3.1.min.js"></script>
+<script src="../static/assets/js/theme-change.js"></script>
+<!--/slider-js-->
+<script src="../static/assets/js/jquery.min.js"></script>
+<script src="../static/assets/js/modernizr-2.6.2.min.js"></script>
+<script src="../static/assets/js/jquery.zoomslider.min.js"></script>
+<!--//slider-js-->
+<script src="../static/assets/js/owl.carousel.js"></script>
+<!-- script for tesimonials carousel slider -->
+<script>
+    $(document).ready(function () {
+        $("#owl-demo1").owlCarousel({
+            loop: true,
+            margin: 20,
+            nav: false,
+            responsiveClass: true,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                736: {
+                    items: 1,
+                    nav: false
+                },
+                1000: {
+                    items: 1,
+                    nav: false,
+                    loop: true
                 }
-            })
-        })
-    </script>
-    <!-- //script for tesimonials carousel slider -->
-    <!-- stats number counter-->
-    <script src="assets/js/jquery.waypoints.min.js"></script>
-    <script src="assets/js/jquery.countup.js"></script>
-    <script>
-        $('.counter').countUp();
-    </script>
-    <!-- //stats number counter -->
-
-    <!--/MENU-JS-->
-    <script>
-        $(window).on("scroll", function () {
-            var scroll = $(window).scrollTop();
-
-            if (scroll >= 80) {
-                $("#site-header").addClass("nav-fixed");
-            } else {
-                $("#site-header").removeClass("nav-fixed");
             }
-        });
+        })
+    })
+</script>
+<!-- //script for tesimonials carousel slider -->
+<!-- stats number counter-->
+<script src="assets/js/jquery.waypoints.min.js"></script>
+<script src="assets/js/jquery.countup.js"></script>
+<script>
+    $('.counter').countUp();
+</script>
+<!-- //stats number counter -->
 
-        //Main navigation Active Class Add Remove
-        $(".navbar-toggler").on("click", function () {
-            $("header").toggleClass("active");
-        });
-        $(document).on("ready", function () {
+<!--/MENU-JS-->
+<script>
+    $(window).on("scroll", function () {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function () {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function () {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function () {
             if ($(window).width() > 991) {
                 $("header").removeClass("active");
             }
-            $(window).on("resize", function () {
-                if ($(window).width() > 991) {
-                    $("header").removeClass("active");
-                }
-            });
         });
-    </script>
-    <!--//MENU-JS-->
+    });
+</script>
+<!--//MENU-JS-->
 
-    <script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
 </body>
 
 </html>
