@@ -679,7 +679,7 @@ public class InitDatabase {
                 if (added) {
                     Review review = new Review();
                     review.setContentReview("Comment for destination " +
-                            destination.getNameDestination());
+                    destination.getNameDestination());
                     review.setUser(user);
                     review.setDestination(destination);
                     review.setRatingReview((int) (Math.random() * 5) + 1);
@@ -691,4 +691,9 @@ public class InitDatabase {
         }
         return reviews;
     }
+
+
+
+    
+    
 }
