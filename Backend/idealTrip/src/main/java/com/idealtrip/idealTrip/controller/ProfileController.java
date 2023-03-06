@@ -48,6 +48,11 @@ public class ProfileController {
 			model.addAttribute("logged", false);
 		}
 	}
+	@GetMapping("/profile")
+	public String showProfile (Model model){
+	  if (user.isPresent());
+
+	}
 
   @GetMapping("/profile") 
     public String showProfile(Model model ) { 

@@ -125,6 +125,7 @@
                     </form>
                 </div>
             </div>
+            {{^admin}}
             <div class="card mb-4">
                 <div class="card-header">Opiniones realizadas</div>
                 <div class="card-body">
@@ -136,6 +137,15 @@
                     {{/review}}
                 </div>
             </div>
+            {{/admin}}
+            {{#admin}}
+            <div class="card mb-4">
+                <div class="card-header">Opiniones realizadas</div>
+                <div class="card-body">
+                    <p>No hay reviews disponibles por este usuario.</p>
+                </div>
+            </div>
+            {{/admin}}
             <!-- Delete account card-->
             <div class="card mb-4">
                 <div class="card-header">Eliminar cuenta</div>
