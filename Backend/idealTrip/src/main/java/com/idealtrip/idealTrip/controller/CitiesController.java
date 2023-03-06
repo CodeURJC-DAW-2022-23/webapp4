@@ -1,46 +1,85 @@
 package com.idealtrip.idealTrip.controller;
 
+import java.security.Principal;
+import java.util.List;
+import java.util.Optional;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import com.idealtrip.idealTrip.model.Catering;
+import com.idealtrip.idealTrip.model.Destination;
+import com.idealtrip.idealTrip.model.User;
+import com.idealtrip.idealTrip.service.CateringService;
+import com.idealtrip.idealTrip.service.DestinationService;
+import com.idealtrip.idealTrip.service.UserService;
 
 @Controller
 public class CitiesController {
+  @Autowired
+  private CateringService cateringService;
 
-  //Paris 
-  @GetMapping("/services/Paris")
-  public String servicesParis(Model model) {
-    return "PARIS/informationParis";
+  @Autowired
+  private UserService userService;
+
+  User currentUser;
+
+  @ModelAttribute
+  public void addAttributes(Model model, HttpServletRequest request) {
+    Principal principal = request.getUserPrincipal();
+
+    if (principal != null) {
+      userService.findByEmail(principal.getName()).ifPresent(us -> currentUser = us);
+      model.addAttribute("logged", true);
+      model.addAttribute("userName", principal.getName());
+      model.addAttribute("admin", request.isUserInRole("ADMIN"));
+      model.addAttribute("curretUser", currentUser);
+
+    } else {
+      model.addAttribute("logged", false);
+    }
   }
 
-  @GetMapping("/PARIS/informationParis")
-  public String servicesParisInfo(Model model) {
-    return "PARIS/informationParis";
+  // Paris
+  // @GetMapping("/services/Paris")
+  // public String servicesParis(Model model) {
+  // return "PARIS/informationParis";
+  // }
+
+  // @GetMapping("/PARIS/informationParis")
+  // public String servicesParisInfo(Model model) {
+  // return "PARIS/informationParis";
+  // }
+
+  @GetMapping("/catering")
+  public String servicesParisCatering(Model model, String nameDestination) {
+    model.addAttribute("nameDestination", cateringService.findByNameDestination(nameDestination));
+    model.addAttribute("catering", cateringService.findAll());
+    return "catering";
   }
 
-  @GetMapping("/PARIS/cateringParis")
-  public String servicesParisCatering(Model model) {
-    return "PARIS/cateringParis";
-  }
+  // @GetMapping("/PARIS/tourismParis")
+  // public String servicesParistourism(Model model) {
+  // return "PARIS/tourismParis";
+  // }
 
-  @GetMapping("/PARIS/tourismParis")
-  public String servicesParistourism(Model model) {
-    return "PARIS/tourismParis";
-  }
+  // @GetMapping("/PARIS/reviewParis")
+  // public String servicesParisreview(Model model) {
+  // return "PARIS/reviewParis";
+  // }
 
-  @GetMapping("/PARIS/reviewParis")
-  public String servicesParisreview(Model model) {
-    return "PARIS/reviewParis";
-  }
+  // @GetMapping("/PARIS/paris1")
+  // public String servicesParisHouse(Model model) {
+  // return "PARIS/paris1";
+  // }
 
-  @GetMapping("/PARIS/paris1")
-  public String servicesParisHouse(Model model) {
-    return "PARIS/paris1";
-  }
-
-  
-
-  //Bangkok
+  // Bangkok
   @GetMapping("/services/Bangkok")
   public String servicesBangkok(Model model) {
     return "BANGKOK/informationBangkok";
@@ -70,8 +109,6 @@ public class CitiesController {
   public String servicesBangkokHouse(Model model) {
     return "BANGKOK/bangkok1";
   }
-
-
 
   // Maldivas
   @GetMapping("/services/Maldivas")
@@ -104,8 +141,6 @@ public class CitiesController {
     return "MALDIVAS/Maldivas1";
   }
 
-
-
   // Atenas
   @GetMapping("/services/Atenas")
   public String servicesAtenas(Model model) {
@@ -136,10 +171,6 @@ public class CitiesController {
   public String servicesAtenasHouse(Model model) {
     return "ATENAS/atenas1";
   }
-
-
-
-
 
   // Londres
   @GetMapping("/services/Londres")
@@ -172,10 +203,6 @@ public class CitiesController {
     return "Londres/londres1";
   }
 
-
-
-
-
   // Alpes_Julianos
   @GetMapping("/services/AlpesJulianos")
   public String servicesAlpesJulianos(Model model) {
@@ -206,8 +233,6 @@ public class CitiesController {
   public String servicesAlpesJulianosHouse(Model model) {
     return "ALPESJULIANOS/alpesjulianos1";
   }
-
-
 
   // Santa_Marta
   @GetMapping("/services/SantaMarta")
@@ -240,9 +265,6 @@ public class CitiesController {
     return "SANTAMARTA/santamarta1";
   }
 
-
-
-
   // Singapur
   @GetMapping("/services/Singapur")
   public String servicesSingapur(Model model) {
@@ -273,6 +295,5 @@ public class CitiesController {
   public String servicesSingapurHouse(Model model) {
     return "SINGAPUR/singapur";
   }
-
 
 }

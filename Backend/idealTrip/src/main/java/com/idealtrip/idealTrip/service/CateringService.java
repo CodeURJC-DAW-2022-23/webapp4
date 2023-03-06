@@ -1,5 +1,6 @@
 package com.idealtrip.idealTrip.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,14 @@ public class CateringService {
 
     public void delete(Catering entity) {
         caterings.delete(entity);
+    }
+
+    public List<Catering> findAll() {
+        return caterings.findAll();
+    }
+
+    public List<Catering> findByNameDestination(String name) {
+        return caterings.findByNameDestination(name);
     }
 
     

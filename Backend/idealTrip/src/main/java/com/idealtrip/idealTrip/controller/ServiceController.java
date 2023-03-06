@@ -71,8 +71,8 @@ public class ServiceController {
    public String showDestination(Model model, @PathVariable Long id){
         Optional<Destination> destination = destinationService.findById(id);
         if (destination.isPresent()){
-            model.addAttribute("service", destination.get());
-            return "service";
+            model.addAttribute("service", destination);
+            return "information";
         }else{
             return "services";
         }        
