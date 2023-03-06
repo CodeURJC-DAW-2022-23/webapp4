@@ -76,6 +76,7 @@ public class LoginController {
 			user.setProfileAvatar("/static/assets/images/c1.jpg");
 			user.setEmail(user.getEmail());
 			user.setEncodedPassword(passwordEncoder.encode(user.getEncodedPassword()));
+			user.setRoles("USER");
 			users.save(user);
 			return "redirect:/login";
 		}else{
