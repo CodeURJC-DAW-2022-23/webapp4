@@ -672,24 +672,22 @@ public class InitDatabase {
     }
 
     private List<Review> generateReviews(List<Destination> initedDestinations, List<User> initedUsers) {
-        List<Review> reviews = new ArrayList<>();
-        boolean added = true;
-        for (Destination destination : initedDestinations) {
-            for (User user : initedUsers) {
-                if (added) {
-                    Review review = new Review();
-                    review.setContentReview("Comment for destination " +
-                    destination.getNameDestination());
-                    review.setUser(user);
-                    review.setDestination(destination);
-                    review.setRatingReview((int) (Math.random() * 5) + 1);
-                    review.setTitleReview("Buena oferta");
-                    reviews.add(review);
-                    added = !added;
-                }
+            List<Review> reviews = new ArrayList<>();
+            for (Destination destination : initedDestinations) {
+                    for (User user : initedUsers) {
+                            for (int i = 0; i < 3; i++) { // generar tres reviews por cada destino y usuario
+                                    Review review = new Review();
+                                    review.setContentReview("Review del destino: " +
+                                    destination.getNameDestination());
+                                    review.setUser(user);
+                                    review.setDestination(destination);
+                                    review.setRatingReview((int) (Math.random() * 5) + 1);
+                                    review.setTitleReview("Buena oferta");
+                                    reviews.add(review);
+                            }
+                    }
             }
-        }
-        return reviews;
+            return reviews;
     }
 
 
