@@ -76,7 +76,7 @@ public class InitDatabase {
                         houses.save(house);
                 }
 
-                List<Catering> initedCatering = generateCatering();
+                List<Catering> initedCatering = generateCatering(initedDestinations);
                 for (Catering catering : initedCatering) {
                         caterings.save(catering);
                 }
@@ -128,14 +128,14 @@ public class InitDatabase {
                 List<String> namePlace = new ArrayList<>();
                 List<String> contentPlace = new ArrayList<>();
                 // Paris
-                namePlace.add(" ");
+                // namePlace.add(" ");
                 namePlace.add("Torre Eiffel");
                 namePlace.add("Arco del Triunfo");
                 namePlace.add("Museo del Louvre");
                 namePlace.add("Catedral de Notre Dame");
                 namePlace.add("Basílica Sagrado Corazón");
                 namePlace.add("Disneyland París");
-                contentPlace.add(" ");
+                // contentPlace.add(" ");
                 contentPlace.add(
                                 "El edificio más alto del mundo por 41 años. Desde su construcción, hasta 1930, la Torre Eiffel fue el edificio más alto del mundo, gracias a sus 312 metros de altura");
                 contentPlace.add(
@@ -283,7 +283,7 @@ public class InitDatabase {
                                 "Clarke Quay fue un antiguo muelle en el que hace un tiempo se rehabilitaron sus almacenes hasta convertir la zona en otro de los lugares imprescindibles que ver en Singapur");
                 // FIN
                 int cont = 0;
-                int contCity = 1;
+                int contCity = 0;
                 for (String place : namePlace) {
                         Tourism tourism = new Tourism();
                         tourism.setNameTourism(place);
@@ -292,26 +292,26 @@ public class InitDatabase {
                         cont++;
                         tourism.setNameDestination(cities.get(contCity));
                         ListTourism.add(tourism);
-                        if (cont == 7 || (cont > 1 && (cont - 1) % 6 == 0)) {
+                        if ((cont) % 6 == 0) {
                                 contCity++;
                         }
                 }
                 return ListTourism;
         }
 
-        private List<Catering> generateCatering() {
+        private List<Catering> generateCatering(List<Destination> initedDestinations) {
                 List<Catering> ListCatering = new ArrayList<>();
                 List<String> nameFood = new ArrayList<>();
                 List<String> contentFood = new ArrayList<>();
                 // Paris
-                nameFood.add(" ");
+                // nameFood.add(" ");
                 nameFood.add("Ratatouille");
                 nameFood.add("Crepe");
                 nameFood.add("Cassoulet");
                 nameFood.add("Boeuf Bourguignon");
                 nameFood.add("Quiche Lorraine");
                 nameFood.add("Escargots");
-                contentFood.add(" ");
+                // contentFood.add(" ");
                 contentFood.add(
                                 "El plato tiene su origen en la cocina provenzal de Niza; dichos orígenes se reflejan en el nombre: «Rata» significa «comida» y «touille», «remover». De modo que «ratatouille» significa «comida revuelta» que se cocina a fuego lento durante horas");
                 contentFood.add(
@@ -399,12 +399,12 @@ public class InitDatabase {
                 contentFood.add(
                                 "Esta tradición tan británica tiene sus orígenes en el siglo XIX, pero sigue siendo un placer para los visitantes");
                 // Alpes Julianos
-                nameFood.add("Štruklji");
-                nameFood.add("Žganci");
-                nameFood.add("Golaž");
-                nameFood.add("Ričet");
+                nameFood.add("Struklji");
+                nameFood.add("Zganci");
+                nameFood.add("Golaz");
+                nameFood.add("Ricet");
                 nameFood.add("Obara");
-                nameFood.add("Idrijski žlikrofi");
+                nameFood.add("Idrijski zlikrofi");
                 contentFood.add(
                                 "Pastel de harina relleno de requesón o crema de nueces. Se sirve caliente y existen más de 70 variedades, tanto dulces como saladas. Es uno de los platos típicos de Liubliana más recurrentes para picar entre horas.");
                 contentFood.add(
@@ -456,7 +456,7 @@ public class InitDatabase {
                                 "Es un plato de influencia musulmana/india y usa un característico arroz de grano largo tipo basmati");
                 // FIN
                 int cont = 0;
-                int contCity = 1;
+                int contCity = 0;
                 for (String food : nameFood) {
                         // Destination destination = initedDestinations;
                         Catering catering = new Catering();
@@ -465,8 +465,9 @@ public class InitDatabase {
                         // catering.setDestination(initedDestinations.get(cont));
                         cont++;
                         catering.setNameDestination(cities.get(contCity));
+                        catering.setDestination(initedDestinations.get(contCity));
                         ListCatering.add(catering);
-                        if (cont == 7 || (cont > 1 && (cont - 1) % 6 == 0)) {
+                        if ((cont) % 6 == 0) {
                                 contCity++;
                         }
                 }
@@ -478,8 +479,8 @@ public class InitDatabase {
         private List<Destination> generateDestination() {
                 List<Destination> destinations = new ArrayList<>();
                 List<String> titleDestination = new ArrayList<>();
-                cities.add("");
-                titleDestination.add("");
+                // cities.add("");
+                // titleDestination.add("");
                 cities.add("Paris");
                 titleDestination.add("La ciudad del amor");
                 cities.add("Bangkok");
@@ -497,7 +498,7 @@ public class InitDatabase {
                 cities.add("Singapur");
                 titleDestination.add("Moderna, Cosmopolita y Contraste");
 
-                for (int i = 1; i < cities.size(); i++) {
+                for (int i = 0; i < cities.size(); i++) {
                         Destination destination = new Destination();
                         String city = cities.get(i);
                         String title = titleDestination.get(i);
@@ -524,7 +525,7 @@ public class InitDatabase {
         private List<House> generateHouse() {
                 List<House> houses = new ArrayList<>();
                 List<String> houseNames = new ArrayList<>();
-                houseNames.add(" ");
+                // houseNames.add(" ");
                 houseNames.add("Ibis Paris Tour Eiffel Cambronne 15ème");
                 houseNames.add("Lamphuhouse Bangkok - SHA Extra Plus Certified");
                 houseNames.add("Rasdu View Inn");
@@ -534,7 +535,7 @@ public class InitDatabase {
                 houseNames.add("Hilton Santa Marta");
                 houseNames.add("Studio M Hotel");
 
-                for (int i = 1; i < houseNames.size(); i++) {
+                for (int i = 0; i < houseNames.size(); i++) {
                         House house = new House();
                         String apartment = houseNames.get(i);
                         house.setNameHouse(apartment);

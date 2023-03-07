@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.idealtrip.idealTrip.model.Catering;
+import com.idealtrip.idealTrip.model.Destination;
 import com.idealtrip.idealTrip.repository.CateringRepository;
 
 @Service
@@ -32,6 +33,9 @@ public class CateringService {
 
     public List<Catering> findByNameDestination(String name) {
         return caterings.findByNameDestination(name);
+    }
+    public List<Catering> findByDestination(Long id) {
+        return caterings.findByDestinationId(id);
     }
 
     

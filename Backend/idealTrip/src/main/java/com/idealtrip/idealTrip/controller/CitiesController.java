@@ -1,6 +1,7 @@
 package com.idealtrip.idealTrip.controller;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,6 +28,9 @@ public class CitiesController {
 
   @Autowired
   private UserService userService;
+
+  @Autowired
+  private DestinationService destinationService;
 
   User currentUser;
 
@@ -57,15 +61,17 @@ public class CitiesController {
   // return "PARIS/informationParis";
   // }
 
-  @GetMapping("/catering")
-  public String servicesParisCatering(Model model, String nameDestination) {
-    model.addAttribute("nameDestination", cateringService.findByNameDestination(nameDestination));
-    model.addAttribute("catering", cateringService.findAll());
+  @GetMapping("/catering/{id}")
+  public String servicesParisCatering(Model model, @PathVariable Long id) {
+
+    model.addAttribute("name", destinationService.findById(id).get().getNameDestination());
+    model.addAttribute("nameDestination", cateringService.findByDestination(id));
+    // model.addAttribute("catering", cateringService.findAll());
     return "catering";
   }
 
   // @GetMapping("/PARIS/tourismParis")
-  // public String servicesParistourism(Model model) {
+  // public String servicesParistourism(Model model) {my
   // return "PARIS/tourismParis";
   // }
 

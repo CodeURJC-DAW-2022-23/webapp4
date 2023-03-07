@@ -83,62 +83,22 @@ Author URL: http://w3layouts.com
 
   <figure>
     <div class="title">
-      <h1>Comida típica de {{nameDestination}}</h1>
+      <h1>Comida típica de {{name}}</h1>
     </div>
 
-    {{#catering}}
     <div class="gallery">
-      <div class="tourismImage">
-        <img src="../assets/images/informacion/ratatouille.jpg" alt="">
-        <div class="capa">
-          <h3>{{nameFood}}</h3>
-          <p>{{contentFood}}</p>
-        </div>
-      </div>
-      
 
-      <!-- <div class="tourismImage">
-        <img src="../assets/images/informacion/crepe.jpg" alt="">
+      {{#nameDestination}}
+      <div class="tourismImage">
+        <img src="../assets/images/informacion/{{nameFood}}.jpg" alt="">
         <div class="capa">
           <h3>{{nameFood}}</h3>
           <p>{{contentFood}}</p>
         </div>
       </div>
-      <div class="tourismImage">
-        <img src="../assets/images/informacion/Cassoulet.jpg" alt="">
-        <div class="capa">
-          <h3>Cassoulet</h3>
-          <p>Este plato, originario de Laguedoc-Roussillon, está compuesto de alubias blancas, muslos de pato
-             y carne de cerdo (bajo diferentes formas). Las familias de campesinos lo han consumido durante siglos. 
-             Hoy, los franceses lo cocinan para las reuniones familiares</p>
-        </div>
-      </div>
-      <div class="tourismImage">
-        <img src="../assets/images/informacion/BoeufBourguignon.jpg" alt="">
-        <div class="capa">
-          <h3>Boeuf Bourguignon</h3>
-          <p>Es un plato cuyo origen se sitúa en la región francesa de la Borgoña, a 100 km al sur de París.  Es un estofado de buey, en esta zona es muy reconocido por su sabor</p>
-        </div>
-      </div>
-      <div class="tourismImage">
-        <img src="../assets/images/informacion/QUICHE LORRAINE.jpg" alt="">
-        <div class="capa">
-          <h3>Quiche Lorraine</h3>
-          <p>Originaria de la región de Lorena, en Francia. 
-            En un principio, el relleno se componía sólo de huevos y crema de leche o nata fresca. 
-            En el siglo XIX, se le añadieron las pequeñas tiras o tacos de panceta magra, fresca o ahumada</p>
-        </div>
-      </div>
-      <div class="tourismImage">
-        <img src="../assets/images/informacion/Escargots.jpg" alt="">
-        <div class="capa">
-          <h3>Escargots</h3>
-          <p>Son un plato tradicional de la gastronomía francesa. Consiste en unos caracoles cocidos y servidos en su concha 
-            rellena de mantequilla de ajo y perejil. Se sirve como entrante en Francia y en los restaurantes franceses</p>
-        </div>
-      </div>-->
+      {{/nameDestination}}
+
     </div>
-    {{/catering}}
 
   </figure>
 
