@@ -1,15 +1,16 @@
 package com.idealtrip.idealTrip.controller;
 
-import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import com.idealtrip.idealTrip.model.Review;
 import com.idealtrip.idealTrip.model.User;
@@ -18,19 +19,23 @@ import com.idealtrip.idealTrip.service.ReviewService;
 import com.idealtrip.idealTrip.service.UserService;
 
 import java.security.Principal;
-import java.util.List;
+
 
 
 @Controller
 public class ProfileController {
   
-  @Autowired
-  private ReviewRepository myRepository;
+  
 
   @Autowired
   private UserService users;
 
+	@Autowired
+	private ReviewService myRepository;
+
   User currentUser;
+	//Pageable pageable = PageRequest.of(0, 5);
+	//Page<Review> review = myRepository.findReviewByUser(currentUser, pageable);
 
   @ModelAttribute
 	public void addAttribute(Model model, HttpServletRequest request) {
@@ -41,7 +46,8 @@ public class ProfileController {
 			model.addAttribute("logged", true);
 			model.addAttribute("currentUser", currentUser);
 			model.addAttribute("email", currentUser.getEmail());
-      		model.addAttribute("review", currentUser.getReviews());
+      //model.addAttribute("review", review);
+			model.addAttribute("review", currentUser.getReviews());
 			model.addAttribute("imageProfile", currentUser.getProfileAvatarFile());
 
 			model.addAttribute("admin", request.isUserInRole("ADMIN"));

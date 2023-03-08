@@ -4,9 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.idealtrip.idealTrip.model.Review;
+import com.idealtrip.idealTrip.model.User;
 import com.idealtrip.idealTrip.repository.ReviewRepository;
 
 @Service
@@ -20,6 +23,10 @@ public class ReviewService {
 
     public List<Review> findAll() {
         return reviews.findAll();
+    }
+
+    public Page<Review> findReviewByUser(User user, Pageable pageable) {
+        return reviews.findReviewByUser(user, pageable);
     }
 
     public Optional<Review> findById(Long id) {

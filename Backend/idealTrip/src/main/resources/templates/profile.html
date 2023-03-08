@@ -135,6 +135,9 @@
                     {{^review}}
                     <p>No hay reviews disponibles por este usuario.</p>
                     {{/review}}
+                    {{#reviews.hasNext}}
+                    <a href="?page={{reviews.nextPageable.pageNumber}}">Siguiente</a>
+                    {{/reviews.hasNext}}
                 </div>
             </div>
             {{/admin}}
