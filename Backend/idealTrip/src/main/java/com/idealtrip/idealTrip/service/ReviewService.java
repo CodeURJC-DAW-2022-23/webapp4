@@ -20,7 +20,7 @@ public class ReviewService {
     public void delete(Review entity) {
         reviews.delete(entity);
     }
-
+    
     public List<Review> findAll() {
         return reviews.findAll();
     }
@@ -36,5 +36,13 @@ public class ReviewService {
     public <S extends Review> S save(S entity) {
         return reviews.save(entity);
     }
-    
+
+    public List<Review> findReviewsByDestinationId(Long destinationId) {
+        return reviews.findByDestinationId(destinationId);
+    }
+
+    public List<Review> findReviewsByNameDestination(String nameDestination) {
+        return reviews.findByNameDestination(nameDestination);
+    }
+
 }
