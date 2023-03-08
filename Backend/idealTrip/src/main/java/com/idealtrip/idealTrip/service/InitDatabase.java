@@ -687,24 +687,72 @@ public class InitDatabase {
                 return randomName;
         }
 
-        private List<Review> generateReviews(List<Destination> initedDestinations, List<User> initedUsers) {
-                List<Review> reviews = new ArrayList<>();
-                boolean added = true;
-                for (Destination destination : initedDestinations) {
-                        for (User user : initedUsers) {
-                                if (added) {
-                                        Review review = new Review();
-                                        review.setContentReview("Comment for destination " +
-                                                        destination.getNameDestination());
-                                        review.setUser(user);
-                                        review.setDestination(destination);
-                                        review.setRatingReview((int) (Math.random() * 5) + 1);
-                                        review.setTitleReview("Buena oferta");
-                                        reviews.add(review);
-                                        added = !added;
-                                }
-                        }
-                }
-                return reviews;
-        }
+    private void setProfileAvatarContent(User user, String profileAvatar) throws IOException {
+        Resource image = new ClassPathResource(profileAvatar);
+        user.setProfileAvatarFile(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
+    }
+
+    private String randomNameGenerator() {
+        List<String> names = new ArrayList<>();
+        names.add("Sergio");
+        names.add("Carlos");
+        names.add("Adrian");
+        names.add("Jorge");
+        names.add("Shu");
+        names.add("David");
+        names.add("Elena");
+        names.add("Paula");
+        names.add("Pedro");
+        names.add("Diego");
+        names.add("Alejandro");
+        names.add("Maria");
+
+        Random random = new Random();
+        int index = random.nextInt(names.size());
+        String randomName = names.get(index);
+
+        return randomName;
+    }
+
+    private String randomLastNameGenerator() {
+        List<String> LastNames = new ArrayList<>();
+        LastNames.add("Cuadros");
+        LastNames.add("Perez");
+        LastNames.add("Pedroche");
+        LastNames.add("Francisco");
+        LastNames.add("Ye");
+        LastNames.add("Moreno");
+        LastNames.add("Diez");
+        LastNames.add("Corda");
+        LastNames.add("Rodriguez");
+        LastNames.add("Torres");
+        LastNames.add("Torequin");
+        LastNames.add("Flores");
+
+        Random random = new Random();
+        int index = random.nextInt(LastNames.size());
+        String randomName = LastNames.get(index);
+
+        return randomName;
+    }
+
+    private List<Review> generateReviews(List<Destination> initedDestinations, List<User> initedUsers) {
+            List<Review> reviews = new ArrayList<>();
+            for (Destination destination : initedDestinations) {
+                    for (User user : initedUsers) {
+                            for (int i = 0; i < 3; i++) { // generar tres reviews por cada destino y usuario
+                                    Review review = new Review();
+                                    review.setContentReview("Review del destino: " +
+                                    destination.getNameDestination());
+                                    review.setUser(user);
+                                    review.setDestination(destination);
+                                    review.setRatingReview((int) (Math.random() * 5) + 1);
+                                    review.setTitleReview("Buena oferta");
+                                    reviews.add(review);
+                            }
+                    }
+            }
+            return reviews;
+    }
+
 }

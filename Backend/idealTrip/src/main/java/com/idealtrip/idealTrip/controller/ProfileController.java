@@ -41,19 +41,22 @@ public class ProfileController {
 			model.addAttribute("logged", true);
 			model.addAttribute("currentUser", currentUser);
 			model.addAttribute("email", currentUser.getEmail());
+      model.addAttribute("review", currentUser.getReviews());
+
 			model.addAttribute("admin", request.isUserInRole("ADMIN"));
 		} else {
 			model.addAttribute("logged", false);
 		}
 	}
+	@GetMapping("/profile")
+	public String showProfile (Model model){
+	  if (user.isPresent());
 
-  @GetMapping("/profile") //Añadir /{id} cuando este disponible la función de iniciar sesión
-  public String showProfile(Model model) { //Añadir @PathVariable Long id con la id de arriba
-    //Cambiar por findAllById cuando este disponible la función de iniciar sesión
-    List<Review> reviews = myRepository.findAll();
-    // List<User> user = users.findAll();
-    model.addAttribute("review", reviews);
-    // model.addAttribute("user", user);
+	}
+
+  @GetMapping("/profile") 
+    public String showProfile(Model model ) { 
+    
     return "profile";
   }
 }
