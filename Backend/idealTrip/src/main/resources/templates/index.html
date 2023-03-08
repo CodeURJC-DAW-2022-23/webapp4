@@ -18,14 +18,9 @@
 
                     <select id="menuDesplegable" class="selectpicker">
                       <option value="">Destino</option>
-                      <option value="PARIS/informationParis.html">París</option>
-                      <option value="BANGKOK/informationBangkok.html">Bangkok</option>
-                      <option value="MALDIVAS/informationMaldivas.html">Maldivas</option>
-                      <option value="ATENAS/informationAtenas.html">Atenas</option>
-                      <option value="LONDRES/informationLondres.html">Londres</option>
-                      <option value="Alpes-Julianos1.html">Alpes Julianos</option>
-                      <option value="SANTAMARTA/informationSantaMarta.html">Santa Marta</option>
-                      <option value="SINGAPUR/informationSingapur.html">Singapur</option>
+                      {{#services}}
+                        <option value="/services/{{id}}">{{nameDestination}}</option>
+                      {{/services}}
                     </select>
 
                   </div>
@@ -234,9 +229,7 @@
 </section>
 <!--//grids-->
 
-<section>
-  <img src="assets/images/informacion/barChart.png" alt="BarChart of number of people who visited the destination">
-</section>
+
 
 
 <!--/w3l-footer-29-main-->

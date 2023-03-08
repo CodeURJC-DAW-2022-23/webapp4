@@ -103,11 +103,17 @@ public class CitiesController {
 		}
 	}
 
+
+
+  // @GetMapping("/information8")
+  // public String parisSearch(){
+  //   return "/8/information8";  
+  // }
+
   @GetMapping("/review/{id}")
   public String showAllReview(@PathVariable Long id, Model model) {
   model.addAttribute("name", destinationService.findById(id).get().getNameDestination());
   model.addAttribute("reviews", reviewService.findReviewsByDestinationId(id));
   return "review";
   }
-
 }
