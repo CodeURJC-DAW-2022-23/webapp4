@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -39,10 +40,11 @@ public class Destination {
     @OneToMany(mappedBy = "destination", cascade = CascadeType.ALL)
     private List<Review> reviews = new ArrayList<>();
 
-    @OneToOne(mappedBy = "destination", cascade = CascadeType.ALL)
-    private Catering catering;
-    @OneToOne(mappedBy = "destination", cascade = CascadeType.ALL)
-    private Tourism tourism;
+    @OneToMany(mappedBy = "destination", cascade = CascadeType.ALL)
+    private List<Catering> catering;
+
+    @OneToMany(mappedBy = "destination", cascade = CascadeType.ALL)
+    private List<Tourism> tourism;
 
     private float price;
 

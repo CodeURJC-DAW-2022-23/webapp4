@@ -29,6 +29,10 @@ public class TourismService {
     public void delete(Tourism entity) {
         tourisms.delete(entity);
     }
+
+    public List<Tourism> findByDestinationId(Long id) {
+        return tourisms.findByDestinationId(id);
+    }
     
     
 }

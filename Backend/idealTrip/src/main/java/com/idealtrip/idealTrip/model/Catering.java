@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 
 @Entity(name = "cateringTable")
 public class Catering {
@@ -23,7 +23,7 @@ public class Catering {
 
     private String nameDestination;
 
-    @OneToOne
+    @ManyToOne
     private Destination destination;
 
     @Lob

@@ -28,599 +28,664 @@ import com.idealtrip.idealTrip.repository.UserRepository;
 
 @Service
 public class InitDatabase {
-    @Autowired
-    private DestinationService destinations;
+        @Autowired
+        private DestinationService destinations;
 
-    @Autowired
-    private CateringService caterings;
+        @Autowired
+        private CateringService caterings;
 
-    @Autowired
-    private HouseService houses;
+        @Autowired
+        private HouseService houses;
 
-    @Autowired
-    private TourismService tourisms;
+        @Autowired
+        private TourismService tourisms;
 
-    @Autowired
-    private NewsletterService newsletters;
+        @Autowired
+        private NewsletterService newsletters;
 
-    @Autowired
-    private PurchaseService purchases;
+        @Autowired
+        private PurchaseService purchases;
 
-    @Autowired
-    private ReviewService reviews;
+        @Autowired
+        private ReviewService reviews;
 
-    @Autowired
-    private UserService users;
+        @Autowired
+        private UserService users;
 
-    @Autowired
-    private UserRepository userRepository; 
+        @Autowired
+        private UserRepository userRepository;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+        @Autowired
+        private PasswordEncoder passwordEncoder;
 
-    @PostConstruct
-    public void init() throws IOException {
+        @PostConstruct
+        public void init() throws IOException {
 
-        List<User> initedUsers = generateUser();
-        for (User user : initedUsers) {
-            users.save(user);
+                List<User> initedUsers = generateUser();
+                for (User user : initedUsers) {
+                        users.save(user);
+                }
+
+                List<Destination> initedDestinations = generateDestination();
+                for (Destination destination : initedDestinations) {
+                        destinations.save(destination);
+                }
+
+                List<House> initedHouses = generateHouse();
+                for (House house : initedHouses) {
+                        houses.save(house);
+                }
+
+                List<Catering> initedCatering = generateCatering(initedDestinations);
+                for (Catering catering : initedCatering) {
+                        caterings.save(catering);
+                }
+
+                List<Tourism> initedTourisms = generateTourism(initedDestinations);
+                for (Tourism tourism : initedTourisms) {
+                        tourisms.save(tourism);
+                }
+
+                List<Newsletter> initedNewsletters = generateNewsleter();
+                for (Newsletter newsletter : initedNewsletters) {
+                        newsletters.save(newsletter);
+                }
+
+                List<Review> initedReview = generateReviews(initedDestinations, initedUsers);
+                for (Review review : initedReview) {
+                        reviews.save(review);
+                }
+                List<Purchase> initedPurchase = generatePurchase(initedHouses, initedUsers);
+                for (Purchase purchase : initedPurchase) {
+                        purchases.save(purchase);
+                }
+
         }
 
-        List<Destination> initedDestinations = generateDestination();
-        for (Destination destination : initedDestinations) {
-            destinations.save(destination);
+        private List<Purchase> generatePurchase(List<House> initedHouses, List<User> initedUsers) {
+                List<Purchase> purchases = new ArrayList<>();
+                for (User user : initedUsers) {
+                        Purchase purchase = new Purchase();
+                        purchase.setUser(user);
+                        purchase.setHouse(initedHouses.get((int) (Math.random() * 5) + 1));
+                        purchases.add(purchase);
+                }
+                return purchases;
         }
 
-        List<House> initedHouses = generateHouse();
-        for (House house : initedHouses) {
-            houses.save(house);
+        private List<Newsletter> generateNewsleter() {
+                List<Newsletter> newsletter = new ArrayList<>();
+                for (int i = 1; i <= 4; i++) {
+                        Newsletter news = new Newsletter();
+                        news.setEmail(randomLastNameGenerator() + "1@gmail.com");
+                        newsletter.add(news);
+                }
+                return newsletter;
         }
 
-        List<Catering> initedCatering = generateCatering();
-        for (Catering catering : initedCatering) {
-            caterings.save(catering);
+        private List<Tourism> generateTourism(List<Destination> initedDestinations) {
+                List<Tourism> ListTourism = new ArrayList<>();
+                List<String> namePlace = new ArrayList<>();
+                List<String> contentPlace = new ArrayList<>();
+                // Paris
+                // namePlace.add(" ");
+                namePlace.add("Torre Eiffel");
+                namePlace.add("Arco del Triunfo");
+                namePlace.add("Museo del Louvre");
+                namePlace.add("Catedral de Notre Dame");
+                namePlace.add("Basílica Sagrado Corazón");
+                namePlace.add("Disneyland París");
+                // contentPlace.add(" ");
+                contentPlace.add(
+                                "El edificio más alto del mundo por 41 años. Desde su construcción, hasta 1930, la Torre Eiffel fue el edificio más alto del mundo, gracias a sus 312 metros de altura");
+                contentPlace.add(
+                                "Uno de los monumentos más famosos, probablemente se trate del arco de triunfo más célebre del mundo. Construido entre 1806 y 1836 por orden de Napoleón Bonaparte para conmemorar la victoria en la batalla de Austerlitz");
+                contentPlace.add(
+                                "El Louvre es uno de los museos más grandes del mundo. En concreto, se ubica en el distrito 1, es decir, en pleno centro de París y recoge casi 35.000 objetos que abarcan desde la Prehistoria hasta el siglo XXI");
+                contentPlace.add(
+                                "Es una catedral de culto católico, sede de la archidiócesis de París, la capital de Francia. Dedicada a la Virgen María, se sitúa en la pequeña isla de la Cité");
+                contentPlace.add(
+                                "Su construcción fue decidida por la Asamblea Nacional en 1873, como un edificio religioso a perpetuidad en homenaje a la memoria de los ciudadanos que habían perdido la vida durante la Guerra franco-prusiana");
+                contentPlace.add(
+                                "Disneyland París es un complejo de entretenimiento en Francia. Abarca dos parques temáticos, hoteles resort, Disney Nature Resorts, un complejo comercial, gastronómico y de entretenimiento, y un campo de golf");
+                // Bangkok
+                namePlace.add("Templo del Buda Esmeralda");
+                namePlace.add("Wat Pho");
+                namePlace.add("Los canales de Bangkok");
+                namePlace.add("Wat Arun");
+                namePlace.add("Chinatown");
+                namePlace.add("Wat Suthat");
+                contentPlace.add(
+                                "Construido a finales del S.XVIII, fue la residencia real y la sede del gobierno durante 150 años, hasta mediados del S. XX. Está compuesto por un conjunto arquitectónico de más de 100 construcciones en el que se puede apreciar la belleza de la arquitectura tradicional tailandesa");
+                contentPlace.add(
+                                "Wat Pho es uno de los templos más grandes y antiguos de Bangkok. Es muy conocido por albergar el gigantesco Buda Reclinado que mide 15 metros de alto y 46 de largo");
+                contentPlace.add(
+                                "A Bangkok también se la conoce como la Venecia de Asia ya que muchas zonas de la ciudad están atravesadas por canales navegables. El transporte fluvial es muy importante en esta ciudad y hay líneas de ferrys que funcionan como si fueran autobuses");
+                contentPlace.add(
+                                "Conocido como el Templo del Amanecer, es un templo budista de arquitectura Khmer que le da una estética muy diferente a la gran mayoría de templos de Bangkok");
+                contentPlace.add(
+                                "El Chinatown de Bangkok es uno de los más grandes de toda Asia, en consonancia con la importancia de su influyente comunidad china");
+                contentPlace.add(
+                                "Destaca por la cantidad de estatuas de Buda que flanquean sus galerías laterales (más de 150), por el enorme Buda que alberga su sala principal, y sobre todo por los murales que decoran los muros de esta sala");
+                // Maldivas
+                namePlace.add("Malé");
+                namePlace.add("Bikini-beach de Malé");
+                namePlace.add("Resorts de Maldivas");
+                namePlace.add("Bioluminiscencia");
+                namePlace.add("Buceo y snorkel");
+                namePlace.add("DhAngethi");
+                contentPlace.add(
+                                "Es una ciudad pintoresca, algo caótica, al más puro estilo Asia, pero si te gusta callejear estamos seguros de que le encontrarás un cierto encanto. Date una vuelta por el mercado del pescado, es un lugar súper colorido y sí, también lleno de olores");
+                contentPlace.add(
+                                "Date un chapuzón en su playa pública. ¿Sabías que es artificial? Sí, parece mentira pero la capital de Maldivas no tenía playas donde poder bañarse");
+                contentPlace.add(
+                                "Si no tienes problemas de presupuesto date un capricho alojándote en algún resort de lujo. No suelen ser baratos (al revés), pero son el lugar perfecto para vivir la vida loca");
+                contentPlace.add(
+                                "¿Sabías que si estás en el sitio idóneo y en la temporada correcta, puede que tengas la suerte de experimentar uno de los fenómenos naturales más asombrosos que hay: la bioluminiscencia?");
+                contentPlace.add(
+                                "Si quieres bucear… estás de suerte: Maldivas es uno de los mejores sitios al mundo para hacerlo. Podrás ver tortugas, tiburones, peces tropicales y ¡hasta tiburones ballena!");
+                contentPlace.add(
+                                "Es la mejor forma de ver como es realmente este país, tendrás la oportunidad de conocer a locales, y sus costumbres. Lejos de los focos y de los resorts");
+                // Atenas
+                namePlace.add("La Acrópolis");
+                namePlace.add("Barrio de Plaka");
+                namePlace.add("Barrio de Anafiotika");
+                namePlace.add("Templo de Zeus Olímpico");
+                namePlace.add("Barrio de Monastiraki");
+                namePlace.add("Ágora Antigua");
+                contentPlace.add(
+                                "Es el lugar más importante de Atenas. A pesar de encontrarse en una posición fácil de defender, esta ha sido saqueada y destruida numerosas veces a lo largo de su historia aunque gracias a las diferentes restauraciones te puedes hacer una idea bastante exacta de la importancia que tuvo durante la época clásica");
+                contentPlace.add(
+                                "Situado a los pies de la Acrópolis, el pintoresco barrio de Plaka es otro de los lugares que visitar en Atenas. Considerado como el barrio más antiguo de la ciudad, todavía conserva el encanto de la Grecia tradicional con calles estrechas, bonitas fachadas de edificios del siglo XIX");
+                contentPlace.add(
+                                "Enclavado dentro de Plaka, en la ladera de la Ácropolis, se encuentra el pintoresco barrio de Anafiótica, que enamora por su estrechas callejuelas rodeadas de pequeñas casas blancas y azules, que te trasladan por unos instantes a los bonitos pueblos de las islas griegas");
+                contentPlace.add(
+                                "El emperador romano Adriano fue el principal artífice de la finalización de la obra y en honor a él puedes ver la enorme puerta de Adriano de 20 metros de altura al lado del templo");
+                contentPlace.add(
+                                "Este barrio con influencias turcas, tiene en sus mercados en forma de zocos su gran atractivo, junto a varias iglesias ortodoxas y mezquitas, que te recomendamos no perderte en la visita");
+                contentPlace.add(
+                                "Fue el lugar de encuentro de los antiguos habitantes de la ciudad, en la que se mezclaba la actividad social y política con la comercial. Con cierto parecido al foro romano, en este recinto se encontraban desde edificios administrativos, mercados, entre otros");
+                // Londres
+                namePlace.add("Big Ben");
+                namePlace.add("Puente de la Torre");
+                namePlace.add("Hyde Park");
+                namePlace.add("Abadía de Westminster");
+                namePlace.add("Piccadilly Circus");
+                namePlace.add("Museo Británico");
+                contentPlace.add(
+                                "En el Palacio de Westminster encontrarás el Parlamento Británico y el Big Ben, su famosa Torre del Reloj. Esta torre de más de 100 metros de altura fue construida en 1858 en estilo gótico y destaca por los cuatro relojes situados en cada una de las caras");
+                contentPlace.add(
+                                "Construido en el 1894 sobre el río Támesis, es el puente más famoso que ver en Londres y su nombre se debe a la proximidad con la Torre de Londres, que está justo al lado");
+                contentPlace.add(
+                                "Es el parque más grande y famoso de la ciudad en el que encontrarás desde un enorme lago, varios monumentos, un jardín de rosas, los jardines y el Palacio de Kensington, hasta un sinfín de senderos para pasear o correr");
+                contentPlace.add(
+                                "Patrimonio de la Humanidad, es el templo religioso más antiguo y famoso que visitar en Londres. En ella se han celebrado desde el año 1066 casi todas las ceremonias de coronación de reyes, monarcas ingleses, bodas como la de los actuales príncipes y funerales como el de la princesa Diana de Gales");
+                contentPlace.add(
+                                "Es una pequeña plaza que hace de intersección de varias calles y el punto de encuentro más famoso entre locales y turistas que visitan la ciudad");
+                contentPlace.add(
+                                "Inaugurado en el año 1759, es uno de los museos más importantes del mundo y otro de los lugares que ver en Londres imprescindibles");
+                // Alpes Julianos
+                namePlace.add("Lago Bled");
+                namePlace.add("Cascada Pericnik");
+                namePlace.add("Cascada Kozjak");
+                namePlace.add("Sobre el río Soca");
+                namePlace.add("Parque nacional del Triglav");
+                namePlace.add("Mangart");
+                contentPlace.add(
+                                "Bled es la imagen del paraíso. Una perla turística de dimensiones mundiales en el margen del Parque Nacional Triglav que estuvo entre los nominados para las siete nuevas maravillas del mundo");
+                contentPlace.add(
+                                "Está situada en el espectacular valle de Vrata y cerca de la aldea de Mojstrana. La cascada consta de dos partes");
+                contentPlace.add(
+                                "Una de las cascadas con más encanto de Eslovenia La senda para llegar es fácil y corta pero la sorpresa final es mayúscula. Una grieta entre altas paredes deja colar la luz y el agua en un rincón de cuento");
+                contentPlace.add(
+                                "El valle del río Soča es un paraíso para unas experiencias activas al aire libre. Además, puedes disfrutar de excelente gastronomía y festivales de música, descubrir la historia del valle, o simplemente llenarte de energía en la naturaleza pintoresca");
+                contentPlace.add(
+                                "Es el único parque nacional de Eslovenia. Recibe su nombre por el monte Triglav, un símbolo nacional de Eslovenia. El Triglav, la montaña más alta del país con 2.864m");
+                contentPlace.add(
+                                "Situada en la frontera entre Italia y Eslovenia. Con una elevación de 2.679 metros, es el tercer pico más alto de Eslovenia, después de Triglav y Škrlatica");
+                // Santa Marta
+                namePlace.add("Parque bolívar");
+                namePlace.add("Parque de los novios");
+                namePlace.add("Parque Camellón Rodrigo de Bastidas");
+                namePlace.add("Parque Tayrona");
+                namePlace.add("Taganga");
+                namePlace.add("Minca");
+                contentPlace.add(
+                                "En el Parque Bolívar de Santa Marta podrás encontrar la estatua del Libertador Simón Bolívar. Esta plaza no siempre se llamó así. En sus inicios era conocida como la Plaza de Armas. Al inicio de la república, adoptó el nombre de Plaza de la Constitución");
+                contentPlace.add(
+                                "El Parque de los Novios es uno de los mejores lugares para visitar en Santa Marta debido a su gran ambiente. Es uno de los centros gastronómicos y turísticos de la ciudad");
+                contentPlace.add(
+                                "Pasear al atardecer por el Parque Camellón Rodrigo de Bastidas es una de las cosas más bonitas que hacer en Santa Marta, así que no te lo pierdas. Aquí también se encuentra una pequeña playa en la que refrescarse");
+                contentPlace.add(
+                                "Es un pequeño paraíso situado a aproximadamente 15 kilómetros del centro de Santa Marta. Si visitas este parque, estarás rodeado de selva, playas y lugares tan bonitos como el Cabo de San Juan");
+                contentPlace.add(
+                                "Taganga es un pequeño pueblo pesquero situado a unos 5 kilómetros del centro de Santa Marta que se ha convertido en un gran punto turístico de la ciudad y un paraíso para mochileros");
+                contentPlace.add(
+                                "Es una zona con frondosa vegetación de Sierra Nevada a la que los turistas llegan en busca de naturaleza, paz y desconexión");
+                // Singapur
+                namePlace.add("Gardens by the Bay");
+                namePlace.add("Little India");
+                namePlace.add("Marina Bay Sands");
+                namePlace.add("Parque Merlion");
+                namePlace.add("Hawkers");
+                namePlace.add("Clarke Quay");
+                contentPlace.add(
+                                "Estos enormes y modernos jardines, situados entre el mar y la parte trasera del hotel Marina Bay Sands, se diferencian del resto por las zonas donde se concentran los llamados superárboles");
+                contentPlace.add(
+                                "Uno de los barrios con más encanto. En esta zona uedes pasear entre bonitos edificios de colores, visitar templos hindús y budistas, perderte en centros comerciales llenos de tiendas además de probar la gastronomía india más deliciosa");
+                contentPlace.add(
+                                "Es el complejo de edificios más famoso de Singapur, en el que se incluye un hotel, el museo de Arte y Ciencia, dos teatros, varios restaurantes, un centro comercial y un enorme casino");
+                contentPlace.add(
+                                "Frente al Marina Bay Sands se encuentra una bahía, se encuentra una estatua de 9 metros de altura, mitad pez y mitad león, que representa el pasado pesquero de la ciudad y los orígenes de su fundador");
+                contentPlace.add(
+                                "Una de las mejores cosas que hacer en Singapur es probar la comida callejera de los hawkers. Estos mercados concentran numerosos puestos de comida a precios económicos donde los comensales comparten mesa y servicios");
+                contentPlace.add(
+                                "Clarke Quay fue un antiguo muelle en el que hace un tiempo se rehabilitaron sus almacenes hasta convertir la zona en otro de los lugares imprescindibles que ver en Singapur");
+                // FIN
+                int cont = 0;
+                int contCity = 0;
+                for (String place : namePlace) {
+                        Tourism tourism = new Tourism();
+                        tourism.setNameTourism(place);
+                        tourism.setContentTourism(contentPlace.get(cont));
+                        // AÑADIR LA IMAGEN
+                        cont++;
+                        tourism.setNameDestination(cities.get(contCity));
+                        tourism.setDestination(initedDestinations.get(contCity));
+                        ListTourism.add(tourism);
+                        if ((cont) % 6 == 0) {
+                                contCity++;
+                        }
+                }
+                return ListTourism;
         }
 
-        List<Tourism> initedTourisms = generateTourism();
-        for (Tourism tourism : initedTourisms) {
-            tourisms.save(tourism);
+        private List<Catering> generateCatering(List<Destination> initedDestinations) {
+                List<Catering> ListCatering = new ArrayList<>();
+                List<String> nameFood = new ArrayList<>();
+                List<String> contentFood = new ArrayList<>();
+                // Paris
+                // nameFood.add(" ");
+                nameFood.add("Ratatouille");
+                nameFood.add("Crepe");
+                nameFood.add("Cassoulet");
+                nameFood.add("Boeuf Bourguignon");
+                nameFood.add("Quiche Lorraine");
+                nameFood.add("Escargots");
+                // contentFood.add(" ");
+                contentFood.add(
+                                "El plato tiene su origen en la cocina provenzal de Niza; dichos orígenes se reflejan en el nombre: «Rata» significa «comida» y «touille», «remover». De modo que «ratatouille» significa «comida revuelta» que se cocina a fuego lento durante horas");
+                contentFood.add(
+                                "Las creps son originarias de la región de Bretaña, al oeste de Francia, en donde se llaman krampouezh; actualmente es un plato consumido a diario en todo el país, especialmente en el Chandeleur​ o Fiesta de la Candelaria, como parte de la tradición local");
+                contentFood.add(
+                                "Este plato, originario de Laguedoc-Roussillon, está compuesto de alubias blancas, muslos de pato y carne de cerdo (bajo diferentes formas). Las familias de campesinos lo han consumido durante siglos. Hoy, los franceses lo cocinan para las reuniones familiare");
+                contentFood.add(
+                                "Es un plato cuyo origen se sitúa en la región francesa de la Borgoña, a 100 km al sur de París. Es un estofado de buey, en esta zona es muy reconocido por su sabor");
+                contentFood.add(
+                                "Originaria de la región de Lorena, en Francia. En un principio, el relleno se componía sólo de huevos y crema de leche o nata fresca. En el siglo XIX, se le añadieron las pequeñas tiras o tacos de panceta magra, fresca o ahumada");
+                contentFood.add(
+                                "Son un plato tradicional de la gastronomía francesa. Consiste en unos caracoles cocidos y servidos en su concha rellena de mantequilla de ajo y perejil. Se sirve como entrante en Francia y en los restaurantes franceses");
+                // Bangkok
+                nameFood.add("PAD THAI");
+                nameFood.add("Som tam");
+                nameFood.add("Tod man pla");
+                nameFood.add("Pinchos morunos");
+                nameFood.add("Sticky rice mango");
+                nameFood.add("Yam Ma Khwa Yao");
+                contentFood.add(
+                                "Los noodles van acompañados de soja, vegetales o quizá algo de carne y frutos secos picados. Los ingredientes pueden variar dependiendo del lugar donde lo pidas pero seguro que te encanta en todas sus versiones");
+                contentFood.add(
+                                "Tras este nombre se esconde una ensalada de papaya verde que, además de una comida típica tailandesa, es una muy buena opción si te apetece comer algo ligero y fresco");
+                contentFood.add(
+                                "Son unos pastelitos de pescado con un poco de sabor a curry, cilantro y limón. Pueden servirlos solos o acompañados de un poco de cebolla");
+                contentFood.add(
+                                "Si también te apetece probar la comida rápida que se puede adquirir en los puestos callejeros de Bangkok, verás que los pinchos morunos son una comida típica estrella en las calles tailandesas");
+                contentFood.add(
+                                "El mango acompaña a un arroz compacto gracias a que se le ha añadido leche de coco. Puedes probar esta comida típica tanto en restaurantes como en los puestos callejeros para poder disfrutar de él mientras visitas la ciudad de Bangkok");
+                contentFood.add(
+                                "ensalada de sabor salado y dulce con un toque de picante leve. Se encuentra preparada con gamas secas, salsa de pescado, limón, huevos y berenjena, una preparación muy recomendable");
+                // Maldivas
+                nameFood.add("Bajiya");
+                nameFood.add("Curries");
+                nameFood.add("Huni Hakuru Folhi");
+                nameFood.add("Garudiya");
+                nameFood.add("Gulha");
+                nameFood.add("Kaashi Kiru");
+                contentFood.add(
+                                "Tentempié triangular que se fríe u hornea cuya masa es una mezcla de patata, guisantes, cilantro, lentejas que se rellena de pescado seco, hojas de curry, curry en polvo y cebolla");
+                contentFood.add(
+                                "Son los platos más básicos y populares del país. Varía según la región y también según sea elaborado por un cocinero u otro. El curry es un condimento básico en la cocina de las Maldivas");
+                contentFood.add("Torta de azúcar, harina y coco");
+                contentFood.add(
+                                "Es un caldo o sopa clara de pescado cocido a base de atún listado o de aleta amarilla. A veces se agrega cebolla, hojas de curry, chiles y lima para darle más sabor. Se sirve caliente con arroz cocido al vapor y limón");
+                contentFood.add(
+                                "Aperitivo. Especie de croquetas redondas cuya masa de harina de trigo o arroz está rellena de atún ahumado, enlatado o peces Maldive, coco, hojas de curry, cebolla, jengibre, jugó de limón y cúrcuma. Se reboza y se fríe");
+                contentFood.add("Leche de coco");
+                // Atenas
+                nameFood.add("Tzatziki");
+                nameFood.add("Spanakopita");
+                nameFood.add("Tyropita");
+                nameFood.add("Spanakotiropites");
+                nameFood.add("Saganaki");
+                nameFood.add("Dolmades");
+                contentFood.add(
+                                "Es una salsa griega de yogur hecha de pepino y ajo. Es un complemento ácido para las carnes asadas, el kebab (brochetas) y los faláfeles (croquetas).");
+                contentFood.add(
+                                "Es un pastel salado griego relleno de espinaca troceada, queso feta, cebolla o cebolleta, huevo y condimentos varios");
+                contentFood.add(
+                                "Es un pastel salado típico de la cocina griega elaborado con capas de masa filo y relleno con una mezcla de queso y huevo");
+                contentFood.add(
+                                "es una empanadilla típica de Grecia. Su principal ingrediente de relleno suele ser el queso feta. La empanada argentina es notablemente similar, aunque las dimensiones de la spanakotiropita son bastante menores (en este caso más semejantes a las gyoza japonesas).");
+                contentFood.add(
+                                "Es un sencillo y tradicional plato de la cocina griega, basado en queso feta frito en aceite de oliva");
+                contentFood.add(
+                                "Los dolmades pueden definirse como enrollados de hojas de parra rellenos una mezcla que suele contener carne, arroz, cebolla, piñones y uvas pasas.");
+                // Londres
+                nameFood.add("Desayuno inglés completo");
+                nameFood.add("Pastel y puré");
+                nameFood.add("Pescado y patatas fritas");
+                nameFood.add("Espaguetis a la boloñesa");
+                nameFood.add("Pollo Tikka Masala");
+                nameFood.add("Té de la tarde");
+                contentFood.add(
+                                "Reliquia culinaria de nuestras raíces anglosajonas, este plato se hizo popular entre todas las clases socioeconómicas durante la Revolución Industrial. Es un plato de mimos, perfecto para la mañana después de una gran noche de fiesta o para prepararse para un largo día de trabajo");
+                contentFood.add(
+                                "Originario del East End de Londres, el pie and mash es la piedra angular de la cocina obrera de la Revolución Industrial. Pasteles de carne, puré de patata esponjoso, licor");
+                contentFood.add(
+                                "La historia del pescado y las patatas fritas revela una sorprendente historia de origen. El pescado frito procede de los judíos exiliados de la Península Ibérica durante el siglo XIV, y las patatas fritas de los belgas francófonos. Lo único que se hizo fue emparejarlos por primera vez");
+                contentFood.add(
+                                "Después de que muchos cocineros y turistas italianos se hayan retorcido las manos, el 'spag bol' sigue siendo el epítome de la comida reconfortante inglesa");
+                contentFood.add(
+                                "El pollo tikka masala es el símbolo de la cocina anglo-india que se impuso en el país tras la época del Imperio Británico. Se rumorea que fue creado por una casa de curry de Glasgow");
+                contentFood.add(
+                                "Esta tradición tan británica tiene sus orígenes en el siglo XIX, pero sigue siendo un placer para los visitantes");
+                // Alpes Julianos
+                nameFood.add("Struklji");
+                nameFood.add("Zganci");
+                nameFood.add("Golaz");
+                nameFood.add("Ricet");
+                nameFood.add("Obara");
+                nameFood.add("Idrijski zlikrofi");
+                contentFood.add(
+                                "Pastel de harina relleno de requesón o crema de nueces. Se sirve caliente y existen más de 70 variedades, tanto dulces como saladas. Es uno de los platos típicos de Liubliana más recurrentes para picar entre horas.");
+                contentFood.add(
+                                "plato realizado a base de harina de maíz o de trigo sarraceno que normalmente acompaña los platos de carne estofada. Se trata de un plato difícil de encontrar en otro lugar del mundo, por lo que es motivo de orgullo entre los eslovenos");
+                contentFood.add(
+                                "Carne estofada con patatas y guisantes que se sirve en una gran hogaza de pan. Se trata de un plato bastante común en otros países de la zona, como Eslovaquia o Hungría.");
+                contentFood.add(
+                                "Sopa densa a base de judías perfecta para entrar en calor los fríos días de invierno. Aunque es una receta bastante simple, se trata de uno de los platos más sabrosos de la gastronomía de Liubliana");
+                contentFood.add("Sopa elaborada a base de carne, especialmente intestinos");
+                contentFood.add(
+                                "Pasta rellena al más puro estilo italiano, pero con toques autóctonos. Este plato parecido a los raviolis sirve como plato principal o guarnición y suele ir acompañado de chicharrones o de salsa de cordero");
+                // Santa Marta
+                nameFood.add("Arepa de huevo");
+                nameFood.add("Pescado frito con patacón");
+                nameFood.add("Ceviche de camarón");
+                nameFood.add("Arroz con coco");
+                nameFood.add("Cocada");
+                nameFood.add("Carimañola");
+                contentFood.add(
+                                "No pierdas de vista los mostradores que están a lo largo de toda la ciudad ofreciendo estas delicias fritas a base de maíz (dulces o saladas, según tu preferencia) con huevo entero");
+                contentFood.add(
+                                "Este plato, crujiente y sabroso, se prepara con cualquier tipo de pescado de mar o río, siendo los más usuales la mojarra, el pargo rojo y el sábalo");
+                contentFood.add(
+                                "Esta receta a base de pescado, cebolla morada, picante, sal, limón y salsa rosada (una mezcla de salsa de tómate con mayonesa), es otra preparación típica de la región");
+                contentFood.add(
+                                "Este manjar preparado a base de arroz blanco en leche de coco es el acompañante perfecto para un buen pescado con patacón y ensalada");
+                contentFood.add(
+                                "Las cocadas, preparadas a partir de la ralladura de coco y endulzadas con panela o azúcar, son dulces que venden en una gran variedad de sabores. Las puedes encontrar con sabor a limón, guayaba, piña y tamarindo");
+                contentFood.add(
+                                "Este manjar del caribe está hecho con masa de yuca, también llamada mandioca, la cual se tritura y amasa para luego ser rellenada con queso y carne blanca o roja");
+                // Singapur
+                nameFood.add("Crabs chilli or pepper");
+                nameFood.add("Raya a la barbacoa");
+                nameFood.add("Satay");
+                nameFood.add("Laksa");
+                nameFood.add("Durian");
+                nameFood.add("Biryani");
+                contentFood.add(
+                                "Los cangrejos con chile son los más comunes en los restaurantes y generalmente se comen junto con los mantous (bollos) fritos, que se usan para mojar en la exquisita salsa de chile");
+                contentFood.add(
+                                "Originaria de los puestos de venta ambulante, la raya a la barbacoa se ha convertido en un popular plato que se sirve en centros de comida (hawker centers)");
+                contentFood.add(
+                                "Los Satay son pinchos de carne asada servidos con arroz y salsa de cacahuetes. Hay satays de pollo, de cerdo, de ternera e incluso de cordero");
+                contentFood.add(
+                                "El mejor ejemplo de la buena combinación de sabores e ingredientes chinos y malayos en un solo tazón. Los fideos, a menudo de arroz, constituyen la base del laksa, seguido de una salsa o curry, algunos trozos de carne, y a menudo algunas verduras y hierbas");
+                contentFood.add(
+                                "En el sudeste asiático, algunos lo consideran el 'rey de las frutas' y otros la 'fruta más apestosa del mundo'. Los locales adoran tanto la carne que la convierten en postres, pasteles, tartas e incluso batidos");
+                contentFood.add(
+                                "Es un plato de influencia musulmana/india y usa un característico arroz de grano largo tipo basmati");
+                // FIN
+                int cont = 0;
+                int contCity = 0;
+                for (String food : nameFood) {
+                        // Destination destination = initedDestinations;
+                        Catering catering = new Catering();
+                        catering.setNameFood(food);
+                        catering.setContentFood(contentFood.get(cont));
+                        // catering.setDestination(initedDestinations.get(cont));
+                        cont++;
+                        catering.setImageFoodUrl("../assets/images/informacion/"+food+".jpg");
+                        try {
+                                setFoodImage(catering, catering.getImageFoodUrl());
+                        } catch (IOException e) {
+                                e.printStackTrace();
+                        }
+                        catering.setNameDestination(cities.get(contCity));
+                        catering.setDestination(initedDestinations.get(contCity));
+                        ListCatering.add(catering);
+                        if ((cont) % 6 == 0) {
+                                contCity++;
+                        }
+                }
+                return ListCatering;
         }
 
-        List<Newsletter> initedNewsletters = generateNewsleter();
-        for (Newsletter newsletter : initedNewsletters) {
-            newsletters.save(newsletter);
+        List<String> cities = new ArrayList<>();
+
+        private List<Destination> generateDestination() {
+                List<Destination> destinations = new ArrayList<>();
+                List<String> titleDestination = new ArrayList<>();
+                // cities.add("");
+                // titleDestination.add("");
+                cities.add("Paris");
+                titleDestination.add("La ciudad del amor");
+                cities.add("Bangkok");
+                titleDestination.add("El corazón vibrante de Tailandia");
+                cities.add("Maldivas");
+                titleDestination.add("Un oasis de belleza natural");
+                cities.add("Atenas");
+                titleDestination.add("Civilización antigua");
+                cities.add("Londres");
+                titleDestination.add("Vibrante, Histórica y Diversa");
+                cities.add("Alpes-Julianos");
+                titleDestination.add("Montañas salvajes y majestuosas");
+                cities.add("Santa-Marta");
+                titleDestination.add("Vibrante, Costera y Diversa");
+                cities.add("Singapur");
+                titleDestination.add("Moderna, Cosmopolita y Contraste");
+
+                for (int i = 0; i < cities.size(); i++) {
+                        Destination destination = new Destination();
+                        String city = cities.get(i);
+                        String title = titleDestination.get(i);
+                        destination.setNameDestination(city);
+                        destination.setContentDestination(title);
+                        destination.setPrice(100.99f);
+                        String file = destination.getNameDestination().replace(' ', '-');
+                        destination.setTitleImage("/static/assets/images/Cities/" + file + ".jpg");
+                        try {
+                                setCityImage(destination, destination.getTitleImage());
+                        } catch (IOException e) {
+                                e.printStackTrace();
+                        }
+                        destinations.add(destination);
+                }
+                return destinations;
         }
 
-        List<Review> initedReview = generateReviews(initedDestinations, initedUsers);
-        for (Review review : initedReview) {
-            reviews.save(review);
-        }
-        List<Purchase> initedPurchase = generatePurchase(initedHouses, initedUsers);
-        for (Purchase purchase: initedPurchase){
-            purchases.save(purchase);
+        private void setCityImage(Destination destination, String titleImage) throws IOException {
+                Resource image = new ClassPathResource(titleImage);
+                destination.setTitleImageFile(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
         }
 
-    }
-
-    private List<Purchase> generatePurchase(List<House> initedHouses, List<User> initedUsers) {
-        List<Purchase> purchases = new ArrayList<>();
-        for (User user: initedUsers){
-            Purchase purchase = new Purchase();
-            purchase.setUser(user);
-            purchase.setHouse(initedHouses.get((int) (Math.random() * 5) + 1));
-            purchases.add(purchase);
+        private void setFoodImage(Catering catering, String titleImage) throws IOException {
+                Resource image = new ClassPathResource(titleImage);
+                catering.setImageFoodFile(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
         }
-        return purchases;
-    }
 
-    private List<Newsletter> generateNewsleter() {
-        List<Newsletter> newsletter = new ArrayList<>();
-        for (int i = 1; i <= 4; i++) {
-            Newsletter news = new Newsletter();
-            news.setEmail(randomLastNameGenerator() + "1@gmail.com");
-            newsletter.add(news);
+        private List<House> generateHouse() {
+                List<House> houses = new ArrayList<>();
+                List<String> houseNames = new ArrayList<>();
+                // houseNames.add(" ");
+                houseNames.add("Ibis Paris Tour Eiffel Cambronne 15ème");
+                houseNames.add("Lamphuhouse Bangkok - SHA Extra Plus Certified");
+                houseNames.add("Rasdu View Inn");
+                houseNames.add("The Lop Athens Holidays Luxury Suites");
+                houseNames.add("Royal Lancaster London");
+                houseNames.add("Apartmaji Telemark Kranjska Gora");
+                houseNames.add("Hilton Santa Marta");
+                houseNames.add("Studio M Hotel");
+
+                for (int i = 0; i < houseNames.size(); i++) {
+                        House house = new House();
+                        String apartment = houseNames.get(i);
+                        house.setNameHouse(apartment);
+                        house.setContentHouse(
+                                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry.");
+                        house.setPrice(100.99f);
+                        house.setHostName(randomNameGenerator());
+                        String nameDestination = cities.get(i);
+                        house.setDestinationName(nameDestination);
+                        String file = nameDestination.replace(' ', '-');
+                        house.setHostImage("/static/assets/images/alojamiento/host" + file + "1.jpg");
+                        try {
+                                setHostImageB(house, house.getHostImage());
+                        } catch (IOException e) {
+                                e.printStackTrace();
+                        }
+                        List<String> auxList = new ArrayList<>();
+                        for (int j = 1; j <= 5; j++) {
+                                auxList.add("/static/assets/images/alojamiento/" + file + "1." + j + ".jpg");
+                        }
+                        house.setImagesHouse(auxList);
+
+                        try {
+                                setImagesHouseB(house, house.getImagesHouse());
+                        } catch (IOException e) {
+                                e.printStackTrace();
+                        }
+
+                        houses.add(house);
+                }
+                return houses;
         }
-        return newsletter;
-    }
 
-    private List<Tourism> generateTourism() {
-        List<Tourism> ListTourism = new ArrayList<>();
-        List<String> namePlace = new ArrayList<>();
-        List<String> contentPlace = new ArrayList<>();
-        // Paris
-        namePlace.add(" ");
-        namePlace.add("Torre Eiffel");
-        namePlace.add("Arco del Triunfo");
-        namePlace.add("Museo del Louvre");
-        namePlace.add("Catedral de Notre Dame");
-        namePlace.add("Basílica Sagrado Corazón");
-        namePlace.add("Disneyland París");
-        contentPlace.add(" ");
-        contentPlace.add(
-                "El edificio más alto del mundo por 41 años. Desde su construcción, hasta 1930, la Torre Eiffel fue el edificio más alto del mundo, gracias a sus 312 metros de altura");
-        contentPlace.add(
-                "Uno de los monumentos más famosos, probablemente se trate del arco de triunfo más célebre del mundo. Construido entre 1806 y 1836 por orden de Napoleón Bonaparte para conmemorar la victoria en la batalla de Austerlitz");
-        contentPlace.add(
-                "El Louvre es uno de los museos más grandes del mundo. En concreto, se ubica en el distrito 1, es decir, en pleno centro de París y recoge casi 35.000 objetos que abarcan desde la Prehistoria hasta el siglo XXI");
-        contentPlace.add(
-                "Es una catedral de culto católico, sede de la archidiócesis de París, la capital de Francia. Dedicada a la Virgen María, se sitúa en la pequeña isla de la Cité");
-        contentPlace.add(
-                "Su construcción fue decidida por la Asamblea Nacional en 1873, como un edificio religioso a perpetuidad en homenaje a la memoria de los ciudadanos que habían perdido la vida durante la Guerra franco-prusiana");
-        contentPlace.add(
-                "Disneyland París es un complejo de entretenimiento en Francia. Abarca dos parques temáticos, hoteles resort, Disney Nature Resorts, un complejo comercial, gastronómico y de entretenimiento, y un campo de golf");
-        // Bangkok
-        namePlace.add("Templo del Buda Esmeralda");
-        namePlace.add("Wat Pho");
-        namePlace.add("Los canales de Bangkok");
-        namePlace.add("Wat Arun");
-        namePlace.add("Chinatown");
-        namePlace.add("Wat Suthat");
-        contentPlace.add(
-                "Construido a finales del S.XVIII, fue la residencia real y la sede del gobierno durante 150 años, hasta mediados del S. XX. Está compuesto por un conjunto arquitectónico de más de 100 construcciones en el que se puede apreciar la belleza de la arquitectura tradicional tailandesa");
-        contentPlace.add(
-                "Wat Pho es uno de los templos más grandes y antiguos de Bangkok. Es muy conocido por albergar el gigantesco Buda Reclinado que mide 15 metros de alto y 46 de largo");
-        contentPlace.add(
-                "A Bangkok también se la conoce como la Venecia de Asia ya que muchas zonas de la ciudad están atravesadas por canales navegables. El transporte fluvial es muy importante en esta ciudad y hay líneas de ferrys que funcionan como si fueran autobuses");
-        contentPlace.add(
-                "Conocido como el Templo del Amanecer, es un templo budista de arquitectura Khmer que le da una estética muy diferente a la gran mayoría de templos de Bangkok");
-        contentPlace.add(
-                "El Chinatown de Bangkok es uno de los más grandes de toda Asia, en consonancia con la importancia de su influyente comunidad china");
-        contentPlace.add(
-                "Destaca por la cantidad de estatuas de Buda que flanquean sus galerías laterales (más de 150), por el enorme Buda que alberga su sala principal, y sobre todo por los murales que decoran los muros de esta sala");
-        // Maldivas
-        namePlace.add("Malé");
-        namePlace.add("Bikini-beach de Malé");
-        namePlace.add("Resorts de Maldivas");
-        namePlace.add("Bioluminiscencia");
-        namePlace.add("Buceo y snorkel");
-        namePlace.add("DhAngethi");
-        contentPlace.add(
-                "Es una ciudad pintoresca, algo caótica, al más puro estilo Asia, pero si te gusta callejear estamos seguros de que le encontrarás un cierto encanto. Date una vuelta por el mercado del pescado, es un lugar súper colorido y sí, también lleno de olores");
-        contentPlace.add(
-                "Date un chapuzón en su playa pública. ¿Sabías que es artificial? Sí, parece mentira pero la capital de Maldivas no tenía playas donde poder bañarse");
-        contentPlace.add(
-                "Si no tienes problemas de presupuesto date un capricho alojándote en algún resort de lujo. No suelen ser baratos (al revés), pero son el lugar perfecto para vivir la vida loca");
-        contentPlace.add(
-                "¿Sabías que si estás en el sitio idóneo y en la temporada correcta, puede que tengas la suerte de experimentar uno de los fenómenos naturales más asombrosos que hay: la bioluminiscencia?");
-        contentPlace.add(
-                "Si quieres bucear… estás de suerte: Maldivas es uno de los mejores sitios al mundo para hacerlo. Podrás ver tortugas, tiburones, peces tropicales y ¡hasta tiburones ballena!");
-        contentPlace.add(
-                "Es la mejor forma de ver como es realmente este país, tendrás la oportunidad de conocer a locales, y sus costumbres. Lejos de los focos y de los resorts");
-        // Atenas
-        namePlace.add("La Acrópolis");
-        namePlace.add("Barrio de Plaka");
-        namePlace.add("Barrio de Anafiotika");
-        namePlace.add("Templo de Zeus Olímpico");
-        namePlace.add("Barrio de Monastiraki");
-        namePlace.add("Ágora Antigua");
-        contentPlace.add(
-                "Es el lugar más importante de Atenas. A pesar de encontrarse en una posición fácil de defender, esta ha sido saqueada y destruida numerosas veces a lo largo de su historia aunque gracias a las diferentes restauraciones te puedes hacer una idea bastante exacta de la importancia que tuvo durante la época clásica");
-        contentPlace.add(
-                "Situado a los pies de la Acrópolis, el pintoresco barrio de Plaka es otro de los lugares que visitar en Atenas. Considerado como el barrio más antiguo de la ciudad, todavía conserva el encanto de la Grecia tradicional con calles estrechas, bonitas fachadas de edificios del siglo XIX");
-        contentPlace.add(
-                "Enclavado dentro de Plaka, en la ladera de la Ácropolis, se encuentra el pintoresco barrio de Anafiótica, que enamora por su estrechas callejuelas rodeadas de pequeñas casas blancas y azules, que te trasladan por unos instantes a los bonitos pueblos de las islas griegas");
-        contentPlace.add(
-                "El emperador romano Adriano fue el principal artífice de la finalización de la obra y en honor a él puedes ver la enorme puerta de Adriano de 20 metros de altura al lado del templo");
-        contentPlace.add(
-                "Este barrio con influencias turcas, tiene en sus mercados en forma de zocos su gran atractivo, junto a varias iglesias ortodoxas y mezquitas, que te recomendamos no perderte en la visita");
-        contentPlace.add(
-                "Fue el lugar de encuentro de los antiguos habitantes de la ciudad, en la que se mezclaba la actividad social y política con la comercial. Con cierto parecido al foro romano, en este recinto se encontraban desde edificios administrativos, mercados, entre otros");
-        // Londres
-        namePlace.add("Big Ben");
-        namePlace.add("Puente de la Torre");
-        namePlace.add("Hyde Park");
-        namePlace.add("Abadía de Westminster");
-        namePlace.add("Piccadilly Circus");
-        namePlace.add("Museo Británico");
-        contentPlace.add(
-                "En el Palacio de Westminster encontrarás el Parlamento Británico y el Big Ben, su famosa Torre del Reloj. Esta torre de más de 100 metros de altura fue construida en 1858 en estilo gótico y destaca por los cuatro relojes situados en cada una de las caras");
-        contentPlace.add(
-                "Construido en el 1894 sobre el río Támesis, es el puente más famoso que ver en Londres y su nombre se debe a la proximidad con la Torre de Londres, que está justo al lado");
-        contentPlace.add(
-                "Es el parque más grande y famoso de la ciudad en el que encontrarás desde un enorme lago, varios monumentos, un jardín de rosas, los jardines y el Palacio de Kensington, hasta un sinfín de senderos para pasear o correr");
-        contentPlace.add(
-                "Patrimonio de la Humanidad, es el templo religioso más antiguo y famoso que visitar en Londres. En ella se han celebrado desde el año 1066 casi todas las ceremonias de coronación de reyes, monarcas ingleses, bodas como la de los actuales príncipes y funerales como el de la princesa Diana de Gales");
-        contentPlace.add(
-                "Es una pequeña plaza que hace de intersección de varias calles y el punto de encuentro más famoso entre locales y turistas que visitan la ciudad");
-        contentPlace.add(
-                "Inaugurado en el año 1759, es uno de los museos más importantes del mundo y otro de los lugares que ver en Londres imprescindibles");
-        // Alpes Julianos
-        namePlace.add("Lago Bled");
-        namePlace.add("Cascada Pericnik");
-        namePlace.add("Cascada Kozjak");
-        namePlace.add("Sobre el río Soca");
-        namePlace.add("Parque nacional del Triglav");
-        namePlace.add("Mangart");
-        contentPlace.add(
-                "Bled es la imagen del paraíso. Una perla turística de dimensiones mundiales en el margen del Parque Nacional Triglav que estuvo entre los nominados para las siete nuevas maravillas del mundo");
-        contentPlace.add(
-                "Está situada en el espectacular valle de Vrata y cerca de la aldea de Mojstrana. La cascada consta de dos partes");
-        contentPlace.add(
-                "Una de las cascadas con más encanto de Eslovenia La senda para llegar es fácil y corta pero la sorpresa final es mayúscula. Una grieta entre altas paredes deja colar la luz y el agua en un rincón de cuento");
-        contentPlace.add(
-                "El valle del río Soča es un paraíso para unas experiencias activas al aire libre. Además, puedes disfrutar de excelente gastronomía y festivales de música, descubrir la historia del valle, o simplemente llenarte de energía en la naturaleza pintoresca");
-        contentPlace.add(
-                "Es el único parque nacional de Eslovenia. Recibe su nombre por el monte Triglav, un símbolo nacional de Eslovenia. El Triglav, la montaña más alta del país con 2.864m");
-        contentPlace.add(
-                "Situada en la frontera entre Italia y Eslovenia. Con una elevación de 2.679 metros, es el tercer pico más alto de Eslovenia, después de Triglav y Škrlatica");
-        // Santa Marta
-        namePlace.add("Parque bolívar");
-        namePlace.add("Parque de los novios");
-        namePlace.add("Parque Camellón Rodrigo de Bastidas");
-        namePlace.add("Parque Tayrona");
-        namePlace.add("Taganga");
-        namePlace.add("Minca");
-        contentPlace.add(
-                "En el Parque Bolívar de Santa Marta podrás encontrar la estatua del Libertador Simón Bolívar. Esta plaza no siempre se llamó así. En sus inicios era conocida como la Plaza de Armas. Al inicio de la república, adoptó el nombre de Plaza de la Constitución");
-        contentPlace.add(
-                "El Parque de los Novios es uno de los mejores lugares para visitar en Santa Marta debido a su gran ambiente. Es uno de los centros gastronómicos y turísticos de la ciudad");
-        contentPlace.add(
-                "Pasear al atardecer por el Parque Camellón Rodrigo de Bastidas es una de las cosas más bonitas que hacer en Santa Marta, así que no te lo pierdas. Aquí también se encuentra una pequeña playa en la que refrescarse");
-        contentPlace.add(
-                "Es un pequeño paraíso situado a aproximadamente 15 kilómetros del centro de Santa Marta. Si visitas este parque, estarás rodeado de selva, playas y lugares tan bonitos como el Cabo de San Juan");
-        contentPlace.add(
-                "Taganga es un pequeño pueblo pesquero situado a unos 5 kilómetros del centro de Santa Marta que se ha convertido en un gran punto turístico de la ciudad y un paraíso para mochileros");
-        contentPlace.add(
-                "Es una zona con frondosa vegetación de Sierra Nevada a la que los turistas llegan en busca de naturaleza, paz y desconexión");
-        // Singapur
-        namePlace.add("Gardens by the Bay");
-        namePlace.add("Little India");
-        namePlace.add("Marina Bay Sands");
-        namePlace.add("Parque Merlion");
-        namePlace.add("Hawkers");
-        namePlace.add("Clarke Quay");
-        contentPlace.add(
-                "Estos enormes y modernos jardines, situados entre el mar y la parte trasera del hotel Marina Bay Sands, se diferencian del resto por las zonas donde se concentran los llamados superárboles");
-        contentPlace.add(
-                "Uno de los barrios con más encanto. En esta zona uedes pasear entre bonitos edificios de colores, visitar templos hindús y budistas, perderte en centros comerciales llenos de tiendas además de probar la gastronomía india más deliciosa");
-        contentPlace.add(
-                "Es el complejo de edificios más famoso de Singapur, en el que se incluye un hotel, el museo de Arte y Ciencia, dos teatros, varios restaurantes, un centro comercial y un enorme casino");
-        contentPlace.add(
-                "Frente al Marina Bay Sands se encuentra una bahía, se encuentra una estatua de 9 metros de altura, mitad pez y mitad león, que representa el pasado pesquero de la ciudad y los orígenes de su fundador");
-        contentPlace.add(
-                "Una de las mejores cosas que hacer en Singapur es probar la comida callejera de los hawkers. Estos mercados concentran numerosos puestos de comida a precios económicos donde los comensales comparten mesa y servicios");
-        contentPlace.add(
-                "Clarke Quay fue un antiguo muelle en el que hace un tiempo se rehabilitaron sus almacenes hasta convertir la zona en otro de los lugares imprescindibles que ver en Singapur");
-        // FIN
-        int cont = 0;
-        int contCity = 1;
-        for (String place : namePlace) {
-            Tourism tourism = new Tourism();
-            tourism.setNameTourism(place);
-            tourism.setContentTourism(contentPlace.get(cont));
-
-            cont++;
-            tourism.setNameDestination(cities.get(contCity));
-            ListTourism.add(tourism);
-            if (cont == 7 || (cont > 1 && (cont - 1) % 6 == 0)) {
-                contCity++;
-            }
+        private void setImagesHouseB(House house, List<String> imagesHouse) throws IOException {
+                List<Blob> auxBlob = new ArrayList<>();
+                for (String str : imagesHouse) {
+                        Resource image = new ClassPathResource(str);
+                        auxBlob.add(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
+                        house.setImagesHouseFile(auxBlob);
+                }
         }
-        return ListTourism;
-    }
 
-    private List<Catering> generateCatering() {
-        List<Catering> ListCatering = new ArrayList<>();
-        List<String> nameFood = new ArrayList<>();
-        List<String> contentFood = new ArrayList<>();
-        // Paris
-        nameFood.add(" ");
-        nameFood.add("Ratatouille");
-        nameFood.add("Crepe");
-        nameFood.add("Cassoulet");
-        nameFood.add("Boeuf Bourguignon");
-        nameFood.add("Quiche Lorraine");
-        nameFood.add("Escargots");
-        contentFood.add(" ");
-        contentFood.add(
-                "El plato tiene su origen en la cocina provenzal de Niza; dichos orígenes se reflejan en el nombre: «Rata» significa «comida» y «touille», «remover». De modo que «ratatouille» significa «comida revuelta» que se cocina a fuego lento durante horas");
-        contentFood.add(
-                "Las creps son originarias de la región de Bretaña, al oeste de Francia, en donde se llaman krampouezh; actualmente es un plato consumido a diario en todo el país, especialmente en el Chandeleur​ o Fiesta de la Candelaria, como parte de la tradición local");
-        contentFood.add(
-                "Este plato, originario de Laguedoc-Roussillon, está compuesto de alubias blancas, muslos de pato y carne de cerdo (bajo diferentes formas). Las familias de campesinos lo han consumido durante siglos. Hoy, los franceses lo cocinan para las reuniones familiare");
-        contentFood.add(
-                "Es un plato cuyo origen se sitúa en la región francesa de la Borgoña, a 100 km al sur de París. Es un estofado de buey, en esta zona es muy reconocido por su sabor");
-        contentFood.add(
-                "Originaria de la región de Lorena, en Francia. En un principio, el relleno se componía sólo de huevos y crema de leche o nata fresca. En el siglo XIX, se le añadieron las pequeñas tiras o tacos de panceta magra, fresca o ahumada");
-        contentFood.add(
-                "Son un plato tradicional de la gastronomía francesa. Consiste en unos caracoles cocidos y servidos en su concha rellena de mantequilla de ajo y perejil. Se sirve como entrante en Francia y en los restaurantes franceses");
-        // Bangkok
-        nameFood.add("PAD THAI");
-        nameFood.add("Som tam");
-        nameFood.add("Tod man pla");
-        nameFood.add("Pinchos morunos");
-        nameFood.add("Sticky rice mango");
-        nameFood.add("Yam Ma Khwa Yao");
-        contentFood.add(
-                "Los noodles van acompañados de soja, vegetales o quizá algo de carne y frutos secos picados. Los ingredientes pueden variar dependiendo del lugar donde lo pidas pero seguro que te encanta en todas sus versiones");
-        contentFood.add(
-                "Tras este nombre se esconde una ensalada de papaya verde que, además de una comida típica tailandesa, es una muy buena opción si te apetece comer algo ligero y fresco");
-        contentFood.add(
-                "Son unos pastelitos de pescado con un poco de sabor a curry, cilantro y limón. Pueden servirlos solos o acompañados de un poco de cebolla");
-        contentFood.add(
-                "Si también te apetece probar la comida rápida que se puede adquirir en los puestos callejeros de Bangkok, verás que los pinchos morunos son una comida típica estrella en las calles tailandesas");
-        contentFood.add(
-                "El mango acompaña a un arroz compacto gracias a que se le ha añadido leche de coco. Puedes probar esta comida típica tanto en restaurantes como en los puestos callejeros para poder disfrutar de él mientras visitas la ciudad de Bangkok");
-        contentFood.add(
-                "ensalada de sabor salado y dulce con un toque de picante leve. Se encuentra preparada con gamas secas, salsa de pescado, limón, huevos y berenjena, una preparación muy recomendable");
-        // Maldivas
-        nameFood.add("Bajiya");
-        nameFood.add("Curries");
-        nameFood.add("Huni Hakuru Folhi");
-        nameFood.add("Garudiya");
-        nameFood.add("Gulha");
-        nameFood.add("Kaashi Kiru");
-        contentFood.add(
-                "Tentempié triangular que se fríe u hornea cuya masa es una mezcla de patata, guisantes, cilantro, lentejas que se rellena de pescado seco, hojas de curry, curry en polvo y cebolla");
-        contentFood.add(
-                "Son los platos más básicos y populares del país. Varía según la región y también según sea elaborado por un cocinero u otro. El curry es un condimento básico en la cocina de las Maldivas");
-        contentFood.add("Torta de azúcar, harina y coco");
-        contentFood.add(
-                "Es un caldo o sopa clara de pescado cocido a base de atún listado o de aleta amarilla. A veces se agrega cebolla, hojas de curry, chiles y lima para darle más sabor. Se sirve caliente con arroz cocido al vapor y limón");
-        contentFood.add(
-                "Aperitivo. Especie de croquetas redondas cuya masa de harina de trigo o arroz está rellena de atún ahumado, enlatado o peces Maldive, coco, hojas de curry, cebolla, jengibre, jugó de limón y cúrcuma. Se reboza y se fríe");
-        contentFood.add("Leche de coco");
-        // Atenas
-        nameFood.add("Tzatziki");
-        nameFood.add("Spanakopita");
-        nameFood.add("Tyropita");
-        nameFood.add("Spanakotiropites");
-        nameFood.add("Saganaki");
-        nameFood.add("Dolmades");
-        contentFood.add(
-                "Es una salsa griega de yogur hecha de pepino y ajo. Es un complemento ácido para las carnes asadas, el kebab (brochetas) y los faláfeles (croquetas).");
-        contentFood.add(
-                "Es un pastel salado griego relleno de espinaca troceada, queso feta, cebolla o cebolleta, huevo y condimentos varios");
-        contentFood.add(
-                "Es un pastel salado típico de la cocina griega elaborado con capas de masa filo y relleno con una mezcla de queso y huevo");
-        contentFood.add(
-                "es una empanadilla típica de Grecia. Su principal ingrediente de relleno suele ser el queso feta. La empanada argentina es notablemente similar, aunque las dimensiones de la spanakotiropita son bastante menores (en este caso más semejantes a las gyoza japonesas).");
-        contentFood.add(
-                "Es un sencillo y tradicional plato de la cocina griega, basado en queso feta frito en aceite de oliva");
-        contentFood.add(
-                "Los dolmades pueden definirse como enrollados de hojas de parra rellenos una mezcla que suele contener carne, arroz, cebolla, piñones y uvas pasas.");
-        // Londres
-        nameFood.add("Desayuno inglés completo");
-        nameFood.add("Pastel y puré");
-        nameFood.add("Pescado y patatas fritas");
-        nameFood.add("Espaguetis a la boloñesa");
-        nameFood.add("Pollo Tikka Masala");
-        nameFood.add("Té de la tarde");
-        contentFood.add(
-                "Reliquia culinaria de nuestras raíces anglosajonas, este plato se hizo popular entre todas las clases socioeconómicas durante la Revolución Industrial. Es un plato de mimos, perfecto para la mañana después de una gran noche de fiesta o para prepararse para un largo día de trabajo");
-        contentFood.add(
-                "Originario del East End de Londres, el pie and mash es la piedra angular de la cocina obrera de la Revolución Industrial. Pasteles de carne, puré de patata esponjoso, licor");
-        contentFood.add(
-                "La historia del pescado y las patatas fritas revela una sorprendente historia de origen. El pescado frito procede de los judíos exiliados de la Península Ibérica durante el siglo XIV, y las patatas fritas de los belgas francófonos. Lo único que se hizo fue emparejarlos por primera vez");
-        contentFood.add(
-                "Después de que muchos cocineros y turistas italianos se hayan retorcido las manos, el 'spag bol' sigue siendo el epítome de la comida reconfortante inglesa");
-        contentFood.add(
-                "El pollo tikka masala es el símbolo de la cocina anglo-india que se impuso en el país tras la época del Imperio Británico. Se rumorea que fue creado por una casa de curry de Glasgow");
-        contentFood.add(
-                "Esta tradición tan británica tiene sus orígenes en el siglo XIX, pero sigue siendo un placer para los visitantes");
-        // Alpes Julianos
-        nameFood.add("Štruklji");
-        nameFood.add("Žganci");
-        nameFood.add("Golaž");
-        nameFood.add("Ričet");
-        nameFood.add("Obara");
-        nameFood.add("Idrijski žlikrofi");
-        contentFood.add(
-                "Pastel de harina relleno de requesón o crema de nueces. Se sirve caliente y existen más de 70 variedades, tanto dulces como saladas. Es uno de los platos típicos de Liubliana más recurrentes para picar entre horas.");
-        contentFood.add(
-                "plato realizado a base de harina de maíz o de trigo sarraceno que normalmente acompaña los platos de carne estofada. Se trata de un plato difícil de encontrar en otro lugar del mundo, por lo que es motivo de orgullo entre los eslovenos");
-        contentFood.add(
-                "Carne estofada con patatas y guisantes que se sirve en una gran hogaza de pan. Se trata de un plato bastante común en otros países de la zona, como Eslovaquia o Hungría.");
-        contentFood.add(
-                "Sopa densa a base de judías perfecta para entrar en calor los fríos días de invierno. Aunque es una receta bastante simple, se trata de uno de los platos más sabrosos de la gastronomía de Liubliana");
-        contentFood.add("Sopa elaborada a base de carne, especialmente intestinos");
-        contentFood.add(
-                "Pasta rellena al más puro estilo italiano, pero con toques autóctonos. Este plato parecido a los raviolis sirve como plato principal o guarnición y suele ir acompañado de chicharrones o de salsa de cordero");
-        // Santa Marta
-        nameFood.add("Arepa de huevo");
-        nameFood.add("Pescado frito con patacón");
-        nameFood.add("Ceviche de camarón");
-        nameFood.add("Arroz con coco");
-        nameFood.add("Cocada");
-        nameFood.add("Carimañola");
-        contentFood.add(
-                "No pierdas de vista los mostradores que están a lo largo de toda la ciudad ofreciendo estas delicias fritas a base de maíz (dulces o saladas, según tu preferencia) con huevo entero");
-        contentFood.add(
-                "Este plato, crujiente y sabroso, se prepara con cualquier tipo de pescado de mar o río, siendo los más usuales la mojarra, el pargo rojo y el sábalo");
-        contentFood.add(
-                "Esta receta a base de pescado, cebolla morada, picante, sal, limón y salsa rosada (una mezcla de salsa de tómate con mayonesa), es otra preparación típica de la región");
-        contentFood.add(
-                "Este manjar preparado a base de arroz blanco en leche de coco es el acompañante perfecto para un buen pescado con patacón y ensalada");
-        contentFood.add(
-                "Las cocadas, preparadas a partir de la ralladura de coco y endulzadas con panela o azúcar, son dulces que venden en una gran variedad de sabores. Las puedes encontrar con sabor a limón, guayaba, piña y tamarindo");
-        contentFood.add(
-                "Este manjar del caribe está hecho con masa de yuca, también llamada mandioca, la cual se tritura y amasa para luego ser rellenada con queso y carne blanca o roja");
-        // Singapur
-        nameFood.add("Crabs chilli or pepper");
-        nameFood.add("Raya a la barbacoa");
-        nameFood.add("Satay");
-        nameFood.add("Laksa");
-        nameFood.add("Durian");
-        nameFood.add("Biryani");
-        contentFood.add(
-                "Los cangrejos con chile son los más comunes en los restaurantes y generalmente se comen junto con los mantous (bollos) fritos, que se usan para mojar en la exquisita salsa de chile");
-        contentFood.add(
-                "Originaria de los puestos de venta ambulante, la raya a la barbacoa se ha convertido en un popular plato que se sirve en centros de comida (hawker centers)");
-        contentFood.add(
-                "Los Satay son pinchos de carne asada servidos con arroz y salsa de cacahuetes. Hay satays de pollo, de cerdo, de ternera e incluso de cordero");
-        contentFood.add(
-                "El mejor ejemplo de la buena combinación de sabores e ingredientes chinos y malayos en un solo tazón. Los fideos, a menudo de arroz, constituyen la base del laksa, seguido de una salsa o curry, algunos trozos de carne, y a menudo algunas verduras y hierbas");
-        contentFood.add(
-                "En el sudeste asiático, algunos lo consideran el 'rey de las frutas' y otros la 'fruta más apestosa del mundo'. Los locales adoran tanto la carne que la convierten en postres, pasteles, tartas e incluso batidos");
-        contentFood.add(
-                "Es un plato de influencia musulmana/india y usa un característico arroz de grano largo tipo basmati");
-        // FIN
-        int cont = 0;
-        int contCity = 1;
-        for (String food : nameFood) {
-            Catering catering = new Catering();
-            catering.setNameFood(food);
-            catering.setContentFood(contentFood.get(cont));
-            cont++;
-            catering.setNameDestination(cities.get(contCity));
-            ListCatering.add(catering);
-            if (cont == 7 || (cont > 1 && (cont - 1) % 6 == 0)) {
-                contCity++;
-            }
+        private void setHostImageB(House house, String hostImage) throws IOException {
+                Resource image = new ClassPathResource(hostImage);
+                house.setHostImageFile(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
         }
-        return ListCatering;
-    }
 
-    List<String> cities = new ArrayList<>();
+        private List<User> generateUser() {
+                List<User> users = new ArrayList<>();
 
-    private List<Destination> generateDestination() {
-        List<Destination> destinations = new ArrayList<>();
-        List<String> titleDestination = new ArrayList<>();
-        cities.add("");
-        titleDestination.add("");
-        cities.add("Paris");
-        titleDestination.add("La ciudad del amor");
-        cities.add("Bangkok");
-        titleDestination.add("El corazón vibrante de Tailandia");
-        cities.add("Maldivas");
-        titleDestination.add("Un oasis de belleza natural");
-        cities.add("Atenas");
-        titleDestination.add("Civilización antigua");
-        cities.add("Londres");
-        titleDestination.add("Vibrante, Histórica y Diversa");
-        cities.add("Alpes-Julianos");
-        titleDestination.add("Montañas salvajes y majestuosas");
-        cities.add("Santa-Marta");
-        titleDestination.add("Vibrante, Costera y Diversa");
-        cities.add("Singapur");
-        titleDestination.add("Moderna, Cosmopolita y Contraste");
+                for (int i = 1; i <= 5; i++) {
+                        User user = new User();
+                        String name = randomNameGenerator();
+                        String lastName = randomLastNameGenerator();
+                        user.setName(name);
+                        user.setLastName(lastName);
+                        user.setEmail(lastName + i + "@gmail.com");
+                        user.setEncodedPassword(passwordEncoder.encode("12345"));
+                        // user.setEncodedPassword("12345");
+                        user.setRoles("USER");
+                        user.setProfileAvatar("/static/assets/images/c1.jpg");
+                        try {
+                                setProfileAvatarContent(user, user.getProfileAvatar());
+                        } catch (IOException e) {
+                                e.printStackTrace();
+                        }
+                        users.add(user);
+                }
+                for (int i = 1; i <= 2; i++) {
+                        User user = new User();
+                        String name = "admin" + i;
+                        String lastName = "";
+                        user.setName(name);
+                        user.setLastName(lastName);
+                        user.setEmail(name + "@gmail.com");
+                        user.setEncodedPassword(passwordEncoder.encode("123456"));
+                        // user.setEncodedPassword("123456");
+                        user.setRoles("USER", "ADMIN");
+                        user.setProfileAvatar("/static/assets/images/c1.jpg");
+                        try {
+                                setProfileAvatarContent(user, user.getProfileAvatar());
+                        } catch (IOException e) {
+                                e.printStackTrace();
+                        }
+                        users.add(user);
+                }
+                return users;
 
-        for (int i = 1; i < cities.size(); i++) {
-            Destination destination = new Destination();
-            String city = cities.get(i);
-            String title = titleDestination.get(i);
-            destination.setNameDestination(city);
-            destination.setContentDestination(title);
-            destination.setPrice(100.99f);
-            String file = destination.getNameDestination().replace(' ', '-');
-            destination.setTitleImage("/static/assets/images/Cities/" + file + ".jpg");
-            try {
-                setCityImage(destination, destination.getTitleImage());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            destinations.add(destination);
         }
-        return destinations;
-    }
 
-    private void setCityImage(Destination destination, String titleImage) throws IOException {
-        Resource image = new ClassPathResource(titleImage);
-        destination.setTitleImageFile(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
-    }
-
-    private List<House> generateHouse() {
-        List<House> houses = new ArrayList<>();
-        List<String> houseNames = new ArrayList<>();
-        houseNames.add(" ");
-        houseNames.add("Ibis Paris Tour Eiffel Cambronne 15ème");
-        houseNames.add("Lamphuhouse Bangkok - SHA Extra Plus Certified");
-        houseNames.add("Rasdu View Inn");
-        houseNames.add("The Lop Athens Holidays Luxury Suites");
-        houseNames.add("Royal Lancaster London");
-        houseNames.add("Apartmaji Telemark Kranjska Gora");
-        houseNames.add("Hilton Santa Marta");
-        houseNames.add("Studio M Hotel");
-
-        for (int i = 1; i < houseNames.size(); i++) {
-            House house = new House();
-            String apartment = houseNames.get(i);
-            house.setNameHouse(apartment);
-            house.setContentHouse("Lorem Ipsum is simply dummy text of the printing and typesetting industry.");
-            house.setPrice(100.99f);
-            house.setHostName(randomNameGenerator());
-            String nameDestination = cities.get(i);
-            house.setDestinationName(nameDestination);
-            String file = nameDestination.replace(' ', '-');
-            house.setHostImage("/static/assets/images/alojamiento/host" + file + "1.jpg");
-            try {
-                setHostImageB(house, house.getHostImage());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            List<String> auxList = new ArrayList<>();
-            for (int j = 1; j <= 5; j++) {
-                auxList.add("/static/assets/images/alojamiento/" + file + "1." + j + ".jpg");
-            }
-            house.setImagesHouse(auxList);
-
-            try {
-                setImagesHouseB(house, house.getImagesHouse());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            houses.add(house);
+        private void setProfileAvatarContent(User user, String profileAvatar) throws IOException {
+                Resource image = new ClassPathResource(profileAvatar);
+                user.setProfileAvatarFile(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
         }
-        return houses;
-    }
 
-    private void setImagesHouseB(House house, List<String> imagesHouse) throws IOException {
-        List<Blob> auxBlob = new ArrayList<>();
-        for (String str : imagesHouse) {
-            Resource image = new ClassPathResource(str);
-            auxBlob.add(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
-            house.setImagesHouseFile(auxBlob);
+        private String randomNameGenerator() {
+                List<String> names = new ArrayList<>();
+                names.add("Sergio");
+                names.add("Carlos");
+                names.add("Adrian");
+                names.add("Jorge");
+                names.add("Shu");
+                names.add("David");
+                names.add("Elena");
+                names.add("Paula");
+                names.add("Pedro");
+                names.add("Diego");
+                names.add("Alejandro");
+                names.add("Maria");
+
+                Random random = new Random();
+                int index = random.nextInt(names.size());
+                String randomName = names.get(index);
+
+                return randomName;
         }
-    }
 
-    private void setHostImageB(House house, String hostImage) throws IOException {
-        Resource image = new ClassPathResource(hostImage);
-        house.setHostImageFile(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
-    }
+        private String randomLastNameGenerator() {
+                List<String> LastNames = new ArrayList<>();
+                LastNames.add("Cuadros");
+                LastNames.add("Perez");
+                LastNames.add("Pedroche");
+                LastNames.add("Francisco");
+                LastNames.add("Ye");
+                LastNames.add("Moreno");
+                LastNames.add("Diez");
+                LastNames.add("Corda");
+                LastNames.add("Rodriguez");
+                LastNames.add("Torres");
+                LastNames.add("Torequin");
+                LastNames.add("Flores");
 
-    private List<User> generateUser() {
-        List<User> users = new ArrayList<>();
+                Random random = new Random();
+                int index = random.nextInt(LastNames.size());
+                String randomName = LastNames.get(index);
 
-        for (int i = 1; i <= 5; i++) {
-            User user = new User();
-            String name = randomNameGenerator();
-            String lastName = randomLastNameGenerator();
-            user.setName(name);
-            user.setLastName(lastName);
-            user.setEmail(lastName + i + "@gmail.com");
-            user.setEncodedPassword(passwordEncoder.encode("12345"));
-        //     user.setEncodedPassword("12345");
-            user.setRoles("USER");
-            user.setProfileAvatar("/static/assets/images/c1.jpg");
-            try {
-                setProfileAvatarContent(user, user.getProfileAvatar());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            users.add(user);
+                return randomName;
         }
-        for (int i = 1; i <= 2; i++) {
-            User user = new User();
-            String name = "admin" + i;
-            String lastName = "";
-            user.setName(name);
-            user.setLastName(lastName);
-            user.setEmail(name + "@gmail.com");
-            user.setEncodedPassword(passwordEncoder.encode("123456"));
-        //     user.setEncodedPassword("123456");
-            user.setRoles("USER", "ADMIN");
-            user.setProfileAvatar("/static/assets/images/c1.jpg");
-            try {
-                setProfileAvatarContent(user, user.getProfileAvatar());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            users.add(user);
-        }
-        return users;
-
-    }
 
     private void setProfileAvatarContent(User user, String profileAvatar) throws IOException {
         Resource image = new ClassPathResource(profileAvatar);
@@ -690,8 +755,4 @@ public class InitDatabase {
             return reviews;
     }
 
-
-
-    
-    
 }
