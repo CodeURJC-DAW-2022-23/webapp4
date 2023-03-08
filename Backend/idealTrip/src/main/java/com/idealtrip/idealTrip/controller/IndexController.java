@@ -42,16 +42,28 @@ public class IndexController {
         }
     }
 
+  // @GetMapping("/index")
+  // public String index(Model model) {
+  //   return "index";
+  // }
+
+
   @GetMapping("/index")
-  public String index(Model model) {
-    return "index";
-  }
+    public String searchCountries(Model model){
+        model.addAttribute("services", destinationService.findAll());
+        return "index";
+    }
+
+    // @GetMapping("/")
+    // public String searchCountriesBar(Model model){
+    //     model.addAttribute("services", destinationService.findAll());
+    //     return "/";
+    // }
 
   // @GetMapping("/index")
   // public String showDestinations(Model model){
   // // model.addAttribute("destinations", destinationService.findAll());
   // return "index";
   // }
-
 
 }

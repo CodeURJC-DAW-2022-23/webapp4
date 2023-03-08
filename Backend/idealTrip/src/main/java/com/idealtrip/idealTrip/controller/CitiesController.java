@@ -99,6 +99,15 @@ public class CitiesController {
 		}
 	}
 
+  // @GetMapping("/information8")
+  // public String parisSearch(){
+  //   return "/8/information8";  
+  // }
+
+  
+
+
+
   
   
 
