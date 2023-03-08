@@ -43,8 +43,8 @@ public class Destination {
     @OneToMany(mappedBy = "destination", cascade = CascadeType.ALL)
     private List<Catering> catering;
 
-    @OneToOne(mappedBy = "destination", cascade = CascadeType.ALL)
-    private Tourism tourism;
+    @OneToMany(mappedBy = "destination", cascade = CascadeType.ALL)
+    private List<Tourism> tourism;
 
     private float price;
 

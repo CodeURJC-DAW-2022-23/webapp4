@@ -81,7 +81,7 @@ public class InitDatabase {
                         caterings.save(catering);
                 }
 
-                List<Tourism> initedTourisms = generateTourism();
+                List<Tourism> initedTourisms = generateTourism(initedDestinations);
                 for (Tourism tourism : initedTourisms) {
                         tourisms.save(tourism);
                 }
@@ -123,7 +123,7 @@ public class InitDatabase {
                 return newsletter;
         }
 
-        private List<Tourism> generateTourism() {
+        private List<Tourism> generateTourism(List<Destination> initedDestinations) {
                 List<Tourism> ListTourism = new ArrayList<>();
                 List<String> namePlace = new ArrayList<>();
                 List<String> contentPlace = new ArrayList<>();
@@ -288,9 +288,10 @@ public class InitDatabase {
                         Tourism tourism = new Tourism();
                         tourism.setNameTourism(place);
                         tourism.setContentTourism(contentPlace.get(cont));
-
+                        // AÑADIR LA IMAGEN
                         cont++;
                         tourism.setNameDestination(cities.get(contCity));
+                        tourism.setDestination(initedDestinations.get(contCity));
                         ListTourism.add(tourism);
                         if ((cont) % 6 == 0) {
                                 contCity++;
@@ -464,6 +465,12 @@ public class InitDatabase {
                         catering.setContentFood(contentFood.get(cont));
                         // catering.setDestination(initedDestinations.get(cont));
                         cont++;
+                        catering.setImageFoodUrl("../assets/images/informacion/"+food+".jpg");
+                        try {
+                                setFoodImage(catering, catering.getImageFoodUrl());
+                        } catch (IOException e) {
+                                e.printStackTrace();
+                        }
                         catering.setNameDestination(cities.get(contCity));
                         catering.setDestination(initedDestinations.get(contCity));
                         ListCatering.add(catering);
@@ -520,6 +527,11 @@ public class InitDatabase {
         private void setCityImage(Destination destination, String titleImage) throws IOException {
                 Resource image = new ClassPathResource(titleImage);
                 destination.setTitleImageFile(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
+        }
+
+        private void setFoodImage(Catering catering, String titleImage) throws IOException {
+                Resource image = new ClassPathResource(titleImage);
+                catering.setImageFoodFile(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
         }
 
         private List<House> generateHouse() {
