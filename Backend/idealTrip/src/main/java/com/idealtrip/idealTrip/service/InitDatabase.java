@@ -292,12 +292,24 @@ public class InitDatabase {
                         cont++;
                         tourism.setNameDestination(cities.get(contCity));
                         tourism.setDestination(initedDestinations.get(contCity));
+                        tourism.setImageTourismURL("/static/assets/images/informacion/"+place+".jpg");
+                        
+                        try {
+                                setTourismImageB(tourism, tourism.getImageTourismURL());
+                        } catch (IOException e) {
+                                e.printStackTrace();
+                        }
                         ListTourism.add(tourism);
                         if ((cont) % 6 == 0) {
                                 contCity++;
                         }
                 }
                 return ListTourism;
+        }
+
+        private void setTourismImageB(Tourism tourism, String titleImage) throws IOException {
+                Resource image = new ClassPathResource(titleImage);
+                tourism.setImageTourismFile(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
         }
 
         private List<Catering> generateCatering(List<Destination> initedDestinations) {
@@ -465,7 +477,7 @@ public class InitDatabase {
                         catering.setContentFood(contentFood.get(cont));
                         // catering.setDestination(initedDestinations.get(cont));
                         cont++;
-                        catering.setImageFoodUrl("../assets/images/informacion/"+food+".jpg");
+                        catering.setImageFoodUrl("/static/assets/images/informacion/" + food + ".jpg");
                         try {
                                 setFoodImage(catering, catering.getImageFoodUrl());
                         } catch (IOException e) {
@@ -687,72 +699,23 @@ public class InitDatabase {
                 return randomName;
         }
 
-    private void setProfileAvatarContent(User user, String profileAvatar) throws IOException {
-        Resource image = new ClassPathResource(profileAvatar);
-        user.setProfileAvatarFile(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
-    }
-
-    private String randomNameGenerator() {
-        List<String> names = new ArrayList<>();
-        names.add("Sergio");
-        names.add("Carlos");
-        names.add("Adrian");
-        names.add("Jorge");
-        names.add("Shu");
-        names.add("David");
-        names.add("Elena");
-        names.add("Paula");
-        names.add("Pedro");
-        names.add("Diego");
-        names.add("Alejandro");
-        names.add("Maria");
-
-        Random random = new Random();
-        int index = random.nextInt(names.size());
-        String randomName = names.get(index);
-
-        return randomName;
-    }
-
-    private String randomLastNameGenerator() {
-        List<String> LastNames = new ArrayList<>();
-        LastNames.add("Cuadros");
-        LastNames.add("Perez");
-        LastNames.add("Pedroche");
-        LastNames.add("Francisco");
-        LastNames.add("Ye");
-        LastNames.add("Moreno");
-        LastNames.add("Diez");
-        LastNames.add("Corda");
-        LastNames.add("Rodriguez");
-        LastNames.add("Torres");
-        LastNames.add("Torequin");
-        LastNames.add("Flores");
-
-        Random random = new Random();
-        int index = random.nextInt(LastNames.size());
-        String randomName = LastNames.get(index);
-
-        return randomName;
-    }
-
-    private List<Review> generateReviews(List<Destination> initedDestinations, List<User> initedUsers) {
-            List<Review> reviews = new ArrayList<>();
-            for (Destination destination : initedDestinations) {
-                    for (User user : initedUsers) {
-                            for (int i = 0; i < 3; i++) { // generar tres reviews por cada destino y usuario
-                                    Review review = new Review();
-                                    review.setContentReview("Review del destino: " +
-                                    destination.getNameDestination());
-                                    review.setUser(user);
-                                    review.setDestination(destination);
-                                    review.setRatingReview((int) (Math.random() * 5) + 1);
-                                    review.setTitleReview("Buena oferta");
-                                    reviews.add(review);
-                            }
-                    }
-            }
-            return reviews;
-    }
+        private List<Review> generateReviews(List<Destination> initedDestinations, List<User> initedUsers) {
+                List<Review> reviews = new ArrayList<>();
+                for (Destination destination : initedDestinations) {
+                        for (User user : initedUsers) {
+                                for (int i = 0; i < 3; i++) { // generar tres reviews por cada destino y usuario
+                                        Review review = new Review();
+                                        review.setContentReview("Review del destino: " +
+                                                        destination.getNameDestination());
+                                        review.setUser(user);
+                                        review.setDestination(destination);
+                                        review.setRatingReview((int) (Math.random() * 5) + 1);
+                                        review.setTitleReview("Buena oferta");
+                                        reviews.add(review);
+                                }
+                        }
+                }
+                return reviews;
+        }
 
 }

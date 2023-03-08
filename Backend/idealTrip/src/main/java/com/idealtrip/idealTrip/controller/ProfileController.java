@@ -41,17 +41,13 @@ public class ProfileController {
 			model.addAttribute("logged", true);
 			model.addAttribute("currentUser", currentUser);
 			model.addAttribute("email", currentUser.getEmail());
-      model.addAttribute("review", currentUser.getReviews());
+      		model.addAttribute("review", currentUser.getReviews());
+			model.addAttribute("imageProfile", currentUser.getProfileAvatarFile());
 
 			model.addAttribute("admin", request.isUserInRole("ADMIN"));
 		} else {
 			model.addAttribute("logged", false);
 		}
-	}
-	@GetMapping("/profile")
-	public String showProfile (Model model){
-	  if (user.isPresent());
-
 	}
 
   @GetMapping("/profile") 
