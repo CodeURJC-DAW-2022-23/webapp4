@@ -220,21 +220,47 @@
     <section class="w3l-clients" id="clients">
         <!-- /grids -->
         <div class="cusrtomer-layout py-5">
-            <div class="container py-lg-4 py-md-3 pb-lg-0">
+            <class class="container py-lg-4 py-md-3 pb-lg-0">
                 <div class="heading text-center mx-auto">
                     <h3 class="hny-title mb-md-5 mb-4">Lo que nuestros clientes dicen</h3>
                 </div>
                 <div class="review-list">
                     {{#reviews}}
                     <div class="review-box">
-                      <div class="review-rating">{{ratingReview}}</div>
-                      <div class="review-contentbox">
-                        <h3 class="review-title">{{titleReview}}</h3>
-                        <p class="review-content">{{contentReview}}</p>
+                        <div class="review-contentbox"> 
+                            <h3 class="review-username"><img class="avatar" src="../assets/images/null-avatar.png">{{user.name}}&nbsp;{{user.lastName}}</h3>
+                            <br>
+                            <div class="review-rating" data-rating="{{ratingReview}}">
+                                <span class="star">&#9733;</span>
+                                <span class="star">&#9733;</span>
+                                <span class="star">&#9733;</span>
+                                <span class="star">&#9733;</span>
+                                <span class="star">&#9733;</span>
+                            </div>
+
+                            <h4 class="review-title">{{titleReview}}</h4>
+                            <p class="review-content">{{contentReview}}</p>
+                        </div> 
                       </div>
-                    </div>
                     {{/reviews}}
-                  </div>
+
+                   <script>
+                    //Get all rating-review value
+                    const reviewRatings = document.querySelectorAll('.review-rating');
+
+                    // Loop through review rating elements and update stars
+                    reviewRatings.forEach(reviewRating => {
+                    const rating = parseInt(reviewRating.getAttribute('data-rating'));
+                    const stars = reviewRating.querySelectorAll('.star');
+                    
+                    // Add active stars based rating value 
+                    for (let i = 0; i < rating; i++) {
+                        stars[i].classList.add('active');
+                    }
+                    });
+                    </script>
+                
+                </div>
                 <!-- /grids -->
                 <div class="testimonial-width">
                     <div id="owl-demo1" class="owl-two owl-carousel owl-theme">
@@ -330,6 +356,7 @@
 
                     </div>
                 </div>
+            </class>
             </div>
             <!-- /grids -->
         </div>
