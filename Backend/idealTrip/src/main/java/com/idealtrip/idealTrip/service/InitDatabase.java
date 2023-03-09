@@ -549,6 +549,8 @@ public class InitDatabase {
         private List<House> generateHouse() {
                 List<House> houses = new ArrayList<>();
                 List<String> houseNames = new ArrayList<>();
+
+
                 // houseNames.add(" ");
                 houseNames.add("Ibis Paris Tour Eiffel Cambronne 15ème");
                 houseNames.add("Lamphuhouse Bangkok - SHA Extra Plus Certified");
@@ -559,6 +561,17 @@ public class InitDatabase {
                 houseNames.add("Hilton Santa Marta");
                 houseNames.add("Studio M Hotel");
 
+                List<String> streetViewLinks = new ArrayList<>();
+
+                streetViewLinks.add("https://www.google.com/maps/embed?pb=!4v1676028794230!6m8!1m7!1skHrLzS2dgYYAAAQvO4D0RA!2m2!1d48.84704800513715!2d2.301612553443306!3f247.7688792620428!4f16.333893010043653!5f1.5076336197232112");
+                streetViewLinks.add("https://www.google.com/maps/embed?pb=!4v1676112121790!6m8!1m7!1sgI2Nv9nYUk30vGgKvo1r2A!2m2!1d46.48270672884353!2d13.78001426307877!3f9.776072580970688!4f0.2519408423733296!5f0.7820865974627469"); 
+                streetViewLinks.add("https://www.google.com/maps/embed?pb=!4v1676048404186!6m8!1m7!1sFlCzoNYDZnr8RoYsztOziw!2m2!1d37.93826123710596!2d23.69895010457095!3f304.0260391520811!4f19.74034068554542!5f0.7820865974627469");
+                streetViewLinks.add("https://www.google.com/maps/embed?pb=!4v1676046226246!6m8!1m7!1sCAoSLEFGMVFpcFBFaVRoTnhNLVlzeG13MjRaUXgxRklPOEFvNmEteXl4cEloVlJq!2m2!1d13.76172!2d100.4959854!3f100!4f0!5f0.7820865974627469");
+                streetViewLinks.add("https://www.google.com/maps/embed?pb=!4v1676111472590!6m8!1m7!1sCAoSLEFGMVFpcFBQcGxoRk5oamFOYl9WNDFqSTlQcm90YThidU95TkFyTnpYWWJa!2m2!1d51.5125237!2d-0.1750489!3f239.12570828959397!4f27.75889621227269!5f0.4000814197993535");
+                streetViewLinks.add("https://www.google.com/maps/embed?pb=!4v1676047440085!6m8!1m7!1sCAoSLEFGMVFpcFBwVTBlSE5uMGtTZTgwOTNRUnFwbVlQUjhOSVhnM0JVancyb2Np!2m2!1d4.2634683!2d72.9927701!3f170.68325763793726!4f11.885678211503674!5f0.7820865974627469");
+                streetViewLinks.add("https://www.google.com/maps/embed?pb=!4v1676112679447!6m8!1m7!1sCAoSLEFGMVFpcE5QNHQ2YjhZVWY1MVpNVk44VWpXbzVRS1p0TG83eXJvSEdZX1FZ!2m2!1d11.2392006!2d-74.2161595!3f173.57106640224222!4f-3.6988222650587232!5f0.7820865974627469");
+                streetViewLinks.add("https://www.google.com/maps/embed?pb=!4v1676113241150!6m8!1m7!1sCAoSLEFGMVFpcE1ZRElvUlY1RVl1NEUwYVhSendQT0s4RGh3SVFvLTV0WDF6UC02!2m2!1d1.2908669!2d103.8394557!3f16.8968797741457!4f31.91353930181144!5f0.7820865974627469");
+                
                 for (int i = 0; i < houseNames.size(); i++) {
                         House house = new House();
                         String apartment = houseNames.get(i);
@@ -587,6 +600,9 @@ public class InitDatabase {
                         } catch (IOException e) {
                                 e.printStackTrace();
                         }
+
+                        String streetViewLink = streetViewLinks.get(i);
+                        house.setStreetViewLink(streetViewLink);
 
                         houses.add(house);
                 }
