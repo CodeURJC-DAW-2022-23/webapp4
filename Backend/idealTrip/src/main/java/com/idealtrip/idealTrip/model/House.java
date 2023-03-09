@@ -46,7 +46,10 @@ public class House {
     private Purchase purchase;
     @OneToOne
     private Destination destination;
+    
     private String destinationName;
+
+    private String streetViewLink;
 
     public House() {
     }
@@ -152,13 +155,21 @@ public class House {
         this.hostName = hostName;
     }
 
-  
+    
     public String getDestinationName() {
         return destinationName;
     }
 
     public void setDestinationName(String destinationName) {
         this.destinationName = destinationName;
+    }
+
+    public String getStreetViewLink() {
+        return streetViewLink;
+    }
+    
+    public void setStreetViewLink(String streetViewLink) {
+        this.streetViewLink = streetViewLink;
     }
 
 }

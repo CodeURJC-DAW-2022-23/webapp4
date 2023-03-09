@@ -26,6 +26,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.idealtrip.idealTrip.model.Catering;
 import com.idealtrip.idealTrip.model.Destination;
 import com.idealtrip.idealTrip.model.Review;
@@ -33,9 +35,12 @@ import com.idealtrip.idealTrip.model.Tourism;
 import com.idealtrip.idealTrip.model.User;
 import com.idealtrip.idealTrip.service.CateringService;
 import com.idealtrip.idealTrip.service.DestinationService;
+import com.idealtrip.idealTrip.service.HouseService;
 import com.idealtrip.idealTrip.service.ReviewService;
 import com.idealtrip.idealTrip.service.TourismService;
 import com.idealtrip.idealTrip.service.UserService;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 public class CitiesController {
@@ -53,6 +58,10 @@ public class CitiesController {
 
   @Autowired
   private ReviewService reviewService;
+  
+  @Autowired
+  private HouseService houseService;
+
   User currentUser;
 
   @ModelAttribute
@@ -111,9 +120,16 @@ public class CitiesController {
   // }
 
   @GetMapping("/review/{id}")
-  public String showAllReview(@PathVariable Long id, Model model) {
+  public String reviewByDestinationId(@PathVariable Long id, Model model) {
   model.addAttribute("name", destinationService.findById(id).get().getNameDestination());
   model.addAttribute("reviews", reviewService.findReviewsByDestinationId(id));
   return "review";
   }
+
+  @GetMapping("/house/{id}")
+  public String houseByDestinationId(@PathVariable Long id, Model model) {
+  model.addAttribute("houses", houseService.findByDestinationName(destinationService.findById(id).get().getNameDestination()));
+  return "house";
+  }
+
 }

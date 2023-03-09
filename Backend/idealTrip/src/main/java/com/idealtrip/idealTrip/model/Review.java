@@ -88,7 +88,7 @@ public class Review {
         this.destination = destination;
     }
 
-    public String getNameDestination (String nameDestination){
+    public String getNameDestination (){
         return nameDestination;
     }
 
