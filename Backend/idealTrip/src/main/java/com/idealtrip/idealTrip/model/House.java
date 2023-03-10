@@ -51,6 +51,8 @@ public class House {
 
     private String streetViewLink;
 
+    private String mapsLink;
+
     public House() {
     }
 
@@ -170,6 +172,14 @@ public class House {
     
     public void setStreetViewLink(String streetViewLink) {
         this.streetViewLink = streetViewLink;
+    }
+
+    public String getMapsLink() {
+        return mapsLink;
+    }
+
+    public void setMapsLink(String mapsLink) {
+        this.mapsLink = mapsLink;
     }
 
 }
