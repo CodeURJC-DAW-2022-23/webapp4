@@ -51,6 +51,7 @@ public class House {
 
     private String streetViewLink;
 
+    @Column(nullable = false, length = 2048)
     private String mapsLink;
 
     public House() {
