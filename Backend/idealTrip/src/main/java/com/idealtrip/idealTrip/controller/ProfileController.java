@@ -48,7 +48,8 @@ public class ProfileController {
 			model.addAttribute("email", currentUser.getEmail());
       //model.addAttribute("review", review);
 			model.addAttribute("review", currentUser.getReviews());
-			model.addAttribute("imageProfile", currentUser.getProfileAvatarFile());
+			model.addAttribute("imageProfileFile", currentUser.getProfileAvatarFile());
+			model.addAttribute("imageProfile", currentUser.getProfileAvatar());
 
 			model.addAttribute("admin", request.isUserInRole("ADMIN"));
 		} else {
