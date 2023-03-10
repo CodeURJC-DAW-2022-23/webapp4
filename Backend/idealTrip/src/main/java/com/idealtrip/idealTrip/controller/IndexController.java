@@ -54,16 +54,11 @@ public class IndexController {
         return "index";
     }
 
-    // @GetMapping("/")
-    // public String searchCountriesBar(Model model){
-    //     model.addAttribute("services", destinationService.findAll());
-    //     return "/";
-    // }
+    @GetMapping("/")
+    public String searchCountriesInd(Model model) {
+      model.addAttribute("services", destinationService.findAll());
+      return "index";
+    }
 
-  // @GetMapping("/index")
-  // public String showDestinations(Model model){
-  // // model.addAttribute("destinations", destinationService.findAll());
-  // return "index";
-  // }
 
 }
