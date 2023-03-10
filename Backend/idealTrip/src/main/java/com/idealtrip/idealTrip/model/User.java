@@ -15,7 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 
-import org.hibernate.resource.beans.internal.FallbackBeanInstanceProducer;
+//import org.hibernate.resource.beans.internal.FallbackBeanInstanceProducer;
 
 @Entity(name = "userTable")
 public class User {

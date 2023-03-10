@@ -3,8 +3,8 @@ package com.idealtrip.idealTrip.controller;
 // import java.net.http.HttpHeaders;
 import java.security.Principal;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+//import java.util.ArrayList;
+//import java.util.List;
 import java.util.Optional;
 
 import javax.annotation.Resource;
@@ -20,17 +20,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import org.hibernate.engine.jdbc.BlobProxy;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
+// import org.hibernate.engine.jdbc.BlobProxy;
+// import org.springframework.data.domain.Page;
+// import org.springframework.data.domain.PageRequest;
+// import org.springframework.data.domain.Pageable;
+// import org.springframework.stereotype.Service;
+// import org.springframework.web.multipart.MultipartFile;
 
-import com.fasterxml.jackson.annotation.JsonCreator.Mode;
-import com.idealtrip.idealTrip.model.Catering;
-import com.idealtrip.idealTrip.model.Destination;
-import com.idealtrip.idealTrip.model.Review;
+// import com.fasterxml.jackson.annotation.JsonCreator.Mode;
+// import com.idealtrip.idealTrip.model.Catering;
+// import com.idealtrip.idealTrip.model.Destination;
+// import com.idealtrip.idealTrip.model.Review;
 import com.idealtrip.idealTrip.model.Tourism;
 import com.idealtrip.idealTrip.model.User;
 import com.idealtrip.idealTrip.service.CateringService;
@@ -39,7 +39,7 @@ import com.idealtrip.idealTrip.service.HouseService;
 import com.idealtrip.idealTrip.service.ReviewService;
 import com.idealtrip.idealTrip.service.TourismService;
 import com.idealtrip.idealTrip.service.UserService;
-import org.springframework.web.bind.annotation.RequestParam;
+//import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller

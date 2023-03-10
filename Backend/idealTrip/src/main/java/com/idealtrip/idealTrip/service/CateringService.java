@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.idealtrip.idealTrip.model.Catering;
-import com.idealtrip.idealTrip.model.Destination;
+//import com.idealtrip.idealTrip.model.Destination;
 import com.idealtrip.idealTrip.repository.CateringRepository;
 
 @Service

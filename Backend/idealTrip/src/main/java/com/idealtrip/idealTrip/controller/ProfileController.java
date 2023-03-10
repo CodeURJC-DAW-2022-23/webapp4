@@ -4,18 +4,18 @@ package com.idealtrip.idealTrip.controller;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+// import org.springframework.data.domain.Pageable;
+// import org.springframework.data.domain.Page;
+// import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
-import com.idealtrip.idealTrip.model.Review;
+//import com.idealtrip.idealTrip.model.Review;
 import com.idealtrip.idealTrip.model.User;
-import com.idealtrip.idealTrip.repository.ReviewRepository;
-import com.idealtrip.idealTrip.service.ReviewService;
+//import com.idealtrip.idealTrip.repository.ReviewRepository;
+//import com.idealtrip.idealTrip.service.ReviewService;
 import com.idealtrip.idealTrip.service.UserService;
 
 import java.security.Principal;
@@ -30,8 +30,8 @@ public class ProfileController {
   @Autowired
   private UserService users;
 
-	@Autowired
-	private ReviewService myRepository;
+	//@Autowired
+	//private ReviewService myRepository;
 
   User currentUser;
 	//Pageable pageable = PageRequest.of(0, 5);
