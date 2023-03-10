@@ -1,6 +1,7 @@
 package com.idealtrip.idealTrip.service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.io.IOException;
@@ -494,6 +495,7 @@ public class InitDatabase {
         }
 
         List<String> cities = new ArrayList<>();
+        List<Float> prices = Arrays.asList(120f, 95f, 210f, 150f, 180f, 130f, 230f, 165f);
 
         private List<Destination> generateDestination() {
                 List<Destination> destinations = new ArrayList<>();
@@ -523,7 +525,8 @@ public class InitDatabase {
                         String title = titleDestination.get(i);
                         destination.setNameDestination(city);
                         destination.setContentDestination(title);
-                        destination.setPrice(100.99f);
+                        float price = prices.get(i);
+                        destination.setPrice(price);
                         String file = destination.getNameDestination().replace(' ', '-');
                         destination.setTitleImage("/static/assets/images/Cities/" + file + ".jpg");
                         try {
@@ -578,7 +581,8 @@ public class InitDatabase {
                         house.setNameHouse(apartment);
                         house.setContentHouse(
                                         "Lorem Ipsum is simply dummy text of the printing and typesetting industry.");
-                        house.setPrice(100.99f);
+                        float price = prices.get(i);
+                        house.setPrice(price);
                         house.setHostName(randomNameGenerator());
                         String nameDestination = cities.get(i);
                         house.setDestinationName(nameDestination);
