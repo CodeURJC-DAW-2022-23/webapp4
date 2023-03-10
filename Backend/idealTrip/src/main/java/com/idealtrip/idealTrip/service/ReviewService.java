@@ -33,16 +33,16 @@ public class ReviewService {
         return reviews.findById(id);
     }
 
-    public <S extends Review> S save(S entity) {
-        return reviews.save(entity);
+    public void save(Review review){
+        reviews.save(review);
     }
 
     public List<Review> findReviewsByDestinationId(Long destinationId) {
-        return reviews.findByDestinationId(destinationId);
+    return reviews.findByDestinationId(destinationId);
     }
 
-    public List<Review> findReviewsByNameDestination(String nameDestination) {
-        return reviews.findByNameDestination(nameDestination);
-    }
+    //public List<Review> findReviewsByNameDestination(String nameDestination) {
+    //   return reviews.findByNameDestination(nameDestination);
+    //}
 
 }

@@ -20,7 +20,8 @@ public interface ReviewRepository extends JpaRepository<Review, Long> {
 
     Page<Review> findReviewByUser(User user, Pageable pageable);
     List<Review> findByDestinationId(Long destinationId);
-    List<Review> findByNameDestination(String nameDestination);
+    Optional<Review> findReviewByUserId(Long id);
+    //List<Review> findByNameDestination(String nameDestination);
 
     // Optional<Review> findByUserAndDestination(User user, Destination destination);
     // @Query("SELECT")

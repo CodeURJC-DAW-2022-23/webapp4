@@ -25,8 +25,6 @@ public class Review {
     @ManyToOne
     private Destination destination;
     
-    private String nameDestination;
-    
     public Review() {
     }
     
@@ -86,13 +84,5 @@ public class Review {
 
     public void setDestination(Destination destination) {
         this.destination = destination;
-    }
-
-    public String getNameDestination (){
-        return nameDestination;
-    }
-
-    public void setNameDestination(String nameDestination){
-        this.nameDestination = nameDestination;
     }
 }

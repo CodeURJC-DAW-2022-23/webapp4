@@ -1,7 +1,8 @@
 {{>header}}
     <!--banner-slider-->
     <br><br><br><br>
-    <section>
+    {{#logged}}
+    <!--<section>
         <br><br><br>
         <h5>Añadir comentario
         <button id="review-add-btn" aria-label="add review" title="Add Review"></button></h5>
@@ -9,24 +10,24 @@
             <button class="close-btn" aria-label="close" title="Close">x</button>
             <div id="review-form-container">
                 <h2 id="add-review-header">Reseña</h2>
-                <form id="review-form">
+                <form id="review-form" action="/review/{{id}}" method="post">
                     <div class="fieldset">
                         <label for="reviewName">Titulo</label>
-                        <input name="reviewName" id="reviewName" required="">
+                        <input name="titleReview" id="title" required>
                     </div>
                     <div class="fieldset">
                         <label>Calificación</label>
                         <div class="rate">
-                            <input type="radio" id="star5" name="rate" value="5" onkeydown="navRadioGroup(event)"
+                            <input type="radio" id="star5" name="ratingReview" value="5" onkeydown="navRadioGroup(event)"
                                 onfocus="setFocus(event)" required="">
                             <label for="star5" title="5 stars">5 stars</label>
-                            <input type="radio" id="star4" name="rate" value="4" onkeydown="navRadioGroup(event)">
+                            <input type="radio" id="star4" name="ratingReview" value="4" onkeydown="navRadioGroup(event)">
                             <label for="star4" title="4 stars">4 stars</label>
-                            <input type="radio" id="star3" name="rate" value="3" onkeydown="navRadioGroup(event)">
+                            <input type="radio" id="star3" name="ratingReview" value="3" onkeydown="navRadioGroup(event)">
                             <label for="star3" title="3 stars">3 stars</label>
-                            <input type="radio" id="star2" name="rate" value="2" onkeydown="navRadioGroup(event)">
+                            <input type="radio" id="star2" name="ratingReview" value="2" onkeydown="navRadioGroup(event)">
                             <label for="star2" title="2 stars">2 stars</label>
-                            <input type="radio" id="star1" name="https://codepen.io/pen/rate" value="1"
+                            <input type="radio" id="star1" name="ratingReview" value="1"
                                 onkeydown="navRadioGroup(event)" onfocus="setFocus(event)">
                             <label for="star1" title="1 star">1 star</label>
                         </div>
@@ -34,16 +35,64 @@
 
                     <div class="fieldset">
                         <label for="reviewComments">Comentarios</label>
-                        <textarea name="reviewComments" id="reviewComments" cols="20" rows="5" required=""></textarea>
+                        <textarea name="contentReview" id="content" cols="20" rows="5" required></textarea>
                     </div>
                     <div class="fieldset right">
-                        <button id="submit-review-btn">Publicar</button>
+                        <button id="submit-review-btn" type="submit">Publicar</button>
                     </div>
+                    <input type="hidden" name="_csrf" value="{{token}}" />
                 </form>
             </div>
         </div>
         <div class="modal-overlay"></div>
-    </section>
+    </section>-->
+    <!--<form method="post" action="/review/{{id}}">
+        <label for="titleReview">Título de la reseña:</label>
+        <input type="text" name="titleReview" required>
+        <label for="contentReview">Contenido de la reseña:</label>
+        <textarea name="contentReview" required></textarea>
+        <label for="ratingReview">Calificación:</label>
+        <select name="ratingReview" required>
+          <option value="">Seleccionar</option>
+          <option value="1">1 estrella</option>
+          <option value="2">2 estrellas</option>
+          <option value="3">3 estrellas</option>
+          <option value="4">4 estrellas</option>
+          <option value="5">5 estrellas</option>
+        </select>
+        <button type="submit">Enviar reseña</button>
+        <input type="hidden" name="_csrf" value="{{token}}"/>
+      </form>-->
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 offset-md-3">
+            <form method="post" action="/review/{{id}}">
+              <div class="form-group">
+                <label for="titleReview">Title</label>
+                <input type="text" class="form-control" name="titleReview" required>
+              </div>
+              <div class="form-group">
+                <label for="contentReview">Content</label>
+                <textarea class="form-control"name="contentReview" required></textarea>
+              </div>
+              <div class="form-group">
+                <label for="ratingReview">Rating</label>
+                <select class="form-control" name="ratingReview" required>
+                  <option value="">-- Select rating --</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+              <input type="hidden" name="_csrf" value="{{token}}"/>
+            </form>
+          </div>
+        </div>
+      </div>
+    {{/logged}}
 
     <script>
         let focusedElementBeforeModal;
@@ -244,6 +293,8 @@
                       </div>
                     {{/reviews}}
 
+
+                    
                    <script>
                     //Get all rating-review value
                     const reviewRatings = document.querySelectorAll('.review-rating');
