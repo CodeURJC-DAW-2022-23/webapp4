@@ -41,3 +41,24 @@
   .star.active{
     color: gold;
   }
+
+  .pageReview {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .pageReview a {
+    color: blue;
+    text-decoration: none;
+    margin: 0 10px;
+  }
+  
+  .pageReview a:hover {
+    text-decoration: underline;
+  }
+  
+  .pageReview span {
+    font-size: 14px;
+    margin: 0 10px;
+  }

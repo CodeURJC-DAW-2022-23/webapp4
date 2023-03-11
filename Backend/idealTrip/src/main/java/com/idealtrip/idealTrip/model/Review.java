@@ -16,7 +16,7 @@ public class Review {
     private String titleReview;
     private int ratingReview;
 
-    @Column(columnDefinition= "TEXT")
+    @Column(columnDefinition = "TEXT")
     private String contentReview;
 
     @ManyToOne
@@ -27,10 +27,10 @@ public class Review {
     
     public Review() {
     }
-    
-    public Review(Long id, User user, Destination destination, String titleReview, int ratingReview,
+
+    public Review(User user, Destination destination, String titleReview, int ratingReview,
             String contentReview) {
-        this.id = id;
+        // this.id = id;
         this.user = user;
         this.destination = destination;
         this.titleReview = titleReview;

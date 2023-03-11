@@ -27,12 +27,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.idealtrip.idealTrip.model.Destination;
 import com.idealtrip.idealTrip.model.Review;
@@ -49,7 +52,7 @@ import com.idealtrip.idealTrip.service.ReviewService;
 import com.idealtrip.idealTrip.service.TourismService;
 import com.idealtrip.idealTrip.service.UserService;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import java.util.List;
 
 @Controller
 public class CitiesController {
@@ -67,7 +70,7 @@ public class CitiesController {
 
   @Autowired
   private ReviewService reviewService;
-  
+
   @Autowired
   private HouseService houseService;
 
@@ -106,55 +109,67 @@ public class CitiesController {
   }
 
   @GetMapping("/{id}/image")
-	public ResponseEntity<Object> downloadImage(@PathVariable Long id) throws SQLException {
+  public ResponseEntity<Object> downloadImage(@PathVariable Long id) throws SQLException {
 
-		Optional<Tourism> tourism = tourismService.findById(id);
-		if (tourism.isPresent() && tourism.get().getImageTourismURL() != null) {
+    Optional<Tourism> tourism = tourismService.findById(id);
+    if (tourism.isPresent() && tourism.get().getImageTourismURL() != null) {
 
-			Resource file = (Resource) new InputStreamResource(tourism.get().getImageTourismFile().getBinaryStream());
+      Resource file = (Resource) new InputStreamResource(tourism.get().getImageTourismFile().getBinaryStream());
 
-			return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpg")
-					.contentLength(tourism.get().getImageTourismFile().length()).body(file);
+      return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpg")
+          .contentLength(tourism.get().getImageTourismFile().length()).body(file);
 
-		} else {
-			return ResponseEntity.notFound().build();
-		}
-	}
-
-
+    } else {
+      return ResponseEntity.notFound().build();
+    }
+  }
 
   // @GetMapping("/information8")
   // public String parisSearch(){
-  //   return "/8/information8";
+  // return "/8/information8";
   // }
 
-  
   @PostMapping("/review/{id}")
   public String addReview(Model model,
-                         @PathVariable Long id, 
-                         @RequestParam String titleReview,
-                         @RequestParam int ratingReview ,
-                         @RequestParam String contentReview) {
-    
-    Destination currentDestination = destinationService.findDestinationById(id).orElse(null);
-    Review review = new Review(id, currentUser, currentDestination, titleReview, ratingReview,
-                              contentReview);
-    reviewService.save(review);
-    //model.addAttribute("userReviews", review);
-    long destinationId = destinationService.findById(id).get().getId();        
-    return "redirect:/review/" + destinationId;
-}
+      @PathVariable Long id,
+      @RequestParam String titleReview,
+      @RequestParam int ratingReview,
+      @RequestParam String contentReview) {
 
-@GetMapping("/review/{id}")
-  public String reviewByDestinationId(@PathVariable Long id, Model model) {
-  model.addAttribute("reviews", reviewService.findReviewsByDestinationId(id));
-  return "review";
-}
+    Destination currentDestination = destinationService.findDestinationById(id).orElse(null);
+    Review review = new Review(currentUser, currentDestination, titleReview, ratingReview,
+        contentReview);
+    reviewService.save(review);
+    // model.addAttribute("userReviews", review);
+    long destinationId = destinationService.findById(id).get().getId();
+    return "redirect:/review/" + destinationId;
+  }
+
+  // @GetMapping("/review/{id}")
+  // public String reviewByDestinationId(@PathVariable Long id, Model model) {
+  // model.addAttribute("reviews", reviewService.findReviewsByDestinationId(id));
+  // return "review";
+  // }
+
+  @GetMapping("/review/{id}")
+  public String getReviewsByDestination(@PathVariable Long id, Model model,
+      @RequestParam(defaultValue = "0") int page,
+      @RequestParam(defaultValue = "5") int size) {
+
+    Destination currentDestination = destinationService.findDestinationById(id).orElse(null);
+
+    model.addAttribute("reviews", reviewService.findReviewsByDestination(currentDestination,
+        PageRequest.of(page, size, Sort.by("id").descending())));
+    int currentPage = page + 1;
+    model.addAttribute("currentPage", currentPage);
+    return "review";
+  }
 
   @GetMapping("/house/{id}")
   public String houseByDestinationId(@PathVariable Long id, Model model) {
-  model.addAttribute("houses", houseService.findByDestinationName(destinationService.findById(id).get().getNameDestination()));
-  return "house";
+    model.addAttribute("houses",
+        houseService.findByDestinationName(destinationService.findById(id).get().getNameDestination()));
+    return "house";
   }
 
 }
