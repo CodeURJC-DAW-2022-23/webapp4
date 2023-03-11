@@ -19,7 +19,7 @@ import com.idealtrip.idealTrip.model.User;
 import com.idealtrip.idealTrip.service.UserService;
 
 import java.security.Principal;
-
+import java.util.Optional;
 
 
 @Controller
@@ -57,9 +57,22 @@ public class ProfileController {
 		}
 	}
 
-  @GetMapping("/profile") 
-    public String showProfile(Model model ) { 
-    
-    return "profile";
-  }
+	@GetMapping("/profile/{id}")
+	public String showProfiles (Model model, Long id){
+		Optional<User> user = users.findById(id);
+		if (user.isPresent()){
+			model.addAttribute("profiles", user.get());
+			return "profiles";
+		}else{
+			return "profile";
+		}
+
+	}
+
+	@GetMapping("/profile")
+	public String showProfile(Model model) {
+		model.addAttribute("profile", users.findAll());
+		return "profile";
+	}
+
 }

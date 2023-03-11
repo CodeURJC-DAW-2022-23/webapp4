@@ -142,11 +142,32 @@
             </div>
             {{/admin}}
             {{#admin}}
+
             <div class="card mb-4">
+
                 <div class="card-header">Opiniones realizadas</div>
+                {{#profile}}
                 <div class="card-body">
-                    <p>No hay reviews disponibles por este usuario.</p>
+                    <div class="text-left">
+                        <button id="btn-abrir-popup" class="btn btn-style btn-primary">{{email}} </button>
+                    </div>
+                    <div class="overlay" id="overlay">
+                        <div class="popup" id="popup">
+                            <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i
+                                    class="fas fa-times"></i></a>
+                            <h4><b>¿Desea eliminar el usuario?</b></h4>
+                            <h4>{{name}} {{lastName}}</h4>
+
+                            <a href="/deleteUser/{{id}}" class="btn btn-style btn-primary" value="Aceptar">   </a>
+                            <form action="/deleteUser/{{id}}" method="post">
+                                <input type="hidden" name="id" value="{{id}}">
+                                <input type="hidden" name="_csrf" value="{{token}}"/>
+                                <input type="submit" class="btn btn-style btn-primary" value="Aceptar">
+                            </form>
+                        </div>
+                    </div>
                 </div>
+                {{/profile}}
             </div>
             {{/admin}}
             <!-- Delete account card-->
@@ -238,6 +259,8 @@
 <!--//MENU-JS-->
 
 <script src="assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/ventana.js"></script>
+<script src="../assets/js/ventanapaypal.js"></script>
 </body>
 
 </html>
