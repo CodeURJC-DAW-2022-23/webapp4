@@ -25,7 +25,7 @@ import com.idealtrip.idealTrip.model.Purchase;
 import com.idealtrip.idealTrip.model.Review;
 import com.idealtrip.idealTrip.model.Tourism;
 import com.idealtrip.idealTrip.model.User;
-import com.idealtrip.idealTrip.repository.UserRepository;
+//import com.idealtrip.idealTrip.repository.UserRepository;
 
 @Service
 public class InitDatabase {
@@ -53,8 +53,8 @@ public class InitDatabase {
         @Autowired
         private UserService users;
 
-        @Autowired
-        private UserRepository userRepository;
+        //@Autowired
+        //private UserRepository userRepository;
 
         @Autowired
         private PasswordEncoder passwordEncoder;
