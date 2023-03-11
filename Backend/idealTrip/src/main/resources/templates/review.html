@@ -274,52 +274,92 @@
                 <h3 class="hny-title mb-md-5 mb-4">Lo que nuestros clientes dicen</h3>
             </div>
             <div class="review-list">
-                {{#reviews}}
-                <div class="review-box">
-                    <div class="review-contentbox">
-                        <h3 class="review-username"><img class="avatar"
-                                src="../assets/images/null-avatar.png">{{user.name}}&nbsp;{{user.lastName}}</h3>
-                        <br>
-                        <div class="review-rating" data-rating="{{ratingReview}}">
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9733;</span>
-                        </div>
-
-                        <h4 class="review-title">{{titleReview}}</h4>
-                        <p class="review-content">{{contentReview}}</p>
-                    </div>
+    {{#reviews}}
+        <div class="review-box">
+            <div class="review-contentbox">
+                <h3 class="review-username"><img class="avatar" src="../assets/images/null-avatar.png">{{user.name}}&nbsp;{{user.lastName}}</h3>
+                <br>
+                <div class="review-rating" data-rating="{{ratingReview}}">
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
                 </div>
-                {{/reviews}}
+                <h4 class="review-title">{{titleReview}}</h4>
+                <p class="review-content">{{contentReview}}</p>
+                <!-- <div class="spinner"></div> -->
+            </div>
+        </div>
+    {{/reviews}}
+</div>
 
-                <div class="pageReview">
-                    {{#reviews.hasPrevious}}
-                    <a href="?page={{reviews.previousPageable.pageNumber}}">Anterior</a>
-                    {{/reviews.hasPrevious}}
-                    <p3> {{currentPage}} / {{reviews.totalPages}}</p3>
-                    {{#reviews.hasNext}}
-                    <a href="?page={{reviews.nextPageable.pageNumber}}">Siguiente</a>
-                    {{/reviews.hasNext}}
+<div id="load-more-container">
+    {{#reviews.hasNext}}
+        <button id="load-more-button" data-page="{{reviews.nextPageable.pageNumber}}">Mostrar más</button>
+    {{/reviews.hasNext}}
+</div>
 
-                </div>
 
             <script>
-                //Get all rating-review value
-                const reviewRatings = document.querySelectorAll('.review-rating');
+const loadMoreButton = document.querySelector('#load-more-button');
+const reviewContainer = document.querySelector('.review-list');
 
-                // Loop through review rating elements and update stars
-                reviewRatings.forEach(reviewRating => {
-                    const rating = parseInt(reviewRating.getAttribute('data-rating'));
-                    const stars = reviewRating.querySelectorAll('.star');
+loadMoreButton.addEventListener('click', function() {
+  const nextPage = this.getAttribute('data-page');
 
-                    // Add active stars based rating value 
-                    for (let i = 0; i < rating; i++) {
-                        stars[i].classList.add('active');
-                    }
-                });
-            </script>
+  // Realizamos la petición Ajax al servidor para obtener las reviews de la siguiente página, sin recargar la páginca entera
+setTimeout(function() {
+  const xhr = new XMLHttpRequest();
+  xhr.open('GET', '?page=' + nextPage);
+  xhr.onload = function() {
+    if (xhr.status === 200) {
+      // Convertimos la respuesta del servidor en HTML y la agregamos al contenedor de reviews
+      const parser = new DOMParser();
+      const html = parser.parseFromString(xhr.response, 'text/html');
+      reviewContainer.innerHTML += html.querySelector('.review-list').innerHTML;
+
+      // Actualizamos el número de página del botón "Mostrar más" y ocultamos el botón si ya no hay más páginas
+      const newPage = parseInt(nextPage) + 1;
+      loadMoreButton.setAttribute('data-page', newPage);
+      if (!html.querySelector('#load-more-button')) {
+        loadMoreButton.style.display = 'none';
+      }
+
+      // Actualizamos los valores de las estrellas en las reviews agregadas
+      const newReviewRatings = reviewContainer.querySelectorAll('.review-rating:not(.updated)');
+      newReviewRatings.forEach(newReviewRating => {
+        const rating = parseInt(newReviewRating.getAttribute('data-rating'));
+        const stars = newReviewRating.querySelectorAll('.star');
+
+        // Añadimos estrellas activas basadas en el valor de la calificación
+        for (let i = 0; i < rating; i++) {
+          stars[i].classList.add('active');
+        }
+
+        
+
+        
+
+        // Marcamos esta revisión como actualizada para que no se vuelva a actualizar en el futuro
+        newReviewRating.classList.add('updated');
+      });
+      // Ocultamos el spinner y mostramos el botón
+      spinner.style.display = 'none';
+      loadMoreButton.style.display = 'block';
+      if (!html.querySelector('#load-more-button')) {
+        loadMoreButton.style.display = 'none'; //Cuando no haya ningún "load more" más en html, es decir, ya no hay más paginas de reviews disponibles
+        }
+    } else {
+      console.error('Error en la carga de reviews');
+    }
+  };
+  xhr.send();
+
+},0);
+});
+
+</script>
 
     </div>
     <!-- /grids -->
