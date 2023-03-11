@@ -32,7 +32,11 @@ public class DestinationService {
     public void save(Destination destination){
         this.destinations.save(destination);
     }
-
+    
+    public Optional<Destination> findDestinationById(Long id) {
+        return destinations.findById(id);
+    }
+    
     // public List<Destination> findByName(String name, Pageable pageable){
     //     return (List<Destination>) extracted(name, pageable);
     // }
