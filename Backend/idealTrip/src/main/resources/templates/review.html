@@ -308,31 +308,31 @@ const reviewContainer = document.querySelector('.review-list');
 loadMoreButton.addEventListener('click', function() {
   const nextPage = this.getAttribute('data-page');
 
-  // Realizamos la petición Ajax al servidor para obtener las reviews de la siguiente página, sin recargar la páginca entera
+  // We make the Ajax request to the server to get the reviews of the following page, without reloading the entire page
 setTimeout(function() {
   const xhr = new XMLHttpRequest();
   xhr.open('GET', '?page=' + nextPage);
   xhr.onload = function() {
     if (xhr.status === 200) {
-      // Convertimos la respuesta del servidor en HTML y la agregamos al contenedor de reviews
+      // We convert the server response to HTML and add it to the reviews container.
       const parser = new DOMParser();
       const html = parser.parseFromString(xhr.response, 'text/html');
       reviewContainer.innerHTML += html.querySelector('.review-list').innerHTML;
 
-      // Actualizamos el número de página del botón "Mostrar más" y ocultamos el botón si ya no hay más páginas
+      //Update the page number of the "Show more" button and hide the button if there are no more pages.
       const newPage = parseInt(nextPage) + 1;
       loadMoreButton.setAttribute('data-page', newPage);
       if (!html.querySelector('#load-more-button')) {
         loadMoreButton.style.display = 'none';
       }
 
-      // Actualizamos los valores de las estrellas en las reviews agregadas
+      // Updating the star values in the added reviews.
       const newReviewRatings = reviewContainer.querySelectorAll('.review-rating:not(.updated)');
       newReviewRatings.forEach(newReviewRating => {
         const rating = parseInt(newReviewRating.getAttribute('data-rating'));
         const stars = newReviewRating.querySelectorAll('.star');
 
-        // Añadimos estrellas activas basadas en el valor de la calificación
+        // We add active stars based on the rating value.
         for (let i = 0; i < rating; i++) {
           stars[i].classList.add('active');
         }
@@ -341,14 +341,14 @@ setTimeout(function() {
 
         
 
-        // Marcamos esta revisión como actualizada para que no se vuelva a actualizar en el futuro
+        // We mark this review as updated so that it will not be updated again in the future.
         newReviewRating.classList.add('updated');
       });
-      // Ocultamos el spinner y mostramos el botón
+      // We hide the spinner and show the button
       spinner.style.display = 'none';
       loadMoreButton.style.display = 'block';
       if (!html.querySelector('#load-more-button')) {
-        loadMoreButton.style.display = 'none'; //Cuando no haya ningún "load more" más en html, es decir, ya no hay más paginas de reviews disponibles
+        loadMoreButton.style.display = 'none'; //When there is no more "load more" in html, that is, there are no more pages of reviews available, we hide the button
         }
     } else {
       console.error('Error en la carga de reviews');
@@ -363,96 +363,7 @@ setTimeout(function() {
 
     </div>
     <!-- /grids -->
-    <div class="testimonial-width">
-        <div id="owl-demo1" class="owl-two owl-carousel owl-theme">
-            <div class="item">
-                <div class="testimonial-content">
-                    <div class="testimonial">
-                        <blockquote>
-                            <span class="fa fa-quote-left" aria-hidden="true"></span>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit beatae laudantium
-                            voluptate rem ullam dolore nisi voluptatibus esse quasi. Integer sit amet .Lorem
-                            ipsum dolor sit
-                            amet adipisicing elit. Laborum dolor facere ipsum adipisicingelit.
-                        </blockquote>
-                        <div class="testi-des">
-                            <div class="test-img"><img src="assets/images/c1.jpg" class="img-fluid" alt="client-img">
-                            </div>
-                            <div class="peopl align-self">
-                                <h3>Rohit Paul</h3>
-                                <p class="indentity">Example City</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="testimonial-content">
-                    <div class="testimonial">
-                        <blockquote>
-                            <span class="fa fa-quote-left" aria-hidden="true"></span>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit beatae laudantium
-                            voluptate rem ullam dolore nisi voluptatibus esse quasi. Integer sit amet .Lorem
-                            ipsum dolor sit
-                            amet adipisicing elit. Laborum dolor facere ipsum adipisicingelit.
-                        </blockquote>
-                        <div class="testi-des">
-                            <div class="test-img"><img src="assets/images/c2.jpg" class="img-fluid" alt="client-img">
-                            </div>
-                            <div class="peopl align-self">
-                                <h3>Shveta</h3>
-                                <p class="indentity">Example City</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="testimonial-content">
-                    <div class="testimonial">
-                        <blockquote>
-                            <span class="fa fa-quote-left" aria-hidden="true"></span>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit beatae laudantium
-                            voluptate rem ullam dolore nisi voluptatibus esse quasi. Integer sit amet .Lorem
-                            ipsum dolor sit
-                            amet adipisicing elit. Laborum dolor facere ipsum adipisicingelit.
-                        </blockquote>
-                        <div class="testi-des">
-                            <div class="test-img"><img src="assets/images/c3.jpg" class="img-fluid" alt="client-img">
-                            </div>
-                            <div class="peopl align-self">
-                                <h3>Roy Linderson</h3>
-                                <p class="indentity">Example City</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="testimonial-content">
-                    <div class="testimonial">
-                        <blockquote>
-                            <span class="fa fa-quote-left" aria-hidden="true"></span>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit beatae laudantium
-                            voluptate rem ullam dolore nisi voluptatibus esse quasi. Integer sit amet .Lorem
-                            ipsum dolor sit
-                            amet adipisicing elit. Laborum dolor facere ipsum adipisicingelit.
-                        </blockquote>
-                        <div class="testi-des">
-                            <div class="test-img"><img src="assets/images/c4.jpg" class="img-fluid" alt="client-img">
-                            </div>
-                            <div class="peopl align-self">
-                                <h3>Mike Thyson</h3>
-                                <p class="indentity">Example City</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
-    </div>
+    
     </class>
     </div>
     <!-- /grids -->

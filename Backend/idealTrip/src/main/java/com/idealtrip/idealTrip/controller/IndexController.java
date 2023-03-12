@@ -42,10 +42,6 @@ public class IndexController {
         }
     }
 
-  // @GetMapping("/index")
-  // public String index(Model model) {
-  //   return "index";
-  // }
 
 
   @GetMapping("/index")
@@ -54,7 +50,7 @@ public class IndexController {
         return "index";
     }
 
-    @GetMapping("/")
+  @GetMapping("/")
     public String searchCountriesInd(Model model) {
       model.addAttribute("services", destinationService.findAll());
       return "index";

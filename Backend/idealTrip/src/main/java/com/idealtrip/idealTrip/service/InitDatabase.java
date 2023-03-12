@@ -282,14 +282,14 @@ public class InitDatabase {
                                 "Una de las mejores cosas que hacer en Singapur es probar la comida callejera de los hawkers. Estos mercados concentran numerosos puestos de comida a precios económicos donde los comensales comparten mesa y servicios");
                 contentPlace.add(
                                 "Clarke Quay fue un antiguo muelle en el que hace un tiempo se rehabilitaron sus almacenes hasta convertir la zona en otro de los lugares imprescindibles que ver en Singapur");
-                // FIN
+                // END
                 int cont = 0;
                 int contCity = 0;
                 for (String place : namePlace) {
                         Tourism tourism = new Tourism();
                         tourism.setNameTourism(place);
                         tourism.setContentTourism(contentPlace.get(cont));
-                        // AÑADIR LA IMAGEN
+                        // ADD IMAGE
                         cont++;
                         tourism.setNameDestination(cities.get(contCity));
                         tourism.setDestination(initedDestinations.get(contCity));
@@ -468,7 +468,7 @@ public class InitDatabase {
                                 "En el sudeste asiático, algunos lo consideran el 'rey de las frutas' y otros la 'fruta más apestosa del mundo'. Los locales adoran tanto la carne que la convierten en postres, pasteles, tartas e incluso batidos");
                 contentFood.add(
                                 "Es un plato de influencia musulmana/india y usa un característico arroz de grano largo tipo basmati");
-                // FIN
+                // END
                 int cont = 0;
                 int contCity = 0;
                 for (String food : nameFood) {
@@ -754,7 +754,7 @@ public class InitDatabase {
                 List<Review> reviews = new ArrayList<>();
                 for (Destination destination : initedDestinations) {
                         for (User user : initedUsers) {
-                                for (int i = 0; i < 3; i++) { // generar tres reviews por cada destino y usuario
+                                for (int i = 0; i < 3; i++) { // generate 3 reviews for each destination and user
                                         Review review = new Review();
                                         review.setContentReview("Review del destino: " +
                                                         destination.getNameDestination());

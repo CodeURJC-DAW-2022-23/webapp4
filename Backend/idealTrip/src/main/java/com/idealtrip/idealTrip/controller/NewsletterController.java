@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.idealtrip.idealTrip.model.Newsletter;
 import com.idealtrip.idealTrip.service.NewsletterService;
-import org.springframework.web.bind.annotation.RequestParam;
+//import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class NewsletterController {

@@ -1,7 +1,7 @@
 package com.idealtrip.idealTrip.controller;
 
 import com.idealtrip.idealTrip.model.User;
-import com.idealtrip.idealTrip.service.MailService;
+//import com.idealtrip.idealTrip.service.MailService;
 import com.idealtrip.idealTrip.service.UserService;
 
 import java.security.Principal;

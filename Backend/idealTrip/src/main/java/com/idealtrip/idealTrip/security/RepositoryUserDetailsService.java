@@ -17,7 +17,7 @@ import com.idealtrip.idealTrip.repository.UserRepository;
 
 
 @Service
-public class RepositoryUserDetailsService implements UserDetailsService { //clase de Spring que sirve para logear a un usuario 
+public class RepositoryUserDetailsService implements UserDetailsService { // Spring class used to log in a user 
 
 	@Autowired
 	private UserRepository userRepository;
