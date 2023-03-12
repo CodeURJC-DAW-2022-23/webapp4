@@ -153,6 +153,8 @@ Estas son solo algunas de las funciones implementadas en esta segunda fase, ahor
      <image src="/images/EntityDiagram.png" alt="entities relations">  
            
 - Diagrama de clases y templates:  
+              <image src="/images/DiagramaDeClasesIdealTrip.png" >  
+
            
 - Participación de miembros:  
 ### Sergio Cuadros Flores
