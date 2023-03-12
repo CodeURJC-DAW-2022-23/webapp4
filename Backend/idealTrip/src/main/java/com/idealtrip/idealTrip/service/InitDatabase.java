@@ -671,7 +671,7 @@ public class InitDatabase {
                         user.setEncodedPassword(passwordEncoder.encode("12345"));
                         // user.setEncodedPassword("12345");
                         user.setRoles("USER");
-                        user.setProfileAvatar("/static/assets/images/c1.jpg");
+                        user.setProfileAvatar("/static/assets/images/null-avatar.jpg");
                         try {
                                 setProfileAvatarContent(user, user.getProfileAvatar());
                         } catch (IOException e) {
@@ -689,7 +689,7 @@ public class InitDatabase {
                         user.setEncodedPassword(passwordEncoder.encode("123456"));
                         // user.setEncodedPassword("123456");
                         user.setRoles("USER", "ADMIN");
-                        user.setProfileAvatar("/static/assets/images/c1.jpg");
+                        user.setProfileAvatar("/static/assets/images/null-avatar.jpg");
                         try {
                                 setProfileAvatarContent(user, user.getProfileAvatar());
                         } catch (IOException e) {

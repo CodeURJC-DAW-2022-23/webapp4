@@ -5,6 +5,7 @@ package com.idealtrip.idealTrip.controller;
 //import java.nio.charset.StandardCharsets;
 // import java.net.http.HttpHeaders;
 import java.security.Principal;
+import java.sql.Blob;
 import java.sql.SQLException;
 //import java.util.ArrayList;
 //import java.util.List;
@@ -27,6 +28,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 //import org.springframework.web.bind.annotation.ResponseBody;
 //import org.hibernate.engine.jdbc.BlobProxy;
 //import org.springframework.data.domain.Page;
@@ -168,5 +170,16 @@ public class CitiesController {
         houseService.findByDestinationName(destinationService.findById(id).get().getNameDestination()));
     return "house";
   }
+
+  @GetMapping("/review/avatar/{id}")
+	@ResponseBody
+	public byte[] getUserAvatar(@PathVariable Long id) throws SQLException {
+		User user = userService.findById(id).orElse(null);
+		if (user != null && user.getProfileAvatarFile() != null) {
+			Blob avatarBlob = user.getProfileAvatarFile();
+			return avatarBlob.getBytes(1, (int) avatarBlob.length());
+		}
+		return null;
+	}
 
 }
