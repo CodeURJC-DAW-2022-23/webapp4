@@ -1,6 +1,6 @@
 {{>header}}
 <br><br>
-    <!-- contact-form -->
+<!-- contact-form -->
 <div class="container py-lg-3">
     {{#house}}
     <section class="w3l-contact" id="contact">
@@ -21,7 +21,7 @@
                                 <h6 class="mt-4">Alojamiento escogido:</h6>
                                 <p> {{nameHouse}}</p>
                                 <h6 class="mt-4">Coste total:</h6>
-                                <p class="margin-top"><a href="tel:+44-255-366-88">{{price}}</a></p>
+                                <p class="margin-top">{{price}}</p>
                             </div>
                         </div>
                     </div>
@@ -32,6 +32,8 @@
                         <div class="text-left">
                             <form action="/purchaseMail" method="post">
                                 <button id="btn-abrir-popup" class="btn btn-style btn-primary">TARJETA</button>
+                                <input type="hidden" name="_csrf" value="{{token}}" />
+
                             </form>
                         </div>
                         <div class="overlay" id="overlay">
@@ -45,6 +47,8 @@
                         <div class="text-left">
                             <form action="/purchaseMail" method="post">
                                 <button id="btn-abrir-popup2" class="btn btn-style btn-primary">PAYPAL</button>
+                                <input type="hidden" name="_csrf" value="{{token}}" />
+
                             </form>
                         </div>
                         <div class="overlay" id="overlay2">
@@ -60,11 +64,11 @@
             {{/house}}
     </section>
 </div>
-    <!-- /contact-form -->
+<!-- /contact-form -->
 <script src="../assets/js/ventana.js"></script>
 <script src="../assets/js/ventanapaypal.js"></script>
 
-    <!--/w3l-footer-29-main-->
-  {{>footer}}
+<!--/w3l-footer-29-main-->
+{{>footer}}
 
 </html>
