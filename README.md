@@ -124,4 +124,81 @@ Estas son solo algunas de las funciones implementadas en esta segunda fase, ahor
 
 - Diagrama con las entidades de la base de datos  
 
-     <image src="/images/EntityDiagram.png" alt="entities relations">
+     <image src="/images/EntityDiagram.png" alt="entities relations">  
+           
+- Diagrama de clases y templates:  
+           
+- Participación de miembros:  
+### Sergio Cuadros Flores
+#### Descripción textual: 
+xxxxxxxxxxxxxxxxxxxx
+
+#### 5 commits más significativos
+
+| Commit  | Descripción                                      | Link                                                                                            |
+| ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| #1            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx		   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #2            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #3            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #4            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #5            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx			   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+
+         
+### David Moreno Martín
+#### Descripción textual: 
+xxxxxxxxxxxxxxxxxxxx
+
+#### 5 commits más significativos
+
+| Commit  | Descripción                                      | Link                                                                                            |
+| ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| #1            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx		   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #2            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #3            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #4            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #5            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx			   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+  
+### Adrián Pedroche Rata
+#### Descripción textual: 
+xxxxxxxxxxxxxxxxxxxx
+
+#### 5 commits más significativos
+
+| Commit  | Descripción                                      | Link                                                                                            |
+| ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| #1            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx		   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #2            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #3            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #4            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #5            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx			   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+
+### Jorge Ezequiel	de Francisco Bernal
+#### Descripción textual: 
+xxxxxxxxxxxxxxxxxxxx
+
+#### 5 commits más significativos
+
+| Commit  | Descripción                                      | Link                                                                                            |
+| ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| #1            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx		   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #2            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #3            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #4            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #5            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx			   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+
+### ShuHeng	Ye
+#### Descripción textual: 
+xxxxxxxxxxxxxxxxxxxx
+
+#### 5 commits más significativos
+
+| Commit  | Descripción                                      | Link                                                                                            |
+| ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| #1            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx		   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #2            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #3            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #4            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #5            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx			   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+
+
+    
