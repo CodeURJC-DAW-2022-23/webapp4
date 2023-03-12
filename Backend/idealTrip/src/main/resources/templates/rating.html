@@ -2,13 +2,20 @@
 <html>
 <head>
     <title>Total Ratings</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <h1>Total Ratings</h1>
-    <ul>
-    {{#totalRatingMap}}
-        <li>{{.}}</li>
-    {{/totalRatingMap}}
-    </ul>
+    <!-- <h1>Total Ratings</h1> -->
+    <canvas id="myChart"></canvas>
+
+<!-- <script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: [[${barChartData}]],
+        options: [[${barChartOptions}]]
+    });
+</script> -->
+      
 </body>
 </html>

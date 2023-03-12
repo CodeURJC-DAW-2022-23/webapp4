@@ -28,13 +28,13 @@ public class ReviewService {
         return reviews.findAll();
     }
 
-    public int getTotalRatingForDestination(Destination destination) {
+    public Double getTotalRatingForDestination(Destination destination) {
         List<Review> reviewList = reviews.findByDestination(destination);
         int totalRating = 0;
         for (Review review : reviewList) {
             totalRating += review.getRatingReview();
-        }
-        return totalRating;
+        } 
+        return (double) totalRating / reviewList.size(); 
     }
 
     public Page<Review> findReviewByUser(User user, Pageable pageable) {

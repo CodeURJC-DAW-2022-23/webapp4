@@ -118,11 +118,11 @@
                     {{#review}}
                     <p>{{titleReview}} - {{contentReview}}</p>
                     {{/review}}
-
+                    
                     {{^review}}
                     <p>No hay reviews disponibles por este usuario.</p>
                     {{/review}}
-
+                    
                     {{#reviews.hasNext}}
                     <a href="?page={{reviews.nextPageable.pageNumber}}">Siguiente</a>
                     {{/reviews.hasNext}}
@@ -133,7 +133,7 @@
 
             <div class="card mb-4">
 
-                <div class="card-header">Opiniones realizadas</div>
+                <div class="card-header">Usuarios</div>
                 {{#profile}}
                 <div class="card-body">
                     <div class="text-left">
@@ -148,7 +148,7 @@
                             <a href="/deleteUser/{{id}}" class="btn btn-style btn-primary" value="Aceptar"> </a>
                             <form action="/deleteUser/{{id}}" method="post">
                                 <input type="hidden" name="id" value="{{id}}">
-                                <input type="hidden" name="_csrf" value="{{token}}" />
+                                <input type="hidden" name="_csrf" value="{{token}}"/>
                                 <input type="submit" class="btn btn-style btn-primary" value="Aceptar">
                             </form>
                         </div>

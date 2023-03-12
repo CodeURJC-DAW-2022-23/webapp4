@@ -40,9 +40,9 @@
      <input type="text" placeholder="2 personas">
     </div>
     {{#logged}}
-      <a class="button" href="/purchase">Comprar</a>
+      <a class="button" href="/purchase/{{id}}">Comprar</a>
     {{/logged}} {{^logged}}
-      <a class="button" href="/login">Iniciar Sesión</a>
+      <a class="button" href="/login">Comprar</a>
     {{/logged}}
    </form>
 

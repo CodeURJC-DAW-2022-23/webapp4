@@ -92,3 +92,113 @@ En esta fase hemos, diseñado y maquetado la aplicación mediante HTML, CSS y Ja
             
  - Relación entre las distintas pantallas de la aplicación web:
           <image src="/images/IdealTrip.jpg" alt="entities relations">  
+                        
+
+              
+              
+# Fase 2: Web con HTML generado en servidor y AJAX
+
+    
+En esta fase hemos implementado la aplicación completa, lo hemos hecho mediante SpringBoot y MySQL, además, también hemos añadido datos de ejemplo a la base de datos que se cargan al arrancar la aplicación, estos datos han sido especificados en el archivo "InitDataBase.java" y son mostrados dinamicamente en la aplicación. Las imágenes también han sido incluidas en la base de datos para facilitar el despliegue en entornos restringidos
+              
+También hemos incluido una página de error que salta cuando ocurre algún error o se intenta acceder a alguna URL inexistente, esta página de error va acorde a la temática del resto de la aplicación.
+              
+La paginación mediante JS y AJAX también ha sido incluida en la parte de reviews, de este modo, no se incluyen todas las reviews a primera vista, sino que es necesario pulstar un botón de "Mostrar más", cuando este botón es pulsado, no se recarga la página entera, sino que solamente se carga la parte de las 5 reviews siguientes.
+              
+Además, disponemos 3 tipos de usuarios implementados mediante Spring Security, usuario NO registrado, usuario Registrado y usuario Administrador, cada uno con sus funciones delimitadas por su rol. Por poner algunos ejemplos, un usuario NO registrado no puede alquilar un alojamiento, debe registrarse en la aplicación para poder hacerlo. Del mismo modo, un usuario Registrado puede visitar su perfil, mientras que un No registrado no puede hacerlo.
+              
+Estas son solo algunas de las funciones implementadas en esta segunda fase, ahora continuaremos con la navegación de la aplicación, que a pesar de tener similitudes, también incluye nuevas pantallas.
+              
+    
+- Navegación actualizada:
+    - Inicio:...
+              
+- Instrucciones de ejecución:  
+    - Para el uso de la aplicación nosotros hemos usado GitHub Desktop, MySQL Workbench 8.0 y Visual Studio Code. Para poder ejecutar la aplicación en Visual Studio Code es necesario instalarse las extensiones de "Extension Pack for Java" y "Spring Boot Extension Pack".
+    - Una vez hecho eso, lo primero sería clonar el repositorio y situarte sobre la rama main, una vez en main, con Visual Studio (o el editor que uses) abres la carpeta \webapp4\Backend\idealTrip que es la carpeta donde se encuentra todo el código de la aplicación. 
+    - Cuando ya estás dentro de la carpeta, buscas el archivo "IdealTripApplication.java" que es el archivo main del programa y el que arrancará la aplicación.
+    - Antes de hacer esto, en MySQL Workbench debes crear una instancia local de MySQL, es importante que la constraseña no sea password, pues puede dar problemas. En nuestro caso pusimos password.12345 y no hemos tenido inconvenientes.
+    - Cuando ya tenemos la instancia de la base de datos, ejecutamos el archivo "IdealTripApplication.java" y veremos como se conecta la base de datos con la aplicación y se empiezan a crear las tablas con sus respectivos datos. Cuando haya terminado, ya podremos usar la aplicación.
+    - Para hacer esto, debemos ir en nuestro navegador a "https://localhost:8443" y cuando nos dé el aviso de que la conexión no es privada debemos clickar en "Advanced" y posteriormente en "Proceed to localhost (unsafe)"
+    - Si hemos hecho todo correctamente, ya estaremos dentro de la aplicación, con todas las funcionalidades y los datos cargados.
+
+- Diagrama con las entidades de la base de datos  
+
+     <image src="/images/EntityDiagram.png" alt="entities relations">  
+           
+- Diagrama de clases y templates:  
+           
+- Participación de miembros:  
+### Sergio Cuadros Flores
+#### Descripción textual: 
+xxxxxxxxxxxxxxxxxxxx
+
+#### 5 commits más significativos
+
+| Commit  | Descripción                                      | Link                                                                                            |
+| ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| #1            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx		   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #2            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #3            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #4            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #5            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx			   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+
+         
+### David Moreno Martín
+#### Descripción textual: 
+xxxxxxxxxxxxxxxxxxxx
+
+#### 5 commits más significativos
+
+| Commit  | Descripción                                      | Link                                                                                            |
+| ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| #1            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx		   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #2            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #3            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #4            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #5            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx			   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+  
+### Adrián Pedroche Rata
+#### Descripción textual: 
+xxxxxxxxxxxxxxxxxxxx
+
+#### 5 commits más significativos
+
+| Commit  | Descripción                                      | Link                                                                                            |
+| ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| #1            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx		   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #2            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #3            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #4            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #5            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx			   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+
+### Jorge Ezequiel	de Francisco Bernal
+#### Descripción textual: 
+xxxxxxxxxxxxxxxxxxxx
+
+#### 5 commits más significativos
+
+| Commit  | Descripción                                      | Link                                                                                            |
+| ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| #1            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx		   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #2            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #3            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #4            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #5            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx			   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+
+### ShuHeng	Ye
+#### Descripción textual: 
+xxxxxxxxxxxxxxxxxxxx
+
+#### 5 commits más significativos
+
+| Commit  | Descripción                                      | Link                                                                                            |
+| ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| #1            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx		   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #2            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #3            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #4            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #5            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx			   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+
+
+    
