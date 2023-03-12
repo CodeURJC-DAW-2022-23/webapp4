@@ -274,145 +274,96 @@
                 <h3 class="hny-title mb-md-5 mb-4">Lo que nuestros clientes dicen</h3>
             </div>
             <div class="review-list">
-                {{#reviews}}
-                <div class="review-box">
-                    <div class="review-contentbox">
-                        <h3 class="review-username"><img class="avatar"
-                                src="../assets/images/null-avatar.png">{{user.name}}&nbsp;{{user.lastName}}</h3>
-                        <br>
-                        <div class="review-rating" data-rating="{{ratingReview}}">
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9733;</span>
-                            <span class="star">&#9733;</span>
-                        </div>
-
-                        <h4 class="review-title">{{titleReview}}</h4>
-                        <p class="review-content">{{contentReview}}</p>
-                    </div>
+    {{#reviews}}
+        <div class="review-box">
+            <div class="review-contentbox">
+                <h3 class="review-username"><img class="avatar" src="../assets/images/null-avatar.png">{{user.name}}&nbsp;{{user.lastName}}</h3>
+                <br>
+                <div class="review-rating" data-rating="{{ratingReview}}">
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
                 </div>
-                {{/reviews}}
+                <h4 class="review-title">{{titleReview}}</h4>
+                <p class="review-content">{{contentReview}}</p>
+                <!-- <div class="spinner"></div> -->
+            </div>
+        </div>
+    {{/reviews}}
+</div>
 
-                <div class="pageReview">
-                    {{#reviews.hasPrevious}}
-                    <a href="?page={{reviews.previousPageable.pageNumber}}">Anterior</a>
-                    {{/reviews.hasPrevious}}
-                    <p3> {{currentPage}} / {{reviews.totalPages}}</p3>
-                    {{#reviews.hasNext}}
-                    <a href="?page={{reviews.nextPageable.pageNumber}}">Siguiente</a>
-                    {{/reviews.hasNext}}
+<div id="load-more-container">
+    {{#reviews.hasNext}}
+        <button id="load-more-button" data-page="{{reviews.nextPageable.pageNumber}}">Mostrar más</button>
+    {{/reviews.hasNext}}
+</div>
 
-                </div>
 
             <script>
-                //Get all rating-review value
-                const reviewRatings = document.querySelectorAll('.review-rating');
+const loadMoreButton = document.querySelector('#load-more-button');
+const reviewContainer = document.querySelector('.review-list');
 
-                // Loop through review rating elements and update stars
-                reviewRatings.forEach(reviewRating => {
-                    const rating = parseInt(reviewRating.getAttribute('data-rating'));
-                    const stars = reviewRating.querySelectorAll('.star');
+loadMoreButton.addEventListener('click', function() {
+  const nextPage = this.getAttribute('data-page');
 
-                    // Add active stars based rating value 
-                    for (let i = 0; i < rating; i++) {
-                        stars[i].classList.add('active');
-                    }
-                });
-            </script>
+  // We make the Ajax request to the server to get the reviews of the following page, without reloading the entire page
+setTimeout(function() {
+  const xhr = new XMLHttpRequest();
+  xhr.open('GET', '?page=' + nextPage);
+  xhr.onload = function() {
+    if (xhr.status === 200) {
+      // We convert the server response to HTML and add it to the reviews container.
+      const parser = new DOMParser();
+      const html = parser.parseFromString(xhr.response, 'text/html');
+      reviewContainer.innerHTML += html.querySelector('.review-list').innerHTML;
+
+      //Update the page number of the "Show more" button and hide the button if there are no more pages.
+      const newPage = parseInt(nextPage) + 1;
+      loadMoreButton.setAttribute('data-page', newPage);
+      if (!html.querySelector('#load-more-button')) {
+        loadMoreButton.style.display = 'none';
+      }
+
+      // Updating the star values in the added reviews.
+      const newReviewRatings = reviewContainer.querySelectorAll('.review-rating:not(.updated)');
+      newReviewRatings.forEach(newReviewRating => {
+        const rating = parseInt(newReviewRating.getAttribute('data-rating'));
+        const stars = newReviewRating.querySelectorAll('.star');
+
+        // We add active stars based on the rating value.
+        for (let i = 0; i < rating; i++) {
+          stars[i].classList.add('active');
+        }
+
+        
+
+        
+
+        // We mark this review as updated so that it will not be updated again in the future.
+        newReviewRating.classList.add('updated');
+      });
+      // We hide the spinner and show the button
+      spinner.style.display = 'none';
+      loadMoreButton.style.display = 'block';
+      if (!html.querySelector('#load-more-button')) {
+        loadMoreButton.style.display = 'none'; //When there is no more "load more" in html, that is, there are no more pages of reviews available, we hide the button
+        }
+    } else {
+      console.error('Error en la carga de reviews');
+    }
+  };
+  xhr.send();
+
+},0);
+});
+
+</script>
 
     </div>
     <!-- /grids -->
-    <div class="testimonial-width">
-        <div id="owl-demo1" class="owl-two owl-carousel owl-theme">
-            <div class="item">
-                <div class="testimonial-content">
-                    <div class="testimonial">
-                        <blockquote>
-                            <span class="fa fa-quote-left" aria-hidden="true"></span>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit beatae laudantium
-                            voluptate rem ullam dolore nisi voluptatibus esse quasi. Integer sit amet .Lorem
-                            ipsum dolor sit
-                            amet adipisicing elit. Laborum dolor facere ipsum adipisicingelit.
-                        </blockquote>
-                        <div class="testi-des">
-                            <div class="test-img"><img src="assets/images/c1.jpg" class="img-fluid" alt="client-img">
-                            </div>
-                            <div class="peopl align-self">
-                                <h3>Rohit Paul</h3>
-                                <p class="indentity">Example City</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="testimonial-content">
-                    <div class="testimonial">
-                        <blockquote>
-                            <span class="fa fa-quote-left" aria-hidden="true"></span>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit beatae laudantium
-                            voluptate rem ullam dolore nisi voluptatibus esse quasi. Integer sit amet .Lorem
-                            ipsum dolor sit
-                            amet adipisicing elit. Laborum dolor facere ipsum adipisicingelit.
-                        </blockquote>
-                        <div class="testi-des">
-                            <div class="test-img"><img src="assets/images/c2.jpg" class="img-fluid" alt="client-img">
-                            </div>
-                            <div class="peopl align-self">
-                                <h3>Shveta</h3>
-                                <p class="indentity">Example City</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="testimonial-content">
-                    <div class="testimonial">
-                        <blockquote>
-                            <span class="fa fa-quote-left" aria-hidden="true"></span>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit beatae laudantium
-                            voluptate rem ullam dolore nisi voluptatibus esse quasi. Integer sit amet .Lorem
-                            ipsum dolor sit
-                            amet adipisicing elit. Laborum dolor facere ipsum adipisicingelit.
-                        </blockquote>
-                        <div class="testi-des">
-                            <div class="test-img"><img src="assets/images/c3.jpg" class="img-fluid" alt="client-img">
-                            </div>
-                            <div class="peopl align-self">
-                                <h3>Roy Linderson</h3>
-                                <p class="indentity">Example City</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="testimonial-content">
-                    <div class="testimonial">
-                        <blockquote>
-                            <span class="fa fa-quote-left" aria-hidden="true"></span>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit beatae laudantium
-                            voluptate rem ullam dolore nisi voluptatibus esse quasi. Integer sit amet .Lorem
-                            ipsum dolor sit
-                            amet adipisicing elit. Laborum dolor facere ipsum adipisicingelit.
-                        </blockquote>
-                        <div class="testi-des">
-                            <div class="test-img"><img src="assets/images/c4.jpg" class="img-fluid" alt="client-img">
-                            </div>
-                            <div class="peopl align-self">
-                                <h3>Mike Thyson</h3>
-                                <p class="indentity">Example City</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
-    </div>
+    
     </class>
     </div>
     <!-- /grids -->

@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.idealtrip.idealTrip.model.Newsletter;
 import com.idealtrip.idealTrip.service.NewsletterService;
-import org.springframework.web.bind.annotation.RequestParam;
+//import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class NewsletterController {
@@ -30,7 +30,7 @@ public class NewsletterController {
         String email = newsletter.getEmail();
         newsletter.setEmail(email);
         String message = "Muchas gracias por suscirbirse \nA partir de ahora será notificado de todas nuestras ofertas \n Equipo de IdealTrip";
-        newsletterService.sendEmail(email, "idealtripdaw@gmail.com", message);
+        newsletterService.sendEmail( "idealtripdaw@gmail.com", email, message);
         newsletterService.save(newsletter);
         
         // model.addAttribute("newsletterId", newsletter.getId());

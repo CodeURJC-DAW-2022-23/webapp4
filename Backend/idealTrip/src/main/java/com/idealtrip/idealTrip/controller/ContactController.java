@@ -1,6 +1,6 @@
 package com.idealtrip.idealTrip.controller;
 
- import com.idealtrip.idealTrip.model.User;
+import com.idealtrip.idealTrip.model.User;
 import com.idealtrip.idealTrip.service.MailService;
 import com.idealtrip.idealTrip.service.UserService;
 
@@ -9,15 +9,15 @@ import java.security.Principal;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
- import org.springframework.stereotype.Controller;
- import org.springframework.ui.Model;
- import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
- import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestParam;
 
- @Controller
- public class ContactController {
+@Controller
+public class ContactController {
 
     @Autowired
 	private UserService users;
@@ -41,10 +41,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 
     @Autowired
     private MailService mailService;
+
      @GetMapping("/contact")
      public String contact(Model model) {
          return "contact";
      }
+		 
      @PostMapping("/sendMail")
      public String sendMail(@RequestParam("w3lName") String name,@RequestParam("w3lSender") String from,  @RequestParam("w3lSubect") String subject, @RequestParam("w3lMessage") String text){
 

@@ -56,7 +56,7 @@ public class ServiceController {
     }   
 
 //     @GetMapping("/services")
-//     public String listarNombresDestinos(Model model){
+//     public String ListDestNames(Model model){
 //         Page<Destination> destination = destinationRepository.findAll(PageRequest.of(0,3));
 //         model.addAttribute("services", destination.getContent());
 //         return "services";
