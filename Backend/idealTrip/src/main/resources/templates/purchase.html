@@ -1,6 +1,8 @@
 {{>header}}
 <br><br>
     <!-- contact-form -->
+<div class="container py-lg-3">
+    {{#house}}
     <section class="w3l-contact" id="contact">
         <div class="contact-infubd py-5">
             <div class="container py-lg-3">
@@ -15,11 +17,11 @@
                             </div>
                             <div class="hours">
                                 <h6 class="mt-4">Destino:</h6>
-                                <p> París</a></p>
+                                <p> {{destinationName}}</a></p>
                                 <h6 class="mt-4">Alojamiento escogido:</h6>
-                                <p> El alojamiento escogido en cuestión</p>
+                                <p> {{nameHouse}}</p>
                                 <h6 class="mt-4">Coste total:</h6>
-                                <p class="margin-top"><a href="tel:+44-255-366-88">300€</a></p>
+                                <p class="margin-top"><a href="tel:+44-255-366-88">{{price}}</a></p>
                             </div>
                         </div>
                     </div>
@@ -28,48 +30,36 @@
                             <h5 class="mt-4">Seleccione su método de pago</h5>
                         </div>
                         <div class="text-left">
-                            <button id="btn-abrir-popup" class="btn btn-style btn-primary">TARJETA <i
-                                    class="fa-brands fa-cc-visa"></i> <i class="fa-brands fa-cc-mastercard"></i> <i
-                                    class="fa-brands fa-cc-amex"></i></button>
+                            <form action="/purchaseMail" method="post">
+                                <button id="btn-abrir-popup" class="btn btn-style btn-primary">TARJETA</button>
+                            </form>
                         </div>
                         <div class="overlay" id="overlay">
                             <div class="popup" id="popup">
                                 <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i
                                         class="fas fa-times"></i></a>
-                                <h3>Tarjeta</h3>
-                                <h4>Introduzca sus datos</h4>
-                                <form action="">
-                                    <div class="contenedor-inputs">
-                                        <input type="text" placeholder="Nombre del titular" required="">
-                                        <input type="text" placeholder="Numero de tarjeta" required="">
-                                    </div>
-                                    <input type="submit" class="btn btn-style btn-primary" value="Continuar">
-                                </form>
+                                <h3>Compra realizada</h3>
                             </div>
                         </div>
                         <br>
                         <div class="text-left">
-                            <button id="btn-abrir-popup2" class="btn btn-style btn-primary">PAYPAL <i
-                                    class="fa-brands fa-cc-paypal"></i></button>
+                            <form action="/purchaseMail" method="post">
+                                <button id="btn-abrir-popup2" class="btn btn-style btn-primary">PAYPAL</button>
+                            </form>
                         </div>
                         <div class="overlay" id="overlay2">
                             <div class="popup" id="popup2">
                                 <a href="#" id="btn-cerrar-popup2" class="btn-cerrar-popup"><i
                                         class="fas fa-times"></i></a>
-                                <h3>Paypal</h3>
-                                <h4>Introduzca sus datos</h4>
-                                <form action="">
-                                    <div class="contenedor-inputs">
-                                        <input type="email" placeholder="email" required="">
-                                        <input type="password" placeholder="Contraseña" required="">
-                                    </div>
-                                    <input type="submit" class="btn btn-style btn-primary" value="Continuar">
-                                </form>
+                                <h3>Compra realizada</h3>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+            {{/house}}
     </section>
+</div>
     <!-- /contact-form -->
 <script src="../assets/js/ventana.js"></script>
 <script src="../assets/js/ventanapaypal.js"></script>
