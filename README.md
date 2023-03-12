@@ -168,21 +168,42 @@ Además de esto, he corregido errores, traducido código, eliminado warnings y a
 | #3            | Página error | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/6ac548755f840408a550881a30247e1f69aeaf23 | 
 | #4            | Google maps alojamientos	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/dbf3a9e16b2bf70f014a3aef0b8575a76224744c | 
 | #5            | Añadida paginación con AJAX y JS | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/ce305a774cb7d9474e80e2ab92947bb05f4a1d8a | 
+         
+#### 5 ficheros más participación
+
+| Número fichero  | Fichero                                      | 
+| ------------- | ------------------------------------------------ |
+| #1            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx		   | 
+| #2            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | 
+| #3            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx |
+| #4            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx	   | 
+| #5            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx			   |
   
 ### Adrián Pedroche Rata
 #### Descripción textual: 
-xxxxxxxxxxxxxxxxxxxx
+En primer lugar, comencé añadiendo toda la información correspondiente a cada destino, es decir, los sitios turísticos y la comida típica. Posteriormente, me encargué de realizar la gestión de los ususarios, distinguiendo entre usuario registrado, no registrado o administrador, dámdoles permisos según sea necesario. 
+Más adelante, me encargué de permitir que el usuario puediera cerrar su sesión (logout para usuarios registrados). Entre medias introduje la acción de mostrar una página html de error cuando se intentase acceder a una URL inexistente. Posteriormente me centré en el buscador de países que tenemos implementado en el "/index". Para terminar la fase intentando construir un diagrama de barras a partir de la media de las opiniones registradas por los ususarios en un determinado destino. 
 
 #### 5 commits más significativos
 
 | Commit  | Descripción                                      | Link                                                                                            |
 | ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
-| #1            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx		   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
-| #2            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
-| #3            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
-| #4            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
-| #5            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx			   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #1            | Error 404 al acceder a una URL inexistente	   | [https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo](https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/486a1d3593f69568b6eba0fee03abfb8ca68c23f) | 
+| #2            | Buscador de países de la página de inicio | [https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo](https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/9d6ca4142df3d78eacdb9d0f1213ca5358298fce) | 
+| #3            | Cerrar sesión del usuario | [https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo](https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/ab245851208c4ba051a139dc18bc3f43dd6075f5) | 
+| #4            | Mustach para diferenciar ususarios, error al loguearse y springSecuiry|[ https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo](https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/c41054b53be30636f1e3adab6ae7b1d699e6ba19) | 
+| #5            | Finalización de introducir toda la información de los destinos	   | [https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo](https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/23775f412952f9a1d9a8beaee1199ad61e922e56) | 
 
+#### 5 ficheros más participación
+
+| Número fichero  | Fichero                                      | 
+| ------------- | ------------------------------------------------ |
+| #1            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx		   | 
+| #2            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | 
+| #3            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx |
+| #4            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx	   | 
+| #5            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx			   |
+         
 ### Jorge Ezequiel	de Francisco Bernal
 #### Descripción textual: 
 xxxxxxxxxxxxxxxxxxxx
@@ -197,6 +218,16 @@ xxxxxxxxxxxxxxxxxxxx
 | #4            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
 | #5            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx			   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
 
+#### 5 ficheros más participación
+
+| Número fichero  | Fichero                                      | 
+| ------------- | ------------------------------------------------ |
+| #1            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx		   | 
+| #2            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | 
+| #3            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx |
+| #4            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx	   | 
+| #5            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx			   |         
+         
 ### ShuHeng	Ye
 #### Descripción textual: 
 xxxxxxxxxxxxxxxxxxxx
@@ -211,5 +242,14 @@ xxxxxxxxxxxxxxxxxxxx
 | #4            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
 | #5            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx			   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
 
+#### 5 ficheros más participación
+
+| Número fichero  | Fichero                                      | 
+| ------------- | ------------------------------------------------ |
+| #1            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx		   | 
+| #2            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | 
+| #3            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx |
+| #4            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx	   | 
+| #5            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx			   |         
 
     
