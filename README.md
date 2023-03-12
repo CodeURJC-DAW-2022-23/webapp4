@@ -112,3 +112,13 @@ Estas son solo algunas de las funciones implementadas en esta segunda fase, ahor
     
 - Navegación actualizada:
     - Inicio:...
+              
+- Instrucciones de ejecución:  
+    - Para el uso de la aplicación nosotros hemos usado GitHub Desktop, MySQL Workbench 8.0 y Visual Studio Code. Para poder ejecutar la aplicación en Visual Studio Code es necesario instalarse las extensiones de "Extension Pack for Java" y "Spring Boot Extension Pack".
+    - Una vez hecho eso, lo primero sería clonar el repositorio y situarte sobre la rama main, una vez en main, con Visual Studio (o el editor que uses) abres la carpeta \webapp4\Backend\idealTrip que es la carpeta donde se encuentra todo el código de la aplicación. 
+    - Cuando ya estás dentro de la carpeta, buscas el archivo "IdealTripApplication.java" que es el archivo main del programa y el que arrancará la aplicación.
+    - Antes de hacer esto, en MySQL Workbench debes crear una instancia local de MySQL, es importante que la constraseña no sea password, pues puede dar problemas. En nuestro caso pusimos password.12345 y no hemos tenido inconvenientes.
+    - Cuando ya tenemos la instancia de la base de datos, ejecutamos el archivo "IdealTripApplication.java" y veremos como se conecta la base de datos con la aplicación y se empiezan a crear las tablas con sus respectivos datos. Cuando haya terminado, ya podremos usar la aplicación.
+    - Para hacer esto, debemos ir en nuestro navegador a "https://localhost:8443" y cuando nos dé el aviso de que la conexión no es privada debemos clickar en "Advanced" y posteriormente en "Proceed to localhost (unsafe)"
+    - Si hemos hecho todo correctamente, ya estaremos dentro de la aplicación, con todas las funcionalidades y los datos cargados.
+
