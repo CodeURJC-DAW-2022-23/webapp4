@@ -30,7 +30,7 @@ public class NewsletterController {
         String email = newsletter.getEmail();
         newsletter.setEmail(email);
         String message = "Muchas gracias por suscirbirse \nA partir de ahora será notificado de todas nuestras ofertas \n Equipo de IdealTrip";
-        newsletterService.sendEmail(email, "idealtripdaw@gmail.com", message);
+        newsletterService.sendEmail( "idealtripdaw@gmail.com", email, message);
         newsletterService.save(newsletter);
         
         // model.addAttribute("newsletterId", newsletter.getId());
