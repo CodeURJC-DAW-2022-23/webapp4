@@ -28,6 +28,15 @@ public class ReviewService {
         return reviews.findAll();
     }
 
+    public int getTotalRatingForDestination(Destination destination) {
+        List<Review> reviewList = reviews.findByDestination(destination);
+        int totalRating = 0;
+        for (Review review : reviewList) {
+            totalRating += review.getRatingReview();
+        }
+        return totalRating;
+    }
+
     public Page<Review> findReviewByUser(User user, Pageable pageable) {
         return reviews.findByUser(user, pageable);
     }
@@ -36,17 +45,17 @@ public class ReviewService {
         return reviews.findByDestination(destination, pageable);
     }
 
-    public Optional<Review> findById(Long id) {
-        return reviews.findById(id);
-    }
+    //public Optional<Review> findById(Long id) {
+    //    return reviews.findById(id);
+    //}
 
     public void save(Review review) {
         reviews.save(review);
     }
 
-    public List<Review> findReviewsByDestinationId(Long destinationId) {
-        return reviews.findByDestinationId(destinationId);
-    }
+    //public List<Review> findReviewsByDestinationId(Long destinationId) {
+    //    return reviews.findByDestinationId(destinationId);
+    //}
 
     // public List<Review> findReviewsByNameDestination(String nameDestination) {
     // return reviews.findByNameDestination(nameDestination);

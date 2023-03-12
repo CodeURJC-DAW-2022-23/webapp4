@@ -13,5 +13,6 @@ public interface DestinationRepository extends JpaRepository<Destination, Long> 
     // @Query("SELECT d FROM Destination d WHERE LOWER(g.name)")
     // Page<Destination>findByName(String name, Pageable pageable);
     Optional<Destination> findDestinationById(Long id);
+    Destination findBynameDestination(String nameDestination);
     
 }

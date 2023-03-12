@@ -36,7 +36,11 @@ public class DestinationService {
     public Optional<Destination> findDestinationById(Long id) {
         return destinations.findById(id);
     }
-    
+
+    public Destination findByNameDestination(String nameDestination) {
+        return destinations.findBynameDestination(nameDestination);
+    }
+
     // public List<Destination> findByName(String name, Pageable pageable){
     //     return (List<Destination>) extracted(name, pageable);
     // }

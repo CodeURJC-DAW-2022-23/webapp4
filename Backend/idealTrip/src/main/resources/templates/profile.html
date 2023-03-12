@@ -129,12 +129,14 @@
             <div class="card mb-4">
                 <div class="card-header">Opiniones realizadas</div>
                 <div class="card-body">
-                    {{#review}}
+                    {{#reviews}}
                     <p>{{titleReview}} - {{contentReview}}</p>
-                    {{/review}}
-                    {{^review}}
+                    {{/reviews}}
+                    
+                    {{^reviews}}
                     <p>No hay reviews disponibles por este usuario.</p>
-                    {{/review}}
+                    {{/reviews}}
+                    
                     {{#reviews.hasNext}}
                     <a href="?page={{reviews.nextPageable.pageNumber}}">Siguiente</a>
                     {{/reviews.hasNext}}
