@@ -137,7 +137,7 @@ Estas son solo algunas de las funciones implementadas en esta segunda fase, ahor
     -Restauración: Esta pantalla al igual que la de turismo, nos mostrará imágenes de la gastronomía típica del destino preseleccionado junto a una pequeña descricpción cuando coloquemos el cursor encima de la imagen
         <image src="/images/CateringV2.jpg" alt="entities relations">
  - Relación entre las distintas pantallas de la aplicación web (Diagrama de navegación):
-          <image src="/images/IdealTripV2.jpg" alt="entities relations">
+          <image src="/images/IdealTripV2.jpg" alt="Diagrama de navegacion">
               
 - Instrucciones de ejecución:  
     - Para el uso de la aplicación nosotros hemos usado GitHub Desktop, MySQL Workbench 8.0 y Visual Studio Code. Para poder ejecutar la aplicación en Visual Studio Code es necesario instalarse las extensiones de "Extension Pack for Java" y "Spring Boot Extension Pack".
@@ -150,7 +150,7 @@ Estas son solo algunas de las funciones implementadas en esta segunda fase, ahor
 
 - Diagrama con las entidades de la base de datos  
 
-     <image src="/images/EntityDiagram.jpg" alt="entities relations">  
+     <image src="/images/EntityDiagram.png" alt="entities relations">  
            
 - Diagrama de clases y templates:  
            
