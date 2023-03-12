@@ -1,7 +1,9 @@
 package com.idealtrip.idealTrip.service;
 
+import java.util.List;
 import java.util.Optional;
 
+import com.idealtrip.idealTrip.model.House;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,4 +27,5 @@ public class PurchaseService {
     public Optional<Purchase> findById(long id) {
         return purchases.findById(id);
     }
+
 }
