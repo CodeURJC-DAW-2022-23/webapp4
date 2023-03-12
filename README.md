@@ -131,18 +131,28 @@ Estas son solo algunas de las funciones implementadas en esta segunda fase, ahor
 - Participación de miembros:  
 ### Sergio Cuadros Flores
 #### Descripción textual: 
-xxxxxxxxxxxxxxxxxxxx
+En esta fase mi participación principal ha sido en la inicialización del proyecto, configurando todos los archivos iniciales, con la creación de la base de datos, introducción de los datos precargados, así como gestionar la pantalla en la que se muestran los diferentes destinos y el control de pantallas mediante el id del destino y las posteriores pantallas de catering (Restauración) y tourism (Turismo). Además, he gestionado la parte de seguridad relacionada con el https, cifrado SSL, control del puerto 8443. De igual manera, me he encargado del control del login y registrarse, añadiendo los usuarios registrados a la base de datos. Asimismo, he estado pendiente de la realización de las tareas de los demás compañeros, apoyando y ayudando en todo lo que necesitasen en todo momento. He gestionado el control del header y footer, así como la colaboración en la realización de la base de datos de newsletter junto con mi compañero Jorge. Por último he podido gestionar junto con mi compañero Adrián el control de permisos de los usuarios dependiendo de la ruta a la que podían tener acceso o no debido a su rol de registrados, no registrados y administradores.
 
+Mis commits no son grandes, por tanto no hay commits que engloben varias o una funcionalidad completa dado que he ido haciendo commits progresivos y continuados.
 #### 5 commits más significativos
 
 | Commit  | Descripción                                      | Link                                                                                            |
 | ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
-| #1            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx		   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
-| #2            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
-| #3            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
-| #4            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
-| #5            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx			   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #1            | Creación de los ficheros para la base de datos   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/bdc8de0bf1caf2ee3fa4d3a24473bb3ab44c1c16 | 
+| #2            | Inicialización de la base de datos | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/e42f966f5174151cba04efe9794156ecffbe5d00 | 
+| #3            | Mostar los destinos dependiendo de su id |https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/3ccb292c92f487b25ee26849889bd540ffeba827| 
+| #4            | Realización de login y registro	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/3c7a0ffa90b49c54ce3a7184edf4c9f710d16e0c#diff-21a6e6c8cd127959bb4596c8985e0b4d7f56a3c2f8f290f76bb233876ebfbc5a | 
+| #5            | Control pantallas catering y tourism			   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/86872c79e208e112467ca4235a08bc94476d2135 | 
+|               |                                                   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/b7d766286e0e82c8bd45246eb8eaaa39140cb41f|
+#### 5 ficheros más participación
 
+| Número fichero  | Fichero                                      | 
+| ------------- | ------------------------------------------------ |
+| #1            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx		   | 
+| #2            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | 
+| #3            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx |
+| #4            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx	   | 
+| #5            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx			   | 
          
 ### David Moreno Martín
 #### Descripción textual: 
