@@ -207,7 +207,7 @@ Además de esto, he corregido errores, traducido código, eliminado warnings y a
   
 ### Adrián Pedroche Rata
 #### Descripción textual: 
-En primer lugar, comencé añadiendo toda la información correspondiente a cada destino, es decir, los sitios turísticos y la comida típica. Posteriormente, me encargué de realizar la gestión de los ususarios, distinguiendo entre usuario registrado, no registrado o administrador, dámdoles permisos según sea necesario. 
+En primer lugar, comencé añadiendo toda la información correspondiente a cada destino, es decir, los sitios turísticos y la comida típica. Posteriormente, me encargué de realizar la gestión de los ususarios, distinguiendo entre usuario registrado, no registrado o administrador, dándoles permisos según sea necesario (esto último junto a Sergio). 
 Más adelante, me encargué de permitir que el usuario puediera cerrar su sesión (logout para usuarios registrados). Entre medias introduje la acción de mostrar una página html de error cuando se intentase acceder a una URL inexistente. Posteriormente me centré en el buscador de países que tenemos implementado en el "/index". Para terminar la fase intentando construir un diagrama de barras a partir de la media de las opiniones registradas por los ususarios en un determinado destino. 
 
 #### 5 commits más significativos
