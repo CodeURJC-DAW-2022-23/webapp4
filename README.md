@@ -146,17 +146,18 @@ xxxxxxxxxxxxxxxxxxxx
          
 ### David Moreno Martín
 #### Descripción textual: 
-xxxxxxxxxxxxxxxxxxxx
+Empecé encargándome de realizar el mapping de todas las ciudades, así como de todos los servicios de estas (Turismo, Catering, Opiniones y Alojamiento), después trabajé en mostrar las reviews hechas por los usuarios en su perfil, mostrando únicamente aquellas realizadas por ese usuario. También trabaje con la base de datos para hacer que, en lugar de mostrar 1 única review para todos los usuarios, cada usuario "escribiera" 3 reviews sobre cada destino con una puntuación aleatoria. Posteriormente incluí en cada alojamiento una descripción personalizada y la posibilidad de verlos mediante google maps, ambos cargándose desde la base de datos. Asimismo, implementé la paginación mediante JavaScript y AJAX, de este modo, las reviews son cargadas en segundo plano y no es necesario recargar toda la página.  
+Además de esto, he corregido errores, traducido código, eliminado warnings y actualizado la página de error 404 para ser coherente en base al estilo del resto de la aplicación. Por último, también he participado activamente en el ReadMe de esta segunda fase.
 
 #### 5 commits más significativos
 
 | Commit  | Descripción                                      | Link                                                                                            |
 | ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
-| #1            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx		   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
-| #2            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
-| #3            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
-| #4            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
-| #5            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx			   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #1            | Mapping general de todas las ciudades y servicios		   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/aa48a5969832f7f1a9d6ff2ad3321225cf1cf713#diff-80b956c241b8bcfa657bad6d158f25fc2d34e46fa8fe46c4f15ac3f8643113dd | 
+| #2            | Mostrar reviews en perfil usuarios | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/ec26fef71bfa556d23f9171b1a3350d3d93492c8 | 
+| #3            | Página error | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/6ac548755f840408a550881a30247e1f69aeaf23 | 
+| #4            | Google maps alojamientos	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/dbf3a9e16b2bf70f014a3aef0b8575a76224744c | 
+| #5            | Añadida paginación con AJAX y JS | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/ce305a774cb7d9474e80e2ab92947bb05f4a1d8a | 
   
 ### Adrián Pedroche Rata
 #### Descripción textual: 
