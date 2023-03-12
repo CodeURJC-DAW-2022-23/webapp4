@@ -122,3 +122,6 @@ Estas son solo algunas de las funciones implementadas en esta segunda fase, ahor
     - Para hacer esto, debemos ir en nuestro navegador a "https://localhost:8443" y cuando nos dé el aviso de que la conexión no es privada debemos clickar en "Advanced" y posteriormente en "Proceed to localhost (unsafe)"
     - Si hemos hecho todo correctamente, ya estaremos dentro de la aplicación, con todas las funcionalidades y los datos cargados.
 
+- Diagrama con las entidades de la base de datos  
+
+     <image src="/images/EntityDiagram.png" alt="entities relations">
