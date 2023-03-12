@@ -1,6 +1,7 @@
 package com.idealtrip.idealTrip.controller;
 
 import java.security.Principal;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -75,14 +76,13 @@ public class IndexController {
 
     public String ratingDestination(Model model){
     List<Destination> destinationList = destinationService.findAll();
-    Map<String, Integer> totalRatingMap = new HashMap<>();
-
+    Map<String, Double> totalRatingMap = new HashMap<>();
       for(Destination destination : destinationList) {
-        int totalRating = reviewService.getTotalRatingForDestination(destination);
+        Double totalRating = reviewService.getTotalRatingForDestination(destination);
         totalRatingMap.put(destination.getNameDestination(), totalRating);
       }
       model.addAttribute("totalRatingMap", totalRatingMap);
       return "rating";
     
-}
+    }
 }
