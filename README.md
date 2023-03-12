@@ -112,3 +112,94 @@ Estas son solo algunas de las funciones implementadas en esta segunda fase, ahor
     
 - Navegación actualizada:
     - Inicio:...
+              
+- Instrucciones de ejecución:  
+    - Para el uso de la aplicación nosotros hemos usado GitHub Desktop, MySQL Workbench 8.0 y Visual Studio Code. Para poder ejecutar la aplicación en Visual Studio Code es necesario instalarse las extensiones de "Extension Pack for Java" y "Spring Boot Extension Pack".
+    - Una vez hecho eso, lo primero sería clonar el repositorio y situarte sobre la rama main, una vez en main, con Visual Studio (o el editor que uses) abres la carpeta \webapp4\Backend\idealTrip que es la carpeta donde se encuentra todo el código de la aplicación. 
+    - Cuando ya estás dentro de la carpeta, buscas el archivo "IdealTripApplication.java" que es el archivo main del programa y el que arrancará la aplicación.
+    - Antes de hacer esto, en MySQL Workbench debes crear una instancia local de MySQL, es importante que la constraseña no sea password, pues puede dar problemas. En nuestro caso pusimos password.12345 y no hemos tenido inconvenientes.
+    - Cuando ya tenemos la instancia de la base de datos, ejecutamos el archivo "IdealTripApplication.java" y veremos como se conecta la base de datos con la aplicación y se empiezan a crear las tablas con sus respectivos datos. Cuando haya terminado, ya podremos usar la aplicación.
+    - Para hacer esto, debemos ir en nuestro navegador a "https://localhost:8443" y cuando nos dé el aviso de que la conexión no es privada debemos clickar en "Advanced" y posteriormente en "Proceed to localhost (unsafe)"
+    - Si hemos hecho todo correctamente, ya estaremos dentro de la aplicación, con todas las funcionalidades y los datos cargados.
+
+- Diagrama con las entidades de la base de datos  
+
+     <image src="/images/EntityDiagram.png" alt="entities relations">  
+           
+- Diagrama de clases y templates:  
+           
+- Participación de miembros:  
+### Sergio Cuadros Flores
+#### Descripción textual: 
+xxxxxxxxxxxxxxxxxxxx
+
+#### 5 commits más significativos
+
+| Commit  | Descripción                                      | Link                                                                                            |
+| ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| #1            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx		   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #2            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #3            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #4            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #5            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx			   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+
+         
+### David Moreno Martín
+#### Descripción textual: 
+Empecé encargándome de realizar el mapping de todas las ciudades, así como de todos los servicios de estas (Turismo, Catering, Opiniones y Alojamiento), después trabajé en mostrar las reviews hechas por los usuarios en su perfil, mostrando únicamente aquellas realizadas por ese usuario. También trabaje con la base de datos para hacer que, en lugar de mostrar 1 única review para todos los usuarios, cada usuario "escribiera" 3 reviews sobre cada destino con una puntuación aleatoria. Posteriormente incluí en cada alojamiento una descripción personalizada y la posibilidad de verlos mediante google maps, ambos cargándose desde la base de datos. Asimismo, implementé la paginación mediante JavaScript y AJAX, de este modo, las reviews son cargadas en segundo plano y no es necesario recargar toda la página.  
+Además de esto, he corregido errores, traducido código, eliminado warnings y actualizado la página de error 404 para ser coherente en base al estilo del resto de la aplicación. Por último, también he participado activamente en el ReadMe de esta segunda fase.
+
+#### 5 commits más significativos
+
+| Commit  | Descripción                                      | Link                                                                                            |
+| ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| #1            | Mapping general de todas las ciudades y servicios		   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/aa48a5969832f7f1a9d6ff2ad3321225cf1cf713#diff-80b956c241b8bcfa657bad6d158f25fc2d34e46fa8fe46c4f15ac3f8643113dd | 
+| #2            | Mostrar reviews en perfil usuarios | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/ec26fef71bfa556d23f9171b1a3350d3d93492c8 | 
+| #3            | Página error | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/6ac548755f840408a550881a30247e1f69aeaf23 | 
+| #4            | Google maps alojamientos	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/dbf3a9e16b2bf70f014a3aef0b8575a76224744c | 
+| #5            | Añadida paginación con AJAX y JS | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/ce305a774cb7d9474e80e2ab92947bb05f4a1d8a | 
+  
+### Adrián Pedroche Rata
+#### Descripción textual: 
+xxxxxxxxxxxxxxxxxxxx
+
+#### 5 commits más significativos
+
+| Commit  | Descripción                                      | Link                                                                                            |
+| ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| #1            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx		   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #2            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #3            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #4            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #5            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx			   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+
+### Jorge Ezequiel	de Francisco Bernal
+#### Descripción textual: 
+xxxxxxxxxxxxxxxxxxxx
+
+#### 5 commits más significativos
+
+| Commit  | Descripción                                      | Link                                                                                            |
+| ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| #1            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx		   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #2            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #3            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #4            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #5            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx			   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+
+### ShuHeng	Ye
+#### Descripción textual: 
+xxxxxxxxxxxxxxxxxxxx
+
+#### 5 commits más significativos
+
+| Commit  | Descripción                                      | Link                                                                                            |
+| ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| #1            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx		   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #2            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #3            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #4            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #5            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx			   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+
+
+    

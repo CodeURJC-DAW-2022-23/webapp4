@@ -68,17 +68,17 @@
         <div class="col-md-6 offset-md-3">
             <form method="post" action="/review/{{id}}">
                 <div class="form-group">
-                    <label for="titleReview">Title</label>
+                    <label for="titleReview">Título</label>
                     <input type="text" class="form-control" name="titleReview" required>
                 </div>
                 <div class="form-group">
-                    <label for="contentReview">Content</label>
+                    <label for="contentReview">Contenido</label>
                     <textarea class="form-control" name="contentReview" required></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="ratingReview">Rating</label>
+                    <label for="ratingReview">Valoración</label>
                     <select class="form-control" name="ratingReview" required>
-                        <option value="">-- Select rating --</option>
+                        <option value="">-- Seleccionar valoración --</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -86,7 +86,7 @@
                         <option value="5">5</option>
                     </select>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Publicar</button>
                 <input type="hidden" name="_csrf" value="{{token}}" />
             </form>
         </div>
