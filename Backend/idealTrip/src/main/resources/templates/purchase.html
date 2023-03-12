@@ -30,7 +30,7 @@
                             <h5 class="mt-4">Seleccione su método de pago</h5>
                         </div>
                         <div class="text-left">
-                            <form action="/purchaseMail" method="post">
+                            <form action="/purchaseMail/{{id}}" method="post">
                                 <button id="btn-abrir-popup" class="btn btn-style btn-primary">TARJETA</button>
                                 <input type="hidden" name="_csrf" value="{{token}}" />
 
@@ -45,7 +45,7 @@
                         </div>
                         <br>
                         <div class="text-left">
-                            <form action="/purchaseMail" method="post">
+                            <form action="/purchaseMail/{{id}}" method="post">
                                 <button id="btn-abrir-popup2" class="btn btn-style btn-primary">PAYPAL</button>
                                 <input type="hidden" name="_csrf" value="{{token}}" />
 
