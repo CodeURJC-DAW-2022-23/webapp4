@@ -92,3 +92,23 @@ En esta fase hemos, diseñado y maquetado la aplicación mediante HTML, CSS y Ja
             
  - Relación entre las distintas pantallas de la aplicación web:
           <image src="/images/IdealTrip.jpg" alt="entities relations">  
+                        
+
+              
+              
+# Fase 2: Web con HTML generado en servidor y AJAX
+
+    
+En esta fase hemos implementado la aplicación completa, lo hemos hecho mediante SpringBoot y MySQL, además, también hemos añadido datos de ejemplo a la base de datos que se cargan al arrancar la aplicación, estos datos han sido especificados en el archivo "InitDataBase.java" y son mostrados dinamicamente en la aplicación. Las imágenes también han sido incluidas en la base de datos para facilitar el despliegue en entornos restringidos
+              
+También hemos incluido una página de error que salta cuando ocurre algún error o se intenta acceder a alguna URL inexistente, esta página de error va acorde a la temática del resto de la aplicación.
+              
+La paginación mediante JS y AJAX también ha sido incluida en la parte de reviews, de este modo, no se incluyen todas las reviews a primera vista, sino que es necesario pulstar un botón de "Mostrar más", cuando este botón es pulsado, no se recarga la página entera, sino que solamente se carga la parte de las 5 reviews siguientes.
+              
+Además, disponemos 3 tipos de usuarios implementados mediante Spring Security, usuario NO registrado, usuario Registrado y usuario Administrador, cada uno con sus funciones delimitadas por su rol. Por poner algunos ejemplos, un usuario NO registrado no puede alquilar un alojamiento, debe registrarse en la aplicación para poder hacerlo. Del mismo modo, un usuario Registrado puede visitar su perfil, mientras que un No registrado no puede hacerlo.
+              
+Estas son solo algunas de las funciones implementadas en esta segunda fase, ahora continuaremos con la navegación de la aplicación, que a pesar de tener similitudes, también incluye nuevas pantallas.
+              
+    
+- Navegación actualizada:
+    - Inicio:...
