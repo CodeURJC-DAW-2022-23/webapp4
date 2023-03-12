@@ -111,7 +111,33 @@ Estas son solo algunas de las funciones implementadas en esta segunda fase, ahor
               
     
 - Navegación actualizada:
-    - Inicio:...
+    - Inicio: Esta pantalla contiene un buscador con un desplegable para escoger entre varios destinos del catálogo, además de tener un widget para escoger la fecha en la que se desea viajar. También dispone de un menú horizontal en la parte superior donde puedes navegar a otras ventanas como es a la de destinos o a la de contacto. También nos facilita un botón donde podremos iniciar sesión o registrarnos.
+    <image src="/images/Inicio.jpg">
+    -Destinos: Esta panatalla también tiene en la parte superior el menú para facilitar la navegación. El objetivo de esta es poder escoger entre todos los destinos de los que disponemos para que el usuario haga “click” encima del que quiera descubrir más información.
+    <image src="/images/DestinationsV2.jpg" >
+    - Inicio de sesión/Registro: En esta pantalla se le permitirá al usuario no registrado poder registrarse, o bien si ya está registrado poder iniciar sesión.
+    <image src="/images/LoginV2.jpg">
+    <image src="/images/RegisterV2.jpg">
+    - Menú del destino: Esta pantalla nos facilita un menú con 4 opciones: restauración, turismo, opiniones y alojamientos. También nos aparecerá debajo una gráfica que muestra la cantidad de gente que ha escogido ese destino en los diferentes meses del año. 
+    <image src="/images/EachDestinationV2.jpg">
+    - Turismo: Esta pantalla contiene varias imágenes de monumentos y sitios de interés del destino previamente escogido, acompañados de una breve descripción si ponemos el cursor encima de las fotos.
+    <image src="/images/PlaceV2.jpg">
+    - Alojamientos: Esta pantalla nos muestra una descripción del alojamiento del destino escogido, además de varias imágenes del mismo. Además, se nos brinda la oportunidad de cerrar ya nuestra reserva si pulsamos el botón de compra que nos destinara a la ventana de pago.
+    <image src="/images/HouseV2.jpg">
+    - Pago: Esta pantalla, nos proporcionará un breve resumen sobre la reserva que hemos realizado, así como el destino, el precio y los días que hemos elegido. Se nos dará la opción de escoger el método de pago. Una vez escogido, tendremos que introducir los datos y darle a confirmar para que se efectúe el pago.
+    <image src="/images/PaymentV2.jpg" alt="entities relations">
+    <image src="/images/EmailPaymentV2.jpg" alt="entities relations">
+    - Contáctanos: Esta pantalla muestra la información de la compañía, así como dónde se ubica, el número de teléfono, y la ubicación en Google Maps. También se facilita un formulario para que el usuario se pueda comunicar con nosotros.
+    <image src="/images/ContactV2.jpg" alt="entities relations">
+    - Administrador: Esta pantalla permite al usuario con el rol de administrador gestionar a todos los usuarios registrados.
+    <image src="/images/Admin.jpg" alt="entities relations">
+    - Opinión: Esta pantalla nos permite añadir una valoración del destino además de una reseña si estamos registrados (Primera imagen) y en caso contrario únicamente dejará visualizar valoraciones (Segunda imagen). También se nos permitirá ver las opniniones de los demás usuarios
+    <image src="/images/AddReviewV2.jpg" alt="entities relations">
+    <image src="/images/ReviewV2.jpg" alt="entities relations">
+    -Restauración: Esta pantalla al igual que la de turismo, nos mostrará imágenes de la gastronomía típica del destino preseleccionado junto a una pequeña descricpción cuando coloquemos el cursor encima de la imagen
+        <image src="/images/CateringV2.jpg" alt="entities relations">
+ - Relación entre las distintas pantallas de la aplicación web (Diagrama de navegación):
+          <image src="/images/IdealTripV2.jpg" alt="entities relations">
               
 - Instrucciones de ejecución:  
     - Para el uso de la aplicación nosotros hemos usado GitHub Desktop, MySQL Workbench 8.0 y Visual Studio Code. Para poder ejecutar la aplicación en Visual Studio Code es necesario instalarse las extensiones de "Extension Pack for Java" y "Spring Boot Extension Pack".
