@@ -150,7 +150,7 @@ Estas son solo algunas de las funciones implementadas en esta segunda fase, ahor
 
 - Diagrama con las entidades de la base de datos  
 
-     <image src="/images/EntityDiagram.png" alt="entities relations">  
+     <image src="/images/EntityDiagram.jpg" alt="entities relations">  
            
 - Diagrama de clases y templates:  
            
