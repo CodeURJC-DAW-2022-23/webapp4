@@ -227,7 +227,7 @@ Más adelante, me encargué de permitir que el usuario puediera cerrar su sesió
 | #1            | LogoutController.java		   | 
 | #2            | LoginController.java | 
 | #3            | IndexController.java |
-| #4            | rating.html	   | 
+| #4            | header.html	   | 
 | #5            | index.html			   |
          
          
