@@ -111,7 +111,33 @@ Estas son solo algunas de las funciones implementadas en esta segunda fase, ahor
               
     
 - Navegación actualizada:
-    - Inicio:...
+    - Inicio: Esta pantalla contiene un buscador con un desplegable para escoger entre varios destinos del catálogo, además de tener un widget para escoger la fecha en la que se desea viajar. También dispone de un menú horizontal en la parte superior donde puedes navegar a otras ventanas como es a la de destinos o a la de contacto. También nos facilita un botón donde podremos iniciar sesión o registrarnos.
+    <image src="/images/Inicio.jpg">
+    -Destinos: Esta panatalla también tiene en la parte superior el menú para facilitar la navegación. El objetivo de esta es poder escoger entre todos los destinos de los que disponemos para que el usuario haga “click” encima del que quiera descubrir más información.
+    <image src="/images/DestinationsV2.jpg" >
+    - Inicio de sesión/Registro: En esta pantalla se le permitirá al usuario no registrado poder registrarse, o bien si ya está registrado poder iniciar sesión.
+    <image src="/images/LoginV2.jpg">
+    <image src="/images/RegisterV2.jpg">
+    - Menú del destino: Esta pantalla nos facilita un menú con 4 opciones: restauración, turismo, opiniones y alojamientos. También nos aparecerá debajo una gráfica que muestra la cantidad de gente que ha escogido ese destino en los diferentes meses del año. 
+    <image src="/images/EachDestinationV2.jpg">
+    - Turismo: Esta pantalla contiene varias imágenes de monumentos y sitios de interés del destino previamente escogido, acompañados de una breve descripción si ponemos el cursor encima de las fotos.
+    <image src="/images/PlaceV2.jpg">
+    - Alojamientos: Esta pantalla nos muestra una descripción del alojamiento del destino escogido, además de varias imágenes del mismo. Además, se nos brinda la oportunidad de cerrar ya nuestra reserva si pulsamos el botón de compra que nos destinara a la ventana de pago.
+    <image src="/images/HouseV2.jpg">
+    - Pago: Esta pantalla, nos proporcionará un breve resumen sobre la reserva que hemos realizado, así como el destino, el precio y los días que hemos elegido. Se nos dará la opción de escoger el método de pago. Una vez escogido, tendremos que introducir los datos y darle a confirmar para que se efectúe el pago.
+    <image src="/images/PaymentV2.jpg" alt="entities relations">
+    <image src="/images/EmailPaymentV2.jpg" alt="entities relations">
+    - Contáctanos: Esta pantalla muestra la información de la compañía, así como dónde se ubica, el número de teléfono, y la ubicación en Google Maps. También se facilita un formulario para que el usuario se pueda comunicar con nosotros.
+    <image src="/images/ContactV2.jpg" alt="entities relations">
+    - Administrador: Esta pantalla permite al usuario con el rol de administrador gestionar a todos los usuarios registrados.
+    <image src="/images/Admin.jpg" alt="entities relations">
+    - Opinión: Esta pantalla nos permite añadir una valoración del destino además de una reseña si estamos registrados (Primera imagen) y en caso contrario únicamente dejará visualizar valoraciones (Segunda imagen). También se nos permitirá ver las opniniones de los demás usuarios
+    <image src="/images/AddReviewV2.jpg" alt="entities relations">
+    <image src="/images/ReviewV2.jpg" alt="entities relations">
+    -Restauración: Esta pantalla al igual que la de turismo, nos mostrará imágenes de la gastronomía típica del destino preseleccionado junto a una pequeña descricpción cuando coloquemos el cursor encima de la imagen
+        <image src="/images/CateringV2.jpg" alt="entities relations">
+ - Relación entre las distintas pantallas de la aplicación web (Diagrama de navegación):
+          <image src="/images/IdealTripV2.jpg" alt="Diagrama de navegacion">
               
 - Instrucciones de ejecución:  
     - Para el uso de la aplicación nosotros hemos usado GitHub Desktop, MySQL Workbench 8.0 y Visual Studio Code. Para poder ejecutar la aplicación en Visual Studio Code es necesario instalarse las extensiones de "Extension Pack for Java" y "Spring Boot Extension Pack".
@@ -131,47 +157,80 @@ Estas son solo algunas de las funciones implementadas en esta segunda fase, ahor
 - Participación de miembros:  
 ### Sergio Cuadros Flores
 #### Descripción textual: 
-xxxxxxxxxxxxxxxxxxxx
+En esta fase mi participación principal ha sido en la inicialización del proyecto, configurando todos los archivos iniciales, con la creación de la base de datos, introducción de los datos precargados, así como gestionar la pantalla en la que se muestran los diferentes destinos y el control de pantallas mediante el id del destino y las posteriores pantallas de catering (Restauración) y tourism (Turismo). Además, he gestionado la parte de seguridad relacionada con el https, cifrado SSL, control del puerto 8443. De igual manera, me he encargado del control del login y registrarse, añadiendo los usuarios registrados a la base de datos. Asimismo, he estado pendiente de la realización de las tareas de los demás compañeros, apoyando y ayudando en todo lo que necesitasen en todo momento. He gestionado el control del header y footer, así como la colaboración en la realización de la base de datos de newsletter junto con mi compañero Jorge. Por último he podido gestionar junto con mi compañero Adrián el control de permisos de los usuarios dependiendo de la ruta a la que podían tener acceso o no debido a su rol de registrados, no registrados y administradores.
 
+Mis commits no son grandes, por tanto no hay commits que engloben varias o una funcionalidad completa dado que he ido haciendo commits progresivos y continuados.
 #### 5 commits más significativos
 
 | Commit  | Descripción                                      | Link                                                                                            |
 | ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
-| #1            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx		   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
-| #2            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
-| #3            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
-| #4            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
-| #5            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx			   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #1            | Creación de los ficheros para la base de datos   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/bdc8de0bf1caf2ee3fa4d3a24473bb3ab44c1c16 | 
+| #2            | Inicialización de la base de datos | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/e42f966f5174151cba04efe9794156ecffbe5d00 | 
+| #3            | Mostar los destinos dependiendo de su id |https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/3ccb292c92f487b25ee26849889bd540ffeba827| 
+| #4            | Realización de login y registro	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/3c7a0ffa90b49c54ce3a7184edf4c9f710d16e0c#diff-21a6e6c8cd127959bb4596c8985e0b4d7f56a3c2f8f290f76bb233876ebfbc5a | 
+| #5            | Control pantallas catering y tourism			   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/86872c79e208e112467ca4235a08bc94476d2135 | 
+|               |                                                   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/b7d766286e0e82c8bd45246eb8eaaa39140cb41f|
+#### 5 ficheros más participación
 
+| Número fichero  | Fichero                                      | 
+| ------------- | ------------------------------------------------ |
+| #1            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx		   | 
+| #2            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | 
+| #3            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx |
+| #4            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx	   | 
+| #5            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx			   | 
          
 ### David Moreno Martín
 #### Descripción textual: 
-xxxxxxxxxxxxxxxxxxxx
+Empecé encargándome de realizar el mapping de todas las ciudades, así como de todos los servicios de estas (Turismo, Catering, Opiniones y Alojamiento), después trabajé en mostrar las reviews hechas por los usuarios en su perfil, mostrando únicamente aquellas realizadas por ese usuario. También trabaje con la base de datos para hacer que, en lugar de mostrar 1 única review para todos los usuarios, cada usuario "escribiera" 3 reviews sobre cada destino con una puntuación aleatoria. Posteriormente incluí en cada alojamiento una descripción personalizada y la posibilidad de verlos mediante google maps, ambos cargándose desde la base de datos. Asimismo, implementé la paginación mediante JavaScript y AJAX, de este modo, las reviews son cargadas en segundo plano y no es necesario recargar toda la página.  
+Además de esto, he corregido errores, traducido código, eliminado warnings y actualizado la página de error 404 para ser coherente en base al estilo del resto de la aplicación. Por último, también he participado activamente en el ReadMe de esta segunda fase.
 
 #### 5 commits más significativos
 
 | Commit  | Descripción                                      | Link                                                                                            |
 | ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
-| #1            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx		   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
-| #2            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
-| #3            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
-| #4            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
-| #5            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx			   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #1            | Mapping general de todas las ciudades y servicios		   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/aa48a5969832f7f1a9d6ff2ad3321225cf1cf713#diff-80b956c241b8bcfa657bad6d158f25fc2d34e46fa8fe46c4f15ac3f8643113dd | 
+| #2            | Mostrar reviews en perfil usuarios | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/ec26fef71bfa556d23f9171b1a3350d3d93492c8 | 
+| #3            | Página error | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/6ac548755f840408a550881a30247e1f69aeaf23 | 
+| #4            | Google maps alojamientos	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/dbf3a9e16b2bf70f014a3aef0b8575a76224744c | 
+| #5            | Añadida paginación con AJAX y JS | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/ce305a774cb7d9474e80e2ab92947bb05f4a1d8a | 
+         
+#### 5 ficheros más participación
+
+| Número fichero  | Fichero                                      | 
+| ------------- | ------------------------------------------------ |
+| #1            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx		   | 
+| #2            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | 
+| #3            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx |
+| #4            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx	   | 
+| #5            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx			   |
   
 ### Adrián Pedroche Rata
 #### Descripción textual: 
-xxxxxxxxxxxxxxxxxxxx
+En primer lugar, comencé añadiendo toda la información correspondiente a cada destino, es decir, los sitios turísticos y la comida típica. Posteriormente, me encargué de realizar la gestión de los ususarios, distinguiendo entre usuario registrado, no registrado o administrador, dándoles permisos según sea necesario (esto último junto a Sergio). 
+Más adelante, me encargué de permitir que el usuario puediera cerrar su sesión (logout para usuarios registrados). Entre medias introduje la acción de mostrar una página html de error cuando se intentase acceder a una URL inexistente. Posteriormente me centré en el buscador de países que tenemos implementado en el "/index". Para terminar la fase intentando construir un diagrama de barras a partir de la media de las opiniones registradas por los ususarios en un determinado destino. 
 
 #### 5 commits más significativos
 
 | Commit  | Descripción                                      | Link                                                                                            |
 | ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
-| #1            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx		   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
-| #2            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
-| #3            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
-| #4            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
-| #5            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx			   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #1            | Error 404 al acceder a una URL inexistente	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/486a1d3593f69568b6eba0fee03abfb8ca68c23f | 
+| #2            | Buscador de países de la página de inicio | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/9d6ca4142df3d78eacdb9d0f1213ca5358298fce | 
+| #3            | Cerrar sesión del usuario | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/ab245851208c4ba051a139dc18bc3f43dd6075f5 | 
+| #4            | Mustach para diferenciar ususarios, error al loguearse y springSecuiry| https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/c41054b53be30636f1e3adab6ae7b1d699e6ba19 | 
+| #5            | Finalización de introducir toda la información de los destinos	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/23775f412952f9a1d9a8beaee1199ad61e922e56 | 
 
+#### 5 ficheros más participación
+         
+| Número fichero  | Fichero                                      | 
+| ------------- | ------------------------------------------------ |
+| #1            | LogoutController.java		   | 
+| #2            | LoginController.java | 
+| #3            | IndexController.java |
+| #4            | header.html	   | 
+| #5            | index.html			   |
+         
+         
 ### Jorge Ezequiel	de Francisco Bernal
 #### Descripción textual: 
 xxxxxxxxxxxxxxxxxxxx
@@ -186,6 +245,16 @@ xxxxxxxxxxxxxxxxxxxx
 | #4            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
 | #5            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx			   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
 
+#### 5 ficheros más participación
+
+| Número fichero  | Fichero                                      | 
+| ------------- | ------------------------------------------------ |
+| #1            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx		   | 
+| #2            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | 
+| #3            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx |
+| #4            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx	   | 
+| #5            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx			   |         
+         
 ### ShuHeng	Ye
 #### Descripción textual: 
 xxxxxxxxxxxxxxxxxxxx
@@ -200,5 +269,14 @@ xxxxxxxxxxxxxxxxxxxx
 | #4            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
 | #5            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx			   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
 
+#### 5 ficheros más participación
+
+| Número fichero  | Fichero                                      | 
+| ------------- | ------------------------------------------------ |
+| #1            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx		   | 
+| #2            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | 
+| #3            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx |
+| #4            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx	   | 
+| #5            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx			   |         
 
     
