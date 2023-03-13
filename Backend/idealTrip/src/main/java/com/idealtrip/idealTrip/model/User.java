@@ -15,7 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 
-import org.hibernate.resource.beans.internal.FallbackBeanInstanceProducer;
+//import org.hibernate.resource.beans.internal.FallbackBeanInstanceProducer;
 
 @Entity(name = "userTable")
 public class User {
@@ -25,7 +25,7 @@ public class User {
     private Long id;
     @Column(nullable = false, unique = true)
     private String email;
-    
+
     private String name;
     private String lastName;
     private String encodedPassword;
@@ -37,10 +37,10 @@ public class User {
     private Blob profileAvatarFile;
     private String profileAvatar;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<Purchase> purchases = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<Review> reviews = new ArrayList<>();
 
     public User() {
@@ -169,6 +169,6 @@ public class User {
 
     // public void setReview(Review review) {
     //     this.review = review;
-    // }
+//}
 
 }

@@ -43,12 +43,11 @@ public class UserService {
 
     
 
-    public List<User> findAll() {
-		return users.findAll();
-	}
-
+        public List<User> findAll() {
+		    return users.findAll();
+	    }
+    }
 
     // public List<Review> findReviewsOfUser(Long userId, Pageable pageable){
     //     return users.findReviewsOfUser(userId, pageable);
     // }
-}

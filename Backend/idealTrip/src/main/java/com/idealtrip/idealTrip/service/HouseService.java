@@ -34,5 +34,11 @@ public class HouseService {
     //     return houses.findByName(name);
     // }
     
-    
+    public List<House> findByDestinationId(Long id){
+        return houses.findByDestinationId(id);
+    }
+
+    public List<House> findByDestinationName(String destinationName){
+        return houses.findByDestinationName(destinationName);
+    }
 }

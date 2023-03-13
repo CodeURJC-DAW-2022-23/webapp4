@@ -32,11 +32,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
     	
     	// Public pages
-        http.authorizeRequests().antMatchers("/").permitAll();
+        http.authorizeRequests().antMatchers("/index").permitAll();
         http.authorizeRequests().antMatchers("/login").permitAll();
         http.authorizeRequests().antMatchers("/loginerror").permitAll();
+        http.authorizeRequests().antMatchers("/notEmptyHouse").permitAll();
         http.authorizeRequests().antMatchers("/logout").permitAll();
         http.authorizeRequests().antMatchers("/register").permitAll();
+        http.authorizeRequests().antMatchers("/services/*").permitAll();
+        http.authorizeRequests().antMatchers("/catering/*").permitAll();
+        http.authorizeRequests().antMatchers("/tourism/*").permitAll();
+        http.authorizeRequests().antMatchers("/review/*").permitAll();
+        http.authorizeRequests().antMatchers("/house/*").permitAll();
+        // http.authorizeRequests().anyRequest().permitAll();
 
         // http.authorizeRequests().antMatchers("/profile").permitAll();
         // http.authorizeRequests().antMatchers("/error").permitAll(); 
@@ -56,7 +63,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.formLogin().failureUrl("/loginerror");
 
         // Logout
-        http.logout().logoutUrl("/logout");
-        http.logout().logoutSuccessUrl("/");
+        //http.logout().logoutUrl("/logout");
+        //http.logout().logoutSuccessUrl("/index"); 
     }    
 }

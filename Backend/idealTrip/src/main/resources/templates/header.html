@@ -10,13 +10,17 @@ Author URL: http://w3layouts.com
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>IdealTrip</title>
-  <link rel="icon" href="assets/images/favicon.png" type="image/png" />
+  <link rel="icon" href="../assets/images/favicon.png" type="image/png" />
   <!-- google fonts -->
   <link href="//fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link href="//fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
   <!-- google fonts -->
   <!-- Template CSS -->
-  <link rel="stylesheet" href="assets/css/style-starter.css">
+  <link rel="stylesheet" href="../assets/css/style-starter.css">
+  <link rel="stylesheet" href="../assets/css/informacion.css">
+  <link rel="stylesheet" href="../assets/css/style-review.css">
+  <link rel="stylesheet" href="../assets/css/review.css">
+  <link rel="stylesheet" href="../assets/css/alojamientos.css">
   <!-- Template CSS -->
 </head>
 
@@ -25,7 +29,7 @@ Author URL: http://w3layouts.com
   <header id="site-header" class="fixed-top">
     <div class="container">
       <nav class="navbar navbar-expand-lg stroke">
-        <h1><a class="navbar-brand mr-lg-5" href="index">
+        <h1><a class="navbar-brand mr-lg-5" href="/index">
             IdealTrip
           </a></h1>
         <!-- if logo is image enable this   
@@ -43,26 +47,25 @@ Author URL: http://w3layouts.com
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="index">Inicio <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="/index">Inicio <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="services">Destinos</a>
+              <a class="nav-link" href="/services">Destinos</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="contact">Contacto</a>
+              <a class="nav-link" href="/contact">Contacto</a>
             </li>
           </ul>
         </div>
-        {{^logged}}
+        {{^logged}} 
         <form action="/login" method="post">
           <div class="d-lg-block d-none">
-            <a href="login" class="btn btn-style btn-secondary">Iniciar sesión</a>
+            <a href="/login" class="btn btn-style btn-secondary">Iniciar sesión</a>
           </div>
           <input type="hidden" name="_csrf" value="{{token}}"/>
         </form>
-        {{/logged}}
-        {{#logged}}
+        {{/logged}} {{#logged}}
         <form action="/profile" method="get">
           <div class="d-lg-block d-none">
             <button class="btn btn-style btn-secondary">Mi perfil</button>

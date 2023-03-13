@@ -1,7 +1,8 @@
 {{>header}}
-    <!--banner-slider-->
-    <br><br><br><br>
-    <section>
+<!--banner-slider-->
+<br><br><br><br>
+{{#logged}}
+<!--<section>
         <br><br><br>
         <h5>Añadir comentario
         <button id="review-add-btn" aria-label="add review" title="Add Review"></button></h5>
@@ -9,24 +10,24 @@
             <button class="close-btn" aria-label="close" title="Close">x</button>
             <div id="review-form-container">
                 <h2 id="add-review-header">Reseña</h2>
-                <form id="review-form">
+                <form id="review-form" action="/review/{{id}}" method="post">
                     <div class="fieldset">
                         <label for="reviewName">Titulo</label>
-                        <input name="reviewName" id="reviewName" required="">
+                        <input name="titleReview" id="title" required>
                     </div>
                     <div class="fieldset">
                         <label>Calificación</label>
                         <div class="rate">
-                            <input type="radio" id="star5" name="rate" value="5" onkeydown="navRadioGroup(event)"
+                            <input type="radio" id="star5" name="ratingReview" value="5" onkeydown="navRadioGroup(event)"
                                 onfocus="setFocus(event)" required="">
                             <label for="star5" title="5 stars">5 stars</label>
-                            <input type="radio" id="star4" name="rate" value="4" onkeydown="navRadioGroup(event)">
+                            <input type="radio" id="star4" name="ratingReview" value="4" onkeydown="navRadioGroup(event)">
                             <label for="star4" title="4 stars">4 stars</label>
-                            <input type="radio" id="star3" name="rate" value="3" onkeydown="navRadioGroup(event)">
+                            <input type="radio" id="star3" name="ratingReview" value="3" onkeydown="navRadioGroup(event)">
                             <label for="star3" title="3 stars">3 stars</label>
-                            <input type="radio" id="star2" name="rate" value="2" onkeydown="navRadioGroup(event)">
+                            <input type="radio" id="star2" name="ratingReview" value="2" onkeydown="navRadioGroup(event)">
                             <label for="star2" title="2 stars">2 stars</label>
-                            <input type="radio" id="star1" name="https://codepen.io/pen/rate" value="1"
+                            <input type="radio" id="star1" name="ratingReview" value="1"
                                 onkeydown="navRadioGroup(event)" onfocus="setFocus(event)">
                             <label for="star1" title="1 star">1 star</label>
                         </div>
@@ -34,298 +35,352 @@
 
                     <div class="fieldset">
                         <label for="reviewComments">Comentarios</label>
-                        <textarea name="reviewComments" id="reviewComments" cols="20" rows="5" required=""></textarea>
+                        <textarea name="contentReview" id="content" cols="20" rows="5" required></textarea>
                     </div>
                     <div class="fieldset right">
-                        <button id="submit-review-btn">Publicar</button>
+                        <button id="submit-review-btn" type="submit">Publicar</button>
                     </div>
+                    <input type="hidden" name="_csrf" value="{{token}}" />
                 </form>
             </div>
         </div>
         <div class="modal-overlay"></div>
-    </section>
-
-    <script>
-        let focusedElementBeforeModal;
-        const modal = document.getElementById('modal');
-        const modalOverlay = document.querySelector('.modal-overlay');
-
-        window.onload = () => {
-            const addReview = document.getElementById('review-add-btn');
-            addReview.id = 'review-add-btn';
-            addReview.innerHTML = '+';
-            addReview.setAttribute('aria-label', 'add review');
-            addReview.title = 'Add Review';
-            addReview.addEventListener('click', openModal);
-            addReview.click();
-        }
-
-        const openModal = () => {
-            // Save current focus
-            focusedElementBeforeModal = document.activeElement;
-
-            // Listen for and trap the keyboard
-            modal.addEventListener('keydown', trapTabKey);
-
-            // Listen for indicators to close the modal
-            modalOverlay.addEventListener('click', closeModal);
-            // Close btn
-            const closeBtn = document.querySelector('.close-btn');
-            closeBtn.addEventListener('click', closeModal);
-
-            // submit form
-            const form = document.getElementById('review-form');
-            form.addEventListener('submit', submitAddReview, false);
-
-            // Find all focusable children
-            var focusableElementsString = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable]';
-            var focusableElements = modal.querySelectorAll(focusableElementsString);
-            // Convert NodeList to Array
-            focusableElements = Array.prototype.slice.call(focusableElements);
-
-            var firstTabStop = focusableElements[0];
-            var lastTabStop = focusableElements[focusableElements.length - 1];
-
-            // Show the modal and overlay
-            modal.classList.add('show');
-            modalOverlay.classList.add('show');
-
-            // Focus first child
-            // firstTabStop.focus();
-            const reviewName = document.getElementById('reviewName');
-            reviewName.focus();
-
-            function trapTabKey(e) {
-                // Check for TAB key press
-                if (e.keyCode === 9) {
-
-                    // SHIFT + TAB
-                    if (e.shiftKey) {
-                        if (document.activeElement === firstTabStop) {
-                            e.preventDefault();
-                            lastTabStop.focus();
-                        }
-
-                        // TAB
-                    } else {
-                        if (document.activeElement === lastTabStop) {
-                            e.preventDefault();
-                            firstTabStop.focus();
-                        }
-                    }
-                }
-
-                // ESCAPE
-                if (e.keyCode === 27) {
-                    closeModal();
-                }
-            }
-        };
-
-        const submitAddReview = (e) => {
-            // console.log(e);
-            console.log('Form subbmitted!');
-            e.preventDefault();
-            closeModal();
-        };
-
-        const closeModal = () => {
-            // Hide the modal and overlay
-            modal.classList.remove('show');
-            modalOverlay.classList.remove('show');
-
-            const form = document.getElementById('review-form');
-            form.reset();
-            // Set focus back to element that had it before the modal was opened
-            focusedElementBeforeModal.focus();
-        };
-
-        const setFocus = (evt) => {
-            const rateRadios = document.getElementsByName('rate');
-            const rateRadiosArr = Array.from(rateRadios);
-            const anyChecked = rateRadiosArr.some(radio => { return radio.checked === true; });
-            // console.log('anyChecked', anyChecked);
-            if (!anyChecked) {
-                const star1 = document.getElementById('star1');
-                star1.focus();
-                // star1.checked = true;
-            }
-        };
-
-        const navRadioGroup = (evt) => {
-            // console.log('key', evt.key, 'code', evt.code, 'which', evt.which);
-            // console.log(evt);
-
-            const star1 = document.getElementById('star1');
-            const star2 = document.getElementById('star2');
-            const star3 = document.getElementById('star3');
-            const star4 = document.getElementById('star4');
-            const star5 = document.getElementById('star5');
-
-            if (['ArrowRight', 'ArrowLeft', 'ArrowDown', 'ArrowUp'].includes(evt.key)) {
-                evt.preventDefault();
-                // console.log('attempting return');
-                if (evt.key === 'ArrowRight' || evt.key === 'ArrowDown') {
-                    switch (evt.target.id) {
-                        case 'star1':
-                            star2.focus();
-                            star2.checked = true;
-                            break;
-                        case 'star2':
-                            star3.focus();
-                            star3.checked = true;
-                            break;
-                        case 'star3':
-                            star4.focus();
-                            star4.checked = true;
-                            break;
-                        case 'star4':
-                            star5.focus();
-                            star5.checked = true;
-                            break;
-                        case 'star5':
-                            star1.focus();
-                            star1.checked = true;
-                            break;
-                    }
-                } else if (evt.key === 'ArrowLeft' || evt.key === 'ArrowUp') {
-                    switch (evt.target.id) {
-                        case 'star1':
-                            star5.focus();
-                            star5.checked = true;
-                            break;
-                        case 'star2':
-                            star1.focus();
-                            star1.checked = true;
-                            break;
-                        case 'star3':
-                            star2.focus();
-                            star2.checked = true;
-                            break;
-                        case 'star4':
-                            star3.focus();
-                            star3.checked = true;
-                            break;
-                        case 'star5':
-                            star4.focus();
-                            star4.checked = true;
-                            break;
-                    }
-                }
-            }
-        };
-    </script>
-
-    <!-- testimonials -->
-    <section class="w3l-clients" id="clients">
-        <!-- /grids -->
-        <div class="cusrtomer-layout py-5">
-            <div class="container py-lg-4 py-md-3 pb-lg-0">
-                <div class="heading text-center mx-auto">
-                    <h3 class="hny-title mb-md-5 mb-4">Lo que nuestros clientes dicen</h3>
+    </section>-->
+<!--<form method="post" action="/review/{{id}}">
+        <label for="titleReview">Título de la reseña:</label>
+        <input type="text" name="titleReview" required>
+        <label for="contentReview">Contenido de la reseña:</label>
+        <textarea name="contentReview" required></textarea>
+        <label for="ratingReview">Calificación:</label>
+        <select name="ratingReview" required>
+          <option value="">Seleccionar</option>
+          <option value="1">1 estrella</option>
+          <option value="2">2 estrellas</option>
+          <option value="3">3 estrellas</option>
+          <option value="4">4 estrellas</option>
+          <option value="5">5 estrellas</option>
+        </select>
+        <button type="submit">Enviar reseña</button>
+        <input type="hidden" name="_csrf" value="{{token}}"/>
+      </form>-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <form method="post" action="/review/{{id}}">
+                <div class="form-group">
+                    <label for="titleReview">Título</label>
+                    <input type="text" class="form-control" name="titleReview" required>
                 </div>
-                <!-- /grids -->
-                <div class="testimonial-width">
-                    <div id="owl-demo1" class="owl-two owl-carousel owl-theme">
-                        <div class="item">
-                            <div class="testimonial-content">
-                                <div class="testimonial">
-                                    <blockquote>
-                                        <span class="fa fa-quote-left" aria-hidden="true"></span>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit beatae laudantium
-                                        voluptate rem ullam dolore nisi voluptatibus esse quasi. Integer sit amet .Lorem
-                                        ipsum dolor sit
-                                        amet adipisicing elit. Laborum dolor facere ipsum adipisicingelit.
-                                    </blockquote>
-                                    <div class="testi-des">
-                                        <div class="test-img"><img src="assets/images/c1.jpg" class="img-fluid"
-                                                alt="client-img">
-                                        </div>
-                                        <div class="peopl align-self">
-                                            <h3>Rohit Paul</h3>
-                                            <p class="indentity">Example City</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimonial-content">
-                                <div class="testimonial">
-                                    <blockquote>
-                                        <span class="fa fa-quote-left" aria-hidden="true"></span>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit beatae laudantium
-                                        voluptate rem ullam dolore nisi voluptatibus esse quasi. Integer sit amet .Lorem
-                                        ipsum dolor sit
-                                        amet adipisicing elit. Laborum dolor facere ipsum adipisicingelit.
-                                    </blockquote>
-                                    <div class="testi-des">
-                                        <div class="test-img"><img src="assets/images/c2.jpg" class="img-fluid"
-                                                alt="client-img">
-                                        </div>
-                                        <div class="peopl align-self">
-                                            <h3>Shveta</h3>
-                                            <p class="indentity">Example City</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimonial-content">
-                                <div class="testimonial">
-                                    <blockquote>
-                                        <span class="fa fa-quote-left" aria-hidden="true"></span>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit beatae laudantium
-                                        voluptate rem ullam dolore nisi voluptatibus esse quasi. Integer sit amet .Lorem
-                                        ipsum dolor sit
-                                        amet adipisicing elit. Laborum dolor facere ipsum adipisicingelit.
-                                    </blockquote>
-                                    <div class="testi-des">
-                                        <div class="test-img"><img src="assets/images/c3.jpg" class="img-fluid"
-                                                alt="client-img">
-                                        </div>
-                                        <div class="peopl align-self">
-                                            <h3>Roy Linderson</h3>
-                                            <p class="indentity">Example City</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimonial-content">
-                                <div class="testimonial">
-                                    <blockquote>
-                                        <span class="fa fa-quote-left" aria-hidden="true"></span>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit beatae laudantium
-                                        voluptate rem ullam dolore nisi voluptatibus esse quasi. Integer sit amet .Lorem
-                                        ipsum dolor sit
-                                        amet adipisicing elit. Laborum dolor facere ipsum adipisicingelit.
-                                    </blockquote>
-                                    <div class="testi-des">
-                                        <div class="test-img"><img src="assets/images/c4.jpg" class="img-fluid"
-                                                alt="client-img">
-                                        </div>
-                                        <div class="peopl align-self">
-                                            <h3>Mike Thyson</h3>
-                                            <p class="indentity">Example City</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <div class="form-group">
+                    <label for="contentReview">Contenido</label>
+                    <textarea class="form-control" name="contentReview" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="ratingReview">Valoración</label>
+                    <select class="form-control" name="ratingReview" required>
+                        <option value="">-- Seleccionar valoración --</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Publicar</button>
+                <input type="hidden" name="_csrf" value="{{token}}" />
+            </form>
+        </div>
+    </div>
+</div>
+{{/logged}}
 
+<script>
+    let focusedElementBeforeModal;
+    const modal = document.getElementById('modal');
+    const modalOverlay = document.querySelector('.modal-overlay');
 
+    window.onload = () => {
+        const addReview = document.getElementById('review-add-btn');
+        addReview.id = 'review-add-btn';
+        addReview.innerHTML = '+';
+        addReview.setAttribute('aria-label', 'add review');
+        addReview.title = 'Add Review';
+        addReview.addEventListener('click', openModal);
+        addReview.click();
+    }
+
+    const openModal = () => {
+        // Save current focus
+        focusedElementBeforeModal = document.activeElement;
+
+        // Listen for and trap the keyboard
+        modal.addEventListener('keydown', trapTabKey);
+
+        // Listen for indicators to close the modal
+        modalOverlay.addEventListener('click', closeModal);
+        // Close btn
+        const closeBtn = document.querySelector('.close-btn');
+        closeBtn.addEventListener('click', closeModal);
+
+        // submit form
+        const form = document.getElementById('review-form');
+        form.addEventListener('submit', submitAddReview, false);
+
+        // Find all focusable children
+        var focusableElementsString = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable]';
+        var focusableElements = modal.querySelectorAll(focusableElementsString);
+        // Convert NodeList to Array
+        focusableElements = Array.prototype.slice.call(focusableElements);
+
+        var firstTabStop = focusableElements[0];
+        var lastTabStop = focusableElements[focusableElements.length - 1];
+
+        // Show the modal and overlay
+        modal.classList.add('show');
+        modalOverlay.classList.add('show');
+
+        // Focus first child
+        // firstTabStop.focus();
+        const reviewName = document.getElementById('reviewName');
+        reviewName.focus();
+
+        function trapTabKey(e) {
+            // Check for TAB key press
+            if (e.keyCode === 9) {
+
+                // SHIFT + TAB
+                if (e.shiftKey) {
+                    if (document.activeElement === firstTabStop) {
+                        e.preventDefault();
+                        lastTabStop.focus();
+                    }
+
+                    // TAB
+                } else {
+                    if (document.activeElement === lastTabStop) {
+                        e.preventDefault();
+                        firstTabStop.focus();
+                    }
+                }
+            }
+
+            // ESCAPE
+            if (e.keyCode === 27) {
+                closeModal();
+            }
+        }
+    };
+
+    const submitAddReview = (e) => {
+        // console.log(e);
+        console.log('Form subbmitted!');
+        e.preventDefault();
+        closeModal();
+    };
+
+    const closeModal = () => {
+        // Hide the modal and overlay
+        modal.classList.remove('show');
+        modalOverlay.classList.remove('show');
+
+        const form = document.getElementById('review-form');
+        form.reset();
+        // Set focus back to element that had it before the modal was opened
+        focusedElementBeforeModal.focus();
+    };
+
+    const setFocus = (evt) => {
+        const rateRadios = document.getElementsByName('rate');
+        const rateRadiosArr = Array.from(rateRadios);
+        const anyChecked = rateRadiosArr.some(radio => { return radio.checked === true; });
+        // console.log('anyChecked', anyChecked);
+        if (!anyChecked) {
+            const star1 = document.getElementById('star1');
+            star1.focus();
+            // star1.checked = true;
+        }
+    };
+
+    const navRadioGroup = (evt) => {
+        // console.log('key', evt.key, 'code', evt.code, 'which', evt.which);
+        // console.log(evt);
+
+        const star1 = document.getElementById('star1');
+        const star2 = document.getElementById('star2');
+        const star3 = document.getElementById('star3');
+        const star4 = document.getElementById('star4');
+        const star5 = document.getElementById('star5');
+
+        if (['ArrowRight', 'ArrowLeft', 'ArrowDown', 'ArrowUp'].includes(evt.key)) {
+            evt.preventDefault();
+            // console.log('attempting return');
+            if (evt.key === 'ArrowRight' || evt.key === 'ArrowDown') {
+                switch (evt.target.id) {
+                    case 'star1':
+                        star2.focus();
+                        star2.checked = true;
+                        break;
+                    case 'star2':
+                        star3.focus();
+                        star3.checked = true;
+                        break;
+                    case 'star3':
+                        star4.focus();
+                        star4.checked = true;
+                        break;
+                    case 'star4':
+                        star5.focus();
+                        star5.checked = true;
+                        break;
+                    case 'star5':
+                        star1.focus();
+                        star1.checked = true;
+                        break;
+                }
+            } else if (evt.key === 'ArrowLeft' || evt.key === 'ArrowUp') {
+                switch (evt.target.id) {
+                    case 'star1':
+                        star5.focus();
+                        star5.checked = true;
+                        break;
+                    case 'star2':
+                        star1.focus();
+                        star1.checked = true;
+                        break;
+                    case 'star3':
+                        star2.focus();
+                        star2.checked = true;
+                        break;
+                    case 'star4':
+                        star3.focus();
+                        star3.checked = true;
+                        break;
+                    case 'star5':
+                        star4.focus();
+                        star4.checked = true;
+                        break;
+                }
+            }
+        }
+    };
+</script>
+
+<!-- testimonials -->
+<section class="w3l-clients" id="clients">
+    <!-- /grids -->
+    <div class="cusrtomer-layout py-5">
+        <class class="container py-lg-4 py-md-3 pb-lg-0">
+            <div class="heading text-center mx-auto">
+                <h3 class="hny-title mb-md-5 mb-4">Lo que nuestros clientes dicen</h3>
+            </div>
+            <div class="review-list">
+                {{#reviews}}
+                <div class="review-box">
+                    <div class="review-contentbox">
+                        <h3 class="review-username">
+                            {{#user.profileAvatarFile}}
+                            <img src="/review/avatar/{{user.id}}" alt="Avatar" width="100" height="100">
+                            {{/user.profileAvatarFile}}
+                            {{^user.profileAvatarFile}}
+                            <img src="../assets/images/null-avatar.png" alt="Null Avatar" width="100" height="100">
+                            {{/user.profileAvatarFile}}
+                            &nbsp;
+                            {{user.name}}&nbsp;{{user.lastName}}
+                        </h3>
+                        <br>
+                        <div class="review-rating" data-rating="{{ratingReview}}">
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                        </div>
+                        <h4 class="review-title">{{titleReview}}</h4>
+                        <p class="review-content">{{contentReview}}</p>
+                        <!-- <div class="spinner"></div> -->
                     </div>
                 </div>
+                {{/reviews}}
             </div>
-            <!-- /grids -->
-        </div>
-        <!-- //grids -->
-    </section>
-    <!-- //testimonials -->
 
-    {{>footer}}
+            <div id="load-more-container">
+                {{#reviews.hasNext}}
+                <button id="load-more-button" data-page="{{reviews.nextPageable.pageNumber}}">Mostrar más</button>
+                {{/reviews.hasNext}}
+            </div>
+
+
+            <script>
+                const loadMoreButton = document.querySelector('#load-more-button');
+                const reviewContainer = document.querySelector('.review-list');
+
+                loadMoreButton.addEventListener('click', function () {
+                    const nextPage = this.getAttribute('data-page');
+
+                    // We make the Ajax request to the server to get the reviews of the following page, without reloading the entire page
+                    setTimeout(function () {
+                        const xhr = new XMLHttpRequest();
+                        xhr.open('GET', '?page=' + nextPage);
+                        xhr.onload = function () {
+                            if (xhr.status === 200) {
+                                // We convert the server response to HTML and add it to the reviews container.
+                                const parser = new DOMParser();
+                                const html = parser.parseFromString(xhr.response, 'text/html');
+                                reviewContainer.innerHTML += html.querySelector('.review-list').innerHTML;
+
+                                //Update the page number of the "Show more" button and hide the button if there are no more pages.
+                                const newPage = parseInt(nextPage) + 1;
+                                loadMoreButton.setAttribute('data-page', newPage);
+                                if (!html.querySelector('#load-more-button')) {
+                                    loadMoreButton.style.display = 'none';
+                                }
+
+                                // Updating the star values in the added reviews.
+                                const newReviewRatings = reviewContainer.querySelectorAll('.review-rating:not(.updated)');
+                                newReviewRatings.forEach(newReviewRating => {
+                                    const rating = parseInt(newReviewRating.getAttribute('data-rating'));
+                                    const stars = newReviewRating.querySelectorAll('.star');
+
+                                    // We add active stars based on the rating value.
+                                    for (let i = 0; i < rating; i++) {
+                                        stars[i].classList.add('active');
+                                    }
+
+
+
+
+
+                                    // We mark this review as updated so that it will not be updated again in the future.
+                                    newReviewRating.classList.add('updated');
+                                });
+                                // We hide the spinner and show the button
+                                spinner.style.display = 'none';
+                                loadMoreButton.style.display = 'block';
+                                if (!html.querySelector('#load-more-button')) {
+                                    loadMoreButton.style.display = 'none'; //When there is no more "load more" in html, that is, there are no more pages of reviews available, we hide the button
+                                }
+                            } else {
+                                console.error('Error en la carga de reviews');
+                            }
+                        };
+                        xhr.send();
+
+                    }, 0);
+                });
+
+            </script>
+
+    </div>
+    <!-- /grids -->
+
+    </class>
+    </div>
+    <!-- /grids -->
+    </div>
+    <!-- //grids -->
+</section>
+<!-- //testimonials -->
+
+{{>footer}}
 
 </html>
