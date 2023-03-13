@@ -200,11 +200,11 @@ Además de esto, he corregido errores, traducido código, eliminado warnings y a
 
 | Número fichero  | Fichero                                      | 
 | ------------- | ------------------------------------------------ |
-| #1            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx		   | 
-| #2            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | 
-| #3            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx |
-| #4            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx	   | 
-| #5            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx			   |
+| #1            | citiesController.java		   | 
+| #2            | error.htnl & style.error.css | 
+| #3            | review.html & style.review.css |
+| #4            | InitDatabase.java	   | 
+| #5            | indexControler.java			   |
   
 ### Adrián Pedroche Rata
 #### Descripción textual: 
