@@ -234,27 +234,27 @@ Más adelante, me encargué de permitir que el usuario puediera cerrar su sesió
          
 ### Jorge Ezequiel	de Francisco Bernal
 #### Descripción textual: 
-xxxxxxxxxxxxxxxxxxxx
+Lo primero de lo que me encargué fue de el apartado de contacto de la aplciación, más especificamente que a patir de un formulario que el usuario puede rellenar, se enviará un correo con el contenido escrito previamente por el usuario a la dirección de la página web. Posteriormente me seguí encargando de la parte de la interacción de la web con el usuario por medio de correos electrónicos, así que hice una funcionalidad para que se enviase un correo al usuario informativo cuando se suscribiera para recibir ofertas. Además también me encargue de la página de compra donde se muestran en ella toda la información de la compra y aparece un botón para finalizar el pago, el cual envia un correo con todos los detalles al usuario. Y por último hice una funcionalidad para el administrador, mediante la cual puede editar el nombre y apellidos de los usuarios.
 
 #### 5 commits más significativos
 
 | Commit  | Descripción                                      | Link                                                                                            |
 | ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
-| #1            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx		   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
-| #2            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
-| #3            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
-| #4            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
-| #5            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx			   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #1            | primer commit, donde se muestran todos los usuarios en el perfil del administrador y envio de correo de suscripción		   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/1ec37c56a4b1a08d66a578e9cc4b872bfd700838 | 
+| #2            | envio de correo tras la realización del formulario | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/e5bcf4f63127bf1bfc842a5f7b92cd9d01765740 | 
+| #3            | finalización de correo de compra al usuario y ajustes del admin | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/e10b012f19815b2f2e2082bcfccceaa4f2ea0af3 | 
+| #4            | actualización de la forma de mostrar los usuarios y la edición de estos	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/d65414d84378294f1965a5692e68b4650a18dafa | 
+| #5            | actualización para la funcionalidad de la parte de la página de compra y del administrador			   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/b01682fad55f7748f3ff60c76646b52e52216a17 | 
 
 #### 5 ficheros más participación
 
 | Número fichero  | Fichero                                      | 
 | ------------- | ------------------------------------------------ |
-| #1            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx		   | 
-| #2            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | 
-| #3            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx |
-| #4            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx	   | 
-| #5            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx			   |         
+| #1            | purchase.html		   | 
+| #2            | purchaseController.java | 
+| #3            | contactController.java |
+| #4            | conctact.html	   | 
+| #5            | profileController.java			   |         
          
 ### ShuHeng	Ye
 #### Descripción textual:
