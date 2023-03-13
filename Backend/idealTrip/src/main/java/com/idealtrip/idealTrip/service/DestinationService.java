@@ -33,6 +33,7 @@ public class DestinationService {
         this.destinations.save(destination);
     }
     
+
     public Optional<Destination> findDestinationById(Long id) {
         return destinations.findById(id);
     }
