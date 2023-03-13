@@ -118,7 +118,7 @@ Estas son solo algunas de las funciones implementadas en esta segunda fase, ahor
     - Inicio de sesión/Registro: En esta pantalla se le permitirá al usuario no registrado poder registrarse, o bien si ya está registrado poder iniciar sesión.
     <image src="/images/LoginV2.jpg">
     <image src="/images/RegisterV2.jpg">
-    - Menú del destino: Esta pantalla nos facilita un menú con 4 opciones: restauración, turismo, opiniones y alojamientos. También nos aparecerá debajo una gráfica que muestra la cantidad de gente que ha escogido ese destino en los diferentes meses del año. 
+    - Menú del destino: Esta pantalla nos facilita un menú con 4 opciones: restauración, turismo, opiniones y alojamientos.
     <image src="/images/EachDestinationV2.jpg">
     - Turismo: Esta pantalla contiene varias imágenes de monumentos y sitios de interés del destino previamente escogido, acompañados de una breve descripción si ponemos el cursor encima de las fotos.
     <image src="/images/PlaceV2.jpg">
