@@ -130,7 +130,8 @@ Estas son solo algunas de las funciones implementadas en esta segunda fase, ahor
     - Contáctanos: Esta pantalla muestra la información de la compañía, así como dónde se ubica, el número de teléfono, y la ubicación en Google Maps. También se facilita un formulario para que el usuario se pueda comunicar con nosotros.
     <image src="/images/ContactV2.jpg" alt="entities relations">
     - Administrador: Esta pantalla permite al usuario con el rol de administrador gestionar a todos los usuarios registrados.
-    <image src="/images/Admin.jpg" alt="entities relations">
+    <image src="/images/AdminV2.jpg" alt="entities relations">
+    <image src="/images/AdminV22.jpg" alt="entities relations">
     - Opinión: Esta pantalla nos permite añadir una valoración del destino además de una reseña si estamos registrados (Primera imagen) y en caso contrario únicamente dejará visualizar valoraciones (Segunda imagen). También se nos permitirá ver las opniniones de los demás usuarios
     <image src="/images/AddReviewV2.jpg" alt="entities relations">
     <image src="/images/ReviewV2.jpg" alt="entities relations">
