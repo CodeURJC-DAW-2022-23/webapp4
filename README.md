@@ -92,8 +92,6 @@ En esta fase hemos, diseñado y maquetado la aplicación mediante HTML, CSS y Ja
             
  - Relación entre las distintas pantallas de la aplicación web:
           <image src="/images/IdealTrip.jpg" alt="entities relations">  
-                        
-
               
               
 # Fase 2: Web con HTML generado en servidor y AJAX
@@ -283,4 +281,4 @@ En cuanto a mi trabajo, aunque debido a un problema familiar mi tiempo para esta
 | #4            | review.html	   | 
 | #5            | house.html			   |         
 
-    
+  
