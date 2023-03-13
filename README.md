@@ -135,6 +135,8 @@ Estas son solo algunas de las funciones implementadas en esta segunda fase, ahor
     <image src="/images/ReviewV2.jpg" alt="entities relations">
     -Restauración: Esta pantalla al igual que la de turismo, nos mostrará imágenes de la gastronomía típica del destino preseleccionado junto a una pequeña descricpción cuando coloquemos el cursor encima de la imagen
         <image src="/images/CateringV2.jpg" alt="entities relations">
+    -Diagrama de barras: Esta pantalla mostrará el diagrama de barras con una media de las valoraciones realizadas por los usuarios
+        <image src="/images/barChartV2.jpg" alt="entities relations">
  - Relación entre las distintas pantallas de la aplicación web (Diagrama de navegación):
           <image src="/images/IdealTripV2.jpg" alt="Diagrama de navegacion">
               
