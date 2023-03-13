@@ -258,27 +258,28 @@ xxxxxxxxxxxxxxxxxxxx
 | #5            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx			   |         
          
 ### ShuHeng	Ye
-#### Descripción textual: 
-xxxxxxxxxxxxxxxxxxxx
+#### Descripción textual:
+
+En cuanto a mi trabajo, aunque debido a un problema familiar mi tiempo para esta practica fue muy limitado, he logrado implementar una función que permite mostrar reseñas según el ID del destino. Además, he añadido algunas características para los usuarios, como la posibilidad de comentar en la página de opiniones, editar su nombre y apellido, y cambiar su foto de perfil para mostrar los avatar del usuarios en la pagina de reviews. También he creado una página de alojamiento y he integrado enlaces del StreetView para mostrarlo en la página de alojamiento.
 
 #### 5 commits más significativos
 
 | Commit  | Descripción                                      | Link                                                                                            |
 | ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
-| #1            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx		   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
-| #2            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
-| #3            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
-| #4            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
-| #5            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx			   | https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/Desarrollo | 
+| #1            | Editar los datos del usuario en la pagina de perfil | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/7c798d7fff2ae97f358fee6e019ea04da63363be| 
+| #2            |  Pagina de alojamiento | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/5d25941dc855e02edb4018643da30b446f50ee2f | 
+| #3            | Guardar comentarios del usuario en la base de datos | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/dcfae4e807e54997dfe04dc1192e2d6596adcdb3| 
+| #4            | Cambiar avatar y mostrar los avatar de todos los usuarios comentado | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/bad5e05eabd0125e59576c94f56aaa5d06f77d2c | 
+| #5            | Mostrar los comentarios	               | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/5dbad07d183c0cbac12a65b5a1f9bf7a27a7800c| 
 
 #### 5 ficheros más participación
 
 | Número fichero  | Fichero                                      | 
 | ------------- | ------------------------------------------------ |
-| #1            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx		   | 
-| #2            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | 
-| #3            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx |
-| #4            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx	   | 
-| #5            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx			   |         
+| #1            | citiesController.java		   | 
+| #2            | profileController.java | 
+| #3            | reviewService.java |
+| #4            | review.html	   | 
+| #5            | house.html			   |         
 
     
