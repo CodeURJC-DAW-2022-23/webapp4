@@ -30,7 +30,7 @@ https://trello.com/b/ggomNP2X/idealtrip
 
     
 ## Relaciones entre entidades
-<image src="/images/relations.png" alt="entities relations">
+<image src="/images/relation.png" alt="entities relations">
 
 La relación de entidades podría ser: Un **usuario** selecciona un **destino** y **compra** un alquiler para hospedarse en un **alojamiento**
     
