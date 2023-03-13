@@ -179,7 +179,7 @@ Mis commits no son grandes, por tanto no hay commits que engloben varias o una f
 | #2            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/blob/main/Backend/idealTrip/src/main/java/com/idealtrip/idealTrip/controller/LoginController.java">LoginController.java</a> | 
 | #3            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/blob/main/Backend/idealTrip/src/main/java/com/idealtrip/idealTrip/controller/ServiceController.java">ServiceController.java</a> |
 | #4            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/blob/main/Backend/idealTrip/src/main/java/com/idealtrip/idealTrip/controller/ProfileController.java">ProfileController.java</a>	   | 
-| #5            | a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/main/Backend/idealTrip/src/main/java/com/idealtrip/idealTrip/model>Directorio Model</a>			   | 
+| #5            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/main/Backend/idealTrip/src/main/java/com/idealtrip/idealTrip/model>Directorio Model</a>			   | 
          
 ### David Moreno Martín
 #### Descripción textual: 
