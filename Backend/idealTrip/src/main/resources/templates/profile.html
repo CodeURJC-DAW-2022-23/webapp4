@@ -123,29 +123,36 @@
             <div class="card mb-4">
 
                 <div class="card-header">Usuarios</div>
-                {{#profile}}
-                <div class="card-body">
-                    <div class="text-left">
-                        <button id="btn-abrir-popup" class="btn btn-style btn-primary">{{email}} </button>
-                    </div>
-                    <div class="overlay" id="overlay">
-                        <div class="popup" id="popup">
-                            <a href="#" id="btn-cerrar-popup" class="btn-cerrar-popup"><i class="fas fa-times"></i></a>
-                            <h4><b>¿Desea eliminar el usuario?</b></h4>
-                            <h4>{{name}} {{lastName}}</h4>
+                {{#admin}}
 
-                            <a href="/deleteUser/{{id}}" class="btn btn-style btn-primary" value="Aceptar"> </a>
-                            <form action="/deleteUser/{{id}}" method="post">
-                                <input type="hidden" name="id" value="{{id}}">
-                                <input type="hidden" name="_csrf" value="{{token}}" />
-                                <input type="submit" class="btn btn-style btn-primary" value="Aceptar">
-                            </form>
-                        </div>
+                <div class="card mb-4">
+
+                    <div class="card-header">Usuarios</div>
+                    <div class="card-body">
+                        {{#profile}}
+                        <p>{{email}}</p>
+                        <form method="post" action="/profileAdmin">
+                            <div class="mb-3">
+                                <label class="small mb-1" for="userNameAdmin">Nombre</label>
+                                <input class="form-control" name="userNameAdmin" type="text" value="{{name}}">
+                            </div>
+                            <!-- Form Group (last name)-->
+                            <div class="mb-3">
+                                <label class="small mb-1" for="userLastNameAdmin">Apellido</label>
+                                <input class="form-control" name="userLastNameAdmin" type="text" value="{{lastName}}">
+                            </div>
+                            <!-- Save changes button-->
+                            <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                            <input type="hidden" name="_csrf" value="{{token}}" />
+                        </form>
+                        {{/profile}}
                     </div>
+
                 </div>
-                {{/profile}}
+
             </div>
-            {{/admin}}
+        </div>
+              {{/admin}}
             <!-- Delete account card-->
             <div class="card mb-4">
                 <div class="card-header">Eliminar cuenta</div>

@@ -107,4 +107,12 @@ public class ProfileController {
 		}
 		return null;
 	}
+
+	@PostMapping("/profileAdmin")
+	public String editProfileAdmin(@ModelAttribute("currentUser") User currentUser, @RequestParam String userNameAdmin, @RequestParam String userLastNameAdmin) {
+		currentUser.setName(userNameAdmin);
+		currentUser.setLastName(userLastNameAdmin);
+		users.save(currentUser);
+		return "/profile";
+	}
 }
