@@ -234,7 +234,7 @@ Más adelante, me encargué de permitir que el usuario puediera cerrar su sesió
          
 ### Jorge Ezequiel	de Francisco Bernal
 #### Descripción textual: 
-xxxxxxxxxxxxxxxxxxxx
+Lo primero de lo que me encargué fue de el apartado de contacto de la aplciación, más especificamente que a patir de un formulario que el usuario puede rellenar, se enviará un correo con el contenido escrito previamente por el usuario a la dirección de la página web. Posteriormente me seguí encargando de la parte de la interacción de la web con el usuario por medio de correos electrónicos, así que hice una funcionalidad para que se enviase un correo al usuario informativo cuando se suscribiera para recibir ofertas. Además también me encargue de la página de compra donde se muestran en ella toda la información de la compra y aparece un botón para finalizar el pago, el cual envia un correo con todos los detalles al usuario. Y por último hice una funcionalidad para el administrador, mediante la cual puede editar el nombre y apellidos de los usuarios.
 
 #### 5 commits más significativos
 
@@ -250,11 +250,11 @@ xxxxxxxxxxxxxxxxxxxx
 
 | Número fichero  | Fichero                                      | 
 | ------------- | ------------------------------------------------ |
-| #1            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx		   | 
-| #2            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx | 
-| #3            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx |
-| #4            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx	   | 
-| #5            | xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx			   |         
+| #1            | purchase.html		   | 
+| #2            | purchaseController.java | 
+| #3            | contactController.java |
+| #4            | conctact.html	   | 
+| #5            | profileController.java			   |         
          
 ### ShuHeng	Ye
 #### Descripción textual:
