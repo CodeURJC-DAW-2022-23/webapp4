@@ -126,7 +126,7 @@ Estas son solo algunas de las funciones implementadas en esta segunda fase, ahor
     <image src="/images/HouseV2.jpg">
     - Pago: Esta pantalla, nos proporcionará un breve resumen sobre la reserva que hemos realizado, así como el destino, el precio y los días que hemos elegido. Se nos dará la opción de escoger el método de pago. Una vez escogido, tendremos que introducir los datos y darle a confirmar para que se efectúe el pago.
     <image src="/images/PaymentV2.jpg" alt="entities relations">
-    <image src="/images/EmailPaymentV2.jpg" alt="entities relations">
+    <image src="/images/EmailPaymenV2.jpg" alt="entities relations">
     - Contáctanos: Esta pantalla muestra la información de la compañía, así como dónde se ubica, el número de teléfono, y la ubicación en Google Maps. También se facilita un formulario para que el usuario se pueda comunicar con nosotros.
     <image src="/images/ContactV2.jpg" alt="entities relations">
     - Administrador: Esta pantalla permite al usuario con el rol de administrador gestionar a todos los usuarios registrados.
