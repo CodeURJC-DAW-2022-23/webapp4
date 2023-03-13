@@ -125,7 +125,7 @@
                     <div class="card-body">
                         {{#profile}}
                         <p>{{email}}</p>
-                        <form method="post" action="/profileAdmin">
+                        <form method="post" action="/profileAdmin/{{id}}">
                             <div class="mb-3">
                                 <label class="small mb-1" for="userNameAdmin">Nombre</label>
                                 <input class="form-control" name="userNameAdmin" type="text" value="{{name}}">

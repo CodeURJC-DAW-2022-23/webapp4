@@ -107,12 +107,16 @@ public class ProfileController {
 		}
 		return null;
 	}
-
-	@PostMapping("/profileAdmin")
-	public String editProfileAdmin(@ModelAttribute("currentUser") User currentUser, @RequestParam String userNameAdmin, @RequestParam String userLastNameAdmin) {
-		currentUser.setName(userNameAdmin);
-		currentUser.setLastName(userLastNameAdmin);
-		users.save(currentUser);
-		return "/profile";
+	@GetMapping("/profileAdmin/{id}")
+	public String profileAdmin(){
+		return "profile";
+	}
+	@PostMapping("/profileAdmin/{id}")
+	public String editProfileAdmin(@PathVariable long id, @RequestParam String userNameAdmin, @RequestParam String userLastNameAdmin) {
+		User user = users.findById(id).orElse(null);
+		user.setName(userNameAdmin);
+		user.setLastName(userLastNameAdmin);
+		users.save(user);
+		return "redirect:/profile";
 	}
 }
