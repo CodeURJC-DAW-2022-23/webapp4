@@ -50,3 +50,18 @@
 .chart{
     text-align: center;
 }
+
+#char {
+    padding: 0px 36px;
+    font-size: 16px;
+    line-height: 52px;
+    text-transform: capitalize;
+    font-weight: 600;
+    transition: 0.3s ease-in;
+    border-radius: var(--border-radius);
+    height: 56px;
+    color: #fff;
+    background-color: #FF1654;
+    border-color: #FF1654;
+        
+}
