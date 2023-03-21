@@ -1,0 +1,144 @@
+{{>headerLogin}}
+  <!-- login box -->
+  <div class="box">
+    <!-- slip box -->
+    <div class="pre-box">
+      <h1>IdealTrip</h1>
+      <div class="img-box">
+        <img src="./assets/images/favicon.png" alt="">
+      </div>
+    </div>
+    <!-- signin box -->
+    <div class="register-form">
+      
+    </div>
+    <!-- signup box -->
+
+    <div class="login-form">
+      <form action="/login" method="post">
+        <!-- title box -->
+        <div class="title-box">
+          <h1>Iniciar Sesión</h1>
+        </div>
+        <!-- input box-->
+        <div class="input-box">
+          <input type="text" placeholder="Email" name="username" />
+          <input type="password" placeholder="Contraseña" name="password" />
+        </div>
+        <!-- btn box -->
+        <div class="btn-box">
+          <button class="box_btn">Iniciar Sesión</button>
+          <a href="/register" class="box_btn">Regístrate!</a>
+        </div>
+        <input type="hidden" name="_csrf" value="{{token}}" />
+      </form>
+    </div>
+
+  </div>
+
+  <!-- <script>
+    let flag = true
+    const slip = () => {
+      if (flag) {
+        $(".pre-box").css("transform", "translateX(100%)")
+        $(".pre-box").css("background-color", "#E74C3C")
+        $("img").attr("src", "./assets/images/plane.png")
+      }
+      else {
+        $(".pre-box").css("transform", "translateX(0%)")
+        $(".pre-box").css("background-color", "#AED6F1")
+        $("img").attr("src", "./assets/images/favicon.png")
+      }
+      flag = !flag
+    }
+  </script> -->
+  </div>
+  <!-- Template JavaScript -->
+  <script src="assets/js/jquery-3.3.1.min.js"></script>
+  <script src="assets/js/theme-change.js"></script>
+  <!--/slider-js-->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/modernizr-2.6.2.min.js"></script>
+  <script src="assets/js/jquery.zoomslider.min.js"></script>
+  <!--//slider-js-->
+  <script src="assets/js/owl.carousel.js"></script>
+  <!-- script for tesimonials carousel slider -->
+  <script>
+    $(document).ready(function () {
+      $("#owl-demo1").owlCarousel({
+        loop: true,
+        margin: 20,
+        nav: false,
+        responsiveClass: true,
+        responsive: {
+          0: {
+            items: 1,
+            nav: false
+          },
+          736: {
+            items: 1,
+            nav: false
+          },
+          1000: {
+            items: 1,
+            nav: false,
+            loop: true
+          }
+        }
+      })
+    })
+  </script>
+  <!-- //script for tesimonials carousel slider -->
+  <!-- stats number counter-->
+  <script src="assets/js/jquery.waypoints.min.js"></script>
+  <script src="assets/js/jquery.countup.js"></script>
+  <script>
+    $('.counter').countUp();
+  </script>
+  <!-- //stats number counter -->
+
+  <!--/MENU-JS-->
+  <script>
+    $(window).on("scroll", function () {
+      var scroll = $(window).scrollTop();
+
+      if (scroll >= 80) {
+        $("#site-header").addClass("nav-fixed");
+      } else {
+        $("#site-header").removeClass("nav-fixed");
+      }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function () {
+      $("header").toggleClass("active");
+    });
+    $(document).on("ready", function () {
+      if ($(window).width() > 991) {
+        $("header").removeClass("active");
+      }
+      $(window).on("resize", function () {
+        if ($(window).width() > 991) {
+          $("header").removeClass("active");
+        }
+      });
+    });
+
+    function confirmPassword() {
+      var password = document.getElementByName("password")[0].value;
+      var repassword = document.getElementByName("repassword")[0].value;
+      if (password !== repassword) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+  </script>
+  <!--//MENU-JS-->
+
+
+  <script src="assets/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
