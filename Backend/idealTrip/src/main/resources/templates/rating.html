@@ -11,32 +11,44 @@
         <canvas id="myChart"></canvas>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<body>
 
-    <script>
-        var labelsName = "{{labels}}";
-        var datas = "{{datas}}";
-        const ctx = document.getElementById('myChart');
+<canvas id="myChart" style="width:100%;max-width:600px"></canvas>
 
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: labelsName,
-                datasets: [{
-                    label: '# de estrellas',
-                    data: datas,
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    </script>
+<script>
+var totalParis = parseFloat("{{totalParis}}"); 
+var totalAlpesJulianos = parseFloat("{{totalAlpesJulianos}}");
+var totalAtenas = parseFloat("{{totalAtenas}}"); 
+var totalBangkok = parseFloat("{{totalBangkok}}"); 
+var totalLondres = parseFloat("{{totalLondres}}"); 
+var totalMaldivas = parseFloat("{{totalMaldivas}}"); 
+var totalSantaMarta = parseFloat("{{totalSantaMarta}}"); 
+var totalSingapur = parseFloat("{{totalSingapur}}"); 
+
+
+var xValues = [" ","París", "Alpes-Julianos", "Atenas", "Bangkok", "Londres", "Maldivas", "Santa-Marta","Singapur"," "];
+var yValues = [0,totalParis, totalAlpesJulianos, totalAtenas, totalBangkok,totalLondres,totalMaldivas,totalSantaMarta,totalSingapur,5];
+var barColors = ["transparent", "green","blue","orange","brown", "red", "green", "blue","orange", "transparent"];
+
+new Chart("myChart", {
+  type: "bar",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+  options: {
+    legend: {display: false},
+    title: {
+      display: true,
+      text: "Opinión en 2022"
+    }
+  }
+});
+</script>
 
 
 

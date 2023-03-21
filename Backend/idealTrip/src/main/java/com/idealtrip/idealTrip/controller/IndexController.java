@@ -2,9 +2,7 @@ package com.idealtrip.idealTrip.controller;
 
 import java.security.Principal;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,21 +61,31 @@ public class IndexController {
   @GetMapping("/rating")
 
   public String ratingDestination(Model model) {
-    List<String> labels = new ArrayList<>();
-    List<Integer> datas = new ArrayList<>();
+    
     List<Destination> destinationList = destinationService.findAll();
-    Map<String, Double> totalRatingMap = new HashMap<>();
+    List<Double> totalRatingList = new ArrayList<>();
     for (Destination destination : destinationList) {
-      int totalRating = reviewService.getTotalRatingForDestination(destination);
-      // totalRatingMap.put(destination.getNameDestination(), totalRating);
-      labels.add(destination.getNameDestination());
-      datas.add(totalRating);
-      
+      double totalRating = reviewService.getTotalRatingForDestination(destination);
+      totalRatingList.add(totalRating);
     }
-    System.out.println(labels);
-    System.out.println(datas);
-    model.addAttribute("labels", labels); 
-    model.addAttribute("datas", datas);
+    var totalParis= totalRatingList.get(0);
+    var totalAlpesJulianos = totalRatingList.get(1);
+    var totalAtenas = totalRatingList.get(2);
+    var totalBangkok = totalRatingList.get(3);
+    var totalLondres = totalRatingList.get(4);
+    var totalMaldivas = totalRatingList.get(5);
+    var totalSantaMarta = totalRatingList.get(6);
+    var totalSingapur = totalRatingList.get(7);
+    model.addAttribute("totalRatingList", totalRatingList);
+    model.addAttribute("totalParis", totalParis);
+    model.addAttribute("totalAlpesJulianos", totalAlpesJulianos);
+    model.addAttribute("totalAtenas", totalAtenas);
+    model.addAttribute("totalBangkok", totalBangkok);
+    model.addAttribute("totalLondres", totalLondres);
+    model.addAttribute("totalMaldivas", totalMaldivas);
+    model.addAttribute("totalSantaMarta", totalSantaMarta);
+    model.addAttribute("totalSingapur", totalSingapur);
+
     return "rating";
   }
 }
