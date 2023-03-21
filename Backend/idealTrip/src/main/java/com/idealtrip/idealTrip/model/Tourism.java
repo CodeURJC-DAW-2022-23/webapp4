@@ -1,16 +1,14 @@
 package com.idealtrip.idealTrip.model;
 
 import java.sql.Blob;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
-//import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-//import javax.persistence.OneToOne;
+
 
 @Entity(name = "tourismTable")
 public class Tourism {
@@ -37,7 +35,6 @@ public class Tourism {
         this.id = id;
         this.nameTourism = nameTourism;
         this.contentTourism = contentTourism;
-        // this.destination = destination;
         this.imageTourismFile = imageTourismFile;
     }
 
@@ -65,13 +62,6 @@ public class Tourism {
         this.contentTourism = contentTourism;
     }
 
-    // public Destination getDestination() {
-    //     return destination;
-    // }
-
-    // public void setDestination(Destination destination) {
-    //     this.destination = destination;
-    // }
 
     public Blob getImageTourismFile() {
         return imageTourismFile;

@@ -6,17 +6,13 @@ import java.util.List;
 import java.util.Random;
 import java.io.IOException;
 import java.sql.Blob;
-
 import javax.annotation.PostConstruct;
-
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.security.crypto.password.PasswordEncoder;
-// import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import com.idealtrip.idealTrip.model.Catering;
 import com.idealtrip.idealTrip.model.Destination;
 import com.idealtrip.idealTrip.model.House;
@@ -25,7 +21,7 @@ import com.idealtrip.idealTrip.model.Purchase;
 import com.idealtrip.idealTrip.model.Review;
 import com.idealtrip.idealTrip.model.Tourism;
 import com.idealtrip.idealTrip.model.User;
-//import com.idealtrip.idealTrip.repository.UserRepository;
+
 
 @Service
 public class InitDatabase {
@@ -52,9 +48,6 @@ public class InitDatabase {
 
         @Autowired
         private UserService users;
-
-        //@Autowired
-        //private UserRepository userRepository;
 
         @Autowired
         private PasswordEncoder passwordEncoder;
@@ -136,7 +129,6 @@ public class InitDatabase {
                 namePlace.add("Catedral de Notre Dame");
                 namePlace.add("Basílica Sagrado Corazón");
                 namePlace.add("Disneyland París");
-                // contentPlace.add(" ");
                 contentPlace.add(
                                 "El edificio más alto del mundo por 41 años. Desde su construcción, hasta 1930, la Torre Eiffel fue el edificio más alto del mundo, gracias a sus 312 metros de altura");
                 contentPlace.add(
@@ -318,14 +310,12 @@ public class InitDatabase {
                 List<String> nameFood = new ArrayList<>();
                 List<String> contentFood = new ArrayList<>();
                 // Paris
-                // nameFood.add(" ");
                 nameFood.add("Ratatouille");
                 nameFood.add("Crepe");
                 nameFood.add("Cassoulet");
                 nameFood.add("Boeuf Bourguignon");
                 nameFood.add("Quiche Lorraine");
                 nameFood.add("Escargots");
-                // contentFood.add(" ");
                 contentFood.add(
                                 "El plato tiene su origen en la cocina provenzal de Niza; dichos orígenes se reflejan en el nombre: «Rata» significa «comida» y «touille», «remover». De modo que «ratatouille» significa «comida revuelta» que se cocina a fuego lento durante horas");
                 contentFood.add(
@@ -476,7 +466,6 @@ public class InitDatabase {
                         Catering catering = new Catering();
                         catering.setNameFood(food);
                         catering.setContentFood(contentFood.get(cont));
-                        // catering.setDestination(initedDestinations.get(cont));
                         cont++;
                         catering.setImageFoodUrl("/static/assets/images/informacion/" + food + ".jpg");
                         try {
@@ -500,8 +489,6 @@ public class InitDatabase {
         private List<Destination> generateDestination() {
                 List<Destination> destinations = new ArrayList<>();
                 List<String> titleDestination = new ArrayList<>();
-                // cities.add("");
-                // titleDestination.add("");
                 cities.add("Paris");
                 titleDestination.add("La ciudad del amor");
                 cities.add("Bangkok");
@@ -554,7 +541,6 @@ public class InitDatabase {
                 List<String> houseNames = new ArrayList<>();
 
 
-                // houseNames.add(" ");
                 houseNames.add("Ibis Paris Tour Eiffel Cambronne 15ème");
                 houseNames.add("Lamphuhouse Bangkok - SHA Extra Plus Certified");
                 houseNames.add("Rasdu View Inn");
@@ -669,7 +655,6 @@ public class InitDatabase {
                         user.setLastName(lastName);
                         user.setEmail(lastName + i + "@gmail.com");
                         user.setEncodedPassword(passwordEncoder.encode("12345"));
-                        // user.setEncodedPassword("12345");
                         user.setRoles("USER");
                         user.setProfileAvatar("/static/assets/images/null-avatar.jpg");
                         try {
@@ -687,7 +672,6 @@ public class InitDatabase {
                         user.setLastName(lastName);
                         user.setEmail(name + "@gmail.com");
                         user.setEncodedPassword(passwordEncoder.encode("123456"));
-                        // user.setEncodedPassword("123456");
                         user.setRoles("USER", "ADMIN");
                         user.setProfileAvatar("/static/assets/images/null-avatar.jpg");
                         try {

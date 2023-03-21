@@ -5,7 +5,6 @@ import com.idealtrip.idealTrip.model.User;
 import com.idealtrip.idealTrip.service.HouseService;
 import com.idealtrip.idealTrip.service.PurchaseService;
 import com.idealtrip.idealTrip.service.UserService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,8 +14,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import java.security.Principal;
 import java.util.Optional;
-
 import javax.servlet.http.HttpServletRequest;
+
 
 @Controller
 public class PurchaseController {
@@ -61,8 +60,7 @@ public class PurchaseController {
         Float precio = house.get().getPrice();
         String destino = house.get().getDestinationName();
         String hotel = house.get().getNameHouse();
-        // String usuario = house.get().getName()+ " " +
-        // purchase.getUser().getLastName();
+    
         String usuario = currentUser.getName() + " " + currentUser.getLastName();
         String message = usuario + " ha realizado una compra en nuestra página \n" + "Destino: " + destino + "\nHotel: " + hotel
                 + "\nCoste total: " + precio;
@@ -70,4 +68,3 @@ public class PurchaseController {
         return "index";
     }
 }
-//

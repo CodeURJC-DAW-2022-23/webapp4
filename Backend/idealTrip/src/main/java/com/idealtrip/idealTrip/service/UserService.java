@@ -2,12 +2,11 @@ package com.idealtrip.idealTrip.service;
 
 import java.util.Optional;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.idealtrip.idealTrip.model.User;
 import com.idealtrip.idealTrip.repository.UserRepository;
+
 
 @Service
 public class UserService {
@@ -48,6 +47,4 @@ public class UserService {
 	    }
     }
 
-    // public List<Review> findReviewsOfUser(Long userId, Pageable pageable){
-    //     return users.findReviewsOfUser(userId, pageable);
-    // }
+

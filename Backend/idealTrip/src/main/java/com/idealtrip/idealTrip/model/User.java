@@ -3,7 +3,6 @@ package com.idealtrip.idealTrip.model;
 import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -15,7 +14,6 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 
-//import org.hibernate.resource.beans.internal.FallbackBeanInstanceProducer;
 
 @Entity(name = "userTable")
 public class User {
@@ -60,21 +58,6 @@ public class User {
         this.roles = List.of(roles);
     }
 
-    // public Destination getDestination() {
-    //     return destination;
-    // }
-
-    // public void setDestination(Destination destination) {
-    //     this.destination = destination;
-    // }
-
-    // public Purchase getPurchase() {
-    //     return purchase;
-    // }
-
-    // public void setPurchase(Purchase purchase) {
-    //     this.purchase = purchase;
-    // }
 
     public void setRoles(List<String> roles) {
         this.roles = roles;
@@ -153,9 +136,7 @@ public class User {
     }
 
     public List<String> getRoles() {
-        // for (String rol :roles){
-        //     console
-        // }
+        
         return this.roles;
     }
 
@@ -163,12 +144,5 @@ public class User {
         this.roles = List.of(roles);
     }
 
-    // public Review getReview() {
-    //     return review;
-    // }
-
-    // public void setReview(Review review) {
-    //     this.review = review;
-//}
 
 }

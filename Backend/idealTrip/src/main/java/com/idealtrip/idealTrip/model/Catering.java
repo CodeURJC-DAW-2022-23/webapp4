@@ -1,7 +1,6 @@
 package com.idealtrip.idealTrip.model;
 
 import java.sql.Blob;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+
 
 @Entity(name = "cateringTable")
 public class Catering {
@@ -107,13 +107,7 @@ public class Catering {
         this.imageFoodFile = imageFoodFile;
     }
 
-    // public Destination getDestination() {
-    //     return destination;
-    // }
 
-    // public void setDestination(Destination destination) {
-    //     this.destination = destination;
-    // }
 
     
 }

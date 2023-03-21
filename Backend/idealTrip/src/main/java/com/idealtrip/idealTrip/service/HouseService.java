@@ -2,12 +2,11 @@ package com.idealtrip.idealTrip.service;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.idealtrip.idealTrip.model.House;
 import com.idealtrip.idealTrip.repository.HouseRepository;
+
 
 @Service
 public class HouseService {
@@ -29,10 +28,6 @@ public class HouseService {
     public void delete(House entity) {
         houses.delete(entity);
     }
-
-    // public Optional<House> findByName(String name) {
-    //     return houses.findByName(name);
-    // }
     
     public List<House> findByDestinationId(Long id){
         return houses.findByDestinationId(id);

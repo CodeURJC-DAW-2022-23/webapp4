@@ -1,25 +1,14 @@
 package com.idealtrip.idealTrip.controller;
 
-//import java.io.IOException;
-//import java.net.URLEncoder;
-//import java.nio.charset.StandardCharsets;
-// import java.net.http.HttpHeaders;
 import java.security.Principal;
 import java.sql.Blob;
 import java.sql.SQLException;
-//import java.util.ArrayList;
-//import java.util.List;
 import java.util.Optional;
-//import java.util.Random;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.http.HttpHeaders;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-//import org.springframework.security.core.Authentication;
-//import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.ui.Model;
@@ -29,22 +18,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-//import org.springframework.web.bind.annotation.ResponseBody;
-//import org.hibernate.engine.jdbc.BlobProxy;
-//import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-//import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-//import org.springframework.stereotype.Service;
-//import org.springframework.web.multipart.MultipartFile;
-//import org.springframework.web.servlet.ModelAndView;
-
 import com.idealtrip.idealTrip.model.Destination;
 import com.idealtrip.idealTrip.model.Review;
-// import com.fasterxml.jackson.annotation.JsonCreator.Mode;
-// import com.idealtrip.idealTrip.model.Catering;
-//import com.idealtrip.idealTrip.model.Destination;
-//import com.idealtrip.idealTrip.model.Review;
 import com.idealtrip.idealTrip.model.Tourism;
 import com.idealtrip.idealTrip.model.User;
 import com.idealtrip.idealTrip.service.CateringService;
@@ -53,8 +30,7 @@ import com.idealtrip.idealTrip.service.HouseService;
 import com.idealtrip.idealTrip.service.ReviewService;
 import com.idealtrip.idealTrip.service.TourismService;
 import com.idealtrip.idealTrip.service.UserService;
-//import org.springframework.web.bind.annotation.RequestParam;
-//import java.util.List;
+
 
 @Controller
 public class CitiesController {
@@ -98,7 +74,6 @@ public class CitiesController {
   public String servicesAllCatering(Model model, @PathVariable Long id) {
     model.addAttribute("name", destinationService.findById(id).get().getNameDestination());
     model.addAttribute("nameDestination", cateringService.findByDestination(id));
-    // model.addAttribute("catering", cateringService.findAll());
     return "catering";
   }
 
@@ -106,7 +81,6 @@ public class CitiesController {
   public String servicesAllTourism(Model model, @PathVariable Long id) {
     model.addAttribute("name", destinationService.findById(id).get().getNameDestination());
     model.addAttribute("nameDestination", tourismService.findByDestinationId(id));
-    // model.addAttribute("catering", cateringService.findAll());
     return "tourism";
   }
 
@@ -138,17 +112,11 @@ public class CitiesController {
     Review review = new Review(currentUser, currentDestination, titleReview, ratingReview,
         contentReview);
     reviewService.save(review);
-    // model.addAttribute("userReviews", review);
     long destinationId = destinationService.findById(id).get().getId();
     return "redirect:/review/" + destinationId;
   }
 
-  // @GetMapping("/review/{id}")
-  // public String reviewByDestinationId(@PathVariable Long id, Model model) {
-  // model.addAttribute("reviews", reviewService.findReviewsByDestinationId(id));
-  // return "review";
-  // }
-  // No pageable
+
 
   @GetMapping("/review/{id}")
   public String getReviewsByDestination(@PathVariable Long id, Model model,

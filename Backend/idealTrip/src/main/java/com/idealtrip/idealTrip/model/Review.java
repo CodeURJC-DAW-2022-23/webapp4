@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+
 @Entity(name = "reviewTable")
 public class Review {
 
@@ -30,7 +31,6 @@ public class Review {
 
     public Review(User user, Destination destination, String titleReview, int ratingReview,
             String contentReview) {
-        // this.id = id;
         this.user = user;
         this.destination = destination;
         this.titleReview = titleReview;

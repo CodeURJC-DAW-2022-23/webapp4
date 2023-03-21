@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+
 @Entity(name = "purchaseTable")
 public class Purchase {
     @Id

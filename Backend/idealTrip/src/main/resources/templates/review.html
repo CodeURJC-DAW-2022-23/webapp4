@@ -2,67 +2,7 @@
 <!--banner-slider-->
 <br><br><br><br>
 {{#logged}}
-<!--<section>
-        <br><br><br>
-        <h5>Añadir comentario
-        <button id="review-add-btn" aria-label="add review" title="Add Review"></button></h5>
-        <div id="modal" role="dialog" aria-modal="true" aria-labelledby="add-review-header" class="">
-            <button class="close-btn" aria-label="close" title="Close">x</button>
-            <div id="review-form-container">
-                <h2 id="add-review-header">Reseña</h2>
-                <form id="review-form" action="/review/{{id}}" method="post">
-                    <div class="fieldset">
-                        <label for="reviewName">Titulo</label>
-                        <input name="titleReview" id="title" required>
-                    </div>
-                    <div class="fieldset">
-                        <label>Calificación</label>
-                        <div class="rate">
-                            <input type="radio" id="star5" name="ratingReview" value="5" onkeydown="navRadioGroup(event)"
-                                onfocus="setFocus(event)" required="">
-                            <label for="star5" title="5 stars">5 stars</label>
-                            <input type="radio" id="star4" name="ratingReview" value="4" onkeydown="navRadioGroup(event)">
-                            <label for="star4" title="4 stars">4 stars</label>
-                            <input type="radio" id="star3" name="ratingReview" value="3" onkeydown="navRadioGroup(event)">
-                            <label for="star3" title="3 stars">3 stars</label>
-                            <input type="radio" id="star2" name="ratingReview" value="2" onkeydown="navRadioGroup(event)">
-                            <label for="star2" title="2 stars">2 stars</label>
-                            <input type="radio" id="star1" name="ratingReview" value="1"
-                                onkeydown="navRadioGroup(event)" onfocus="setFocus(event)">
-                            <label for="star1" title="1 star">1 star</label>
-                        </div>
-                    </div>
 
-                    <div class="fieldset">
-                        <label for="reviewComments">Comentarios</label>
-                        <textarea name="contentReview" id="content" cols="20" rows="5" required></textarea>
-                    </div>
-                    <div class="fieldset right">
-                        <button id="submit-review-btn" type="submit">Publicar</button>
-                    </div>
-                    <input type="hidden" name="_csrf" value="{{token}}" />
-                </form>
-            </div>
-        </div>
-        <div class="modal-overlay"></div>
-    </section>-->
-<!--<form method="post" action="/review/{{id}}">
-        <label for="titleReview">Título de la reseña:</label>
-        <input type="text" name="titleReview" required>
-        <label for="contentReview">Contenido de la reseña:</label>
-        <textarea name="contentReview" required></textarea>
-        <label for="ratingReview">Calificación:</label>
-        <select name="ratingReview" required>
-          <option value="">Seleccionar</option>
-          <option value="1">1 estrella</option>
-          <option value="2">2 estrellas</option>
-          <option value="3">3 estrellas</option>
-          <option value="4">4 estrellas</option>
-          <option value="5">5 estrellas</option>
-        </select>
-        <button type="submit">Enviar reseña</button>
-        <input type="hidden" name="_csrf" value="{{token}}"/>
-      </form>-->
 <div class="container">
     <div class="row">
         <div class="col-md-6 offset-md-3">
@@ -140,7 +80,6 @@
         modalOverlay.classList.add('show');
 
         // Focus first child
-        // firstTabStop.focus();
         const reviewName = document.getElementById('reviewName');
         reviewName.focus();
 
@@ -172,7 +111,6 @@
     };
 
     const submitAddReview = (e) => {
-        // console.log(e);
         console.log('Form subbmitted!');
         e.preventDefault();
         closeModal();
@@ -193,17 +131,14 @@
         const rateRadios = document.getElementsByName('rate');
         const rateRadiosArr = Array.from(rateRadios);
         const anyChecked = rateRadiosArr.some(radio => { return radio.checked === true; });
-        // console.log('anyChecked', anyChecked);
         if (!anyChecked) {
             const star1 = document.getElementById('star1');
             star1.focus();
-            // star1.checked = true;
         }
     };
 
     const navRadioGroup = (evt) => {
-        // console.log('key', evt.key, 'code', evt.code, 'which', evt.which);
-        // console.log(evt);
+
 
         const star1 = document.getElementById('star1');
         const star2 = document.getElementById('star2');
@@ -213,7 +148,6 @@
 
         if (['ArrowRight', 'ArrowLeft', 'ArrowDown', 'ArrowUp'].includes(evt.key)) {
             evt.preventDefault();
-            // console.log('attempting return');
             if (evt.key === 'ArrowRight' || evt.key === 'ArrowDown') {
                 switch (evt.target.id) {
                     case 'star1':

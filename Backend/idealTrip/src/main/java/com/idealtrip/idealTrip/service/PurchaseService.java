@@ -1,14 +1,13 @@
 package com.idealtrip.idealTrip.service;
 
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
-
 import com.idealtrip.idealTrip.model.Purchase;
 import com.idealtrip.idealTrip.repository.PurchaseRepository;
+
 
 @Service
 public class PurchaseService {
