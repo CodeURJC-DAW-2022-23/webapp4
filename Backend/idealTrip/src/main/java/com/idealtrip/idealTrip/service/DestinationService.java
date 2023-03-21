@@ -4,8 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.data.domain.Page;
-// import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import org.springframework.stereotype.Service;
 
 import com.idealtrip.idealTrip.model.Destination;
@@ -19,6 +20,10 @@ public class DestinationService {
 
     public List<Destination> findAll() {
         return destinations.findAll();
+    }
+
+    public Page<Destination> findAllPageable(Pageable pageable){
+        return destinations.findAll(pageable);
     }
 
     public void deleteById(Long id) {
@@ -42,14 +47,6 @@ public class DestinationService {
         return destinations.findBynameDestination(nameDestination);
     }
 
-    // public List<Destination> findByName(String name, Pageable pageable){
-    //     return (List<Destination>) extracted(name, pageable);
-    // }
-
-    // private Page<Destination> findByName(String name, Pageable pageable) {
-    //     return destinations.findByName(name, pageable);
-    // }
-    
     
     
 }

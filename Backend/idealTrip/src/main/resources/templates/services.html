@@ -22,13 +22,61 @@
           <br><br>
         </div>
         {{/services}}
+
       </div>
+      <div id="load-more-container">
+                {{#services.hasNext}}
+                <button id="load-more-button" data-page="{{services.nextPageable.pageNumber}}" >Mostrar más</button>
+                {{/services.hasNext}}
+            </div>
+
+
+            <script>
+                const loadMoreButton = document.querySelector('#load-more-button');
+                const reviewContainer = document.querySelector('.row');
+
+                loadMoreButton.addEventListener('click', function () {
+
+                    const nextPage = this.getAttribute('data-page');
+                    event.preventDefault();
+
+
+                    // We make the Ajax request to the server to get the reviews of the following page, without reloading the entire page
+                    setTimeout(function () {
+                        const xhr = new XMLHttpRequest();
+                        xhr.open('GET', '?page=' + nextPage);
+                        xhr.onload = function () {
+                            if (xhr.status === 200) {
+                                // We convert the server response to HTML and add it to the reviews container.
+                                const parser = new DOMParser();
+                                const html = parser.parseFromString(xhr.response, 'text/html');
+                                reviewContainer.innerHTML += html.querySelector('.row').innerHTML;
+
+                                //Update the page number of the "Show more" button and hide the button if there are no more pages.
+                                const newPage = parseInt(nextPage) + 1;
+                                loadMoreButton.setAttribute('data-page', newPage);
+                                if (!html.querySelector('#load-more-button')) {
+                                    loadMoreButton.style.display = 'none';
+                                }
+                                  //Avoid scroll down when pressed the botton
+                                  window.scrollTo({
+                                  top: loadMoreButton.offsetTop,
+                                  behavior: "smooth"
+                                });
+                                } else {
+                                console.error('Error en la carga de reviews');
+                            }
+                        };
+                        xhr.send();
+
+                    }, 500);
+                });
+
+            </script>
     </div>
   </div>
 </section>
-<!--  //Work gallery section -->
-<!-- grids block 5 -->
-<!--/w3l-footer-29-main-->
+
 {{>footer}}
 
 </html>
