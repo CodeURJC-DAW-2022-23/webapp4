@@ -1,12 +1,13 @@
 FROM maven:3-openjdk-17 as builder
 
+
 WORKDIR /project
 
-COPY Backend/idealTrip/pom.xml /project/
+COPY Backend/idealTrip/pom.xml /project
 
 COPY Backend/idealTrip/src /project/src
 
-RUN mvn package -DskipTests=true
+RUN mvn package -DskipTests
 
 FROM openjdk:17
 

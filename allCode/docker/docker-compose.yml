@@ -2,21 +2,24 @@ version: "3.9"
 
 services:
   web:
-    build: 
-      context: ..
-      dockerfile: docker/Dockerfile
+    image: scuadrosf/idealtrip:v1
     restart: on-failure
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://db/idealtrip
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=password.12345
-      - SPRING_JPA_HIBERNATE_DDL-AUTO=create-drop
+      - SPRING_JPA_HIBERNATE_DDL-AUTO=update
     ports:
       - 8443:8443
+    depends_on:
+      - db
   db:
     image: mysql:8.0.22
+    container_name: db
     environment:
       - MYSQL_ROOT_PASSWORD=password.12345
       - MYSQL_DATABASE=idealtrip
     volumes:
-      - ../Backend/.mysql:/var/lib/mysql
+      - ./.mysql:/var/lib/mysql
+    ports:
+      - 3307:3306
