@@ -38,6 +38,7 @@ public class ProfileController {
 			model.addAttribute("logged", true);
 			model.addAttribute("currentUser", currentUser);
 			model.addAttribute("email", currentUser.getEmail());
+			// model.addAttribute("review", review);
 			model.addAttribute("review", currentUser.getReviews());
 			model.addAttribute("imageProfileFile", currentUser.getProfileAvatarFile());
 			model.addAttribute("imageProfile", currentUser.getProfileAvatar());
