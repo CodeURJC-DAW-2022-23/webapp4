@@ -18,15 +18,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.idealtrip.idealTrip.model.Destination;
 import com.idealtrip.idealTrip.model.User;
 import com.idealtrip.idealTrip.service.DestinationService;
-import com.idealtrip.idealTrip.service.TourismService;
 import com.idealtrip.idealTrip.service.UserService;
 
 @Controller
 public class ServiceController {
     @Autowired
     private DestinationService destinationService;
-    @Autowired
-    private TourismService tourismService;
 
     @Autowired
     private UserService userService;

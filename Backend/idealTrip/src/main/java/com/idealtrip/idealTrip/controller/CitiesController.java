@@ -33,11 +33,6 @@ import com.idealtrip.idealTrip.service.ReviewService;
 import com.idealtrip.idealTrip.service.TourismService;
 import com.idealtrip.idealTrip.service.UserService;
 
-import java.util.List;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
-
 @Controller
 public class CitiesController {
   @Autowired
