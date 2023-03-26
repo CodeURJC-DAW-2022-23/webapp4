@@ -1,4 +1,4 @@
-package com.idealtrip.idealTrip.security.jwt;;
+package com.idealtrip.idealTrip.security.jwt;
 
 import java.io.IOException;
 
