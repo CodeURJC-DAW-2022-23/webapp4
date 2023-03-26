@@ -14,7 +14,7 @@
 	<name>idealtrip</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>16</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -57,7 +57,17 @@
 			<artifactId>thymeleaf</artifactId>
 		</dependency>
 	
-    
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.7.0</version>
+	</dependency>
+
+	<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-ui</artifactId>
+			<version>1.5.12</version>
+	</dependency>
  </dependencies>
 
 	<build>
@@ -68,11 +78,6 @@
 			</plugin>
 		</plugins>
 	</build>
-
-	<dependency>
-			<groupId>io.jsonwebtoken</groupId>
-			<artifactId>jjwt</artifactId>
-	</dependency>
 
 	
 </project>

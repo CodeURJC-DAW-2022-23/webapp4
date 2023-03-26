@@ -14,7 +14,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.idealtrip.idealTrip.security.jwt.JwtRequestFilter;
+// import com.idealtrip.idealTrip.security.jwt.JwtRequestFilter;
 
 
 
@@ -25,8 +25,8 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private UserDetailsService userDetailsService;
 
-	@Autowired
-	private JwtRequestFilter jwtRequestFilter;
+	// @Autowired
+	// private JwtRequestFilter jwtRequestFilter;
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
@@ -71,7 +71,7 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		
 		// Add JWT Token filter
-		http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+		// http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 
 	}
 }
