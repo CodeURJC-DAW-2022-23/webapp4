@@ -1,11 +1,14 @@
 package com.idealtrip.idealTrip.controller;
 
 import java.security.Principal;
+import java.sql.SQLException;
 import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +19,6 @@ import com.idealtrip.idealTrip.model.Destination;
 import com.idealtrip.idealTrip.model.User;
 import com.idealtrip.idealTrip.service.DestinationService;
 import com.idealtrip.idealTrip.service.UserService;
-
 
 @Controller
 public class ServiceController {
@@ -45,9 +47,9 @@ public class ServiceController {
     }
 
     @GetMapping("/services")
-    public String showServices(Model model, 
-    @RequestParam(defaultValue = "0") int page,
-    @RequestParam(defaultValue = "3") int size) {
+    public String showServices(Model model,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "3") int size) {
         model.addAttribute("services", destinationService.findAllPageable(PageRequest.of(page, size,
                 Sort.by("id").ascending())));
         int currentPage = page + 1;
@@ -65,5 +67,10 @@ public class ServiceController {
             return "services";
         }
     }
+
+    @GetMapping("/{id}/imageTitle")
+	public ResponseEntity<Resource> downloadImageProfile(@PathVariable long id) throws SQLException {
+		return destinationService.downloadImageProfile(id);
+	}
 
 }

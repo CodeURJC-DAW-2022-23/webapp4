@@ -656,7 +656,7 @@ public class InitDatabase {
                         user.setEmail(lastName + i + "@gmail.com");
                         user.setEncodedPassword(passwordEncoder.encode("12345"));
                         user.setRoles("USER");
-                        user.setProfileAvatar("/static/assets/images/null-avatar.jpg");
+                        user.setProfileAvatar("/static/assets/images/c1.jpg");
                         try {
                                 setProfileAvatarContent(user, user.getProfileAvatar());
                         } catch (IOException e) {
@@ -673,7 +673,7 @@ public class InitDatabase {
                         user.setEmail(name + "@gmail.com");
                         user.setEncodedPassword(passwordEncoder.encode("123456"));
                         user.setRoles("USER", "ADMIN");
-                        user.setProfileAvatar("/static/assets/images/null-avatar.jpg");
+                        user.setProfileAvatar("/static/assets/images/null-avatar.png");
                         try {
                                 setProfileAvatarContent(user, user.getProfileAvatar());
                         } catch (IOException e) {
