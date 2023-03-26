@@ -50,7 +50,7 @@ public class DestinationService {
         return destinations.findBynameDestination(nameDestination);
     }
 
-    public ResponseEntity<Resource> downloadImageProfile(long id) throws SQLException {
+    public ResponseEntity<Resource> downloadImageDestination(long id) throws SQLException {
 		Optional<Destination> destination = this.findById(id);
 		if (destination.isPresent() && destination.get().getTitleImage() != null) {
 			Resource file = new InputStreamResource(destination.get().getTitleImageFile().getBinaryStream());

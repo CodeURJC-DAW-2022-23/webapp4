@@ -49,6 +49,14 @@ public class Destination {
     public Destination() {
     }
 
+    public List<Tourism> getTourism() {
+        return tourism;
+    }
+
+    public void setTourism(List<Tourism> tourism) {
+        this.tourism = tourism;
+    }
+
     public Destination(Long id, String contentDestination, String nameDestination,
             List<Review> reviews, float price) {
         this.id = id;
@@ -120,6 +128,14 @@ public class Destination {
 
     public void setReviews(List<Review> reviews) {
         this.reviews = reviews;
+    }
+
+    public List<Catering> getCatering() {
+        return catering;
+    }
+
+    public void setCatering(List<Catering> catering) {
+        this.catering = catering;
     }
         
 }
