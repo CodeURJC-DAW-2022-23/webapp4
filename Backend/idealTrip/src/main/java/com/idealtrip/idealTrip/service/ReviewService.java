@@ -2,6 +2,7 @@ package com.idealtrip.idealTrip.service;
 
 import java.util.List;
 import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,9 +18,7 @@ public class ReviewService {
     @Autowired
     private ReviewRepository reviews;
 
-    public void delete(Review entity) {
-        reviews.delete(entity);
-    }
+    
 
     public List<Review> findAll() {
         return reviews.findAll();
@@ -50,16 +49,16 @@ public class ReviewService {
         return reviews.findByDestinationId(id);
     }
     
+    public Optional<Review> findById(Long id) {
+        return reviews.findById(id);
+    }
 
     public void save(Review review) {
         reviews.save(review);
     }
 
-    public Optional<Review> findById(Long id) {
-        return reviews.findById(id);
-    }
-
     public void deleteById(long idreview) {
+        reviews.deleteById(idreview);
     }
 
 }

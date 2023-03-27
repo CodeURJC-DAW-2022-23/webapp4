@@ -23,6 +23,7 @@ public class Review {
     @JsonView(Basic.class)
     private int ratingReview;
 
+    @JsonView(Basic.class)
     @Column(columnDefinition = "TEXT")
     private String contentReview;
 

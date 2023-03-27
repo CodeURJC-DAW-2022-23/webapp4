@@ -1,14 +1,17 @@
 package com.idealtrip.idealTrip.controller.rest;
 
+import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
+
 import java.net.URI;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
-import com.fasterxml.jackson.annotation.JsonView;
 import com.idealtrip.idealTrip.controller.DTOS.ReviewDTO;
+import com.fasterxml.jackson.annotation.JsonView;
 import com.idealtrip.idealTrip.model.*;
 import com.idealtrip.idealTrip.service.*;
+
 
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
@@ -23,12 +26,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
-
-import java.io.IOException;
-import java.lang.StackWalker.Option;
-import java.sql.SQLException;
-import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/destinations")
@@ -105,13 +102,13 @@ public class CitiesRestController {
     //Mostrar review concreta
     @GetMapping("/reviews/{id}/{idreview}")
     @JsonView(Review.Basic.class)
-    public Optional<Review> getReview(@PathVariable long id, @PathVariable long idreview) {
+    public Optional<Review> getReviews(@PathVariable long id, @PathVariable long idreview) {
         review.findByDestination(id);
         return this.review.findById(idreview);
     }
     @DeleteMapping("/reviews/{id}/{idreview}")
     @JsonView(Review.Basic.class)
-    public ResponseEntity<Review> deleteReview(@PathVariable long id, @PathVariable long idreview){
+    public ResponseEntity<Review> deleteReviews(@PathVariable long id, @PathVariable long idreview){
         review.findByDestination(id);
         Optional<Review> reviDel = this.review.findById(idreview);
         if (reviDel.isPresent()) {
@@ -143,4 +140,36 @@ public class CitiesRestController {
         return review.findByDestination(id, page).getContent();
     }
 
+    //show specific review
+    @GetMapping("/reviews/{id}/{idreview}")
+    @JsonView(Review.Basic.class)
+    public Optional<Review> getReview(@PathVariable long id, @PathVariable long idreview) {
+        review.findByDestination(id);
+        return this.review.findById(idreview);
+    }
+    //Delete specific review
+    @DeleteMapping("/reviews/{id}/{idreview}")
+    @JsonView(Review.Basic.class)
+    public ResponseEntity<Review> deleteReview(@PathVariable long id, @PathVariable long idreview){
+        review.findByDestination(id);
+        Optional<Review> reviDel = this.review.findById(idreview);
+        if (reviDel.isPresent()) {
+            this.review.deleteById(idreview);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+    }
+
+    @PostMapping("/reviews/{id}")
+    @ResponseStatus(HttpStatus.CREATED)
+    @JsonView(Review.Basic.class)
+    public Review createReviews(@PathVariable Long id, @RequestBody ReviewDTO newreview) {
+
+        Destination currentDestination = destinations.findDestinationById(id).orElse(null);
+        Review auxreview = new Review(currentUser, currentDestination, newreview.getReviewTitle(), newreview.getRating(), newreview.getReviewContent());
+        review.save(auxreview);
+        return auxreview;
+    }
 }
