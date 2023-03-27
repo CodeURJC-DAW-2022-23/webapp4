@@ -1,5 +1,7 @@
 package com.idealtrip.idealTrip.model;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import java.sql.Blob;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,11 +14,16 @@ import javax.persistence.ManyToOne;
 
 @Entity(name = "tourismTable")
 public class Tourism {
+
+    public interface Basico {}
+    public interface Avanzada {}
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @JsonView(Basico.class)
     private Long id;
-
+    @JsonView(Basico.class)
     private String nameDestination;
+    @JsonView(Basico.class)
     private String nameTourism;
     @Column(name = "contentTourism", columnDefinition = "TEXT")
     private String contentTourism;
@@ -25,6 +32,7 @@ public class Tourism {
     private Destination destination;
 
     @Lob
+    @JsonView(Avanzada.class)
     private Blob imageTourismFile;
     private String imageTourismURL;
 

@@ -9,8 +9,8 @@ import java.util.Collection;
 import java.util.Optional;
 
 import com.fasterxml.jackson.annotation.JsonView;
-import com.idealtrip.idealTrip.model.Catering;
-import com.idealtrip.idealTrip.service.CateringService;
+import com.idealtrip.idealTrip.model.*;
+import com.idealtrip.idealTrip.service.*;
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
@@ -31,14 +31,19 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.idealtrip.idealTrip.model.Destination;
-import com.idealtrip.idealTrip.service.DestinationService;
 @RestController
 @RequestMapping("/api/destinations")
 public class CitiesRestController {
     @Autowired
     private DestinationService destinations;
+    @Autowired
     private CateringService catering;
+    @Autowired
+    private TourismService tourism;
+    @Autowired
+    private HouseService house;
+    @Autowired
+    private ReviewService review;
 
     @GetMapping("/")
     @JsonView(Destination.Basico.class)
@@ -57,9 +62,24 @@ public class CitiesRestController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-    @GetMapping("/{id}/catering/")
-    @JsonView(Destination.Basico.class)
+    @GetMapping("/catering/{id}")
+    @JsonView(Catering.Basico.class)
     public Collection<Catering> getCatering(@PathVariable long id){
-        return catering.findAll();
+        return catering.findByDestination(id);
+    }
+    @GetMapping("/tourism/{id}")
+    @JsonView(Tourism.Basico.class)
+    public Collection<Tourism> getTourism(@PathVariable long id){
+        return tourism.findByDestinationId(id);
+    }
+    @GetMapping("/house/{id}")
+    @JsonView(House.Basico.class)
+    public Collection<House> getHouse(@PathVariable long id){
+        return house.findByDestinationId(id);
+    }
+    @GetMapping("/reviews/{id}")
+    @JsonView(Review.Basico.class)
+    public Collection<Review> getReview(@PathVariable long id){
+        return review.findByDestination(id);
     }
 }
