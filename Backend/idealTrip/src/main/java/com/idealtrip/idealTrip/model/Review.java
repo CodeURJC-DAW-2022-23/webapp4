@@ -1,5 +1,7 @@
 package com.idealtrip.idealTrip.model;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,13 +12,18 @@ import javax.persistence.ManyToOne;
 
 @Entity(name = "reviewTable")
 public class Review {
-
+    public interface Basic {}
+    public interface Advanced {}
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @JsonView(Basic.class)
     private Long id;
+    @JsonView(Basic.class)
     private String titleReview;
+    @JsonView(Basic.class)
     private int ratingReview;
 
+    @JsonView(Basic.class)
     @Column(columnDefinition = "TEXT")
     private String contentReview;
 
