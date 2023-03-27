@@ -1,36 +1,20 @@
 package com.idealtrip.idealTrip.controller;
 
 import com.idealtrip.idealTrip.model.Destination;
-import com.idealtrip.idealTrip.model.Review;
 import com.idealtrip.idealTrip.model.User;
 import com.idealtrip.idealTrip.service.DestinationService;
 import com.idealtrip.idealTrip.service.ReviewService;
-//import com.idealtrip.idealTrip.service.MailService;
 import com.idealtrip.idealTrip.service.UserService;
-
-import net.bytebuddy.asm.Advice.Return;
 
 import java.io.IOException;
 import java.security.Principal;
 import java.sql.Blob;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.sql.rowset.serial.SerialBlob;
-import javax.sql.rowset.serial.SerialException;
-
-import org.apache.logging.log4j.message.ReusableMessage;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.ImageBanner;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.event.PublicInvocationEvent;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
