@@ -28,6 +28,7 @@ public class House {
     private Long id;
     @JsonView(Basic.class)
     private String nameHouse;
+    @JsonView(Basic.class)
     @Column(columnDefinition = "TEXT")
     private String contentHouse;
     @JsonView(Basic.class)
