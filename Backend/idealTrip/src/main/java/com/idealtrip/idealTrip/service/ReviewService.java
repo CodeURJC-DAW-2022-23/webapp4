@@ -1,6 +1,7 @@
 package com.idealtrip.idealTrip.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.idealtrip.idealTrip.model.Catering;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +19,7 @@ public class ReviewService {
     @Autowired
     private ReviewRepository reviews;
 
-    public void delete(Review entity) {
-        reviews.delete(entity);
-    }
+    
 
     public List<Review> findAll() {
         return reviews.findAll();
@@ -46,8 +45,15 @@ public class ReviewService {
     public List<Review> findByDestination(Long id) {
         return reviews.findByDestinationId(id);
     }
+    
+    public Optional<Review> findById(Long id) {
+        return reviews.findById(id);
+    }
     public void save(Review review) {
         reviews.save(review);
+    }
+
+    public void deleteById(long idreview) {
     }
 
 
