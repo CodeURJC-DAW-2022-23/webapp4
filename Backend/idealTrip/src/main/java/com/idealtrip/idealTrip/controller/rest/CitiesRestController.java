@@ -105,9 +105,8 @@ public class CitiesRestController {
         review.findByDestination(id);
         Optional<Review> reviDel = this.review.findById(idreview);
         if (reviDel.isPresent()) {
-            Review revidel = reviDel.get();
-            review.deleteById(idreview);
-            return new ResponseEntity<>(revidel ,HttpStatus.OK);
+            this.review.deleteById(idreview);
+            return new ResponseEntity<>(HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
