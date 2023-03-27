@@ -92,13 +92,14 @@ public class CitiesRestController {
     public Collection<Review> getReviews(@PathVariable long id){
         return review.findByDestination(id);
     }
-    //Mostrar review concreta
+    //show specific review
     @GetMapping("/reviews/{id}/{idreview}")
     @JsonView(Review.Basic.class)
     public Optional<Review> getReview(@PathVariable long id, @PathVariable long idreview) {
         review.findByDestination(id);
         return this.review.findById(idreview);
     }
+    //Delete specific review
     @DeleteMapping("/reviews/{id}/{idreview}")
     @JsonView(Review.Basic.class)
     public ResponseEntity<Review> deleteReview(@PathVariable long id, @PathVariable long idreview){
