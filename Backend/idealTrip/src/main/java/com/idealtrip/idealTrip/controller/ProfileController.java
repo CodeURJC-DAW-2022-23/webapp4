@@ -20,7 +20,6 @@ import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.Optional;
 
-
 @Controller
 public class ProfileController {
 
@@ -66,7 +65,6 @@ public class ProfileController {
 		return "profile";
 	}
 
-	
 	@PostMapping("/profile")
 	public String editProfile(@ModelAttribute("currentUser") User currentUser,
 			@RequestParam String userName,
@@ -93,17 +91,5 @@ public class ProfileController {
 			return avatarBlob.getBytes(1, (int) avatarBlob.length());
 		}
 		return null;
-	}
-	@GetMapping("/profileAdmin/{id}")
-	public String profileAdmin(){
-		return "profile";
-	}
-	@PostMapping("/profileAdmin/{id}")
-	public String editProfileAdmin(@PathVariable long id, @RequestParam String userNameAdmin, @RequestParam String userLastNameAdmin) {
-		User user = users.findById(id).orElse(null);
-		user.setName(userNameAdmin);
-		user.setLastName(userLastNameAdmin);
-		users.save(user);
-		return "redirect:/profile";
 	}
 }
