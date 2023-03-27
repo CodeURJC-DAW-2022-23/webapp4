@@ -14,24 +14,24 @@ import javax.persistence.ManyToOne;
 
 @Entity(name = "cateringTable")
 public class Catering {
-    public interface Basico {}
-    public interface Avanzada {}
+    public interface Basic {}
+    public interface Advanced {}
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @JsonView(Basico.class)
+    @JsonView(Basic.class)
     private Long id;
-    @JsonView(Basico.class)
+    @JsonView(Basic.class)
     private String nameFood;
     @Column(name = "contentFood", columnDefinition = "TEXT")
     private String contentFood;
-    @JsonView(Basico.class)
+    @JsonView(Basic.class)
     private String nameDestination;
 
     @ManyToOne
     private Destination destination;
 
     @Lob
-    @JsonView(Avanzada.class)
+    @JsonView(Advanced.class)
     private Blob imageFoodFile;
     private String imageFoodUrl;
 

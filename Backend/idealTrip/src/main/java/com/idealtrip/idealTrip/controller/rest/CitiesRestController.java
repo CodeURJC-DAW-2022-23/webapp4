@@ -63,22 +63,22 @@ public class CitiesRestController {
         }
     }
     @GetMapping("/catering/{id}")
-    @JsonView(Catering.Basico.class)
+    @JsonView(Catering.Basic.class)
     public Collection<Catering> getCatering(@PathVariable long id){
         return catering.findByDestination(id);
     }
     @GetMapping("/tourism/{id}")
-    @JsonView(Tourism.Basico.class)
+    @JsonView(Tourism.Basic.class)
     public Collection<Tourism> getTourism(@PathVariable long id){
         return tourism.findByDestinationId(id);
     }
     @GetMapping("/house/{id}")
-    @JsonView(House.Basico.class)
+    @JsonView(House.Basic.class)
     public Collection<House> getHouse(@PathVariable long id){
-        return house.findByDestinationId(id);
+        return house.findByDestinationName(destinations.findById(id).get().getNameDestination());
     }
     @GetMapping("/reviews/{id}")
-    @JsonView(Review.Basico.class)
+    @JsonView(Review.Basic.class)
     public Collection<Review> getReview(@PathVariable long id){
         return review.findByDestination(id);
     }

@@ -15,15 +15,15 @@ import javax.persistence.ManyToOne;
 @Entity(name = "tourismTable")
 public class Tourism {
 
-    public interface Basico {}
-    public interface Avanzada {}
+    public interface Basic {}
+    public interface Advanced {}
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @JsonView(Basico.class)
+    @JsonView(Basic.class)
     private Long id;
-    @JsonView(Basico.class)
+    @JsonView(Basic.class)
     private String nameDestination;
-    @JsonView(Basico.class)
+    @JsonView(Basic.class)
     private String nameTourism;
     @Column(name = "contentTourism", columnDefinition = "TEXT")
     private String contentTourism;
@@ -32,7 +32,7 @@ public class Tourism {
     private Destination destination;
 
     @Lob
-    @JsonView(Avanzada.class)
+    @JsonView(Advanced.class)
     private Blob imageTourismFile;
     private String imageTourismURL;
 

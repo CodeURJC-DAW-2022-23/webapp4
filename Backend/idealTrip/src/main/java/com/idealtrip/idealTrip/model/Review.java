@@ -12,15 +12,15 @@ import javax.persistence.ManyToOne;
 
 @Entity(name = "reviewTable")
 public class Review {
-    public interface Basico {}
-    public interface Avanzada {}
+    public interface Basic {}
+    public interface Advanced {}
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @JsonView(Basico.class)
+    @JsonView(Basic.class)
     private Long id;
-    @JsonView(Basico.class)
+    @JsonView(Basic.class)
     private String titleReview;
-    @JsonView(Basico.class)
+    @JsonView(Basic.class)
     private int ratingReview;
 
     @Column(columnDefinition = "TEXT")
