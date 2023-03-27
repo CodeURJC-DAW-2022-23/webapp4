@@ -3,14 +3,11 @@ package com.idealtrip.idealTrip.controller.rest;
 import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
 
 import java.net.URI;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Collection;
-import java.util.List;
 import java.util.Optional;
 
 import com.idealtrip.idealTrip.controller.DTOS.ReviewDTO;
@@ -18,6 +15,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import com.idealtrip.idealTrip.model.*;
 import com.idealtrip.idealTrip.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,8 +39,8 @@ public class CitiesRestController {
 
     @GetMapping("/")
     @JsonView(Destination.Basico.class)
-    public Collection<Destination> getDestinations(){
-        return destinations.findAll();
+    public Page<Destination> getDestinations(Pageable page){
+        return destinations.findAll(page);
     }
 
     @GetMapping("/{id}")
@@ -92,11 +90,15 @@ public class CitiesRestController {
     public Collection<House> getHouse(@PathVariable long id){
         return house.findByDestinationName(destinations.findById(id).get().getNameDestination());
     }
+
     @GetMapping("/reviews/{id}")
     @JsonView(Review.Basic.class)
-    public List<Review> getReview(@PathVariable Long id, Pageable page){
-        return review.findByDestination(id, page).getContent();
+    public Page<Review> getReview(@PathVariable Long id, Pageable page){
+        return review.findByDestination(id, page);
     }
+
+
+
     //show specific review
     @GetMapping("/reviews/{id}/{idreview}")
     @JsonView(Review.Basic.class)
@@ -119,8 +121,6 @@ public class CitiesRestController {
 
     }
 
-    
-
     @PostMapping("/reviews/{id}")
     @ResponseStatus(HttpStatus.CREATED)
     @JsonView(Review.Basic.class)
@@ -131,19 +131,6 @@ public class CitiesRestController {
         review.save(auxreview);
         return auxreview;
     }
-
-
-    /* @GetMapping("/rating")
-    public List<Double> ratingDestination() {
-    
-    List<Destination> destinationList = destinations.findAll();
-    List<Double> totalRatingList = new ArrayList<>();
-    for (Destination destination : destinationList) {
-      double totalRating = review.getTotalRatingForDestination(destination);
-      totalRatingList.add(totalRating);
-    }
-    return totalRatingList;
-} */
 
     @GetMapping("/rating")
     public List<Map<String, Object>> ratingDestination() {
@@ -161,6 +148,7 @@ public class CitiesRestController {
         }
         return cityRatingList;
     }
+
 
 }
 
