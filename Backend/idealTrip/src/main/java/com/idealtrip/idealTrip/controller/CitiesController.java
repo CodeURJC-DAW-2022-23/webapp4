@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+
+import com.idealtrip.idealTrip.model.Catering;
 import com.idealtrip.idealTrip.model.Destination;
 import com.idealtrip.idealTrip.model.House;
 import com.idealtrip.idealTrip.model.Review;
@@ -31,7 +33,6 @@ import com.idealtrip.idealTrip.service.HouseService;
 import com.idealtrip.idealTrip.service.ReviewService;
 import com.idealtrip.idealTrip.service.TourismService;
 import com.idealtrip.idealTrip.service.UserService;
-
 
 @Controller
 public class CitiesController {
@@ -85,7 +86,7 @@ public class CitiesController {
     return "tourism";
   }
 
-  @GetMapping("/{id}/image")
+  @GetMapping("/place/{id}/image")
   public ResponseEntity<Object> downloadImage(@PathVariable Long id) throws SQLException {
 
     Optional<Tourism> tourism = tourismService.findById(id);
@@ -100,7 +101,6 @@ public class CitiesController {
       return ResponseEntity.notFound().build();
     }
   }
-
 
   @GetMapping("/host/{id}/image")
   public ResponseEntity<Object> downloadHostImage(@PathVariable long id) throws SQLException {
@@ -149,8 +149,6 @@ public class CitiesController {
     return "redirect:/review/" + destinationId;
   }
 
-
-
   @GetMapping("/review/{id}")
   public String getReviewsByDestination(@PathVariable Long id, Model model,
       @RequestParam(defaultValue = "0") int page,
@@ -173,14 +171,30 @@ public class CitiesController {
   }
 
   @GetMapping("/review/avatar/{id}")
-	@ResponseBody
-	public byte[] getUserAvatar(@PathVariable Long id) throws SQLException {
-		User user = userService.findById(id).orElse(null);
-		if (user != null && user.getProfileAvatarFile() != null) {
-			Blob avatarBlob = user.getProfileAvatarFile();
-			return avatarBlob.getBytes(1, (int) avatarBlob.length());
-		}
-		return null;
-	}
+  @ResponseBody
+  public byte[] getUserAvatar(@PathVariable Long id) throws SQLException {
+    User user = userService.findById(id).orElse(null);
+    if (user != null && user.getProfileAvatarFile() != null) {
+      Blob avatarBlob = user.getProfileAvatarFile();
+      return avatarBlob.getBytes(1, (int) avatarBlob.length());
+    }
+    return null;
+  }
+
+  @GetMapping("/catering/{id}/image")
+  public ResponseEntity<Object> downloadCateringImage(@PathVariable long id) throws SQLException {
+
+    Optional<Catering> catering = cateringService.findById(id);
+    if (catering.isPresent() && catering.get().getImageFoodFile() != null) {
+
+      Resource file = new InputStreamResource(catering.get().getImageFoodFile().getBinaryStream());
+
+      return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
+          .contentLength(catering.get().getImageFoodFile().length()).body(file);
+
+    } else {
+      return ResponseEntity.notFound().build();
+    }
+  }
 
 }
