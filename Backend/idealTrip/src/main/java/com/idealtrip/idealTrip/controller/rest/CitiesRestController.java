@@ -4,7 +4,6 @@ import static org.springframework.web.servlet.support.ServletUriComponentsBuilde
 
 import java.net.URI;
 import java.security.Principal;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;

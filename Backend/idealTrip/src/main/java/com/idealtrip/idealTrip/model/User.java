@@ -15,6 +15,7 @@ import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.idealtrip.idealTrip.controller.DTOS.UserDTO;
 
 
 @Entity(name = "userTable")
@@ -28,6 +29,7 @@ public class User {
 
     private String name;
     private String lastName;
+    @JsonIgnore
     private String encodedPassword;
 
     @ElementCollection(fetch = FetchType.EAGER)
@@ -49,7 +51,14 @@ public class User {
     public User() {
 
     }
-
+    public User(UserDTO userDTO) {
+        super();
+        this.name = userDTO.getFirstName();
+        this.lastName = userDTO.getLastName();
+        this.email = userDTO.getEmail();
+        this.encodedPassword = userDTO.getPasswordEncoded();
+        this.roles = List.of("USER");
+    }
     public User(String email, String name, String lastName, String encodedPassword) {
         this.email = email;
         this.name = name;
