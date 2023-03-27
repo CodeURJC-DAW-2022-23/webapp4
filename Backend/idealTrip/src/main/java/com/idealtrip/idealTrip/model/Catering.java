@@ -22,6 +22,7 @@ public class Catering {
     private Long id;
     @JsonView(Basic.class)
     private String nameFood;
+    @JsonView(Basic.class)
     @Column(name = "contentFood", columnDefinition = "TEXT")
     private String contentFood;
     @JsonView(Basic.class)

@@ -25,6 +25,7 @@ public class Tourism {
     private String nameDestination;
     @JsonView(Basic.class)
     private String nameTourism;
+    @JsonView(Basic.class)
     @Column(name = "contentTourism", columnDefinition = "TEXT")
     private String contentTourism;
 
