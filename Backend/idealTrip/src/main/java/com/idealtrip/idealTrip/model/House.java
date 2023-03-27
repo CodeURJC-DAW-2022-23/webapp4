@@ -1,7 +1,6 @@
 package com.idealtrip.idealTrip.model;
 
 import java.sql.Blob;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -16,12 +15,15 @@ import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-
 @Entity(name = "houseTable")
 public class House {
 
-    public interface Basic {}
-    public interface Advanced {}
+    public interface Basic {
+    }
+
+    public interface Advanced {
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @JsonView(Basic.class)
@@ -36,11 +38,10 @@ public class House {
 
     @Lob
     @JsonView(Advanced.class)
-    @ElementCollection(fetch = FetchType.LAZY)
-    private List<Blob> imagesHouseFile = new ArrayList<>();
+    private Blob imagesHouseFile;
 
-    @ElementCollection(fetch = FetchType.LAZY)
-    private List<String> imagesHouse = new ArrayList<>();
+    private String imagesHouse;
+
     @JsonView(Basic.class)
     private String hostName;
     @Lob
@@ -70,26 +71,12 @@ public class House {
         this.contentHouse = contentHouse;
         this.hostName = hostName;
         this.purchase = purchase;
-        this.imagesHouseFile = imagesHouseFile;
-        this.imagesHouse = imagesHouse;
         this.price = price;
     }
 
-    public List<Blob> getImagesHouseFile() {
-        return imagesHouseFile;
-    }
+    
 
-    public void setImagesHouseFile(List<Blob> imagesHouseFile) {
-        this.imagesHouseFile = imagesHouseFile;
-    }
-
-    public List<String> getImagesHouse() {
-        return imagesHouse;
-    }
-
-    public void setImagesHouse(List<String> imagesHouse) {
-        this.imagesHouse = imagesHouse;
-    }
+   
 
     public Blob getHostImageFile() {
         return hostImageFile;
@@ -163,7 +150,6 @@ public class House {
         this.hostName = hostName;
     }
 
-    
     public String getDestinationName() {
         return destinationName;
     }
@@ -175,7 +161,7 @@ public class House {
     public String getStreetViewLink() {
         return streetViewLink;
     }
-    
+
     public void setStreetViewLink(String streetViewLink) {
         this.streetViewLink = streetViewLink;
     }
@@ -186,6 +172,22 @@ public class House {
 
     public void setMapsLink(String mapsLink) {
         this.mapsLink = mapsLink;
+    }
+
+    public Blob getImagesHouseFile() {
+        return imagesHouseFile;
+    }
+
+    public void setImagesHouseFile(Blob imagesHouseFile) {
+        this.imagesHouseFile = imagesHouseFile;
+    }
+
+    public String getImagesHouse() {
+        return imagesHouse;
+    }
+
+    public void setImagesHouse(String imagesHouse) {
+        this.imagesHouse = imagesHouse;
     }
 
 }

@@ -4,13 +4,13 @@ import java.security.Principal;
 import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.Optional;
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpHeaders;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import com.idealtrip.idealTrip.model.Destination;
+import com.idealtrip.idealTrip.model.House;
 import com.idealtrip.idealTrip.model.Review;
 import com.idealtrip.idealTrip.model.Tourism;
 import com.idealtrip.idealTrip.model.User;
@@ -88,7 +89,7 @@ public class CitiesController {
   public ResponseEntity<Object> downloadImage(@PathVariable Long id) throws SQLException {
 
     Optional<Tourism> tourism = tourismService.findById(id);
-    if (tourism.isPresent() && tourism.get().getImageTourismURL() != null) {
+    if (tourism.isPresent() && tourism.get().getImageTourismFile() != null) {
 
       Resource file = (Resource) new InputStreamResource(tourism.get().getImageTourismFile().getBinaryStream());
 
@@ -100,6 +101,38 @@ public class CitiesController {
     }
   }
 
+
+  @GetMapping("/host/{id}/image")
+  public ResponseEntity<Object> downloadHostImage(@PathVariable long id) throws SQLException {
+
+    Optional<House> house = houseService.findById(id);
+    if (house.isPresent() && house.get().getHostImageFile() != null) {
+
+      Resource file = new InputStreamResource((house.get().getHostImageFile()).getBinaryStream());
+
+      return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
+          .contentLength((house.get().getHostImageFile()).length()).body(file);
+
+    } else {
+      return ResponseEntity.notFound().build();
+    }
+  }
+
+  @GetMapping("/house/{id}/image")
+  public ResponseEntity<Object> downloadHouseImage(@PathVariable long id) throws SQLException {
+
+    Optional<House> house = houseService.findById(id);
+    if (house.isPresent() && house.get().getImagesHouseFile() != null) {
+
+      Resource file = new InputStreamResource((house.get().getImagesHouseFile()).getBinaryStream());
+
+      return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
+          .contentLength((house.get().getImagesHouseFile()).length()).body(file);
+
+    } else {
+      return ResponseEntity.notFound().build();
+    }
+  }
 
   @PostMapping("/review/{id}")
   public String addReview(Model model,
