@@ -68,9 +68,9 @@ public class ServiceController {
         }
     }
 
-    @GetMapping("/{id}/imageTitle")
-	public ResponseEntity<Resource> downloadImageProfile(@PathVariable long id) throws SQLException {
-		return destinationService.downloadImageProfile(id);
+    @GetMapping("/{id}/imageDestination")
+	public ResponseEntity<Resource> downloadImageDestination(@PathVariable long id) throws SQLException {
+		return destinationService.downloadImageDestination(id);
 	}
 
 }

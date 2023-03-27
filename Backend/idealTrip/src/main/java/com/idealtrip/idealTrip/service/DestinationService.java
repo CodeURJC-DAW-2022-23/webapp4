@@ -50,9 +50,9 @@ public class DestinationService {
         return destinations.findBynameDestination(nameDestination);
     }
 
-    public ResponseEntity<Resource> downloadImageProfile(long id) throws SQLException {
+    public ResponseEntity<Resource> downloadImageDestination(long id) throws SQLException {
 		Optional<Destination> destination = this.findById(id);
-		if (destination.isPresent() && destination.get().getTitleImageFile() != null) {
+		if (destination.isPresent() && destination.get().getTitleImage() != null) {
 			Resource file = new InputStreamResource(destination.get().getTitleImageFile().getBinaryStream());
 			return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
 					.contentLength(destination.get().getTitleImageFile().length()).body(file);
@@ -60,5 +60,15 @@ public class DestinationService {
 			return ResponseEntity.notFound().build();
 		}
 	}
+
+    public DestinationRepository getDestinations() {
+        return destinations;
+    }
+
+    public void setDestinations(DestinationRepository destinations) {
+        this.destinations = destinations;
+    }
+
+    
     
 }

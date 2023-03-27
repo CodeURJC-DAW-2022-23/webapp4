@@ -83,6 +83,22 @@ public class Destination {
         this.price = price;
     }
 
+    public List<Catering> getCatering() {
+        return catering;
+    }
+
+    public void setCatering(List<Catering> catering) {
+        this.catering = catering;
+    }
+
+    public List<Tourism> getTourism() {
+        return tourism;
+    }
+
+    public void setTourism(List<Tourism> tourism) {
+        this.tourism = tourism;
+    }
+
     public Blob getTitleImageFile() {
         return titleImageFile;
     }
