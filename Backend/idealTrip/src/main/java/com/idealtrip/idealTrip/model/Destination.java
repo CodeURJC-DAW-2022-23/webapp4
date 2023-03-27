@@ -3,6 +3,7 @@ package com.idealtrip.idealTrip.model;
 import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,8 +11,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+//import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
@@ -49,14 +52,20 @@ public class Destination {
     public Destination() {
     }
 
-    public Destination(Long id, String contentDestination, String nameDestination,
-            List<Review> reviews, float price) {
-        this.id = id;
+    public Destination(String contentDestination,String nameDestination, float price, Blob titleImageFile){
         this.contentDestination = contentDestination;
         this.nameDestination = nameDestination;
-        this.reviews = reviews;
         this.price = price;
+        this.titleImageFile = titleImageFile;
     }
+    // public Destination(String contentDestination, String nameDestination,
+    //         List<Review> reviews, float price) {
+    //     //this.id = id;
+    //     this.contentDestination = contentDestination;
+    //     this.nameDestination = nameDestination;
+    //     this.reviews = reviews;
+    //     this.price = price;
+    // }
 
     public Blob getTitleImageFile() {
         return titleImageFile;
