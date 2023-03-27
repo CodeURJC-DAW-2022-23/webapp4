@@ -2,49 +2,48 @@ package com.idealtrip.idealTrip.controller.rest;
 
 import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
 
-import java.io.IOException;
-import java.lang.StackWalker.Option;
 import java.net.URI;
-import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
-import org.hibernate.engine.jdbc.BlobProxy;
+import com.idealtrip.idealTrip.controller.DTOS.ReviewDTO;
+import com.fasterxml.jackson.annotation.JsonView;
+import com.idealtrip.idealTrip.model.*;
+import com.idealtrip.idealTrip.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.InputStreamResource;
-import org.springframework.core.io.Resource;
-import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.http.HttpHeaders;
-
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.*;
 
-import com.idealtrip.idealTrip.model.Destination;
-import com.idealtrip.idealTrip.service.DestinationService;
 @RestController
 @RequestMapping("/api/destinations")
 public class CitiesRestController {
     @Autowired
     private DestinationService destinations;
+    @Autowired
+    private CateringService catering;
+    @Autowired
+    private TourismService tourism;
+    @Autowired
+    private HouseService house;
+    @Autowired
+    private ReviewService review;
+
+    User currentUser;
 
     @GetMapping("/")
+    @JsonView(Destination.Basico.class)
     public Collection<Destination> getDestinations(){
         return destinations.findAll();
     }
 
     @GetMapping("/{id}")
+    @JsonView(Destination.Basico.class)
     public ResponseEntity<Destination> getDestiantion(@PathVariable long id){
         Optional<Destination> dest = destinations.findById(id);
         if (dest.isPresent()){
@@ -95,9 +94,6 @@ public class CitiesRestController {
     public List<Review> getReview(@PathVariable Long id, Pageable page){
         return review.findByDestination(id, page).getContent();
     }
-    public Collection<Review> getReviews(@PathVariable long id){
-        return review.findByDestination(id);
-    }
     //show specific review
     @GetMapping("/reviews/{id}/{idreview}")
     @JsonView(Review.Basic.class)
@@ -126,7 +122,8 @@ public class CitiesRestController {
     @ResponseStatus(HttpStatus.CREATED)
     @JsonView(Review.Basic.class)
     public Review createReview(@PathVariable Long id, @RequestBody ReviewDTO newreview) {
-
+        // userService.findByEmail(principal.getName()).ifPresent(us -> currentUser = us);
+        // model.addAttribute("curretUser", currentUser);
         Destination currentDestination = destinations.findDestinationById(id).orElse(null);
         Review auxreview = new Review(currentUser, currentDestination, newreview.getReviewTitle(), newreview.getRating(), newreview.getReviewContent());
         review.save(auxreview);
@@ -164,3 +161,4 @@ public class CitiesRestController {
     }
 
 }
+
