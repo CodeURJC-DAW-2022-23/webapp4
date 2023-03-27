@@ -3,6 +3,12 @@ package com.idealtrip.idealTrip.controller.rest;
 import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
 
 import java.net.URI;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
@@ -125,4 +131,36 @@ public class CitiesRestController {
         review.save(auxreview);
         return auxreview;
     }
+
+
+    /* @GetMapping("/rating")
+    public List<Double> ratingDestination() {
+    
+    List<Destination> destinationList = destinations.findAll();
+    List<Double> totalRatingList = new ArrayList<>();
+    for (Destination destination : destinationList) {
+      double totalRating = review.getTotalRatingForDestination(destination);
+      totalRatingList.add(totalRating);
+    }
+    return totalRatingList;
+} */
+
+    @GetMapping("/rating")
+    public List<Map<String, Object>> ratingDestination() {
+
+        List<Destination> destinationList = destinations.findAll();
+        List<Map<String, Object>> cityRatingList = new ArrayList<>();
+
+        for (Destination destination : destinationList) {
+            double totalRating = review.getTotalRatingForDestination(destination);
+            String cityName = destination.getNameDestination();
+            Map<String, Object> cityRatingMap = new HashMap<>();
+            cityRatingMap.put("cityName", cityName);
+            cityRatingMap.put("totalRating", totalRating);
+            cityRatingList.add(cityRatingMap);
+        }
+        return cityRatingList;
+    }
+
 }
+
