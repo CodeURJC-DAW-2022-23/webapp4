@@ -13,37 +13,52 @@ import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 
 
 @Entity(name = "destinationTable")
 public class Destination {
 
+    public interface Basico {}
+    public interface Avanzada {}
+
+    public interface Todo extends Basico, Avanzada {}
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @JsonView(Basico.class)
     private Long id;
 
     @Lob
     @JsonIgnore
     private Blob titleImageFile;
+    @JsonView(Basico.class)
     private String titleImage;
 
     @Column(name = "contentDestination", columnDefinition = "TEXT")
+    @JsonView(Basico.class)
     private String contentDestination;
-
+    @JsonView(Basico.class)
     private String nameDestination;
 
     @OneToOne(mappedBy = "destination", cascade = CascadeType.ALL)
+    @JsonView(Avanzada.class)
     private House house;
 
     @OneToMany(mappedBy = "destination", cascade = CascadeType.ALL)
+    @JsonView(Avanzada.class)
     private List<Review> reviews = new ArrayList<>();
 
     @OneToMany(mappedBy = "destination", cascade = CascadeType.ALL)
+    @JsonView(Avanzada.class)
     private List<Catering> catering;
 
     @OneToMany(mappedBy = "destination", cascade = CascadeType.ALL)
+    @JsonView(Avanzada.class)
     private List<Tourism> tourism;
 
+    @JsonView(Basico.class)
     private float price;
 
     public Destination() {
