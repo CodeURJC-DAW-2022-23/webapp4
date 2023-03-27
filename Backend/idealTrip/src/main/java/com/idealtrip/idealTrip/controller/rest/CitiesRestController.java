@@ -3,6 +3,7 @@ package com.idealtrip.idealTrip.controller.rest;
 import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
 
 import java.net.URI;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -12,6 +13,7 @@ import java.util.Optional;
 
 import com.idealtrip.idealTrip.controller.DTOS.ReviewDTO;
 import com.fasterxml.jackson.annotation.JsonView;
+import javax.servlet.http.HttpServletRequest;
 import com.idealtrip.idealTrip.model.*;
 import com.idealtrip.idealTrip.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -34,8 +37,23 @@ public class CitiesRestController {
     private HouseService house;
     @Autowired
     private ReviewService review;
+    @Autowired
+    private UserService userService;
 
     User currentUser;
+    @ModelAttribute
+    public void addAttributes(Model model, HttpServletRequest request) {
+      Principal principal = request.getUserPrincipal();
+  
+      if (principal != null) {
+        userService.findByEmail(principal.getName()).ifPresent(us -> currentUser = us);
+        model.addAttribute("curretUser", currentUser);
+  
+      } else {
+        model.addAttribute("logged", false);
+      }
+    }
+
 
     @GetMapping("/")
     @JsonView(Destination.Basico.class)
@@ -96,8 +114,6 @@ public class CitiesRestController {
     public Page<Review> getReview(@PathVariable Long id, Pageable page){
         return review.findByDestination(id, page);
     }
-
-
 
     //show specific review
     @GetMapping("/reviews/{id}/{idreview}")
