@@ -3,11 +3,14 @@ package com.idealtrip.idealTrip.controller.rest;
 import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
 
 import java.net.URI;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 import com.idealtrip.idealTrip.controller.DTOS.ReviewDTO;
@@ -128,6 +131,19 @@ public class CitiesRestController {
         review.save(auxreview);
         return auxreview;
     }
+
+
+    /* @GetMapping("/rating")
+    public List<Double> ratingDestination() {
+    
+    List<Destination> destinationList = destinations.findAll();
+    List<Double> totalRatingList = new ArrayList<>();
+    for (Destination destination : destinationList) {
+      double totalRating = review.getTotalRatingForDestination(destination);
+      totalRatingList.add(totalRating);
+    }
+    return totalRatingList;
+} */
 
     @GetMapping("/rating")
     public List<Map<String, Object>> ratingDestination() {
