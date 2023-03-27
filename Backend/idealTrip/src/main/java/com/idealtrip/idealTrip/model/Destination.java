@@ -15,15 +15,17 @@ import javax.persistence.OneToOne;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 
-
 @Entity(name = "destinationTable")
 public class Destination {
 
-    public interface Basico {}
-    public interface Avanzada {}
+    public interface Basico {
+    }
 
-    public interface Todo extends Basico, Avanzada {}
+    public interface Avanzada {
+    }
 
+    public interface Todo extends Basico, Avanzada {
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -70,6 +72,14 @@ public class Destination {
         this.contentDestination = contentDestination;
         this.nameDestination = nameDestination;
         this.reviews = reviews;
+        this.price = price;
+    }
+
+
+    public Destination(String nameDestination, String contentDestination, float price, Blob titleImageFile) {
+        this.titleImageFile = titleImageFile;
+        this.contentDestination = contentDestination;
+        this.nameDestination = nameDestination;
         this.price = price;
     }
 
@@ -136,5 +146,5 @@ public class Destination {
     public void setReviews(List<Review> reviews) {
         this.reviews = reviews;
     }
-        
+
 }

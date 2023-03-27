@@ -38,7 +38,6 @@ public class ProfileController {
 			model.addAttribute("logged", true);
 			model.addAttribute("currentUser", currentUser);
 			model.addAttribute("email", currentUser.getEmail());
-			// model.addAttribute("review", review);
 			model.addAttribute("review", currentUser.getReviews());
 			model.addAttribute("imageProfileFile", currentUser.getProfileAvatarFile());
 			model.addAttribute("imageProfile", currentUser.getProfileAvatar());
@@ -93,17 +92,5 @@ public class ProfileController {
 			return avatarBlob.getBytes(1, (int) avatarBlob.length());
 		}
 		return null;
-	}
-	@GetMapping("/profileAdmin/{id}")
-	public String profileAdmin(){
-		return "profile";
-	}
-	@PostMapping("/profileAdmin/{id}")
-	public String editProfileAdmin(@PathVariable long id, @RequestParam String userNameAdmin, @RequestParam String userLastNameAdmin) {
-		User user = users.findById(id).orElse(null);
-		user.setName(userNameAdmin);
-		user.setLastName(userLastNameAdmin);
-		users.save(user);
-		return "redirect:/profile";
 	}
 }

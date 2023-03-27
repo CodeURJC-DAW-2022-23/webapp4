@@ -12,13 +12,10 @@ import com.idealtrip.idealTrip.model.Review;
 import com.idealtrip.idealTrip.model.User;
 import com.idealtrip.idealTrip.repository.ReviewRepository;
 
-
 @Service
 public class ReviewService {
     @Autowired
     private ReviewRepository reviews;
-
-    
 
     public List<Review> findAll() {
         return reviews.findAll();
@@ -29,8 +26,8 @@ public class ReviewService {
         int totalRating = 0;
         for (Review review : reviewList) {
             totalRating += review.getRatingReview();
-        } 
-        return (double) totalRating / reviewList.size(); 
+        }
+        return (double) totalRating / reviewList.size();
     }
 
     public Page<Review> findReviewByUser(User user, Pageable pageable) {
@@ -48,7 +45,7 @@ public class ReviewService {
     public List<Review> findByDestination(Long id) {
         return reviews.findByDestinationId(id);
     }
-    
+
     public Optional<Review> findById(Long id) {
         return reviews.findById(id);
     }
@@ -60,5 +57,10 @@ public class ReviewService {
     public void deleteById(long idreview) {
         reviews.deleteById(idreview);
     }
+
+    public Page<Review> findAllReviewPage(Pageable pageable) {
+        return reviews.findAll(pageable);
+    }
+    
 
 }

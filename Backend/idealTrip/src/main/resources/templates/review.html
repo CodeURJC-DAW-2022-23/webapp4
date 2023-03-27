@@ -2,7 +2,6 @@
 <!--banner-slider-->
 <br><br><br><br>
 {{#logged}}
-
 <div class="container">
     <div class="row">
         <div class="col-md-6 offset-md-3">
@@ -243,7 +242,7 @@
                 {{/reviews.hasNext}}
             </div>
 
-        
+
 
             <script>
                 const loadMoreButton = document.querySelector('#load-more-button');
@@ -309,12 +308,12 @@
                 // Update star values for first 5 reviews
                 const existingReviewRatings = reviewContainer.querySelectorAll('.review-rating');
                 existingReviewRatings.forEach(existingReviewRating => {
-                const rating = parseInt(existingReviewRating.getAttribute('data-rating'));
-                const stars = existingReviewRating.querySelectorAll('.star');
-                for (let i = 0; i < rating; i++) {
-                    stars[i].classList.add('active');
+                    const rating = parseInt(existingReviewRating.getAttribute('data-rating'));
+                    const stars = existingReviewRating.querySelectorAll('.star');
+                    for (let i = 0; i < rating; i++) {
+                        stars[i].classList.add('active');
                     }
-                existingReviewRating.classList.add('updated');
+                    existingReviewRating.classList.add('updated');
                 });
             </script>
 

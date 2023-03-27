@@ -58,20 +58,30 @@ Author URL: http://w3layouts.com
             </li>
           </ul>
         </div>
-        {{^logged}} 
+        {{^logged}}
         <form action="/login" method="post">
           <div class="d-lg-block d-none">
             <a href="/login" class="btn btn-style btn-secondary">Iniciar sesión</a>
           </div>
-          <input type="hidden" name="_csrf" value="{{token}}"/>
+          <input type="hidden" name="_csrf" value="{{token}}" />
         </form>
-        {{/logged}} {{#logged}}
+        {{/logged}}{{#logged}}
+        {{^admin}}
         <form action="/profile" method="get">
           <div class="d-lg-block d-none">
             <button class="btn btn-style btn-secondary">Mi perfil</button>
           </div>
           <input type="hidden" name="_csrf" value="{{token}}" />
         </form>
+        {{/admin}}
+
+        {{#admin}}
+        <div class="d-lg-block d-none">
+          <a href="/administrator" class="btn btn-style btn-secondary">Admin</a>
+        </div>
+        {{/admin}}
+        
+
         {{/logged}}
         <!-- toggle switch for light and dark theme -->
         <div class="mobile-position">
