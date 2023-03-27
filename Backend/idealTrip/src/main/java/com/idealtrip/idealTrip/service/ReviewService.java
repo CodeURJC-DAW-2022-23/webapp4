@@ -54,6 +54,7 @@ public class ReviewService {
     }
 
     public void deleteById(long idreview) {
+        reviews.deleteById(idreview);
     }
 
 
