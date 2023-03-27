@@ -14,6 +14,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.idealtrip.idealTrip.security.jwt.JwtRequestFilter;
+
 // import com.idealtrip.idealTrip.security.jwt.JwtRequestFilter;
 
 
@@ -23,10 +25,10 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
-	private UserDetailsService userDetailsService;
+	UserDetailsService userDetailsService;
 
-	// @Autowired
-	// private JwtRequestFilter jwtRequestFilter;
+	@Autowired
+	private JwtRequestFilter jwtRequestFilter;
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
@@ -53,7 +55,9 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 		// URLs that need authentication to access to it
 		// http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/books/**").hasRole("USER");
 		// http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/books/**").hasRole("USER");
-		// http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/books/**").hasRole("ADMIN");		
+		// http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/books/**").hasRole("ADMIN");	
+		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/destinations/reviews/**").hasAnyRole("USER");	
+
 		
 		// Other URLs can be accessed without authentication
 		http.authorizeRequests().anyRequest().permitAll();
@@ -71,7 +75,7 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		
 		// Add JWT Token filter
-		// http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+		http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 
 	}
 }

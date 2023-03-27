@@ -14,6 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity(name = "userTable")
 public class User {
@@ -32,13 +34,16 @@ public class User {
     private List<String> roles;
 
     @Lob
+    @JsonIgnore
     private Blob profileAvatarFile;
     private String profileAvatar;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    @JsonIgnore
     private List<Purchase> purchases = new ArrayList<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    @JsonIgnore
     private List<Review> reviews = new ArrayList<>();
 
     public User() {
