@@ -25,6 +25,10 @@ public class DestinationService {
         return destinations.findAll();
     }
 
+    public Page<Destination> findAll(Pageable page) {
+        return destinations.findAll(page); 
+    }
+
     public Page<Destination> findAllPageable(Pageable pageable){
         return destinations.findAll(pageable);
     }
