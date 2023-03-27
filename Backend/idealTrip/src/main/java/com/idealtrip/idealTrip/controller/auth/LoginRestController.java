@@ -33,12 +33,12 @@ public class LoginRestController {
 		return userService.login(loginRequest, accessToken, refreshToken);
 	}
 
-	@PostMapping("/refresh")
-	public ResponseEntity<AuthResponse> refreshToken(
-			@CookieValue(name = "refreshToken", required = false) String refreshToken) {
+	// @PostMapping("/refresh")
+	// public ResponseEntity<AuthResponse> refreshToken(
+	// 		@CookieValue(name = "refreshToken", required = false) String refreshToken) {
 
-		return userService.refresh(refreshToken);
-	}
+	// 	return userService.refresh(refreshToken);
+	// }
 
 	@PostMapping("/logout")
 	public ResponseEntity<AuthResponse> logOut(HttpServletRequest request, HttpServletResponse response) {
