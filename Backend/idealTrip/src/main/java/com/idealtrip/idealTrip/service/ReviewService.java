@@ -60,5 +60,7 @@ public class ReviewService {
     public void deleteById(long idreview) {
         reviews.deleteById(idreview);
     }
-
+    public Page<Review> findAllReviewPage(Pageable pageable) {
+        return reviews.findAll(pageable);
+    }
 }
