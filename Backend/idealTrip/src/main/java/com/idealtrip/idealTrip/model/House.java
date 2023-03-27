@@ -13,34 +13,34 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.OneToOne;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import com.fasterxml.jackson.annotation.JsonView;
 
 
 @Entity(name = "houseTable")
 public class House {
 
-    public interface Basico {}
-    public interface Avanzada {}
+    public interface Basic {}
+    public interface Advanced {}
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @JsonView(Basico.class)
+    @JsonView(Basic.class)
     private Long id;
-    @JsonView(Basico.class)
+    @JsonView(Basic.class)
     private String nameHouse;
     @Column(columnDefinition = "TEXT")
     private String contentHouse;
-    @JsonView(Basico.class)
+    @JsonView(Basic.class)
     private float price;
 
     @Lob
-    @JsonView(Avanzada.class)
+    @JsonView(Advanced.class)
     @ElementCollection(fetch = FetchType.LAZY)
     private List<Blob> imagesHouseFile = new ArrayList<>();
 
     @ElementCollection(fetch = FetchType.LAZY)
     private List<String> imagesHouse = new ArrayList<>();
-    @JsonView(Basico.class)
+    @JsonView(Basic.class)
     private String hostName;
     @Lob
     private Blob hostImageFile;
@@ -50,7 +50,7 @@ public class House {
     private Purchase purchase;
     @OneToOne
     private Destination destination;
-    @JsonView(Basico.class)
+    @JsonView(Basic.class)
     private String destinationName;
 
     private String streetViewLink;

@@ -85,34 +85,34 @@ public class CitiesRestController {
     }
 
     @GetMapping("/catering/{id}")
-    @JsonView(Catering.Basico.class)
+    @JsonView(Catering.Basic.class)
     public Collection<Catering> getCatering(@PathVariable long id){
         return catering.findByDestination(id);
     }
     @GetMapping("/tourism/{id}")
-    @JsonView(Tourism.Basico.class)
+    @JsonView(Tourism.Basic.class)
     public Collection<Tourism> getTourism(@PathVariable long id){
         return tourism.findByDestinationId(id);
     }
     @GetMapping("/house/{id}")
-    @JsonView(House.Basico.class)
+    @JsonView(House.Basic.class)
     public Collection<House> getHouse(@PathVariable long id){
-        return house.findByDestinationId(id);
+        return house.findByDestinationName(destinations.findById(id).get().getNameDestination());
     }
     @GetMapping("/reviews/{id}")
-    @JsonView(Review.Basico.class)
+    @JsonView(Review.Basic.class)
     public Collection<Review> getReviews(@PathVariable long id){
         return review.findByDestination(id);
     }
     //Mostrar review concreta
     @GetMapping("/reviews/{id}/{idreview}")
-    @JsonView(Review.Basico.class)
+    @JsonView(Review.Basic.class)
     public Optional<Review> getReview(@PathVariable long id, @PathVariable long idreview) {
         review.findByDestination(id);
         return this.review.findById(idreview);
     }
     @DeleteMapping("/reviews/{id}/{idreview}")
-    @JsonView(Review.Basico.class)
+    @JsonView(Review.Basic.class)
     public ResponseEntity<Review> deleteReview(@PathVariable long id, @PathVariable long idreview){
         review.findByDestination(id);
         Optional<Review> reviDel = this.review.findById(idreview);
