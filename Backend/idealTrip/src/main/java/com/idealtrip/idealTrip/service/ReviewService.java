@@ -3,7 +3,6 @@ package com.idealtrip.idealTrip.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.idealtrip.idealTrip.model.Catering;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -42,6 +41,10 @@ public class ReviewService {
         return reviews.findByDestination(destination, pageable);
     }
 
+    public Page<Review> findByDestination(Long id, Pageable page) {
+        return reviews.findByDestinationId(id, page);
+    }
+
     public List<Review> findByDestination(Long id) {
         return reviews.findByDestinationId(id);
     }
@@ -49,6 +52,7 @@ public class ReviewService {
     public Optional<Review> findById(Long id) {
         return reviews.findById(id);
     }
+
     public void save(Review review) {
         reviews.save(review);
     }
@@ -56,6 +60,5 @@ public class ReviewService {
     public void deleteById(long idreview) {
         reviews.deleteById(idreview);
     }
-
 
 }
