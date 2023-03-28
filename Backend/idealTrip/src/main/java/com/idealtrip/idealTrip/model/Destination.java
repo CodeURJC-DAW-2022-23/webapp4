@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
+import com.idealtrip.idealTrip.controller.DTOS.DestinationDTO;
 
 @Entity(name = "destinationTable")
 public class Destination {
@@ -65,7 +66,13 @@ public class Destination {
 
     public Destination() {
     }
-
+    public Destination(DestinationDTO destinationDTO) {
+        super();
+        this.nameDestination = destinationDTO.getNameDestination();
+        this.contentDestination = destinationDTO.getContentDestination();
+        this.price = destinationDTO.getPrice();
+        this.titleImage = destinationDTO.getTitleImage();
+    }
     public Destination(Long id, String contentDestination, String nameDestination,
             List<Review> reviews, float price) {
         this.id = id;

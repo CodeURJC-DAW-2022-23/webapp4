@@ -16,6 +16,10 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import com.idealtrip.idealTrip.security.jwt.JwtRequestFilter;
 
+// import com.idealtrip.idealTrip.security.jwt.JwtRequestFilter;
+
+
+
 @Configuration
 @Order(1)
 public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -48,6 +52,10 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		http.antMatcher("/api/**");
 		
+		// URLs that need authentication to access to it
+		// http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/books/**").hasRole("USER");
+		// http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/books/**").hasRole("USER");
+		// http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/books/**").hasRole("ADMIN");	
 		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/destinations/reviews/**").hasRole("USER");
 		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/destinations/reviews/**").hasRole("USER");
 		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/destinations/**").hasRole("ADMIN");
