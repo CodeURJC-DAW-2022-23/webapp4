@@ -1,0 +1,78 @@
+{{>header}}
+
+  <div class="house-details">
+    {{#houses}}
+  <div class="house-title">
+    <h1>{{nameHouse}}</h1>
+    <div class="row">
+     <div>
+      <p>Localización: {{destinationName}} </p>
+     </div>
+    </div>
+   </div>
+   <div class="gallery">
+    <div class="gallery-img-1"><img src="/house/{{id}}/image" alt="Foto alojamiento"></div>
+   </div>
+   <div class="small-details">
+    <h2>Alquiler habitación</h2>
+    <p>2 personas &nbsp; &nbsp; 2 camas &nbsp; &nbsp; 1 baño </p>
+    <h5>&euro; {{price}} /noche</h5>
+   </div>
+
+
+   <!--Purches-->
+   <hr class="line">
+   <form class="check-form">
+    <div>
+     <label >Check-in</label>
+     <input type="text" placeholder="Añadir fecha">
+    </div>
+    <div>
+     <label >Check-out</label>
+     <input type="text" placeholder="Añadir fecha">
+    </div>
+    <div class="guest-field">
+     <label >Límite</label>
+     <input type="text" placeholder="2 personas">
+    </div>
+    {{#logged}}
+      <a class="button" href="/purchase/{{id}}">Comprar</a>
+    {{/logged}} {{^logged}}
+      <a class="button" href="/login">Comprar</a>
+    {{/logged}}
+   </form>
+
+
+   <hr class="line">
+   <p class="home-descr">{{contentHouse}}</p>
+   
+   <hr class="line">
+   <div class="map">
+    <h3>Localización en mapa</h3>
+    <iframe src="{{mapsLink}}" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <b>{{destinationName}}</b>
+    <p>{{nameHouse}}</p>
+   </div>
+
+   <hr class="line">
+   <div class="map">
+    <h3>Localización en Street View</h3>
+    <iframe src="{{streetViewLink}}" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    
+   </div>
+   <hr class="line">
+   <div class="host">
+    <!--<img src="../assets/images/alojamiento/hostParis1.jpg" alt="imagen del host">-->
+    <img src="/host/{{id}}/image" alt="hostImage">
+    <div>
+     <h2>Alquilado por {{hostName}}</h2>
+     <p>245 reviews &nbsp; &nbsp; Frecuencia respuesta: 100% &nbsp; &nbsp; Tiempo respuesta: 60 min</p>
+     
+    </div>
+   </div>
+   {{/houses}}
+   <hr class="line">
+  </div>
+
+  {{>footer}}
+</html>
