@@ -347,8 +347,6 @@ En esta fase mi dedicación principal ha sido con la realización de la dockeriz
   
 ### Adrián Pedroche Rata
 #### Descripción textual: 
-### Adrián Pedroche Rata
-#### Descripción textual: 
 En primer lugar comencé añadiendo todas las clases correspondientes para la seguridad de la API. Posteriormente, particpé en la dockerización de la aplicación junto a mis compañeros Jorge y Sergio. Seguidamente, comenzamos a desarrollar la API REST, en la cual tambuién participé activamente. Al igual que en su respectiva documentación. 
 
 #### 5 commits más significativos
@@ -365,37 +363,14 @@ En primer lugar comencé añadiendo todas las clases correspondientes para la se
          
 | Número fichero  | Fichero                                      | 
 | ------------- | ------------------------------------------------ |
-| #1            | LogoutController.java		   | 
-| #2            | LoginController.java | 
-| #3            | IndexController.java |
-| #4            | header.html	   | 
-| #5            | index.html			   |
+| #1            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/blob/main/Backend/idealTrip/src/main/java/com/idealtrip/idealTrip/controller/DTOS/UserDTO.java">UpdateUserDTO.java</a>		   | 
+| #2            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/blob/main/Backend/idealTrip/src/main/java/com/idealtrip/idealTrip/controller/rest/CitiesRestController.java">CitiesRestController.java</a> | 
+| #3            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/blob/main/Backend/idealTrip/src/main/java/com/idealtrip/idealTrip/controller/rest/UserRestController.java">UserRestController.java</a> |
+| #4            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/blob/main/Backend/idealTrip/src/main/java/com/idealtrip/idealTrip/security/RestSecurityConfig.java">RestSecurityConfig.java</a>	   | 
+| #5            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/blob/main/Backend/idealTrip/src/main/java/com/idealtrip/idealTrip/PageSerializer.java">PageSerializer.java</a>		   |
          
          
-### Jorge Ezequiel	de Francisco Bernal
-#### Descripción textual: 
-Lo primero de lo que me encargué fue de el apartado de contacto de la aplciación, más especificamente que a patir de un formulario que el usuario puede rellenar, se enviará un correo con el contenido escrito previamente por el usuario a la dirección de la página web. Posteriormente me seguí encargando de la parte de la interacción de la web con el usuario por medio de correos electrónicos, así que hice una funcionalidad para que se enviase un correo al usuario informativo cuando se suscribiera para recibir ofertas. Además también me encargue de la página de compra donde se muestran en ella toda la información de la compra y aparece un botón para finalizar el pago, el cual envia un correo con todos los detalles al usuario. Y por último hice una funcionalidad para el administrador, mediante la cual puede editar el nombre y apellidos de los usuarios.
-
-#### 5 commits más significativos
-
-| Commit  | Descripción                                      | Link                                                                                            |
-| ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
-| #1            | primer commit, donde se muestran todos los usuarios en el perfil del administrador y envio de correo de suscripción		   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/1ec37c56a4b1a08d66a578e9cc4b872bfd700838 | 
-| #2            | envio de correo tras la realización del formulario | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/e5bcf4f63127bf1bfc842a5f7b92cd9d01765740 | 
-| #3            | finalización de correo de compra al usuario y ajustes del admin | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/e10b012f19815b2f2e2082bcfccceaa4f2ea0af3 | 
-| #4            | actualización de la forma de mostrar los usuarios y la edición de estos	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/d65414d84378294f1965a5692e68b4650a18dafa | 
-| #5            | actualización para la funcionalidad de la parte de la página de compra y del administrador			   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/b01682fad55f7748f3ff60c76646b52e52216a17 | 
-
-#### 5 ficheros más participación
-
-| Número fichero  | Fichero                                      | 
-| ------------- | ------------------------------------------------ |
-| #1            | purchase.html		   | 
-| #2            | purchaseController.java | 
-| #3            | contactController.java |
-| #4            | conctact.html	   | 
-| #5            | profileController.java			   |         
-
+### Jorge Ezequiel de Francisco Bernal
 #### Descripción textual: Para esta parte me he encargado de ayudar con la parte de la creación de la imagen del docker compose. Además junto con Adrián y Sergio me he encargado de la implementación de las clases para la incorporación de la API REST a la aplicación web. Para esta segunda parte me he encargado de hacer los métodos get que muestran los destinos, monumentos, comida típica, alojamientos y review. Además de implementar métodos POST como el de hacer login o añadir destino, añadir una review. Por último nos hemos encargado entre Adrián y yo de documentar todos los métodos de la API y crear el documento con todas las URLs. 
 
 
@@ -421,25 +396,25 @@ Lo primero de lo que me encargué fue de el apartado de contacto de la aplciaci�
 
 ### ShuHeng	Ye
 #### Descripción textual:
-
-En cuanto a mi trabajo, aunque debido a un problema familiar mi tiempo para esta practica fue muy limitado, he logrado implementar una función que permite mostrar reseñas según el ID del destino. Además, he añadido algunas características para los usuarios, como la posibilidad de comentar en la página de opiniones, editar su nombre y apellido, y cambiar su foto de perfil para mostrar los avatar del usuarios en la pagina de reviews. También he creado una página de alojamiento y he integrado enlaces del StreetView para mostrarlo en la página de alojamiento.
+La mayoria de las funcionalidad de admin(agregar destinos, eliminar destinos, paginacion de reseñas, eliminar reseñas) , la diagrama de clase v3 y el traslado de la editUserData a la pagina de admin.
 
 #### 5 commits más significativos
 
 | Commit  | Descripción                                      | Link                                                                                            |
 | ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
-| #1            | Editar los datos del usuario en la pagina de perfil | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/7c798d7fff2ae97f358fee6e019ea04da63363be| 
-| #2            |  Pagina de alojamiento | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/5d25941dc855e02edb4018643da30b446f50ee2f | 
-| #3            | Guardar comentarios del usuario en la base de datos | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/dcfae4e807e54997dfe04dc1192e2d6596adcdb3| 
-| #4            | Cambiar avatar y mostrar los avatar de todos los usuarios comentado | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/bad5e05eabd0125e59576c94f56aaa5d06f77d2c | 
-| #5            | Mostrar los comentarios	               | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/5dbad07d183c0cbac12a65b5a1f9bf7a27a7800c| 
+| #1            | Agregar destinos y eliminar destinos | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/ffdd019bdd775e4588026d372de699be7ba5473b | 
+| #2            | Pagina de administrator | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/ffdd019bdd775e4588026d372de699be7ba5473b | 
+| #3            | Elminar Reseñas | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/ffdd019bdd775e4588026d372de699be7ba5473b | 
+| #4            | profile | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/507356e4926cd10e3e45261cb104b4668a51b670 | 
+| #5            |    |    | 
 
 #### 5 ficheros más participación
 
 | Número fichero  | Fichero                                      | 
 | ------------- | ------------------------------------------------ |
-| #1            | citiesController.java		   | 
-| #2            | profileController.java | 
-| #3            | reviewService.java |
-| #4            | review.html	   | 
-| #5            | house.html			   |         
+| #1            | administratorController.java	   | 
+| #2            | administrator.html| 
+| #3            | profileController.java|
+| #4            | profile.html | 
+| #5            | 			   |        
+        
