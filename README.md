@@ -284,3 +284,142 @@ En cuanto a mi trabajo, aunque debido a un problema familiar mi tiempo para esta
 | #5            | house.html			   |         
 
   
+
+# Fase 3. Incorporación de una API REST a la aplicación web y despliegue con Docker
+    
+En esta fase ha sido implementada una API REST para la aplicación, además, hemos empaquetado y distribuido esta en docker. Para poder ser arrancada desde docker.
+En principio, toda la funcionalidad disponible en la web mediante interfaz lo está también mediante la API REST, teniendo siempre en cuenta las buenas prácticas. Todas las URLs de la API REST han sido mappeadas con /api para diferenciarlas de las demás.
+    
+- Documentación de la API REST:
+    - XXXX
+- Actualización del diagrama de clases:
+    <image src="/images/DiagramaDeClasesIdealTripV3.png" >  
+- Instrucciones de ejecución de la aplicación dockerizada:
+    - XXXX    
+- Documentación para construcción de la imagen docker:
+    - XXXX    
+### Participación de miembros:  
+### Sergio Cuadros Flores
+#### Descripción textual: 
+En esta fase mi participación principal ha sido en la inicialización del proyecto, configurando todos los archivos iniciales, con la creación de la base de datos, introducción de los datos precargados, así como gestionar la pantalla en la que se muestran los diferentes destinos y el control de pantallas mediante el id del destino y las posteriores pantallas de catering (Restauración) y tourism (Turismo). Además, he gestionado la parte de seguridad relacionada con el https, cifrado SSL, control del puerto 8443. De igual manera, me he encargado del control del login y registrarse, añadiendo los usuarios registrados a la base de datos. Asimismo, he estado pendiente de la realización de las tareas de los demás compañeros, apoyando y ayudando en todo lo que necesitasen en todo momento. He gestionado el control del header y footer, así como la colaboración en la realización de la base de datos de newsletter junto con mi compañero Jorge. Por último he podido gestionar junto con mi compañero Adrián el control de permisos de los usuarios dependiendo de la ruta a la que podían tener acceso o no debido a su rol de registrados, no registrados y administradores.
+
+Mis commits no son grandes, por tanto no hay commits que engloben varias o una funcionalidad completa dado que he ido haciendo commits progresivos y continuados.
+#### 5 commits más significativos
+
+| Commit  | Descripción                                      | Link                                                                                            |
+| ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| #1            | Creación de los ficheros para la base de datos   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/bdc8de0bf1caf2ee3fa4d3a24473bb3ab44c1c16 | 
+| #2            | Inicialización de la base de datos | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/e42f966f5174151cba04efe9794156ecffbe5d00 | 
+| #3            | Mostar los destinos dependiendo de su id |https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/3ccb292c92f487b25ee26849889bd540ffeba827| 
+| #4            | Realización de login y registro	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/3c7a0ffa90b49c54ce3a7184edf4c9f710d16e0c#diff-21a6e6c8cd127959bb4596c8985e0b4d7f56a3c2f8f290f76bb233876ebfbc5a | 
+| #5            | Control pantallas catering y tourism			   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/86872c79e208e112467ca4235a08bc94476d2135 | 
+|               |                                                   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/b7d766286e0e82c8bd45246eb8eaaa39140cb41f|
+#### 5 ficheros más participación
+
+| Número fichero  | Fichero                                      | 
+| ------------- | ------------------------------------------------ |
+| #1            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/blob/main/Backend/idealTrip/src/main/java/com/idealtrip/idealTrip/service/InitDatabase.java">InitDatabase.java</a>		   | 
+| #2            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/blob/main/Backend/idealTrip/src/main/java/com/idealtrip/idealTrip/controller/LoginController.java">LoginController.java</a> | 
+| #3            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/blob/main/Backend/idealTrip/src/main/java/com/idealtrip/idealTrip/controller/ServiceController.java">ServiceController.java</a> |
+| #4            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/blob/main/Backend/idealTrip/src/main/java/com/idealtrip/idealTrip/controller/ProfileController.java">ProfileController.java</a>	   | 
+| #5            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/main/Backend/idealTrip/src/main/java/com/idealtrip/idealTrip/model">Directorio Model</a>			   | 
+         
+### David Moreno Martín
+#### Descripción textual: 
+Empecé encargándome de realizar el mapping de todas las ciudades, así como de todos los servicios de estas (Turismo, Catering, Opiniones y Alojamiento), después trabajé en mostrar las reviews hechas por los usuarios en su perfil, mostrando únicamente aquellas realizadas por ese usuario. También trabaje con la base de datos para hacer que, en lugar de mostrar 1 única review para todos los usuarios, cada usuario "escribiera" 3 reviews sobre cada destino con una puntuación aleatoria. Posteriormente incluí en cada alojamiento una descripción personalizada y la posibilidad de verlos mediante google maps, ambos cargándose desde la base de datos. Asimismo, implementé la paginación mediante JavaScript y AJAX, de este modo, las reviews son cargadas en segundo plano y no es necesario recargar toda la página.  
+Además de esto, he corregido errores, traducido código, eliminado warnings y actualizado la página de error 404 para ser coherente en base al estilo del resto de la aplicación. Por último, también he participado activamente en el ReadMe de esta segunda fase.
+
+#### 5 commits más significativos
+
+| Commit  | Descripción                                      | Link                                                                                            |
+| ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| #1            | Mapping general de todas las ciudades y servicios		   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/aa48a5969832f7f1a9d6ff2ad3321225cf1cf713#diff-80b956c241b8bcfa657bad6d158f25fc2d34e46fa8fe46c4f15ac3f8643113dd | 
+| #2            | Mostrar reviews en perfil usuarios | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/ec26fef71bfa556d23f9171b1a3350d3d93492c8 | 
+| #3            | Página error | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/6ac548755f840408a550881a30247e1f69aeaf23 | 
+| #4            | Google maps alojamientos	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/dbf3a9e16b2bf70f014a3aef0b8575a76224744c | 
+| #5            | Añadida paginación con AJAX y JS | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/ce305a774cb7d9474e80e2ab92947bb05f4a1d8a | 
+         
+#### 5 ficheros más participación
+
+| Número fichero  | Fichero                                      | 
+| ------------- | ------------------------------------------------ |
+| #1            | citiesController.java		   | 
+| #2            | error.htnl & style.error.css | 
+| #3            | review.html & style.review.css |
+| #4            | InitDatabase.java	   | 
+| #5            | indexControler.java			   |
+  
+### Adrián Pedroche Rata
+#### Descripción textual: 
+En primer lugar, comencé añadiendo toda la información correspondiente a cada destino, es decir, los sitios turísticos y la comida típica. Posteriormente, me encargué de realizar la gestión de los ususarios, distinguiendo entre usuario registrado, no registrado o administrador, dándoles permisos según sea necesario (esto último junto a Sergio). 
+Más adelante, me encargué de permitir que el usuario puediera cerrar su sesión (logout para usuarios registrados). Entre medias introduje la acción de mostrar una página html de error cuando se intentase acceder a una URL inexistente. Posteriormente me centré en el buscador de países que tenemos implementado en el "/index". Para terminar la fase intentando construir un diagrama de barras a partir de la media de las opiniones registradas por los ususarios en un determinado destino. 
+
+#### 5 commits más significativos
+
+| Commit  | Descripción                                      | Link                                                                                            |
+| ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| #1            | Error 404 al acceder a una URL inexistente	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/486a1d3593f69568b6eba0fee03abfb8ca68c23f | 
+| #2            | Buscador de países de la página de inicio | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/9d6ca4142df3d78eacdb9d0f1213ca5358298fce | 
+| #3            | Cerrar sesión del usuario | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/ab245851208c4ba051a139dc18bc3f43dd6075f5 | 
+| #4            | Mustach para diferenciar ususarios, error al loguearse y springSecuiry| https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/c41054b53be30636f1e3adab6ae7b1d699e6ba19 | 
+| #5            | Finalización de introducir toda la información de los destinos	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/23775f412952f9a1d9a8beaee1199ad61e922e56 | 
+
+#### 5 ficheros más participación
+         
+| Número fichero  | Fichero                                      | 
+| ------------- | ------------------------------------------------ |
+| #1            | LogoutController.java		   | 
+| #2            | LoginController.java | 
+| #3            | IndexController.java |
+| #4            | header.html	   | 
+| #5            | index.html			   |
+         
+         
+### Jorge Ezequiel	de Francisco Bernal
+#### Descripción textual: 
+Lo primero de lo que me encargué fue de el apartado de contacto de la aplciación, más especificamente que a patir de un formulario que el usuario puede rellenar, se enviará un correo con el contenido escrito previamente por el usuario a la dirección de la página web. Posteriormente me seguí encargando de la parte de la interacción de la web con el usuario por medio de correos electrónicos, así que hice una funcionalidad para que se enviase un correo al usuario informativo cuando se suscribiera para recibir ofertas. Además también me encargue de la página de compra donde se muestran en ella toda la información de la compra y aparece un botón para finalizar el pago, el cual envia un correo con todos los detalles al usuario. Y por último hice una funcionalidad para el administrador, mediante la cual puede editar el nombre y apellidos de los usuarios.
+
+#### 5 commits más significativos
+
+| Commit  | Descripción                                      | Link                                                                                            |
+| ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| #1            | primer commit, donde se muestran todos los usuarios en el perfil del administrador y envio de correo de suscripción		   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/1ec37c56a4b1a08d66a578e9cc4b872bfd700838 | 
+| #2            | envio de correo tras la realización del formulario | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/e5bcf4f63127bf1bfc842a5f7b92cd9d01765740 | 
+| #3            | finalización de correo de compra al usuario y ajustes del admin | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/e10b012f19815b2f2e2082bcfccceaa4f2ea0af3 | 
+| #4            | actualización de la forma de mostrar los usuarios y la edición de estos	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/d65414d84378294f1965a5692e68b4650a18dafa | 
+| #5            | actualización para la funcionalidad de la parte de la página de compra y del administrador			   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/b01682fad55f7748f3ff60c76646b52e52216a17 | 
+
+#### 5 ficheros más participación
+
+| Número fichero  | Fichero                                      | 
+| ------------- | ------------------------------------------------ |
+| #1            | purchase.html		   | 
+| #2            | purchaseController.java | 
+| #3            | contactController.java |
+| #4            | conctact.html	   | 
+| #5            | profileController.java			   |         
+         
+### ShuHeng	Ye
+#### Descripción textual:
+
+En cuanto a mi trabajo, aunque debido a un problema familiar mi tiempo para esta practica fue muy limitado, he logrado implementar una función que permite mostrar reseñas según el ID del destino. Además, he añadido algunas características para los usuarios, como la posibilidad de comentar en la página de opiniones, editar su nombre y apellido, y cambiar su foto de perfil para mostrar los avatar del usuarios en la pagina de reviews. También he creado una página de alojamiento y he integrado enlaces del StreetView para mostrarlo en la página de alojamiento.
+
+#### 5 commits más significativos
+
+| Commit  | Descripción                                      | Link                                                                                            |
+| ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| #1            | Editar los datos del usuario en la pagina de perfil | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/7c798d7fff2ae97f358fee6e019ea04da63363be| 
+| #2            |  Pagina de alojamiento | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/5d25941dc855e02edb4018643da30b446f50ee2f | 
+| #3            | Guardar comentarios del usuario en la base de datos | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/dcfae4e807e54997dfe04dc1192e2d6596adcdb3| 
+| #4            | Cambiar avatar y mostrar los avatar de todos los usuarios comentado | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/bad5e05eabd0125e59576c94f56aaa5d06f77d2c | 
+| #5            | Mostrar los comentarios	               | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/5dbad07d183c0cbac12a65b5a1f9bf7a27a7800c| 
+
+#### 5 ficheros más participación
+
+| Número fichero  | Fichero                                      | 
+| ------------- | ------------------------------------------------ |
+| #1            | citiesController.java		   | 
+| #2            | profileController.java | 
+| #3            | reviewService.java |
+| #4            | review.html	   | 
+| #5            | house.html			   |         
