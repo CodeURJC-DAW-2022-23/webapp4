@@ -371,7 +371,8 @@ En primer lugar comencé añadiendo todas las clases correspondientes para la se
          
          
 ### Jorge Ezequiel de Francisco Bernal
-#### Descripción textual: Para esta parte me he encargado de ayudar con la parte de la creación de la imagen del docker compose. Además junto con Adrián y Sergio me he encargado de la implementación de las clases para la incorporación de la API REST a la aplicación web. Para esta segunda parte me he encargado de hacer los métodos get que muestran los destinos, monumentos, comida típica, alojamientos y review. Además de implementar métodos POST como el de hacer login o añadir destino, añadir una review. Por último nos hemos encargado entre Adrián y yo de documentar todos los métodos de la API y crear el documento con todas las URLs. 
+#### Descripción textual: 
+Para esta parte me he encargado de ayudar con la parte de la creación de la imagen del docker compose. Además junto con Adrián y Sergio me he encargado de la implementación de las clases para la incorporación de la API REST a la aplicación web. Para esta segunda parte me he encargado de hacer los métodos get que muestran los destinos, monumentos, comida típica, alojamientos y review. Además de implementar métodos POST como el de hacer login o añadir destino, añadir una review. Por último nos hemos encargado entre Adrián y yo de documentar todos los métodos de la API y crear el documento con todas las URLs. 
 
 
 #### 5 commits más significativos
