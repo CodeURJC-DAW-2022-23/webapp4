@@ -292,7 +292,7 @@ En principio, toda la funcionalidad disponible en la web mediante interfaz lo es
     
 - Actualización del diagrama de clases:
     <image src="/images/DiagramaDeClasesIdealTripV3.png" >  
-- Instrucciones de ejecución de la aplicación dockerizada:
+### Instrucciones de ejecución de la aplicación dockerizada:
         1. Instalar Docker Desktop
         2. Crear una cuenta en DockerHub o iniciar sesión
         3. Abrir una terminar "bash"
