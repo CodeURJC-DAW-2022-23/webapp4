@@ -1,16 +1,9 @@
 package com.idealtrip.idealTrip.service;
 
 import java.util.Optional;
-import java.io.IOException;
 import java.util.List;
 
-import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.idealtrip.idealTrip.model.User;
 import com.idealtrip.idealTrip.repository.UserRepository;
@@ -20,9 +13,6 @@ public class UserService {
 
     @Autowired
     private UserRepository users;
-
-    @Autowired
-	private PasswordEncoder passwordEncoder;
 
     public void save(User user) {
         this.users.save(user);

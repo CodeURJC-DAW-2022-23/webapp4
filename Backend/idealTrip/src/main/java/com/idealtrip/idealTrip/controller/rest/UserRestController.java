@@ -76,7 +76,4 @@ public class UserRestController {
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
 	}
-	// @PostMapping("/")
-	// @ResponseStatus(HttpStatus.CREATED)
-	// public User createUser()
 }
