@@ -325,29 +325,26 @@ Mis commits no son grandes, por tanto no hay commits que engloben varias o una f
 | #5            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/main/Backend/idealTrip/src/main/java/com/idealtrip/idealTrip/model">Directorio Model</a>			   | 
          
 ### David Moreno Martín
-#### Descripción textual: 
-Empecé encargándome de realizar el mapping de todas las ciudades, así como de todos los servicios de estas (Turismo, Catering, Opiniones y Alojamiento), después trabajé en mostrar las reviews hechas por los usuarios en su perfil, mostrando únicamente aquellas realizadas por ese usuario. También trabaje con la base de datos para hacer que, en lugar de mostrar 1 única review para todos los usuarios, cada usuario "escribiera" 3 reviews sobre cada destino con una puntuación aleatoria. Posteriormente incluí en cada alojamiento una descripción personalizada y la posibilidad de verlos mediante google maps, ambos cargándose desde la base de datos. Asimismo, implementé la paginación mediante JavaScript y AJAX, de este modo, las reviews son cargadas en segundo plano y no es necesario recargar toda la página.  
-Además de esto, he corregido errores, traducido código, eliminado warnings y actualizado la página de error 404 para ser coherente en base al estilo del resto de la aplicación. Por último, también he participado activamente en el ReadMe de esta segunda fase.
 
 #### 5 commits más significativos
 
 | Commit  | Descripción                                      | Link                                                                                            |
 | ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
-| #1            | Mapping general de todas las ciudades y servicios		   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/aa48a5969832f7f1a9d6ff2ad3321225cf1cf713#diff-80b956c241b8bcfa657bad6d158f25fc2d34e46fa8fe46c4f15ac3f8643113dd | 
-| #2            | Mostrar reviews en perfil usuarios | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/ec26fef71bfa556d23f9171b1a3350d3d93492c8 | 
-| #3            | Página error | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/6ac548755f840408a550881a30247e1f69aeaf23 | 
-| #4            | Google maps alojamientos	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/dbf3a9e16b2bf70f014a3aef0b8575a76224744c | 
-| #5            | Añadida paginación con AJAX y JS | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/ce305a774cb7d9474e80e2ab92947bb05f4a1d8a | 
+| #1            | Removed commented lines of code	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/cf5dbf6ebc8865f49fd236e3d3caaf5274c54e1f | 
+| #2            | added bar chart | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/05c906711721495c49638bd379454256902e659c | 
+| #3            | Addex AJAX & JS Pagination and Fixed start rating | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/5287993ae8cf2ec276d11283412b6be5c645438d | 
+| #4            | Removed commented lines of code   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/cf5dbf6ebc8865f49fd236e3d3caaf5274c54e1f | 
+| #5            | API rating, destinations, review | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/fcfa0c94a0cf01674b6eccad20bb1413a784f318 | 
          
 #### 5 ficheros más participación
 
 | Número fichero  | Fichero                                      | 
 | ------------- | ------------------------------------------------ |
-| #1            | citiesController.java		   | 
-| #2            | error.htnl & style.error.css | 
-| #3            | review.html & style.review.css |
-| #4            | InitDatabase.java	   | 
-| #5            | indexControler.java			   |
+| #1            | indexController.java		   | 
+| #2            | CitiesRestController.java | 
+| #3            | rating.html |
+| #4            | review.html, services.html	   | 
+| #5            | DestinationRepository.java			   |
   
 ### Adrián Pedroche Rata
 #### Descripción textual: 
@@ -401,24 +398,25 @@ Lo primero de lo que me encargué fue de el apartado de contacto de la aplciaci�
          
 ### ShuHeng	Ye
 #### Descripción textual:
-La mayoria de las funcionalidad de admin(agregar destinos, eliminar destinos, paginacion de reseñas, eliminar reseñas) , la diagrama de clase v3 y el traslado de la editUserData a la pagina de admin.
-        
+
+En cuanto a mi trabajo, aunque debido a un problema familiar mi tiempo para esta practica fue muy limitado, he logrado implementar una función que permite mostrar reseñas según el ID del destino. Además, he añadido algunas características para los usuarios, como la posibilidad de comentar en la página de opiniones, editar su nombre y apellido, y cambiar su foto de perfil para mostrar los avatar del usuarios en la pagina de reviews. También he creado una página de alojamiento y he integrado enlaces del StreetView para mostrarlo en la página de alojamiento.
+
 #### 5 commits más significativos
 
 | Commit  | Descripción                                      | Link                                                                                            |
 | ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
-| #1            | Agregar destinos y eliminar destinos | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/ffdd019bdd775e4588026d372de699be7ba5473b | 
-| #2            | Pagina de administrator | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/ffdd019bdd775e4588026d372de699be7ba5473b | 
-| #3            | Elminar Reseñas | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/ffdd019bdd775e4588026d372de699be7ba5473b | 
-| #4            | profile | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/507356e4926cd10e3e45261cb104b4668a51b670 | 
-| #5            |    |    | 
+| #1            | Editar los datos del usuario en la pagina de perfil | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/7c798d7fff2ae97f358fee6e019ea04da63363be| 
+| #2            |  Pagina de alojamiento | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/5d25941dc855e02edb4018643da30b446f50ee2f | 
+| #3            | Guardar comentarios del usuario en la base de datos | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/dcfae4e807e54997dfe04dc1192e2d6596adcdb3| 
+| #4            | Cambiar avatar y mostrar los avatar de todos los usuarios comentado | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/bad5e05eabd0125e59576c94f56aaa5d06f77d2c | 
+| #5            | Mostrar los comentarios	               | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/5dbad07d183c0cbac12a65b5a1f9bf7a27a7800c| 
 
 #### 5 ficheros más participación
 
 | Número fichero  | Fichero                                      | 
 | ------------- | ------------------------------------------------ |
-| #1            | administratorController.java	   | 
-| #2            | administrator.html| 
-| #3            | profileController.java|
-| #4            | profile.html | 
-| #5            | 			   |         
+| #1            | citiesController.java		   | 
+| #2            | profileController.java | 
+| #3            | reviewService.java |
+| #4            | review.html	   | 
+| #5            | house.html			   |         
