@@ -290,12 +290,16 @@ En cuanto a mi trabajo, aunque debido a un problema familiar mi tiempo para esta
 En esta fase ha sido implementada una API REST para la aplicación, además, hemos empaquetado y distribuido esta en docker. Para poder ser arrancada desde docker.
 En principio, toda la funcionalidad disponible en la web mediante interfaz lo está también mediante la API REST, teniendo siempre en cuenta las buenas prácticas. Todas las URLs de la API REST han sido mappeadas con /api para diferenciarlas de las demás.
     
-- Documentación de la API REST:
-    - XXXX
 - Actualización del diagrama de clases:
     <image src="/images/DiagramaDeClasesIdealTripV3.png" >  
 - Instrucciones de ejecución de la aplicación dockerizada:
-    - Ejecutar el archivo ./create_image.ps1 idealtrip:v1    
+        1. Instalar Docker Desktop
+        2. Crear una cuenta en DockerHub o iniciar sesión
+        3. Abrir una terminar "bash"
+        4. Clonar el repositorio usando el siguiente comando: "git clone https://github.com/CodeURJC-DAW-2022-23/webapp4.git"
+        5. Ejecutar el comando cd /webapp4/allCode/docker
+        6. Ejecutar el comando "./create_image.ps1 idealtrip:v1"
+        
 ### Participación de miembros:  
 
 ### Sergio Cuadros Flores
