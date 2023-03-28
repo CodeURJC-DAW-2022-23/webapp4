@@ -165,6 +165,15 @@ public class CitiesRestController {
         return cityRatingList;
     }
 
+    // @PutMapping("/{id}")
+	// public ResponseEntity<Destination> updateDestination(@PathVariable long id, @RequestBody Destination updatedDestination){
+    //     if(destinations.exist(id)){
+    //         Destination dest = destinations.findById(id).orElseThrow();
+	// 		updatedDestination.setImageFile(BlobProxy.generateProxy(dest.getImageFile().getBinaryStream(),					
+	// 	}
+	// 		updatedDestination.setId(id);
+	// 		destinations.save(updatedDestination);
 
-}
-
+	// 		return new ResponseEntity<>(updatedDestination, HttpStatus.OK);
+	// 	}
+     }

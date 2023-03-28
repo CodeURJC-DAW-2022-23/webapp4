@@ -73,6 +73,8 @@ public class DestinationService {
         this.destinations = destinations;
     }
 
-    
+    public boolean exist(long id) {
+		return destinations.existsById(id);
+	}
     
 }

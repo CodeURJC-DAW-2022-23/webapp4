@@ -15,6 +15,7 @@ import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.idealtrip.idealTrip.controller.DTOS.UpdateUserDTO;
 import com.idealtrip.idealTrip.controller.DTOS.UserDTO;
 
 
@@ -59,6 +60,13 @@ public class User {
         this.encodedPassword = userDTO.getPasswordEncoded();
         this.roles = List.of("USER");
     }
+
+    public User(UpdateUserDTO userDTO) {
+        super();
+        this.name = userDTO.getName();
+        this.lastName = userDTO.getLastName();
+    }
+
     public User(String email, String name, String lastName, String encodedPassword) {
         this.email = email;
         this.name = name;
