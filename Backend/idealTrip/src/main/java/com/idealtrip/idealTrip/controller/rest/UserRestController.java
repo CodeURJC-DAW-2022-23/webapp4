@@ -42,10 +42,10 @@ public class UserRestController {
 
 	@GetMapping("/me")
 	public ResponseEntity<User> me(HttpServletRequest request) {
-		
+
 		Principal principal = request.getUserPrincipal();
-		
-		if(principal != null) {
+
+		if (principal != null) {
 			return ResponseEntity.ok(userRepository.findByEmail(principal.getName()).orElseThrow());
 		} else {
 			return ResponseEntity.notFound().build();
@@ -58,22 +58,22 @@ public class UserRestController {
 		User user = new User(userDTO);
 
 		if (!userService.existEmail(user.getEmail())) {
-            user.setProfileAvatar("/static/assets/images/c1.jpg");
+			user.setProfileAvatar("/static/assets/images/c1.jpg");
 			try {
 				Resource image = new ClassPathResource(user.getProfileAvatar());
-                user.setProfileAvatarFile(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
-		} catch (IOException e) {
+				user.setProfileAvatarFile(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
+			} catch (IOException e) {
 				e.printStackTrace();
+			}
+			user.setEncodedPassword(passwordEncoder.encode(user.getEncodedPassword()));
+			user.setRoles(Arrays.asList("USER"));
+
+			userService.save(user);
+			URI location = fromCurrentRequest().path("/{id}").buildAndExpand(user.getId()).toUri();
+
+			return ResponseEntity.created(location).body(user);
+		} else {
+			return new ResponseEntity<>(HttpStatus.FORBIDDEN);
 		}
-            user.setEncodedPassword(passwordEncoder.encode(user.getEncodedPassword()));
-            user.setRoles(Arrays.asList("USER"));
-
-            userService.save(user);
-            URI location = fromCurrentRequest().path("/{id}").buildAndExpand(user.getId()).toUri();
-
-            return ResponseEntity.created(location).body(user);
-        } else {
-            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
-        }
 	}
 }

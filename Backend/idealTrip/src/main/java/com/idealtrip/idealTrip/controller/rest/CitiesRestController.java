@@ -2,6 +2,7 @@ package com.idealtrip.idealTrip.controller.rest;
 
 import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
 
+import java.io.IOException;
 import java.net.URI;
 import java.security.Principal;
 import java.util.ArrayList;
@@ -11,12 +12,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import com.idealtrip.idealTrip.controller.DTOS.DestinationDTO;
 import com.idealtrip.idealTrip.controller.DTOS.ReviewDTO;
 import com.fasterxml.jackson.annotation.JsonView;
 import javax.servlet.http.HttpServletRequest;
 import com.idealtrip.idealTrip.model.*;
 import com.idealtrip.idealTrip.service.*;
+
+import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -41,53 +47,60 @@ public class CitiesRestController {
     private UserService userService;
 
     User currentUser;
+
     @ModelAttribute
     public void addAttributes(Model model, HttpServletRequest request) {
-      Principal principal = request.getUserPrincipal();
-  
-      if (principal != null) {
-        userService.findByEmail(principal.getName()).ifPresent(us -> currentUser = us);
-        model.addAttribute("curretUser", currentUser);
-  
-      } else {
-        model.addAttribute("logged", false);
-      }
-    }
+        Principal principal = request.getUserPrincipal();
 
+        if (principal != null) {
+            userService.findByEmail(principal.getName()).ifPresent(us -> currentUser = us);
+            model.addAttribute("curretUser", currentUser);
+
+        } else {
+            model.addAttribute("logged", false);
+        }
+    }
 
     @GetMapping("/")
     @JsonView(Destination.Basico.class)
-    public Page<Destination> getDestinations(Pageable page){
+    public Page<Destination> getDestinations(Pageable page) {
         return destinations.findAll(page);
     }
 
     @GetMapping("/{id}")
     @JsonView(Destination.Basico.class)
-    public ResponseEntity<Destination> getDestiantion(@PathVariable long id){
+    public ResponseEntity<Destination> getDestiantion(@PathVariable long id) {
         Optional<Destination> dest = destinations.findById(id);
-        if (dest.isPresent()){
+        if (dest.isPresent()) {
             Destination destaux = dest.get();
             return new ResponseEntity<>(destaux, HttpStatus.OK);
-        }else{
+        } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
     @DeleteMapping("/{id}")
     @JsonView(Destination.Basico.class)
-    public ResponseEntity<Destination> deleteDestination(@PathVariable long id){
+    public ResponseEntity<Destination> deleteDestination(@PathVariable long id) {
         Optional<Destination> dest = destinations.findById(id);
-        if (dest.isPresent()){
+        if (dest.isPresent()) {
             Destination destaux = dest.get();
             destinations.deleteById(id);
             return new ResponseEntity<>(destaux, HttpStatus.OK);
-        } else{
+        } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
     @PostMapping("/")
-    public ResponseEntity<Destination> createDestination(@RequestBody Destination destination){
+    public ResponseEntity<Destination> createDestination(@RequestBody DestinationDTO destinationDTO) {
+        Destination destination = new Destination(destinationDTO);
+        try {
+            Resource image = new ClassPathResource(destination.getTitleImage());
+            destination.setTitleImageFile(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         destinations.save(destination);
         URI location = fromCurrentRequest().path("/{id}").buildAndExpand(destination.getId()).toUri();
         return ResponseEntity.created(location).body(destination);
@@ -95,37 +108,40 @@ public class CitiesRestController {
 
     @GetMapping("/catering/{id}")
     @JsonView(Catering.Basic.class)
-    public Collection<Catering> getCatering(@PathVariable long id){
+    public Collection<Catering> getCatering(@PathVariable long id) {
         return catering.findByDestination(id);
     }
+
     @GetMapping("/tourism/{id}")
     @JsonView(Tourism.Basic.class)
-    public Collection<Tourism> getTourism(@PathVariable long id){
+    public Collection<Tourism> getTourism(@PathVariable long id) {
         return tourism.findByDestinationId(id);
     }
+
     @GetMapping("/house/{id}")
     @JsonView(House.Basic.class)
-    public Collection<House> getHouse(@PathVariable long id){
+    public Collection<House> getHouse(@PathVariable long id) {
         return house.findByDestinationName(destinations.findById(id).get().getNameDestination());
     }
 
     @GetMapping("/reviews/{id}")
     @JsonView(Review.Basic.class)
-    public Page<Review> getReview(@PathVariable Long id, Pageable page){
+    public Page<Review> getReview(@PathVariable Long id, Pageable page) {
         return review.findByDestination(id, page);
     }
 
-    //show specific review
+    // show specific review
     @GetMapping("/reviews/{id}/{idreview}")
     @JsonView(Review.Basic.class)
     public Optional<Review> getReview(@PathVariable long id, @PathVariable long idreview) {
         review.findByDestination(id);
         return this.review.findById(idreview);
     }
-    //Delete specific review
+
+    // Delete specific review
     @DeleteMapping("/reviews/{id}/{idreview}")
     @JsonView(Review.Basic.class)
-    public ResponseEntity<Review> deleteReview(@PathVariable long id, @PathVariable long idreview){
+    public ResponseEntity<Review> deleteReview(@PathVariable long id, @PathVariable long idreview) {
         review.findByDestination(id);
         Optional<Review> reviDel = this.review.findById(idreview);
         if (reviDel.isPresent()) {
@@ -143,7 +159,8 @@ public class CitiesRestController {
     public Review createReview(@PathVariable Long id, @RequestBody ReviewDTO newreview) {
 
         Destination currentDestination = destinations.findDestinationById(id).orElse(null);
-        Review auxreview = new Review(currentUser, currentDestination, newreview.getReviewTitle(), newreview.getRating(), newreview.getReviewContent());
+        Review auxreview = new Review(currentUser, currentDestination, newreview.getReviewTitle(),
+                newreview.getRating(), newreview.getReviewContent());
         review.save(auxreview);
         return auxreview;
     }
@@ -165,6 +182,4 @@ public class CitiesRestController {
         return cityRatingList;
     }
 
-
 }
-
