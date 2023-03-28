@@ -54,19 +54,6 @@ public class UserService {
         return users.findAll();
     }
 
-    public ResponseEntity<User> register(User user) throws IOException {
-		if (!this.existEmail(user.getEmail())) {
-			Resource image = new ClassPathResource("/static/assets/images/c1.jpg");
-			user.setProfileAvatarFile(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
-			user.setProfileAvatar("/static/assets/images/c1.jpg");
-			user.setEncodedPassword(passwordEncoder.encode(user.getEncodedPassword()));
-			user.setRoles("USER");
-			this.save(user);
-			return new ResponseEntity<>(HttpStatus.CREATED);
-		} else {
-			return new ResponseEntity<>(HttpStatus.FORBIDDEN);
-		}
-	}
 }
 
 

@@ -1,7 +1,12 @@
 package com.idealtrip.idealTrip.controller.rest;
 
 import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
+
+import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+
 import java.io.IOException;
 import java.net.URI;
 import java.security.Principal;
@@ -54,6 +59,12 @@ public class UserRestController {
 
 		if (!userService.existEmail(user.getEmail())) {
             user.setProfileAvatar("/static/assets/images/c1.jpg");
+			try {
+				Resource image = new ClassPathResource(user.getProfileAvatar());
+                user.setProfileAvatarFile(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
+		} catch (IOException e) {
+				e.printStackTrace();
+		}
             user.setEncodedPassword(passwordEncoder.encode(user.getEncodedPassword()));
             user.setRoles(Arrays.asList("USER"));
 
