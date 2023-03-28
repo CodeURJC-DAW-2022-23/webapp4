@@ -293,7 +293,7 @@ En principio, toda la funcionalidad disponible en la web mediante interfaz lo es
 - Documentación de la API REST:
     - XXXX
 - Actualización del diagrama de clases:
-    - XXXX
+    <image src="/images/DiagramaDeClasesIdealTripV3.png" >  
 - Instrucciones de ejecución de la aplicación dockerizada:
     - XXXX    
 - Documentación para construcción de la imagen docker:
