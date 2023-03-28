@@ -348,18 +348,19 @@ Mis commits no son grandes, por tanto no hay commits que engloben varias o una f
   
 ### Adrián Pedroche Rata
 #### Descripción textual: 
-En primer lugar, comencé añadiendo toda la información correspondiente a cada destino, es decir, los sitios turísticos y la comida típica. Posteriormente, me encargué de realizar la gestión de los ususarios, distinguiendo entre usuario registrado, no registrado o administrador, dándoles permisos según sea necesario (esto último junto a Sergio). 
-Más adelante, me encargué de permitir que el usuario puediera cerrar su sesión (logout para usuarios registrados). Entre medias introduje la acción de mostrar una página html de error cuando se intentase acceder a una URL inexistente. Posteriormente me centré en el buscador de países que tenemos implementado en el "/index". Para terminar la fase intentando construir un diagrama de barras a partir de la media de las opiniones registradas por los ususarios en un determinado destino. 
+### Adrián Pedroche Rata
+#### Descripción textual: 
+En primer lugar comencé añadiendo todas las clases correspondientes para la seguridad de la API. Posteriormente, particpé en la dockerización de la aplicación junto a mis compañeros Jorge y Sergio. Seguidamente, comenzamos a desarrollar la API REST, en la cual tambuién participé activamente. Al igual que en su respectiva documentación. 
 
 #### 5 commits más significativos
 
 | Commit  | Descripción                                      | Link                                                                                            |
 | ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
-| #1            | Error 404 al acceder a una URL inexistente	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/486a1d3593f69568b6eba0fee03abfb8ca68c23f | 
-| #2            | Buscador de países de la página de inicio | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/9d6ca4142df3d78eacdb9d0f1213ca5358298fce | 
-| #3            | Cerrar sesión del usuario | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/ab245851208c4ba051a139dc18bc3f43dd6075f5 | 
-| #4            | Mustach para diferenciar ususarios, error al loguearse y springSecuiry| https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/c41054b53be30636f1e3adab6ae7b1d699e6ba19 | 
-| #5            | Finalización de introducir toda la información de los destinos	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/23775f412952f9a1d9a8beaee1199ad61e922e56 | 
+| #1            | Seguridad de la API, login y logout	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/a8234826a6e5953991c7653f07653d498cdd7e35 | 
+| #2            | Métodos de la API, review, tourism, catering | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/60b78e35cf08dfa3eafa770471024df4201f71ff | 
+| #3            | Primera parte paginación | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/b5a7d71de0ef34611d4ee455c541ad006363242a | 
+| #4            | Segunda parte paginación y continuación con los métodos de la API| https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/34dbabad970113d1a71836c4542fc8b487456975 | 
+| #5            | Documentación de la API	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/c11e2713fdd257836011f55e3a601a64da3f52a8 | 
 
 #### 5 ficheros más participación
          
