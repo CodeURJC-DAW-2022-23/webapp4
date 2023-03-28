@@ -287,7 +287,8 @@ En cuanto a mi trabajo, aunque debido a un problema familiar mi tiempo para esta
 
 # Fase 3. Incorporación de una API REST a la aplicación web y despliegue con Docker
     
-En esta fase hemos, diseñado y maquetado la aplicación mediante HTML, CSS y Javascrip. Además hemos definido las relaciones entre las diferentes pantallas, y que tipos de usuarios tendrán acceso a estas.
+En esta fase ha sido implementada una API REST para la aplicación, además, hemos empaquetado y distribuido esta en docker. Para poder ser arrancada desde docker.
+En principio, toda la funcionalidad disponible en la web mediante interfaz lo está también mediante la API REST, teniendo siempre en cuenta las buenas prácticas. Todas las URLs de la API REST han sido mappeadas con /api para diferenciarlas de las demás.
     
 - Documentación de la API REST:
     - XXXX
