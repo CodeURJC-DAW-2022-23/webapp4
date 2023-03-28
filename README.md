@@ -295,34 +295,33 @@ En principio, toda la funcionalidad disponible en la web mediante interfaz lo es
 - Actualización del diagrama de clases:
     <image src="/images/DiagramaDeClasesIdealTripV3.png" >  
 - Instrucciones de ejecución de la aplicación dockerizada:
-    - XXXX    
-- Documentación para construcción de la imagen docker:
-    - XXXX    
+    - Ejecutar el archivo ./create_image.ps1 idealtrip:v1    
 ### Participación de miembros:  
+
 ### Sergio Cuadros Flores
 #### Descripción textual: 
-En esta fase mi participación principal ha sido en la inicialización del proyecto, configurando todos los archivos iniciales, con la creación de la base de datos, introducción de los datos precargados, así como gestionar la pantalla en la que se muestran los diferentes destinos y el control de pantallas mediante el id del destino y las posteriores pantallas de catering (Restauración) y tourism (Turismo). Además, he gestionado la parte de seguridad relacionada con el https, cifrado SSL, control del puerto 8443. De igual manera, me he encargado del control del login y registrarse, añadiendo los usuarios registrados a la base de datos. Asimismo, he estado pendiente de la realización de las tareas de los demás compañeros, apoyando y ayudando en todo lo que necesitasen en todo momento. He gestionado el control del header y footer, así como la colaboración en la realización de la base de datos de newsletter junto con mi compañero Jorge. Por último he podido gestionar junto con mi compañero Adrián el control de permisos de los usuarios dependiendo de la ruta a la que podían tener acceso o no debido a su rol de registrados, no registrados y administradores.
+En esta fase mi dedicación principal ha sido con la realización de la dockerización de la aplicación, así como hacer el guardado de las imagenes como fichero y poder visualizarlas en la web, así como diferentes participaciones en la realización de la API en relación a los usuarios y los destinos.
 
-Mis commits no son grandes, por tanto no hay commits que engloben varias o una funcionalidad completa dado que he ido haciendo commits progresivos y continuados.
+
 #### 5 commits más significativos
 
 | Commit  | Descripción                                      | Link                                                                                            |
 | ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
-| #1            | Creación de los ficheros para la base de datos   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/bdc8de0bf1caf2ee3fa4d3a24473bb3ab44c1c16 | 
-| #2            | Inicialización de la base de datos | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/e42f966f5174151cba04efe9794156ecffbe5d00 | 
-| #3            | Mostar los destinos dependiendo de su id |https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/3ccb292c92f487b25ee26849889bd540ffeba827| 
-| #4            | Realización de login y registro	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/3c7a0ffa90b49c54ce3a7184edf4c9f710d16e0c#diff-21a6e6c8cd127959bb4596c8985e0b4d7f56a3c2f8f290f76bb233876ebfbc5a | 
-| #5            | Control pantallas catering y tourism			   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/86872c79e208e112467ca4235a08bc94476d2135 | 
-|               |                                                   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/b7d766286e0e82c8bd45246eb8eaaa39140cb41f|
+| #1            | Dockerización de la apliación y creación del fichero ejecutable   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/5d04eb5b41d37ed5e745548f514a3e926ed84f8f | 
+| #2            | Crear Destino con API | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/02bb6b2d1211794c64cf1abb163e8409c95fb0e0 | 
+| #3            | Crear Usuario con API |https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/323a24baa9bc697a549c8a958ed2eacba7059f0f| 
+| #4            | Crear Rest User	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/7a220de5d91a050dc42131311cad3a178b815d37 | 
+| #5            | Imágenes como fichero			   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/e9c88f045045d7c755eefff5f06faf151876b72f | 
+
 #### 5 ficheros más participación
 
 | Número fichero  | Fichero                                      | 
 | ------------- | ------------------------------------------------ |
-| #1            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/blob/main/Backend/idealTrip/src/main/java/com/idealtrip/idealTrip/service/InitDatabase.java">InitDatabase.java</a>		   | 
-| #2            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/blob/main/Backend/idealTrip/src/main/java/com/idealtrip/idealTrip/controller/LoginController.java">LoginController.java</a> | 
-| #3            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/blob/main/Backend/idealTrip/src/main/java/com/idealtrip/idealTrip/controller/ServiceController.java">ServiceController.java</a> |
-| #4            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/blob/main/Backend/idealTrip/src/main/java/com/idealtrip/idealTrip/controller/ProfileController.java">ProfileController.java</a>	   | 
-| #5            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/main/Backend/idealTrip/src/main/java/com/idealtrip/idealTrip/model">Directorio Model</a>			   | 
+| #1            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/blob/main/allCode/docker/create_image.ps1">create_image.ps1</a>		   | 
+| #2            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/blob/main/allCode/Backend/idealTrip/src/main/java/com/idealtrip/idealTrip/controller/rest/UserRestController.java">UserRestController.java</a> | 
+| #3            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/blob/main/allCode/docker/Dockerfile">Dockerfile</a> |
+| #4            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/blob/main/allCode/docker/docker-compose.yml">docker-compose.yml</a>	   | 
+| #5            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/blob/main/allCode/Backend/idealTrip/src/main/java/com/idealtrip/idealTrip/controller/rest/CitiesRestController.java">CitiesRestController.java</a>| 
          
 ### David Moreno Martín
 
