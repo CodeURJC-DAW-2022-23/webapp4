@@ -395,7 +395,30 @@ Lo primero de lo que me encargué fue de el apartado de contacto de la aplciaci�
 | #3            | contactController.java |
 | #4            | conctact.html	   | 
 | #5            | profileController.java			   |         
-         
+
+#### Descripción textual: Para esta parte me he encargado de ayudar con la parte de la creación de la imagen del docker compose. Además junto con Adrián y Sergio me he encargado de la implementación de las clases para la incorporación de la API REST a la aplicación web. Para esta segunda parte me he encargado de hacer los métodos get que muestran los destinos, monumentos, comida típica, alojamientos y review. Además de implementar métodos POST como el de hacer login o añadir destino, añadir una review. Por último nos hemos encargado entre Adrián y yo de documentar todos los métodos de la API y crear el documento con todas las URLs. 
+
+
+#### 5 commits más significativos
+
+| Commit  | Descripción                                      | Link                                                                                            |
+| ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| #1            | Documentación de la API REST		   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/c11e2713fdd257836011f55e3a601a64da3f52a8 | 
+| #2            | implementación de reviews para la API REST | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/dcd9389e9978c9d3091e273ee4b95b75faf0e388| 
+| #3            | Implementación de los métodos get para los atributos de los destinos | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/60b78e35cf08dfa3eafa770471024df4201f71ff | 
+| #4            | Implementación de los Get para obtener los destinos	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/7f1df83e769287cb4a67a01bed1b6d7bd11c8134 | 
+| #5            | Solución de los errores de la API REST			   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/cd2276f62acd03e485072cdbac7683fc1c367d3f | 
+
+#### 5 ficheros más participación
+
+| Número fichero  | Fichero                                      | 
+| ------------- | ------------------------------------------------ |
+| #1            | CitiesRestConntroller.java | 
+| #2            | UserResController.java | 
+| #3            | ReviewDTO.java |
+| #4            | LoginRestController.java | 
+| #5            | UpdateUser.DTO.java			   | 
+
 ### ShuHeng	Ye
 #### Descripción textual:
 
