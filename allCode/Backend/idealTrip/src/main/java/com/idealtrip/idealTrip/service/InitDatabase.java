@@ -5,18 +5,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.io.IOException;
-import java.sql.Blob;
-
 import javax.annotation.PostConstruct;
-
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.security.crypto.password.PasswordEncoder;
-// import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import com.idealtrip.idealTrip.model.Catering;
 import com.idealtrip.idealTrip.model.Destination;
 import com.idealtrip.idealTrip.model.House;
@@ -25,7 +20,6 @@ import com.idealtrip.idealTrip.model.Purchase;
 import com.idealtrip.idealTrip.model.Review;
 import com.idealtrip.idealTrip.model.Tourism;
 import com.idealtrip.idealTrip.model.User;
-//import com.idealtrip.idealTrip.repository.UserRepository;
 
 @Service
 public class InitDatabase {
@@ -52,9 +46,6 @@ public class InitDatabase {
 
         @Autowired
         private UserService users;
-
-        //@Autowired
-        //private UserRepository userRepository;
 
         @Autowired
         private PasswordEncoder passwordEncoder;
@@ -136,7 +127,6 @@ public class InitDatabase {
                 namePlace.add("Catedral de Notre Dame");
                 namePlace.add("Basílica Sagrado Corazón");
                 namePlace.add("Disneyland París");
-                // contentPlace.add(" ");
                 contentPlace.add(
                                 "El edificio más alto del mundo por 41 años. Desde su construcción, hasta 1930, la Torre Eiffel fue el edificio más alto del mundo, gracias a sus 312 metros de altura");
                 contentPlace.add(
@@ -293,8 +283,8 @@ public class InitDatabase {
                         cont++;
                         tourism.setNameDestination(cities.get(contCity));
                         tourism.setDestination(initedDestinations.get(contCity));
-                        tourism.setImageTourismURL("/static/assets/images/informacion/"+place+".jpg");
-                        
+                        tourism.setImageTourismURL("/static/assets/images/informacion/" + place + ".jpg");
+
                         try {
                                 setTourismImageB(tourism, tourism.getImageTourismURL());
                         } catch (IOException e) {
@@ -318,14 +308,12 @@ public class InitDatabase {
                 List<String> nameFood = new ArrayList<>();
                 List<String> contentFood = new ArrayList<>();
                 // Paris
-                // nameFood.add(" ");
                 nameFood.add("Ratatouille");
                 nameFood.add("Crepe");
                 nameFood.add("Cassoulet");
                 nameFood.add("Boeuf Bourguignon");
                 nameFood.add("Quiche Lorraine");
                 nameFood.add("Escargots");
-                // contentFood.add(" ");
                 contentFood.add(
                                 "El plato tiene su origen en la cocina provenzal de Niza; dichos orígenes se reflejan en el nombre: «Rata» significa «comida» y «touille», «remover». De modo que «ratatouille» significa «comida revuelta» que se cocina a fuego lento durante horas");
                 contentFood.add(
@@ -476,7 +464,6 @@ public class InitDatabase {
                         Catering catering = new Catering();
                         catering.setNameFood(food);
                         catering.setContentFood(contentFood.get(cont));
-                        // catering.setDestination(initedDestinations.get(cont));
                         cont++;
                         catering.setImageFoodUrl("/static/assets/images/informacion/" + food + ".jpg");
                         try {
@@ -500,8 +487,6 @@ public class InitDatabase {
         private List<Destination> generateDestination() {
                 List<Destination> destinations = new ArrayList<>();
                 List<String> titleDestination = new ArrayList<>();
-                // cities.add("");
-                // titleDestination.add("");
                 cities.add("Paris");
                 titleDestination.add("La ciudad del amor");
                 cities.add("Bangkok");
@@ -553,8 +538,6 @@ public class InitDatabase {
                 List<House> houses = new ArrayList<>();
                 List<String> houseNames = new ArrayList<>();
 
-
-                // houseNames.add(" ");
                 houseNames.add("Ibis Paris Tour Eiffel Cambronne 15ème");
                 houseNames.add("Lamphuhouse Bangkok - SHA Extra Plus Certified");
                 houseNames.add("Rasdu View Inn");
@@ -576,34 +559,42 @@ public class InitDatabase {
 
                 List<String> streetViewLinkArray = new ArrayList<>();
 
-                streetViewLinkArray.add("https://www.google.com/maps/embed?pb=!4v1676028794230!6m8!1m7!1skHrLzS2dgYYAAAQvO4D0RA!2m2!1d48.84704800513715!2d2.301612553443306!3f247.7688792620428!4f16.333893010043653!5f1.5076336197232112");
-                streetViewLinkArray.add("https://www.google.com/maps/embed?pb=!4v1676112121790!6m8!1m7!1sgI2Nv9nYUk30vGgKvo1r2A!2m2!1d46.48270672884353!2d13.78001426307877!3f9.776072580970688!4f0.2519408423733296!5f0.7820865974627469"); 
-                streetViewLinkArray.add("https://www.google.com/maps/embed?pb=!4v1676048404186!6m8!1m7!1sFlCzoNYDZnr8RoYsztOziw!2m2!1d37.93826123710596!2d23.69895010457095!3f304.0260391520811!4f19.74034068554542!5f0.7820865974627469");
-                streetViewLinkArray.add("https://www.google.com/maps/embed?pb=!4v1676046226246!6m8!1m7!1sCAoSLEFGMVFpcFBFaVRoTnhNLVlzeG13MjRaUXgxRklPOEFvNmEteXl4cEloVlJq!2m2!1d13.76172!2d100.4959854!3f100!4f0!5f0.7820865974627469");
-                streetViewLinkArray.add("https://www.google.com/maps/embed?pb=!4v1676111472590!6m8!1m7!1sCAoSLEFGMVFpcFBQcGxoRk5oamFOYl9WNDFqSTlQcm90YThidU95TkFyTnpYWWJa!2m2!1d51.5125237!2d-0.1750489!3f239.12570828959397!4f27.75889621227269!5f0.4000814197993535");
-                streetViewLinkArray.add("https://www.google.com/maps/embed?pb=!4v1676047440085!6m8!1m7!1sCAoSLEFGMVFpcFBwVTBlSE5uMGtTZTgwOTNRUnFwbVlQUjhOSVhnM0JVancyb2Np!2m2!1d4.2634683!2d72.9927701!3f170.68325763793726!4f11.885678211503674!5f0.7820865974627469");
-                streetViewLinkArray.add("https://www.google.com/maps/embed?pb=!4v1676112679447!6m8!1m7!1sCAoSLEFGMVFpcE5QNHQ2YjhZVWY1MVpNVk44VWpXbzVRS1p0TG83eXJvSEdZX1FZ!2m2!1d11.2392006!2d-74.2161595!3f173.57106640224222!4f-3.6988222650587232!5f0.7820865974627469");
-                streetViewLinkArray.add("https://www.google.com/maps/embed?pb=!4v1676113241150!6m8!1m7!1sCAoSLEFGMVFpcE1ZRElvUlY1RVl1NEUwYVhSendQT0s4RGh3SVFvLTV0WDF6UC02!2m2!1d1.2908669!2d103.8394557!3f16.8968797741457!4f31.91353930181144!5f0.7820865974627469");
+                streetViewLinkArray.add(
+                                "https://www.google.com/maps/embed?pb=!4v1676028794230!6m8!1m7!1skHrLzS2dgYYAAAQvO4D0RA!2m2!1d48.84704800513715!2d2.301612553443306!3f247.7688792620428!4f16.333893010043653!5f1.5076336197232112");
+                streetViewLinkArray.add(
+                                "https://www.google.com/maps/embed?pb=!4v1676112121790!6m8!1m7!1sgI2Nv9nYUk30vGgKvo1r2A!2m2!1d46.48270672884353!2d13.78001426307877!3f9.776072580970688!4f0.2519408423733296!5f0.7820865974627469");
+                streetViewLinkArray.add(
+                                "https://www.google.com/maps/embed?pb=!4v1676048404186!6m8!1m7!1sFlCzoNYDZnr8RoYsztOziw!2m2!1d37.93826123710596!2d23.69895010457095!3f304.0260391520811!4f19.74034068554542!5f0.7820865974627469");
+                streetViewLinkArray.add(
+                                "https://www.google.com/maps/embed?pb=!4v1676046226246!6m8!1m7!1sCAoSLEFGMVFpcFBFaVRoTnhNLVlzeG13MjRaUXgxRklPOEFvNmEteXl4cEloVlJq!2m2!1d13.76172!2d100.4959854!3f100!4f0!5f0.7820865974627469");
+                streetViewLinkArray.add(
+                                "https://www.google.com/maps/embed?pb=!4v1676111472590!6m8!1m7!1sCAoSLEFGMVFpcFBQcGxoRk5oamFOYl9WNDFqSTlQcm90YThidU95TkFyTnpYWWJa!2m2!1d51.5125237!2d-0.1750489!3f239.12570828959397!4f27.75889621227269!5f0.4000814197993535");
+                streetViewLinkArray.add(
+                                "https://www.google.com/maps/embed?pb=!4v1676047440085!6m8!1m7!1sCAoSLEFGMVFpcFBwVTBlSE5uMGtTZTgwOTNRUnFwbVlQUjhOSVhnM0JVancyb2Np!2m2!1d4.2634683!2d72.9927701!3f170.68325763793726!4f11.885678211503674!5f0.7820865974627469");
+                streetViewLinkArray.add(
+                                "https://www.google.com/maps/embed?pb=!4v1676112679447!6m8!1m7!1sCAoSLEFGMVFpcE5QNHQ2YjhZVWY1MVpNVk44VWpXbzVRS1p0TG83eXJvSEdZX1FZ!2m2!1d11.2392006!2d-74.2161595!3f173.57106640224222!4f-3.6988222650587232!5f0.7820865974627469");
+                streetViewLinkArray.add(
+                                "https://www.google.com/maps/embed?pb=!4v1676113241150!6m8!1m7!1sCAoSLEFGMVFpcE1ZRElvUlY1RVl1NEUwYVhSendQT0s4RGh3SVFvLTV0WDF6UC02!2m2!1d1.2908669!2d103.8394557!3f16.8968797741457!4f31.91353930181144!5f0.7820865974627469");
 
                 List<String> mapsLinkArray = new ArrayList<>();
 
-                 mapsLinkArray.add(
+                mapsLinkArray.add(
                                 "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2625.586302423611!2d2.299161515479695!3d48.847029279286474!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e67022d77fe41f%3A0x465bb7c0930ff4e6!2sibis%20Paris%20Tour%20Eiffel%20Cambronne%2015%C3%A8me!5e0!3m2!1ses!2ses!4v1676025822254!5m2!1ses!2ses");
-                 mapsLinkArray.add(
-                                 "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.2878159269135!2d100.49370791744384!3d13.761509100000008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e2996d7dccc813%3A0xc375022480278c3f!2sLamphu%20House%20Bangkok!5e0!3m2!1ses!2ses!4v1676046099002!5m2!1ses!2ses");
-                 mapsLinkArray.add(
-                                 "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d994.6943610796532!2d72.9927701!3d4.2634683!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b4059353498bb27%3A0x725acaffdc7e1bf3!2sRasdu%20View%20Inn!5e0!3m2!1ses!2ses!4v1676047461285!5m2!1ses!2ses");
-                 mapsLinkArray.add(
-                                 "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3146.661991674933!2d23.696965315089535!3d37.93832617973003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a1bd0d2fbfea0f%3A0x3aa2b716da352fba!2sThe%20Lop%20Athens%20Holiday%20Luxury%20Suites!5e0!3m2!1ses!2ses!4v1676048346449!5m2!1ses!2ses");
-                 mapsLinkArray.add(
-                                 "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.0500927497337!2d-0.17738568440794428!3d51.51229697963592!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876054d83ad0061%3A0x6ed2e258bff80d13!2sRoyal%20Lancaster%20London!5e0!3m2!1ses!2ses!4v1676111354746!5m2!1ses!2ses");
-                 mapsLinkArray.add(
-                                 "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2747.269065211928!2d13.777958715394814!3d46.482984379126236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477a7dc52a55f57b%3A0x49f06bf1a0b0c2c2!2sApartmaji%20Telemark!5e0!3m2!1ses!2ses!4v1676112041823!5m2!1ses!2ses");
-                 mapsLinkArray.add(
-                                 "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3913.303245549507!2d-74.21854368547578!3d11.23908839200858!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8ef4f57dc34eef6b%3A0x852ce023b1f15da!2sHotel%20Hilton%20Garden%20Inn%20Santa%20Marta!5e0!3m2!1ses!2ses!4v1676112603067!5m2!1ses!2ses");
-                 mapsLinkArray.add(
-                                 "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8058374389993!2d103.83698601446783!3d1.290815299058522!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da199e743b9537%3A0x8345fd72774c8e84!2sStudio%20M%20Hotel!5e0!3m2!1ses!2ses!4v1676113111403!5m2!1ses!2ses");
-                
+                mapsLinkArray.add(
+                                "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.2878159269135!2d100.49370791744384!3d13.761509100000008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e2996d7dccc813%3A0xc375022480278c3f!2sLamphu%20House%20Bangkok!5e0!3m2!1ses!2ses!4v1676046099002!5m2!1ses!2ses");
+                mapsLinkArray.add(
+                                "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d994.6943610796532!2d72.9927701!3d4.2634683!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b4059353498bb27%3A0x725acaffdc7e1bf3!2sRasdu%20View%20Inn!5e0!3m2!1ses!2ses!4v1676047461285!5m2!1ses!2ses");
+                mapsLinkArray.add(
+                                "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3146.661991674933!2d23.696965315089535!3d37.93832617973003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a1bd0d2fbfea0f%3A0x3aa2b716da352fba!2sThe%20Lop%20Athens%20Holiday%20Luxury%20Suites!5e0!3m2!1ses!2ses!4v1676048346449!5m2!1ses!2ses");
+                mapsLinkArray.add(
+                                "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.0500927497337!2d-0.17738568440794428!3d51.51229697963592!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876054d83ad0061%3A0x6ed2e258bff80d13!2sRoyal%20Lancaster%20London!5e0!3m2!1ses!2ses!4v1676111354746!5m2!1ses!2ses");
+                mapsLinkArray.add(
+                                "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2747.269065211928!2d13.777958715394814!3d46.482984379126236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477a7dc52a55f57b%3A0x49f06bf1a0b0c2c2!2sApartmaji%20Telemark!5e0!3m2!1ses!2ses!4v1676112041823!5m2!1ses!2ses");
+                mapsLinkArray.add(
+                                "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3913.303245549507!2d-74.21854368547578!3d11.23908839200858!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8ef4f57dc34eef6b%3A0x852ce023b1f15da!2sHotel%20Hilton%20Garden%20Inn%20Santa%20Marta!5e0!3m2!1ses!2ses!4v1676112603067!5m2!1ses!2ses");
+                mapsLinkArray.add(
+                                "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.8058374389993!2d103.83698601446783!3d1.290815299058522!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da199e743b9537%3A0x8345fd72774c8e84!2sStudio%20M%20Hotel!5e0!3m2!1ses!2ses!4v1676113111403!5m2!1ses!2ses");
+
                 for (int i = 0; i < houseNames.size(); i++) {
                         House house = new House();
                         String apartment = houseNames.get(i);
@@ -621,12 +612,7 @@ public class InitDatabase {
                         } catch (IOException e) {
                                 e.printStackTrace();
                         }
-                        List<String> auxList = new ArrayList<>();
-                        for (int j = 1; j <= 5; j++) {
-                                auxList.add("/static/assets/images/alojamiento/" + file + "1." + j + ".jpg");
-                        }
-                        house.setImagesHouse(auxList);
-
+                        house.setImagesHouse("/static/assets/images/alojamiento/" + file + "1.1.jpg");
                         try {
                                 setImagesHouseB(house, house.getImagesHouse());
                         } catch (IOException e) {
@@ -644,13 +630,9 @@ public class InitDatabase {
                 return houses;
         }
 
-        private void setImagesHouseB(House house, List<String> imagesHouse) throws IOException {
-                List<Blob> auxBlob = new ArrayList<>();
-                for (String str : imagesHouse) {
-                        Resource image = new ClassPathResource(str);
-                        auxBlob.add(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
-                        house.setImagesHouseFile(auxBlob);
-                }
+        private void setImagesHouseB(House house, String imagesHouse) throws IOException {
+                Resource image = new ClassPathResource(imagesHouse);
+                house.setImagesHouseFile(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
         }
 
         private void setHostImageB(House house, String hostImage) throws IOException {
@@ -669,9 +651,8 @@ public class InitDatabase {
                         user.setLastName(lastName);
                         user.setEmail(lastName + i + "@gmail.com");
                         user.setEncodedPassword(passwordEncoder.encode("12345"));
-                        // user.setEncodedPassword("12345");
                         user.setRoles("USER");
-                        user.setProfileAvatar("/static/assets/images/null-avatar.jpg");
+                        user.setProfileAvatar("/static/assets/images/c1.jpg");
                         try {
                                 setProfileAvatarContent(user, user.getProfileAvatar());
                         } catch (IOException e) {
@@ -687,9 +668,8 @@ public class InitDatabase {
                         user.setLastName(lastName);
                         user.setEmail(name + "@gmail.com");
                         user.setEncodedPassword(passwordEncoder.encode("123456"));
-                        // user.setEncodedPassword("123456");
                         user.setRoles("USER", "ADMIN");
-                        user.setProfileAvatar("/static/assets/images/null-avatar.jpg");
+                        user.setProfileAvatar("/static/assets/images/null-avatar.png");
                         try {
                                 setProfileAvatarContent(user, user.getProfileAvatar());
                         } catch (IOException e) {

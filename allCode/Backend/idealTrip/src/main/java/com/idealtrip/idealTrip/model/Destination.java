@@ -3,7 +3,6 @@ package com.idealtrip.idealTrip.model;
 import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,46 +10,69 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
-//import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
+import com.idealtrip.idealTrip.controller.DTOS.DestinationDTO;
 
 @Entity(name = "destinationTable")
 public class Destination {
 
+    public interface Basico {
+    }
+
+    public interface Avanzada {
+    }
+
+    public interface Todo extends Basico, Avanzada {
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @JsonView(Basico.class)
     private Long id;
 
     @Lob
     @JsonIgnore
     private Blob titleImageFile;
+    @JsonView(Basico.class)
     private String titleImage;
 
     @Column(name = "contentDestination", columnDefinition = "TEXT")
+    @JsonView(Basico.class)
     private String contentDestination;
-
+    @JsonView(Basico.class)
     private String nameDestination;
 
     @OneToOne(mappedBy = "destination", cascade = CascadeType.ALL)
+    @JsonView(Avanzada.class)
     private House house;
 
     @OneToMany(mappedBy = "destination", cascade = CascadeType.ALL)
+    @JsonView(Avanzada.class)
     private List<Review> reviews = new ArrayList<>();
 
     @OneToMany(mappedBy = "destination", cascade = CascadeType.ALL)
+    @JsonView(Avanzada.class)
     private List<Catering> catering;
 
     @OneToMany(mappedBy = "destination", cascade = CascadeType.ALL)
+    @JsonView(Avanzada.class)
     private List<Tourism> tourism;
 
+    @JsonView(Basico.class)
     private float price;
 
     public Destination() {
     }
-
+    public Destination(DestinationDTO destinationDTO) {
+        super();
+        this.nameDestination = destinationDTO.getNameDestination();
+        this.contentDestination = destinationDTO.getContentDestination();
+        this.price = destinationDTO.getPrice();
+        this.titleImage = destinationDTO.getTitleImage();
+    }
     public Destination(Long id, String contentDestination, String nameDestination,
             List<Review> reviews, float price) {
         this.id = id;
@@ -58,6 +80,30 @@ public class Destination {
         this.nameDestination = nameDestination;
         this.reviews = reviews;
         this.price = price;
+    }
+
+
+    public Destination(String nameDestination, String contentDestination, float price, Blob titleImageFile) {
+        this.titleImageFile = titleImageFile;
+        this.contentDestination = contentDestination;
+        this.nameDestination = nameDestination;
+        this.price = price;
+    }
+
+    public List<Catering> getCatering() {
+        return catering;
+    }
+
+    public void setCatering(List<Catering> catering) {
+        this.catering = catering;
+    }
+
+    public List<Tourism> getTourism() {
+        return tourism;
+    }
+
+    public void setTourism(List<Tourism> tourism) {
+        this.tourism = tourism;
     }
 
     public Blob getTitleImageFile() {
@@ -123,5 +169,5 @@ public class Destination {
     public void setReviews(List<Review> reviews) {
         this.reviews = reviews;
     }
-        
+
 }

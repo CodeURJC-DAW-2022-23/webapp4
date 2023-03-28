@@ -3,7 +3,6 @@ package com.idealtrip.idealTrip.model;
 import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -15,7 +14,10 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 
-//import org.hibernate.resource.beans.internal.FallbackBeanInstanceProducer;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.idealtrip.idealTrip.controller.DTOS.UpdateUserDTO;
+import com.idealtrip.idealTrip.controller.DTOS.UserDTO;
+
 
 @Entity(name = "userTable")
 public class User {
@@ -28,23 +30,41 @@ public class User {
 
     private String name;
     private String lastName;
+    @JsonIgnore
     private String encodedPassword;
 
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> roles;
 
     @Lob
+    @JsonIgnore
     private Blob profileAvatarFile;
     private String profileAvatar;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    @JsonIgnore
     private List<Purchase> purchases = new ArrayList<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    @JsonIgnore
     private List<Review> reviews = new ArrayList<>();
 
     public User() {
 
+    }
+    public User(UserDTO userDTO) {
+        super();
+        this.name = userDTO.getFirstName();
+        this.lastName = userDTO.getLastName();
+        this.email = userDTO.getEmail();
+        this.encodedPassword = userDTO.getPasswordEncoded();
+        this.roles = List.of("USER");
+    }
+
+    public User(UpdateUserDTO userDTO) {
+        super();
+        this.name = userDTO.getName();
+        this.lastName = userDTO.getLastName();
     }
 
     public User(String email, String name, String lastName, String encodedPassword) {
@@ -60,21 +80,6 @@ public class User {
         this.roles = List.of(roles);
     }
 
-    // public Destination getDestination() {
-    //     return destination;
-    // }
-
-    // public void setDestination(Destination destination) {
-    //     this.destination = destination;
-    // }
-
-    // public Purchase getPurchase() {
-    //     return purchase;
-    // }
-
-    // public void setPurchase(Purchase purchase) {
-    //     this.purchase = purchase;
-    // }
 
     public void setRoles(List<String> roles) {
         this.roles = roles;
@@ -153,9 +158,7 @@ public class User {
     }
 
     public List<String> getRoles() {
-        // for (String rol :roles){
-        //     console
-        // }
+        
         return this.roles;
     }
 
@@ -163,12 +166,5 @@ public class User {
         this.roles = List.of(roles);
     }
 
-    // public Review getReview() {
-    //     return review;
-    // }
-
-    // public void setReview(Review review) {
-    //     this.review = review;
-//}
 
 }

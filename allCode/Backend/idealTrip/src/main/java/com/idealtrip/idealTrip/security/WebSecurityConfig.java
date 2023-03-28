@@ -1,7 +1,6 @@
 package com.idealtrip.idealTrip.security;
 
 import java.security.SecureRandom;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,6 +9,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
 
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -43,17 +43,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/tourism/*").permitAll();
         http.authorizeRequests().antMatchers("/review/*").permitAll();
         http.authorizeRequests().antMatchers("/house/*").permitAll();
-        // http.authorizeRequests().anyRequest().permitAll();
 
-        // http.authorizeRequests().antMatchers("/profile").permitAll();
-        // http.authorizeRequests().antMatchers("/error").permitAll(); 
 
         // Private pages
         http.authorizeRequests().antMatchers("/profile").hasAnyRole("ADMIN", "USER");
+        http.authorizeRequests().antMatchers("/administrator").hasAnyRole("ADMIN");
 
-        // http.authorizeRequests().antMatchers("/newbook").hasAnyRole("USER");
-        // http.authorizeRequests().antMatchers("/editbook/*").hasAnyRole("USER");
-        // http.authorizeRequests().antMatchers("/removebook/*").hasAnyRole("ADMIN");
 
         // Login form
         http.formLogin().loginPage("/login");
@@ -61,9 +56,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.formLogin().passwordParameter("password");
         http.formLogin().defaultSuccessUrl("/index");
         http.formLogin().failureUrl("/loginerror");
-
-        // Logout
-        //http.logout().logoutUrl("/logout");
-        //http.logout().logoutSuccessUrl("/index"); 
     }    
 }

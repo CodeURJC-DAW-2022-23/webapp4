@@ -55,7 +55,19 @@
 		<dependency>
 			<groupId>org.thymeleaf</groupId>
 			<artifactId>thymeleaf</artifactId>
-		</dependency>	
+		</dependency>
+	
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.7.0</version>
+	</dependency>
+
+	<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-ui</artifactId>
+			<version>1.5.12</version>
+	</dependency>
  </dependencies>
 
 	<build>
@@ -67,4 +79,5 @@
 		</plugins>
 	</build>
 
+	
 </project>

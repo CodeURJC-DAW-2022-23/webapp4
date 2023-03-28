@@ -1,25 +1,31 @@
 package com.idealtrip.idealTrip.model;
 
-import java.sql.Blob;
+import com.fasterxml.jackson.annotation.JsonView;
 
+import java.sql.Blob;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
-//import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-//import javax.persistence.OneToOne;
+
 
 @Entity(name = "tourismTable")
 public class Tourism {
+
+    public interface Basic {}
+    public interface Advanced {}
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @JsonView(Basic.class)
     private Long id;
-
+    @JsonView(Basic.class)
     private String nameDestination;
+    @JsonView(Basic.class)
     private String nameTourism;
+    @JsonView(Basic.class)
     @Column(name = "contentTourism", columnDefinition = "TEXT")
     private String contentTourism;
 
@@ -27,6 +33,7 @@ public class Tourism {
     private Destination destination;
 
     @Lob
+    @JsonView(Advanced.class)
     private Blob imageTourismFile;
     private String imageTourismURL;
 
@@ -37,7 +44,6 @@ public class Tourism {
         this.id = id;
         this.nameTourism = nameTourism;
         this.contentTourism = contentTourism;
-        // this.destination = destination;
         this.imageTourismFile = imageTourismFile;
     }
 
@@ -65,13 +71,6 @@ public class Tourism {
         this.contentTourism = contentTourism;
     }
 
-    // public Destination getDestination() {
-    //     return destination;
-    // }
-
-    // public void setDestination(Destination destination) {
-    //     this.destination = destination;
-    // }
 
     public Blob getImageTourismFile() {
         return imageTourismFile;

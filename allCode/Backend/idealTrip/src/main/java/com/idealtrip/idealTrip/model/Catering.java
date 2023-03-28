@@ -1,7 +1,8 @@
 package com.idealtrip.idealTrip.model;
 
-import java.sql.Blob;
+import com.fasterxml.jackson.annotation.JsonView;
 
+import java.sql.Blob;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,23 +11,28 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
+
 @Entity(name = "cateringTable")
 public class Catering {
-    
+    public interface Basic {}
+    public interface Advanced {}
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @JsonView(Basic.class)
     private Long id;
-
+    @JsonView(Basic.class)
     private String nameFood;
+    @JsonView(Basic.class)
     @Column(name = "contentFood", columnDefinition = "TEXT")
     private String contentFood;
-
+    @JsonView(Basic.class)
     private String nameDestination;
 
     @ManyToOne
     private Destination destination;
 
     @Lob
+    @JsonView(Advanced.class)
     private Blob imageFoodFile;
     private String imageFoodUrl;
 
@@ -107,13 +113,7 @@ public class Catering {
         this.imageFoodFile = imageFoodFile;
     }
 
-    // public Destination getDestination() {
-    //     return destination;
-    // }
 
-    // public void setDestination(Destination destination) {
-    //     this.destination = destination;
-    // }
 
     
 }

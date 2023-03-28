@@ -3,26 +3,18 @@ package com.idealtrip.idealTrip.controller;
 import java.io.IOException;
 import java.security.Principal;
 import java.util.Optional;
-
-//import javax.annotation.Resource;
-//import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
-
-//import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.core.io.AbstractFileResolvingResource;
-//import org.springframework.core.io.ClassPathResource;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-//import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.idealtrip.idealTrip.model.User;
 import com.idealtrip.idealTrip.service.UserService;
+
 
 @Controller
 public class LoginController {
@@ -71,8 +63,6 @@ public class LoginController {
 		if(!users.existEmail(user.getEmail())){
 			user.setName(user.getName());
 			user.setLastName(user.getLastName());
-			// Resource image = new ClassPathResource("/static/assets/images/c1.jpg");
-			// user.setProfileAvatarFile(BlobProxy.generateProxy( image.getInputStream(),  image.contentLength()));
 			user.setProfileAvatar("/static/assets/images/c1.jpg");
 			user.setEmail(user.getEmail());
 			user.setEncodedPassword(passwordEncoder.encode(user.getEncodedPassword()));

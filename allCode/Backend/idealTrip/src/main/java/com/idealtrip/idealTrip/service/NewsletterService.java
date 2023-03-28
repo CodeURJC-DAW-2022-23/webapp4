@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
-
 import java.util.Optional;
+
 
 @Service
 public class NewsletterService {
@@ -38,7 +38,4 @@ public class NewsletterService {
 
         mailSender.send(message);
     }
-    // public Optional<Newsletter> findByEmail(String email){
-    //     return newsletters.findByEmail(email);
-    // }
 }

@@ -2,11 +2,7 @@ package com.idealtrip.idealTrip.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.sql.rowset.serial.SerialBlob;
-
 import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.data.domain.Pageable;
-// import org.springframework.data.domain.Page;
-// import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,18 +12,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-
-//import com.idealtrip.idealTrip.model.Review;
 import com.idealtrip.idealTrip.model.User;
-//import com.idealtrip.idealTrip.repository.ReviewRepository;
-//import com.idealtrip.idealTrip.service.ReviewService;
 import com.idealtrip.idealTrip.service.UserService;
-
 import java.io.IOException;
 import java.security.Principal;
 import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.Optional;
+
 
 @Controller
 public class ProfileController {
@@ -35,12 +27,7 @@ public class ProfileController {
 	@Autowired
 	private UserService users;
 
-	// @Autowired
-	// private ReviewService myRepository;
-
 	User currentUser;
-	// Pageable pageable = PageRequest.of(0, 5);
-	// Page<Review> review = myRepository.findReviewByUser(currentUser, pageable);
 
 	@ModelAttribute
 	public void addAttribute(Model model, HttpServletRequest request) {
@@ -51,7 +38,6 @@ public class ProfileController {
 			model.addAttribute("logged", true);
 			model.addAttribute("currentUser", currentUser);
 			model.addAttribute("email", currentUser.getEmail());
-			// model.addAttribute("review", review);
 			model.addAttribute("review", currentUser.getReviews());
 			model.addAttribute("imageProfileFile", currentUser.getProfileAvatarFile());
 			model.addAttribute("imageProfile", currentUser.getProfileAvatar());
