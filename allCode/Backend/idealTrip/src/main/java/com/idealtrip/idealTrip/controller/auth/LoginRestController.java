@@ -18,12 +18,24 @@ import com.idealtrip.idealTrip.security.jwt.LoginRequest;
 import com.idealtrip.idealTrip.security.jwt.UserLoginService;
 import com.idealtrip.idealTrip.security.jwt.AuthResponse.Status;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+
+
 @RestController
 @RequestMapping("/api/auth")
 public class LoginRestController {
 
 	@Autowired
 	private UserLoginService userService;
+
+	@Operation(summary = "log in to the application")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Login successful", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = AuthResponse.class)) })})
 	@PostMapping("/login")
 	public ResponseEntity<AuthResponse> login(
 			@CookieValue(name = "accessToken", required = false) String accessToken,
@@ -32,6 +44,12 @@ public class LoginRestController {
 		
 		return userService.login(loginRequest, accessToken, refreshToken);
 	}
+
+
+	@Operation(summary = "Log out ")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Logout successful", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = AuthResponse.class)) })})
 
 	@PostMapping("/logout")
 	public ResponseEntity<AuthResponse> logOut(HttpServletRequest request, HttpServletResponse response) {

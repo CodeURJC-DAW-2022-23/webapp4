@@ -32,6 +32,13 @@ import com.idealtrip.idealTrip.model.User;
 import com.idealtrip.idealTrip.repository.UserRepository;
 import com.idealtrip.idealTrip.service.UserService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+
+
 @RestController
 @RequestMapping("/api/users")
 public class UserRestController {
@@ -44,6 +51,13 @@ public class UserRestController {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
+
+	@Operation(summary = "Get information about the current user")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found the user", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = User.class)) }),
+            @ApiResponse(responseCode = "404", description = "User not found ", content = @Content),
+            @ApiResponse(responseCode = "403", description = "Forbiden or don't have permissions", content = @Content) })
 	@GetMapping("/me")
 	public ResponseEntity<User> me(HttpServletRequest request) {
 
@@ -56,6 +70,12 @@ public class UserRestController {
 		}
 	}
 
+
+	@Operation(summary = "Register a new user")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "User created", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = User.class)) }),
+            @ApiResponse(responseCode = "403", description = "Forbiden or don't have permissions", content = @Content) })
 	@PostMapping("/")
 	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<User> register(@RequestBody UserDTO userDTO) throws IOException {
@@ -81,8 +101,16 @@ public class UserRestController {
 		}
 	}
 
+
+
+	@Operation(summary = "Update the user")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Profile updated", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = User.class)) }),
+            @ApiResponse(responseCode = "404", description = "Profile not found ", content = @Content),
+            @ApiResponse(responseCode = "403", description = "Forbiden o don't have permissions", content = @Content) })
 	@PutMapping("/{id}")
-	public ResponseEntity<User> updateDestination(@PathVariable long id, @RequestBody UpdateUserDTO updatedUser){
+	public ResponseEntity<User> updateUser(@PathVariable long id, @RequestBody UpdateUserDTO updatedUser){
 		Optional<User> user = userService.findById(id);
         if(user.isPresent()){
 			User user2 = user.get(); 
