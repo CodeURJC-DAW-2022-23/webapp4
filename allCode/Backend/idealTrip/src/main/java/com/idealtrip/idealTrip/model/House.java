@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonView;
@@ -46,8 +48,8 @@ public class House {
     private Blob hostImageFile;
     private String hostImage;
 
-    @OneToOne(mappedBy = "house", cascade = CascadeType.ALL)
-    private Purchase purchase;
+    @OneToMany(mappedBy = "house", cascade = CascadeType.ALL)
+    private List<Purchase> purchases;
     @OneToOne
     private Destination destination;
     @JsonView(Basic.class)
@@ -62,19 +64,15 @@ public class House {
     }
 
     public House(Long id, String nameHouse, Destination destination, String contentHouse, String hostName,
-            Purchase purchase, List<Blob> imagesHouseFile, List<String> imagesHouse, float price) {
+            List<Purchase> purchase, List<Blob> imagesHouseFile, List<String> imagesHouse, float price) {
         this.id = id;
         this.nameHouse = nameHouse;
         this.destination = destination;
         this.contentHouse = contentHouse;
         this.hostName = hostName;
-        this.purchase = purchase;
+        this.purchases = purchase;
         this.price = price;
     }
-
-    
-
-   
 
     public Blob getHostImageFile() {
         return hostImageFile;
@@ -100,13 +98,7 @@ public class House {
         this.destination = destination;
     }
 
-    public Purchase getPurchase() {
-        return purchase;
-    }
 
-    public void setPurchase(Purchase purchase) {
-        this.purchase = purchase;
-    }
 
     public float getPrice() {
         return price;
@@ -188,4 +180,11 @@ public class House {
         this.imagesHouse = imagesHouse;
     }
 
+    public List<Purchase> getPurchases() {
+        return purchases;
+    }
+
+    public void setPurchases(List<Purchase> purchases) {
+        this.purchases = purchases;
+    }
 }
