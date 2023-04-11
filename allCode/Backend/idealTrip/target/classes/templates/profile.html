@@ -71,7 +71,27 @@
     <hr class="mt-0 mb-4">
     <div class="row">
         <div class="col-lg-12">
-            
+            <div class="card mb-4">
+                <div class="card-header">Compras Realizadas</div>
+                <div class="card-body">
+                    {{#house}}
+                        <div class="hours">
+                          <h6 class="mt-4">Destino:</h6>
+                          <p>{{destinationName}}</p>
+                          <h6 class="mt-4">Alojamiento escogido:</h6>
+                          <p>{{nameHouse}}</p>
+                          <h6 class="mt-4">Coste total:</h6>
+                          <p class="margin-top">{{price}}</p>
+                        </div>
+                    {{/house}}
+
+                    {{^house}}
+                    <p>No hay reservas disponibles por este usuario.</p>
+                    {{/house}}
+
+                  </div>
+            </div>
+
             <div class="card mb-4">
                 <div class="card-header">Opiniones realizadas</div>
                 <div class="card-body">

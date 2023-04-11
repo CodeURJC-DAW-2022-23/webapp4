@@ -2,6 +2,7 @@ package com.idealtrip.idealTrip.controller.rest;
 
 import static org.springframework.web.servlet.support.ServletUriComponentsBuilder.fromCurrentRequest;
 
+import com.idealtrip.idealTrip.controller.DTOS.UserEditDTO;
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
@@ -70,6 +71,25 @@ public class UserRestController {
 		}
 	}
 
+	@Operation(summary = "Edit the current user")
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "Found the user", content = {
+					@Content(mediaType = "application/json", schema = @Schema(implementation = User.class)) }),
+			@ApiResponse(responseCode = "404", description = "User not found ", content = @Content),
+			@ApiResponse(responseCode = "403", description = "Forbiden or don't have permissions", content = @Content) })
+	@PostMapping("/me/edit")
+	public ResponseEntity<User> editMe(HttpServletRequest request,@RequestBody UserEditDTO userDTO) {
+
+		Principal principal = request.getUserPrincipal();
+		Optional<User> user = userService.findByEmail(principal.getName());
+		User useraux = user.get();
+		useraux.setEmail(userDTO.getEmail());
+		useraux.setName(userDTO.getFirstName());
+		useraux.setLastName(userDTO.getLastName());
+		userService.save(useraux);
+		return ResponseEntity.ok(user.get());
+	}
+
 
 	@Operation(summary = "Register a new user")
     @ApiResponses(value = {
@@ -102,7 +122,6 @@ public class UserRestController {
 	}
 
 
-
 	@Operation(summary = "Update the user")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Profile updated", content = {
@@ -113,13 +132,13 @@ public class UserRestController {
 	public ResponseEntity<User> updateUser(@PathVariable long id, @RequestBody UpdateUserDTO updatedUser){
 		Optional<User> user = userService.findById(id);
         if(user.isPresent()){
-			User user2 = user.get(); 
+			User user2 = user.get();
 			user2.setName(updatedUser.getName());
 			user2.setLastName(updatedUser.getLastName());
 			userService.save(user2);
-			return ResponseEntity.ok(user.get()); 
+			return ResponseEntity.ok(user.get());
 		}else{
-			return ResponseEntity.notFound().build(); 
+			return ResponseEntity.notFound().build();
 		}
 	}
 }

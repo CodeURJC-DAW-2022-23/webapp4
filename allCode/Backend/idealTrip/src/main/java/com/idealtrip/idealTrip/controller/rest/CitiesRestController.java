@@ -197,7 +197,7 @@ public class CitiesRestController {
                         @ApiResponse(responseCode = "200", description = "Found the review of the destination", content = {
                                         @Content(mediaType = "application/json", schema = @Schema(implementation = Destination.class)) }),
                         @ApiResponse(responseCode = "404", description = "Review of the destination not found", content = @Content) })
-    @GetMapping("/reviews/{id}/{idreview}")
+    @GetMapping("/reviews/{id}/comment/{idreview}")
     @JsonView(Review.Basic.class)
     public Optional<Review> getReview(@PathVariable long id, @PathVariable long idreview) {
         review.findByDestination(id);
@@ -211,7 +211,7 @@ public class CitiesRestController {
                     @Content(mediaType = "application/json", schema = @Schema(implementation = Review.class)) }),
             @ApiResponse(responseCode = "404", description = "Review not found", content = @Content),
             @ApiResponse(responseCode = "403", description = "Forbiden or don't have permissions", content = @Content) })
-    @DeleteMapping("/reviews/{id}/{idreview}")
+    @DeleteMapping("/reviews/{id}/comment/{idreview}")
     @JsonView(Review.Basic.class)
     public ResponseEntity<Review> deleteReview(@PathVariable long id, @PathVariable long idreview) {
         review.findByDestination(id);
