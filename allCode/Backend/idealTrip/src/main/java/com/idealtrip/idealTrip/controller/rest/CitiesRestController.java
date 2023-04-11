@@ -151,8 +151,8 @@ public class CitiesRestController {
                         @ApiResponse(responseCode = "404", description = "Catering of destination not found", content = @Content) })
     @GetMapping("/catering/{id}")
     @JsonView(Catering.Basic.class)
-    public Collection<Catering> getCatering(@PathVariable long id) {
-        return catering.findByDestination(id);
+    public Page<Catering> getCatering(@PathVariable long id, Pageable page) {
+        return catering.findByDestination(id, page);
     }
 
 
@@ -163,8 +163,8 @@ public class CitiesRestController {
                         @ApiResponse(responseCode = "404", description = "Tourism of destination not found", content = @Content) })
     @GetMapping("/tourism/{id}")
     @JsonView(Tourism.Basic.class)
-    public Collection<Tourism> getTourism(@PathVariable long id) {
-        return tourism.findByDestinationId(id);
+    public Page<Tourism> getTourism(@PathVariable long id, Pageable page) {
+        return tourism.findByDestinationId(id, page);
     }
 
 

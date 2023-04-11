@@ -6,6 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -40,6 +42,10 @@ public class TourismService {
 
     public List<Tourism> findByDestinationId(Long id) {
         return tourisms.findByDestinationId(id);
+    }
+
+    public Page<Tourism> findByDestinationId(Long id, Pageable page) {
+        return tourisms.findByDestinationId(id, page);
     }
 
     public ResponseEntity<Resource> downloadTourismPlaceImages(long id, int index)
