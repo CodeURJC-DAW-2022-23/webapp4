@@ -1,6 +1,7 @@
 package com.idealtrip.idealTrip.controller;
 
 import com.idealtrip.idealTrip.model.House;
+import com.idealtrip.idealTrip.model.Purchase;
 import com.idealtrip.idealTrip.model.User;
 import com.idealtrip.idealTrip.service.HouseService;
 import com.idealtrip.idealTrip.service.PurchaseService;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.security.Principal;
 import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
-
 
 @Controller
 public class PurchaseController {
@@ -56,15 +56,39 @@ public class PurchaseController {
     @PostMapping("/purchaseMail/{id}")
     public String sendMailPurhcase(Model model, @PathVariable Long id) {
         house = houseService.findById(id);
-        String email = currentUser.getEmail();
-        Float precio = house.get().getPrice();
-        String destino = house.get().getDestinationName();
-        String hotel = house.get().getNameHouse();
-    
-        String usuario = currentUser.getName() + " " + currentUser.getLastName();
-        String message = usuario + " ha realizado una compra en nuestra página \n" + "Destino: " + destino + "\nHotel: " + hotel
-                + "\nCoste total: " + precio;
-        purchaseService.sendEmail("idealtripdaw@gmail.com", email, message);
-        return "index";
+        if (house.isPresent()) {
+            String email = currentUser.getEmail();
+            Float precio = house.get().getPrice();
+            String destino = house.get().getDestinationName();
+            String hotel = house.get().getNameHouse();
+            String usuario = currentUser.getName() + " " + currentUser.getLastName();
+            String message = usuario + " ha realizado una compra en nuestra página \n" + "Destino: " + destino
+                    + "\nHotel: "
+                    + hotel
+                    + "\nCoste total: " + precio;
+            purchaseService.sendEmail("idealtripdaw@gmail.com", email, message);
+            
+            Purchase purchase = new Purchase(currentUser, house.get());
+            purchaseService.save(purchase);
+            return "index";
+        } else {
+            String errorMessage = "Id no found" + id;
+            model.addAttribute("errorMessage", errorMessage);
+            return "error";
+        }
     }
+
+    // @PostMapping("/purchase/{id}")
+    // private String savePurchase(@PathVariable Long id,Model model) {
+    // Optional<House> currentHouse = houseService.findById(id);
+    // if (currentHouse.isPresent()) {
+    // Purchase purchase = new Purchase(currentUser, currentHouse.get());
+    // purchaseService.save(purchase);
+    // return "purchase";
+    // } else {
+    // String errorMessage = "Id no found" + id;
+    // model.addAttribute("errorMessage", errorMessage);
+    // return "error";
+    // }
+    // }
 }

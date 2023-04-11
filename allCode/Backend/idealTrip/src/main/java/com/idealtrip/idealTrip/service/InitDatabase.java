@@ -87,23 +87,23 @@ public class InitDatabase {
                 for (Review review : initedReview) {
                         reviews.save(review);
                 }
-                List<Purchase> initedPurchase = generatePurchase(initedHouses, initedUsers);
-                for (Purchase purchase : initedPurchase) {
-                        purchases.save(purchase);
-                }
+                // List<Purchase> initedPurchase = generatePurchase(initedHouses, initedUsers);
+                // for (Purchase purchase : initedPurchase) {
+                //         purchases.save(purchase);
+                // }
 
         }
 
-        private List<Purchase> generatePurchase(List<House> initedHouses, List<User> initedUsers) {
-                List<Purchase> purchases = new ArrayList<>();
-                for (User user : initedUsers) {
-                        Purchase purchase = new Purchase();
-                        purchase.setUser(user);
-                        purchase.setHouse(initedHouses.get((int) (Math.random() * 5) + 1));
-                        purchases.add(purchase);
-                }
-                return purchases;
-        }
+        // private List<Purchase> generatePurchase(List<House> initedHouses, List<User> initedUsers) {
+        //         List<Purchase> purchases = new ArrayList<>();
+        //         for (User user : initedUsers) {
+        //                 Purchase purchase = new Purchase();
+        //                 purchase.setUser(user);
+        //                 purchase.setHouse(initedHouses.get((int) (Math.random() * 5) + 1));
+        //                 purchases.add(purchase);
+        //         }
+        //         return purchases;
+        // }
 
         private List<Newsletter> generateNewsleter() {
                 List<Newsletter> newsletter = new ArrayList<>();

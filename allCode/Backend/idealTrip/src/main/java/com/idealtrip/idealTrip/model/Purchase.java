@@ -1,12 +1,14 @@
 package com.idealtrip.idealTrip.model;
 
+import java.util.Optional;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-
 
 @Entity(name = "purchaseTable")
 public class Purchase {
@@ -16,8 +18,7 @@ public class Purchase {
 
     @ManyToOne
     private User user;
-
-    @OneToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private House house;
 
     public Purchase() {
@@ -25,6 +26,11 @@ public class Purchase {
 
     public Purchase(User user) {
         this.user = user;
+    }
+
+    public Purchase(User user, House currentHouse) {
+        this.user = user;
+        this.house = currentHouse;
     }
 
     public Long getId() {
@@ -51,5 +57,4 @@ public class Purchase {
         this.house = house;
     }
 
-    
 }
