@@ -1,10 +1,12 @@
 package com.idealtrip.idealTrip.controller.DTOS;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class DestinationDTO {
     private String nameDestination;
     private String contentDestination;
     private float price;
-    private String titleImage;
+    private MultipartFile titleImage;
 
     public String getNameDestination() {
         return nameDestination;
@@ -39,12 +41,15 @@ public class DestinationDTO {
         this.price = price;
     }
 
-    public String getTitleImage() {
+    public MultipartFile getTitleImage() {
         return titleImage;
     }
 
-    public void setTitleImage(String titleImage) {
+    public void setTitleImage(MultipartFile titleImage) {
         this.titleImage = titleImage;
     }
+
+   
+   
 
 }

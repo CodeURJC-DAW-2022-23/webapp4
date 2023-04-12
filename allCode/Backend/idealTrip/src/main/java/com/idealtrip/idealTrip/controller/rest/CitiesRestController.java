@@ -4,7 +4,9 @@ import static org.springframework.web.servlet.support.ServletUriComponentsBuilde
 
 import java.io.IOException;
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.security.Principal;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -25,20 +27,20 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses; 
 
 @RestController
 @RequestMapping("/api/destinations")
@@ -46,13 +48,13 @@ public class CitiesRestController {
     @Autowired
     private DestinationService destinations;
     @Autowired
-    private CateringService catering;
+    private CateringService caterings;
     @Autowired
-    private TourismService tourism;
+    private TourismService tourisms;
     @Autowired
-    private HouseService house;
+    private HouseService houses;
     @Autowired
-    private ReviewService review;
+    private ReviewService reviews;
     @Autowired
     private UserService userService;
 
@@ -72,11 +74,11 @@ public class CitiesRestController {
     }
 
     @Operation(summary = "Get all destinations")
-        @ApiResponses(value = {
-                        @ApiResponse(responseCode = "200", description = "Found all Destinations", content = {
-                                        @Content(mediaType = "application/json", schema = @Schema(implementation = Destination.class)) }),
-                        @ApiResponse(responseCode = "404", description = "Destinations not found", content = @Content) 
-                    })
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found all Destinations", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = Destination.class)) }),
+            @ApiResponse(responseCode = "404", description = "Destinations not found", content = @Content)
+    })
     @GetMapping("/")
     @JsonView(Destination.Basico.class)
     public Page<Destination> getDestinations(Pageable page) {
@@ -84,11 +86,11 @@ public class CitiesRestController {
     }
 
     @Operation(summary = "Get one destination")
-        @ApiResponses(value = {
-                        @ApiResponse(responseCode = "200", description = "Found the Destination", content = {
-                                        @Content(mediaType = "application/json", schema = @Schema(implementation = Destination.class)) }),
-                        @ApiResponse(responseCode = "404", description = "Destination not found", content = @Content) 
-                    })
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found the Destination", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = Destination.class)) }),
+            @ApiResponse(responseCode = "404", description = "Destination not found", content = @Content)
+    })
     @GetMapping("/{id}")
     @JsonView(Destination.Basico.class)
     public ResponseEntity<Destination> getDestiantion(@PathVariable long id) {
@@ -100,7 +102,6 @@ public class CitiesRestController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-
 
     @Operation(summary = "Delete a destination")
     @ApiResponses(value = {
@@ -121,87 +122,111 @@ public class CitiesRestController {
         }
     }
 
-
     @Operation(summary = "Add a destination")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Destination added to the application", content = {
                     @Content(mediaType = "application/json", schema = @Schema(implementation = Destination.class)) }),
             @ApiResponse(responseCode = "404", description = "Destination not found", content = @Content),
-            @ApiResponse(responseCode = "403", description = "Forbiden or don't have permissions", content = @Content) 
-        })
+            @ApiResponse(responseCode = "403", description = "Forbiden or don't have permissions", content = @Content)
+    })
     @PostMapping("/")
     public ResponseEntity<Destination> createDestination(@RequestBody DestinationDTO destinationDTO) {
         Destination destination = new Destination(destinationDTO);
-        try {
-            Resource image = new ClassPathResource(destination.getTitleImage());
-            destination.setTitleImageFile(BlobProxy.generateProxy(image.getInputStream(), image.contentLength()));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        // try {
+        // Resource image = new ClassPathResource(destination.getTitleImage());
+        // destination.setTitleImageFile(BlobProxy.generateProxy(image.getInputStream(),
+        // image.contentLength()));
+        // } catch (IOException e) {
+        // e.printStackTrace();
+        // }
         destinations.save(destination);
         URI location = fromCurrentRequest().path("/{id}").buildAndExpand(destination.getId()).toUri();
         return ResponseEntity.created(location).body(destination);
     }
 
+    @PutMapping("/{id}/image")
+    public ResponseEntity<Resource> createDestinationImage(@PathVariable long id, @RequestParam MultipartFile image, HttpServletRequest request) throws URISyntaxException, SQLException, IOException {
+        Optional<Destination> destination = destinations.findById(id);
+        if (destination.isPresent() && image != null && !image.isEmpty()) {
+            Destination newDestination = destination.get();
+            try {
+                newDestination.setTitleImageFile(BlobProxy.generateProxy(image.getInputStream(), image.getSize()));
+                newDestination.setTitleImage("");
+                destinations.save(newDestination);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            String baseUrl = ServletUriComponentsBuilder.fromRequestUri(request).replacePath(null).build().toUriString();
+            Resource file = new InputStreamResource(image.getInputStream());
+
+
+            URI location = new URI(baseUrl + "/api/destinations/"+ id + "/image");
+            return ResponseEntity.ok()
+                    .header(HttpHeaders.CONTENT_TYPE, "image/jpeg", HttpHeaders.CONTENT_LOCATION, location.toString())
+                    .contentLength(newDestination.getTitleImageFile().length()).body(file);
+
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        
+
+    }
 
     @Operation(summary = "Get all caterings of one destination")
-        @ApiResponses(value = {
-                        @ApiResponse(responseCode = "200", description = "Found all catering of destination", content = {
-                                        @Content(mediaType = "application/json", schema = @Schema(implementation = Destination.class)) }),
-                        @ApiResponse(responseCode = "404", description = "Catering of destination not found", content = @Content) })
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found all catering of destination", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = Destination.class)) }),
+            @ApiResponse(responseCode = "404", description = "Catering of destination not found", content = @Content) })
     @GetMapping("/catering/{id}")
     @JsonView(Catering.Basic.class)
     public Page<Catering> getCatering(@PathVariable long id, Pageable page) {
-        return catering.findByDestination(id, page);
+        return caterings.findByDestination(id, page);
     }
 
-
     @Operation(summary = "Get all torism of one destination")
-        @ApiResponses(value = {
-                        @ApiResponse(responseCode = "200", description = "Found all tourism of destination", content = {
-                                        @Content(mediaType = "application/json", schema = @Schema(implementation = Destination.class)) }),
-                        @ApiResponse(responseCode = "404", description = "Tourism of destination not found", content = @Content) })
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found all tourism of destination", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = Destination.class)) }),
+            @ApiResponse(responseCode = "404", description = "Tourism of destination not found", content = @Content) })
     @GetMapping("/tourism/{id}")
     @JsonView(Tourism.Basic.class)
     public Page<Tourism> getTourism(@PathVariable long id, Pageable page) {
-        return tourism.findByDestinationId(id, page);
+        return tourisms.findByDestinationId(id, page);
     }
 
-
     @Operation(summary = "Get all houses of one destination")
-        @ApiResponses(value = {
-                        @ApiResponse(responseCode = "200", description = "Found all houses of destinations", content = {
-                                        @Content(mediaType = "application/json", schema = @Schema(implementation = Destination.class)) }),
-                        @ApiResponse(responseCode = "404", description = "Houses of destination not found", content = @Content) })
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found all houses of destinations", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = Destination.class)) }),
+            @ApiResponse(responseCode = "404", description = "Houses of destination not found", content = @Content) })
     @GetMapping("/house/{id}")
     @JsonView(House.Basic.class)
     public Collection<House> getHouse(@PathVariable long id) {
-        return house.findByDestinationName(destinations.findById(id).get().getNameDestination());
+        return houses.findByDestinationName(destinations.findById(id).get().getNameDestination());
     }
 
-
     @Operation(summary = "Get all reviews of one destination")
-        @ApiResponses(value = {
-                        @ApiResponse(responseCode = "200", description = "Found all reviews of one destination", content = {
-                                        @Content(mediaType = "application/json", schema = @Schema(implementation = Destination.class)) }),
-                        @ApiResponse(responseCode = "404", description = "Reviews of destination not found", content = @Content) })
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found all reviews of one destination", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = Destination.class)) }),
+            @ApiResponse(responseCode = "404", description = "Reviews of destination not found", content = @Content) })
     @GetMapping("/reviews/{id}")
     @JsonView(Review.Basic.class)
     public Page<Review> getReview(@PathVariable Long id, Pageable page) {
-        return review.findByDestination(id, page);
+        return reviews.findByDestination(id, page);
     }
 
     // show specific review
     @Operation(summary = "Get one review of a specific destination")
-        @ApiResponses(value = {
-                        @ApiResponse(responseCode = "200", description = "Found the review of the destination", content = {
-                                        @Content(mediaType = "application/json", schema = @Schema(implementation = Destination.class)) }),
-                        @ApiResponse(responseCode = "404", description = "Review of the destination not found", content = @Content) })
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found the review of the destination", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = Destination.class)) }),
+            @ApiResponse(responseCode = "404", description = "Review of the destination not found", content = @Content) })
     @GetMapping("/reviews/{id}/comment/{idreview}")
     @JsonView(Review.Basic.class)
     public Optional<Review> getReview(@PathVariable long id, @PathVariable long idreview) {
-        review.findByDestination(id);
-        return this.review.findById(idreview);
+        reviews.findByDestination(id);
+        return this.reviews.findById(idreview);
     }
 
     // Delete specific review
@@ -214,10 +239,10 @@ public class CitiesRestController {
     @DeleteMapping("/reviews/{id}/comment/{idreview}")
     @JsonView(Review.Basic.class)
     public ResponseEntity<Review> deleteReview(@PathVariable long id, @PathVariable long idreview) {
-        review.findByDestination(id);
-        Optional<Review> reviDel = this.review.findById(idreview);
+        reviews.findByDestination(id);
+        Optional<Review> reviDel = this.reviews.findById(idreview);
         if (reviDel.isPresent()) {
-            this.review.deleteById(idreview);
+            this.reviews.deleteById(idreview);
             return new ResponseEntity<>(HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -239,16 +264,15 @@ public class CitiesRestController {
         Destination currentDestination = destinations.findDestinationById(id).orElse(null);
         Review auxreview = new Review(currentUser, currentDestination, newreview.getReviewTitle(),
                 newreview.getRating(), newreview.getReviewContent());
-        review.save(auxreview);
+        reviews.save(auxreview);
         return auxreview;
     }
 
-
     @Operation(summary = "Get average of each destination")
-        @ApiResponses(value = {
-                        @ApiResponse(responseCode = "200", description = "Found average of each destination", content = {
-                                        @Content(mediaType = "application/json", schema = @Schema(implementation = Destination.class)) }),
-                        @ApiResponse(responseCode = "404", description = "Average destinationss not found", content = @Content) })
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found average of each destination", content = {
+                    @Content(mediaType = "application/json", schema = @Schema(implementation = Destination.class)) }),
+            @ApiResponse(responseCode = "404", description = "Average destinationss not found", content = @Content) })
     @GetMapping("/rating")
     public List<Map<String, Object>> ratingDestination() {
 
@@ -256,7 +280,7 @@ public class CitiesRestController {
         List<Map<String, Object>> cityRatingList = new ArrayList<>();
 
         for (Destination destination : destinationList) {
-            double totalRating = review.getTotalRatingForDestination(destination);
+            double totalRating = reviews.getTotalRatingForDestination(destination);
             String cityName = destination.getNameDestination();
             Map<String, Object> cityRatingMap = new HashMap<>();
             cityRatingMap.put("cityName", cityName);
@@ -266,4 +290,50 @@ public class CitiesRestController {
         return cityRatingList;
     }
 
+    @Operation(summary = "Get image of the destination")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found image of destination", content = {
+                    @Content(mediaType = "image/jpeg", schema = @Schema(implementation = Destination.class)) }),
+            @ApiResponse(responseCode = "404", description = "Image not found", content = @Content) })
+    @GetMapping("/{id}/image")
+    public ResponseEntity<Resource> downloadImage(@PathVariable long id) throws SQLException {
+        Optional<Destination> destination = destinations.findById(id);
+
+        if (destination.isPresent() && destination.get().getTitleImageFile() != null) {
+            Resource file = new InputStreamResource(destination.get().getTitleImageFile().getBinaryStream());
+
+            return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
+                    .contentLength(destination.get().getTitleImageFile().length()).body(file);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/house/{id}/image")
+    public ResponseEntity<Resource> downloadImageHouse(@PathVariable long id) throws SQLException {
+        Optional<House> house = houses.findById(id);
+
+        if (house.isPresent() && house.get().getImagesHouseFile() != null) {
+            Resource file = new InputStreamResource(house.get().getImagesHouseFile().getBinaryStream());
+
+            return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
+                    .contentLength(house.get().getImagesHouseFile().length()).body(file);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/house/host/{id}/image")
+    public ResponseEntity<Resource> downloadImageHost(@PathVariable long id) throws SQLException {
+        Optional<House> house = houses.findById(id);
+
+        if (house.isPresent() && house.get().getHostImageFile() != null) {
+            Resource file = new InputStreamResource(house.get().getHostImageFile().getBinaryStream());
+
+            return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
+                    .contentLength(house.get().getHostImageFile().length()).body(file);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }

@@ -71,7 +71,7 @@ public class Destination {
         this.nameDestination = destinationDTO.getNameDestination();
         this.contentDestination = destinationDTO.getContentDestination();
         this.price = destinationDTO.getPrice();
-        this.titleImage = destinationDTO.getTitleImage();
+        this.titleImageFile= (Blob) destinationDTO.getTitleImage();
     }
     public Destination(Long id, String contentDestination, String nameDestination,
             List<Review> reviews, float price) {
@@ -106,22 +106,16 @@ public class Destination {
         this.tourism = tourism;
     }
 
+   
+
+
     public Blob getTitleImageFile() {
         return titleImageFile;
     }
-
     public void setTitleImageFile(Blob titleImageFile) {
         this.titleImageFile = titleImageFile;
     }
-
-    public String getTitleImage() {
-        return titleImage;
-    }
-
-    public void setTitleImage(String titleImage) {
-        this.titleImage = titleImage;
-    }
-
+   
     public Long getId() {
         return id;
     }
@@ -168,6 +162,12 @@ public class Destination {
 
     public void setReviews(List<Review> reviews) {
         this.reviews = reviews;
+    }
+    public String getTitleImage() {
+        return titleImage;
+    }
+    public void setTitleImage(String titleImage) {
+        this.titleImage = titleImage;
     }
 
 }

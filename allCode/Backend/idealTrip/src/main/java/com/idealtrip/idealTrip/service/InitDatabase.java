@@ -16,7 +16,6 @@ import com.idealtrip.idealTrip.model.Catering;
 import com.idealtrip.idealTrip.model.Destination;
 import com.idealtrip.idealTrip.model.House;
 import com.idealtrip.idealTrip.model.Newsletter;
-import com.idealtrip.idealTrip.model.Purchase;
 import com.idealtrip.idealTrip.model.Review;
 import com.idealtrip.idealTrip.model.Tourism;
 import com.idealtrip.idealTrip.model.User;
@@ -37,9 +36,6 @@ public class InitDatabase {
 
         @Autowired
         private NewsletterService newsletters;
-
-        @Autowired
-        private PurchaseService purchases;
 
         @Autowired
         private ReviewService reviews;
@@ -87,23 +83,9 @@ public class InitDatabase {
                 for (Review review : initedReview) {
                         reviews.save(review);
                 }
-                // List<Purchase> initedPurchase = generatePurchase(initedHouses, initedUsers);
-                // for (Purchase purchase : initedPurchase) {
-                //         purchases.save(purchase);
-                // }
 
         }
 
-        // private List<Purchase> generatePurchase(List<House> initedHouses, List<User> initedUsers) {
-        //         List<Purchase> purchases = new ArrayList<>();
-        //         for (User user : initedUsers) {
-        //                 Purchase purchase = new Purchase();
-        //                 purchase.setUser(user);
-        //                 purchase.setHouse(initedHouses.get((int) (Math.random() * 5) + 1));
-        //                 purchases.add(purchase);
-        //         }
-        //         return purchases;
-        // }
 
         private List<Newsletter> generateNewsleter() {
                 List<Newsletter> newsletter = new ArrayList<>();
