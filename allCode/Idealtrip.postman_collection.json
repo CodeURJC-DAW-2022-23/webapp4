@@ -1,0 +1,519 @@
+{
+	"info": {
+		"_postman_id": "a3252975-eb9f-4f0f-992a-7fc0dc366f28",
+		"name": "Idealtrip",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25956498"
+	},
+	"item": [
+		{
+			"name": "CreateReview",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"reviewTitle\":\"Preuba review\", \"reviewContent\":\"Content\", \"rating\":2}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:8443/api/destinations/reviews/8/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"destinations",
+						"reviews",
+						"8",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"firstName\": \"Sergio\", \"lastName\": \"Cuadros\", \"email\":\"sercua.flores@gmail.com\", \"passwordEncoded\":\"123456\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:8443/api/users/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/me",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8443/api/users/me",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"users",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateDestination",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"contentDestination\": \"HOOLA\", \"nameDestination\":\"Madrid\", \"price\": 14}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:8443/api/destinations/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"destinations",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\":\"admin1@gmail.com\", \"password\":\"123456\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:8443/api/auth/login",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteReview",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"firstName\": \"Sergio\", \"lastName\": \"Cuadros\", \"email\":\"sercua.flores@gmail.com\", \"passwordEncoded\":\"123456\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:8443/api/destinations/reviews/8/124",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"destinations",
+						"reviews",
+						"8",
+						"124"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteDestination",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8443/api/destinations/8",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"destinations",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetRating",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8443/api/destinations/rating",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"destinations",
+						"rating"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetDestinations",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8443/api/destinations/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"destinations",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetDestinationPage",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8443/api/destinations/?page=1&size=4",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"destinations",
+						""
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "size",
+							"value": "4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8443/api/auth/logout",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"auth",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetDestinationByID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8443/api/destinations/9",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"destinations",
+						"9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetCatering",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8443/api/destinations/catering/9",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"destinations",
+						"catering",
+						"9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetTourism",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8443/api/destinations/tourism/8",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"destinations",
+						"tourism",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetReviewsPage",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8443/api/destinations/reviews/9?page=1&size=5",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"destinations",
+						"reviews",
+						"9"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "size",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetDestinationImage",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8443/api/destinations/9/image",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"destinations",
+						"9",
+						"image"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetHouseDestinationImage",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8443/api/destinations/house/16/image",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"destinations",
+						"house",
+						"16",
+						"image"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetHostHouseImage",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8443/api/destinations/house/host/16/image",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"destinations",
+						"house",
+						"host",
+						"16",
+						"image"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreatePurchase",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8443/api/purchases/16",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"purchases",
+						"16"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddImageToDestination",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "images/Catering.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:8443/api/destinations/292/image",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"destinations",
+						"292",
+						"image"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
