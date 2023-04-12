@@ -14,22 +14,20 @@ import org.springframework.stereotype.Service;
 import com.idealtrip.idealTrip.model.Destination;
 import com.idealtrip.idealTrip.repository.DestinationRepository;
 
-
 @Service
 public class DestinationService {
     @Autowired
     private DestinationRepository destinations;
-
 
     public List<Destination> findAll() {
         return destinations.findAll();
     }
 
     public Page<Destination> findAll(Pageable page) {
-        return destinations.findAll(page); 
+        return destinations.findAll(page);
     }
 
-    public Page<Destination> findAllPageable(Pageable pageable){
+    public Page<Destination> findAllPageable(Pageable pageable) {
         return destinations.findAll(pageable);
     }
 
@@ -41,10 +39,9 @@ public class DestinationService {
         return destinations.findById(id);
     }
 
-    public void save(Destination destination){
+    public void save(Destination destination) {
         this.destinations.save(destination);
     }
-    
 
     public Optional<Destination> findDestinationById(Long id) {
         return destinations.findById(id);
@@ -55,15 +52,15 @@ public class DestinationService {
     }
 
     public ResponseEntity<Resource> downloadImageDestination(long id) throws SQLException {
-		Optional<Destination> destination = this.findById(id);
-		if (destination.isPresent() && destination.get().getTitleImage() != null) {
-			Resource file = new InputStreamResource(destination.get().getTitleImageFile().getBinaryStream());
-			return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
-					.contentLength(destination.get().getTitleImageFile().length()).body(file);
-		} else {
-			return ResponseEntity.notFound().build();
-		}
-	}
+        Optional<Destination> destination = this.findById(id);
+        if (destination.isPresent() && destination.get().getTitleImageFile() != null) {
+            Resource file = new InputStreamResource(destination.get().getTitleImageFile().getBinaryStream());
+            return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
+                    .contentLength(destination.get().getTitleImageFile().length()).body(file);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
     public DestinationRepository getDestinations() {
         return destinations;
@@ -74,8 +71,7 @@ public class DestinationService {
     }
 
     public boolean exist(long id) {
-		return destinations.existsById(id);
-	}
-    
-    
+        return destinations.existsById(id);
+    }
+
 }
