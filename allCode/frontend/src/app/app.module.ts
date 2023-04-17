@@ -5,11 +5,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderLoginComponent } from './components/Headers/headerLogin.component';
+import { HeaderLoginComponent } from './components/headers/header-login.component';
+import { DestinationComponent } from './components/destination/destination.component';
 
 @NgModule({
   declarations: [
-    AppComponent,HeaderLoginComponent],
+    AppComponent,HeaderLoginComponent, DestinationComponent],
   imports: [
     BrowserModule,
     AppRoutingModule
