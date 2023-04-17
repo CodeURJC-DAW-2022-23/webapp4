@@ -3,7 +3,7 @@ Param(
 )
 
 
-rmdir /sq .mysql 
+Remove-Item /sq .mysql 
 Set-Location ../
 
 docker build -t scuadrosf/$image -f docker/Dockerfile .
