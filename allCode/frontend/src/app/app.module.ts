@@ -7,10 +7,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderLoginComponent } from './components/headers/header-login.component';
 import { DestinationComponent } from './components/destination/destination.component';
+import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 
 @NgModule({
   declarations: [
-    AppComponent,HeaderLoginComponent, DestinationComponent],
+    AppComponent,HeaderLoginComponent, DestinationComponent, PrivacyPolicyComponent],
   imports: [
     BrowserModule,
     AppRoutingModule
