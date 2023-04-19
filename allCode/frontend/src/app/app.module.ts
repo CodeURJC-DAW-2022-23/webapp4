@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -9,13 +8,16 @@ import { HeaderLoginComponent } from './components/Headers/header-login.componen
 import { DestinationComponent } from './components/destination/destination.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,HeaderLoginComponent, DestinationComponent, PrivacyPolicyComponent, ErrorPageComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]
