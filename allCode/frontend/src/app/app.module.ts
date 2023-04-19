@@ -5,13 +5,14 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderLoginComponent } from './components/headers/header-login.component';
+import { HeaderLoginComponent } from './components/Headers/header-login.component';
 import { DestinationComponent } from './components/destination/destination.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
+import { ErrorPageComponent } from './components/error-page/error-page.component';
 
 @NgModule({
   declarations: [
-    AppComponent,HeaderLoginComponent, DestinationComponent, PrivacyPolicyComponent],
+    AppComponent,HeaderLoginComponent, DestinationComponent, PrivacyPolicyComponent, ErrorPageComponent],
   imports: [
     BrowserModule,
     AppRoutingModule
