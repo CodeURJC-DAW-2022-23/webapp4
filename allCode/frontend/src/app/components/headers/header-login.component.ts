@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 
 @Component({
   selector: 'headerLogin',
@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./style-login.component.css', './style-starter.component.css'],
 })
 export class HeaderLoginComponent {
-
+  
 }
