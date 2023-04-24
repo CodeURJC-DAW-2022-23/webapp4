@@ -32,35 +32,20 @@ Author URL: http://w3layouts.com
         </button>
 
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="index">Inicio <span class="sr-only">(current)</span></a>
+          <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+            <li [ngbNavItem]="1">
+              <a ngbNavLink routerLink="index">Inicio <span class="sr-only">(current)</span></a>
             </li>
 
-            <li class="nav-item">
-              <a class="nav-link" href="services">Destinos</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact">Contacto</a>
+            <li [ngbNavItem]="2">
+              <a ngbNavLink routerLink="services">Destinos</a>
             </li>
           </ul>
-        </div>
-        <!-- toggle switch for light and dark theme -->
-        <div class="mobile-position">
-          <nav class="navigation">
-            <div class="theme-switch-wrapper">
-              <label class="theme-switch" for="checkbox">
-                <input type="checkbox" id="checkbox">
-                <div class="mode-container">
-                  <i class="gg-sun"></i>
-                  <i class="gg-moon"></i>
-                </div>
-              </label>
-            </div>
-          </nav>
         </div>
         <!-- //toggle switch for light and dark theme -->
       </nav>
     </div>
+    <div [ngbNavOutlet]="nav" class="mt-2"></div>
+
   </header>
 </body>

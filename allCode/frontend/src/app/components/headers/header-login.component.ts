@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
+import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'headerLogin',
-  templateUrl: './header-login.component.html',
-  styleUrls: ['./style-login.component.css', './style-starter.component.css'],
+	selector: 'headerLogin',
+	standalone: true,
+	imports: [NgbNavModule],
+	templateUrl: './header-login.component.html',
 })
-export class HeaderLoginComponent {
-
+export class NgbdNavBasic {
+	active = 1;
 }
