@@ -9,7 +9,7 @@ import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-poli
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NgbdNavBasic } from "./components/headers/header-login.component";
+import { NgbdNavBasic } from "./components/Headers/header-login.component";
 
 @NgModule({
     declarations: [
