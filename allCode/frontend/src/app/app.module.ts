@@ -11,9 +11,11 @@ import { DestinationComponent } from './components/destination/destination.compo
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FooterComponent } from './components/footer/footer.component';
+
 @NgModule({
   declarations: [
-    AppComponent,HeaderLoginComponent, DestinationComponent, PrivacyPolicyComponent, ErrorPageComponent],
+    AppComponent,HeaderLoginComponent, DestinationComponent, PrivacyPolicyComponent, ErrorPageComponent, FooterComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
