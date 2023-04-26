@@ -15,7 +15,7 @@
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" routerLink="/index">Inicio <span class="sr-only">(current)</span></a>
+            <a class="nav-link" routerLink="/index">Inicio</a>
           </li>
 
           <li class="nav-item">
@@ -26,6 +26,31 @@
           </li>
         </ul>
       </div>
+      <!-- {{^logged}} -->
+      <form action="/login" method="post">
+        <div class="d-lg-block d-none">
+          <a href="/login" class="btn btn-style btn-secondary">Iniciar sesión</a>
+        </div>
+        <!-- <input type="hidden" name="_csrf" value="{{token}}" /> -->
+      </form>
+      <!-- {{/logged}}{{#logged}} -->
+      <!-- {{^admin}} -->
+      <form action="/profile" method="get">
+        <div class="d-lg-block d-none">
+          <button class="btn btn-style btn-secondary">Mi perfil</button>
+        </div>
+        <!-- <input type="hidden" name="_csrf" value="{{token}}" /> -->
+      </form>
+      <!-- {{/admin}} -->
+
+      <!-- {{#admin}} -->
+      <div class="d-lg-block d-none">
+        <a href="/administrator" class="btn btn-style btn-secondary">Admin</a>
+      </div>
+      <!-- {{/admin}} -->
+      
+
+      <!-- {{/logged}} -->
     </nav>
   </div>
 </header>

@@ -9,7 +9,7 @@ import { DestinationComponent } from './components/destination/destination.compo
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 
-import { HeaderLogin } from "./components/headers/header-login.component";
+import { HeaderLogin } from "./components/headers/header.component";
 
 @NgModule({
     declarations: [
