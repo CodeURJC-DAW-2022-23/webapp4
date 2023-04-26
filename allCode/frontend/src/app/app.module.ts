@@ -1,28 +1,28 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
-import { AppRoutingModule } from './app-routing.module';
+import { routing } from './app.routing';
 import { AppComponent } from './app.component';
 import { DestinationComponent } from './components/destination/destination.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
-import { HttpClientModule } from '@angular/common/http';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NgbdNavBasic } from "./components/headers/header-login.component";
+
+import { HeaderLogin } from "./components/headers/header-login.component";
 
 @NgModule({
     declarations: [
-        AppComponent, DestinationComponent, PrivacyPolicyComponent, ErrorPageComponent
+        AppComponent, DestinationComponent, PrivacyPolicyComponent, ErrorPageComponent, HeaderLogin
     ],
     providers: [],
     bootstrap: [AppComponent],
     imports: [
         BrowserModule,
-        AppRoutingModule,
         HttpClientModule,
-        NgbModule,
-        NgbdNavBasic
-    ]
+        FormsModule,
+        routing,
+        
+    ],
 })
 export class AppModule { }
