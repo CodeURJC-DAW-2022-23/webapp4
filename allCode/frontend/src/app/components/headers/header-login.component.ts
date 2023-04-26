@@ -1,12 +1,14 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DoCheck } from '@angular/core';
 import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
 	selector: 'headerLogin',
-	standalone: true,
-	imports: [NgbNavModule],
 	templateUrl: './header-login.component.html',
+	changeDetection: ChangeDetectionStrategy.OnPush,
+
 })
-export class NgbdNavBasic {
-	active = 1;
+export class HeaderLogin implements DoCheck{
+	ngDoCheck() {
+		console.count('checked');
+	  }
 }
