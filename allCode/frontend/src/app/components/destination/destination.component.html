@@ -1,3 +1,47 @@
+<section class="grids-1 py-5">
+    <div class="grids py-lg-5 py-md-4">
+      <div class="container">
+        <h3 class="hny-title mb-5">Destinos</h3>
+        <div class="row">
+          <!-- {{#services}} -->
+          <div class="col-lg-4 col-md-4 col-6" *ngFor="let i of destinations">
+            <div class="column">
+              <a routerLink="['/services', destination.id]"><img [src]="loadImage()" alt=""
+                  class="img-fluid"></a>
+              <div class="info">
+                <!-- <h4><a href="/services/{{id}}">{{destination.nameDestination}}</a></h4> -->
+                <!-- <p>{{destination.contentDestination}} </p> -->
+                <div class="dst-btm">
+                  <h6 class="">Desde</h6>
+                  <!-- <span>&euro;{{destination.price}}</span> -->
+                </div>
+              </div>
+            </div>
+            <br><br>
+          </div>
+          <!-- {{/services}} -->
+  
+        </div>
+        <!-- <div id="load-more-container">
+          {{#services.hasNext}}
+          <button id="load-more-button" data-page="{{services.nextPageable.pageNumber}}">Mostrar más</button>
+          {{/services.hasNext}}
+        </div> -->
 
-<button (click)="search();">Mostrar destinos por consola via API</button>
-<a routerLink="error-page">Pag error</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <button (click)="search();">Mostrar destinos por consola via API</button>
+<a routerLink="error-page">Pag error</a> -->

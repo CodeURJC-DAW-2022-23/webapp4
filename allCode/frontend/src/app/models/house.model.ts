@@ -1,5 +1,5 @@
-import { Destination } from './destination';
-import { Purchase } from './purchase';
+import { Destination } from './destination.model';
+import { Purchase } from './purchase.model';
 
 export interface House {
     id: number;

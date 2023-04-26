@@ -1,5 +1,5 @@
-import { Purchase } from './purchase';
-import { Review } from './review';
+import { Purchase } from './purchase.model';
+import { Review } from './review.model';
 
 export interface User {
     id: number;

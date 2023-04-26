@@ -1,5 +1,5 @@
-import { Destination } from "./destination";
-import { User } from "./user";
+import { Destination } from "./destination.model";
+import { User } from "./user.model";
 
 export interface Review {
     id: number;

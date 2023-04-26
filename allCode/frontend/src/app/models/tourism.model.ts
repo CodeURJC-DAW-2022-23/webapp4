@@ -1,4 +1,4 @@
-import { Destination } from "./destination";
+import { Destination } from "./destination.model";
 
 export interface Tourism{
     id:number;

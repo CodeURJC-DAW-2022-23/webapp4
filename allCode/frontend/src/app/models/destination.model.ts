@@ -1,7 +1,7 @@
-import { Catering } from "./catering";
-import { House } from "./house";
-import { Review } from "./review";
-import { Tourism } from "./tourism";
+import { Catering } from "./catering.model";
+import { House } from "./house.model";
+import { Review } from "./review.model";
+import { Tourism } from "./tourism.model";
 
 export interface Destination {
     id: number;
