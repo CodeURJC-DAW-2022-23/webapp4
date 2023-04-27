@@ -10,10 +10,12 @@ import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-poli
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 
 import { HeaderLogin } from "./components/headers/header.component";
+import { InformationComponent } from './components/destination/information/information.component';
+import { CateringComponent } from './components/destination/catering/catering.component';
 
 @NgModule({
     declarations: [
-        AppComponent, DestinationComponent, PrivacyPolicyComponent, ErrorPageComponent, HeaderLogin
+        AppComponent, DestinationComponent, PrivacyPolicyComponent, ErrorPageComponent, HeaderLogin, InformationComponent, CateringComponent
     ],
     providers: [],
     bootstrap: [AppComponent],

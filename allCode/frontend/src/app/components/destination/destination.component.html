@@ -3,13 +3,13 @@
       <div class="container">
         <h3 class="hny-title mb-5">Destinos</h3>
         <div class="row">
-          <!-- {{#services}} -->
+
           <div class="col-lg-4 col-md-4 col-6" *ngFor="let destination of destinations">
             <div class="column">
-              <a routerLink="['/services', destination.id]"><img [src]="destinationImage(destination)" alt=""
+              <a (click)="goToDestination(destination.id)"><img [src]="destinationImage(destination)" alt=""
                   class="img-fluid"></a>
               <div class="info">
-                <h4><a routerLink="['/services', destination.id]">{{destination.nameDestination}}</a></h4>
+                <h4><a (click)="goToDestination(destination.id)">{{destination.nameDestination}}</a></h4>
                 <p>{{destination.contentDestination}} </p>
                 <div class="dst-btm">
                   <h6 class="">Desde</h6>
@@ -21,11 +21,11 @@
           </div>
   
         </div>
-        <!-- <div id="load-more-container">
-          {{#services.hasNext}}
-          <button id="load-more-button" data-page="{{services.nextPageable.pageNumber}}">Mostrar más</button>
-          {{/services.hasNext}}
-        </div> -->
+        <div id="load-more-container">
+          
+          <!-- <button id="load-more-button" data-page="{{services.nextPageable.pageNumber}}">Mostrar más</button>           -->
+          <button class="btn btn-style btn-secondary" id="load-more-button" >Mostrar más</button>          
+        </div>
 
 
 
