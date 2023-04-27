@@ -1,40 +1,41 @@
 import { DestinationService } from 'src/app/services/destination.service'
 
-import { Component } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router'
 import { Destination } from 'src/app/models/destination.model';
+import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-destination',
   templateUrl: './destination.component.html',
   styleUrls: ['./destination.component.css']
 })
-export class DestinationComponent {
+export class DestinationComponent implements OnInit{
 
   destinations: Destination[] = [];
-  loadImage() {
+  currentUser: User["id"] | undefined;
 
+
+
+  constructor(
+    private router: Router,
+    private destinationService: DestinationService,
+    private userService: UserService
+    ) {}
+
+  ngOnInit():void {
+    this.destinationService.getDestinations().subscribe((response) => {
+      this.destinations = response.content;
+    });
+    this.userService.getMe().subscribe((response) => {
+      this.currentUser = response.id;
+    })
   }
 
-
-  constructor(private httpClient: HttpClient,
-    private router: Router,
-    private destinationService: DestinationService) { 
-      this.ngOnInit;
-    }
-
-  ngOnInit() {
-    this.destinations = []
-    this.destinationService.getDestinations().subscribe(
-      response => {
-        let data: any = response;
-        for (var i = 0; i < data.content.length; i++) {
-          let nameDestination = data.content[i].nameDestination
-          this.destinations.push(nameDestination)
-        }
-
-      })
+  destinationImage(destination: Destination){
+    return this.destinationService.getImageDestination(destination);
   }
 
 

@@ -4,22 +4,21 @@
         <h3 class="hny-title mb-5">Destinos</h3>
         <div class="row">
           <!-- {{#services}} -->
-          <div class="col-lg-4 col-md-4 col-6" *ngFor="let i of destinations">
+          <div class="col-lg-4 col-md-4 col-6" *ngFor="let destination of destinations">
             <div class="column">
-              <a routerLink="['/services', destination.id]"><img [src]="loadImage()" alt=""
+              <a routerLink="['/services', destination.id]"><img [src]="destinationImage(destination)" alt=""
                   class="img-fluid"></a>
               <div class="info">
-                <!-- <h4><a href="/services/{{id}}">{{destination.nameDestination}}</a></h4> -->
-                <!-- <p>{{destination.contentDestination}} </p> -->
+                <h4><a routerLink="['/services', destination.id]">{{destination.nameDestination}}</a></h4>
+                <p>{{destination.contentDestination}} </p>
                 <div class="dst-btm">
                   <h6 class="">Desde</h6>
-                  <!-- <span>&euro;{{destination.price}}</span> -->
+                  <span>&euro;{{destination.price}}</span>
                 </div>
               </div>
             </div>
             <br><br>
           </div>
-          <!-- {{/services}} -->
   
         </div>
         <!-- <div id="load-more-container">
