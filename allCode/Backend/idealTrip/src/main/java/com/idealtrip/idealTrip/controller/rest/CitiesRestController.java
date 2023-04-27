@@ -308,6 +308,32 @@ public class CitiesRestController {
             return ResponseEntity.notFound().build();
         }
     }
+    @GetMapping("/catering/{id}/image")
+    public ResponseEntity<Resource> downloadImageFood(@PathVariable long id) throws SQLException {
+        Optional<Catering> catering = caterings.findById(id);
+
+        if (catering.isPresent() && catering.get().getImageFoodFile() != null) {
+            Resource file = new InputStreamResource(catering.get().getImageFoodFile().getBinaryStream());
+
+            return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
+                    .contentLength(catering.get().getImageFoodFile().length()).body(file);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+    @GetMapping("/tourism/{id}/image")
+    public ResponseEntity<Resource> downloadImagePlace(@PathVariable long id) throws SQLException {
+        Optional<Tourism> tourism = tourisms.findById(id);
+
+        if (tourism.isPresent() && tourism.get().getImageTourismFile() != null) {
+            Resource file = new InputStreamResource(tourism.get().getImageTourismFile().getBinaryStream());
+
+            return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
+                    .contentLength(tourism.get().getImageTourismFile().length()).body(file);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
     @GetMapping("/house/{id}/image")
     public ResponseEntity<Resource> downloadImageHouse(@PathVariable long id) throws SQLException {

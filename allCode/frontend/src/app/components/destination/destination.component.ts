@@ -1,7 +1,6 @@
 import { DestinationService } from 'src/app/services/destination.service'
 
 import { Component, OnInit} from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router'
 import { Destination } from 'src/app/models/destination.model';
 import { UserService } from 'src/app/services/user.service';
@@ -16,6 +15,7 @@ export class DestinationComponent implements OnInit{
 
   destinations: Destination[] = [];
   currentUser: User["id"] | undefined;
+  currentDestination: number | undefined;
 
 
 
@@ -39,7 +39,7 @@ export class DestinationComponent implements OnInit{
   }
 
   goToDestination(id: number){
-    this.router.navigate(['/services/'+id])
+    this.router.navigate(['/services/'+id]);
   }
 
 
