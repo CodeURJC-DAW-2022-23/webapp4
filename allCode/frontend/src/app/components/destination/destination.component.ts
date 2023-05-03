@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router'
 import { Destination } from 'src/app/models/destination.model';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user.model';
+import { PaginationInstance } from 'ngx-pagination';
 
 @Component({
   selector: 'app-destination',
@@ -17,8 +18,16 @@ export class DestinationComponent implements OnInit{
   currentUser: User["id"] | undefined;
   currentDestination: number | undefined;
 
+  p:number=1;
+  elemPerPage=3;
+  moreElements = true;
 
-
+  mostrarMas() {
+    this.elemPerPage += 3;
+    if (this.elemPerPage >= this.destinations.length) {
+      this.moreElements = false;
+    }
+  }
   constructor(
     private router: Router,
     private destinationService: DestinationService,
