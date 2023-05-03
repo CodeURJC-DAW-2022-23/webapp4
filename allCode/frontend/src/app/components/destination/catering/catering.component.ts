@@ -10,7 +10,7 @@ import { DestinationService } from 'src/app/services/destination.service';
   templateUrl: './catering.component.html',
   styleUrls: ['../tourism-catering.component.css']
 })
-export class CateringComponent  {
+export class CateringComponent implements OnInit{
   nameDestination = '';
   currentDestination: number;
   destination: Destination | undefined ;
@@ -26,7 +26,7 @@ export class CateringComponent  {
     .pipe(filter(dest => dest !== undefined))
     .subscribe(dest => {
       this.destination = dest;
-      this.nameDestination = this.destination?.nameDestination ?? 'UD';
+      this.nameDestination = this.destination?.nameDestination ?? 'Unknown Destination';
     }, error => {
       throw new Error('Unknown destination')
     });
