@@ -12,12 +12,11 @@ export class RegisterComponent {
   lastName: string = '';
   email: string = '';
   password: string = '';
-  rPassword: string = '';
 
   constructor(public authService: AuthService, private router: Router) {
 
   }
-  
+
   onRegister() {
     const userData = {
       name: this.name,
@@ -30,11 +29,11 @@ export class RegisterComponent {
         this.router.navigate(['/login']);
       },
       (_) => {
-        console.error("error");      
+        console.error("error");
       }
     );
   }
 
-  }
+}
 
 

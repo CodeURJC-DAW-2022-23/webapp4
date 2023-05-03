@@ -8,6 +8,7 @@ import { CateringComponent } from './components/destination/catering/catering.co
 import { RatingComponent } from './components/rating/rating.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const appRoutes = [
   { path: 'index', component: AppComponent },
@@ -17,6 +18,7 @@ const appRoutes = [
   { path: 'rating', component: RatingComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'profile', component: ProfileComponent },
 
 
 

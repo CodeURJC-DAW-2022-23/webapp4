@@ -14,6 +14,7 @@ export class AuthService {
 
   logged: boolean | undefined;
   user: User | undefined;
+
   
   constructor(private httpClient:HttpClient) { }
 
@@ -22,9 +23,10 @@ export class AuthService {
       response => {
           this.user = response as User;
           this.logged = true;
+          return this.user
       },
       _ => {
-            throw new Error('Something bad happened');
+            throw new Error('User not exist');
       }
   );
   }
@@ -45,8 +47,6 @@ export class AuthService {
     return this.httpClient.post(BASE_URL + "/login", { username: email, password: password }, { withCredentials: true })
       .pipe(
         map((response: any) => { 
-          this.userLogged();
-          return response;
         }),
         catchError((error: any) => {
           return throwError('Login Error');
@@ -58,6 +58,7 @@ export class AuthService {
     return this.httpClient.post(BASE_URL + '/logout', { withCredentials: true })
         .subscribe(() => {
             this.logged = false;
+            this.user = undefined;
         });
   }
 

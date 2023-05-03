@@ -14,7 +14,7 @@ export class LoginComponent {
 
   onLogin() {
     this.authService.login(this.email, this.password).subscribe(
-      (_) => {
+      (_) => { 
         this.router.navigate(['/']);
       },
       (_) => {

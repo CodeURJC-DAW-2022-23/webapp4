@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { User } from '../models/user.model';
 import { Observable } from 'rxjs';
 
+
 const baseUrl = '/api/users/';
 
 @Injectable({
@@ -12,7 +13,13 @@ export class UserService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getMe():Observable<User>{
-    return this.httpClient.get<User>(baseUrl+"me")
+  getMe(): Observable<User> {
+    return this.httpClient.get<User>(baseUrl + "me")
+  }
+
+  getProfileImage(user: User) {
+    return user.profileAvatarFile
+      ? baseUrl + user.id + '/profileAvatarFile'
+      : '/assets/images/c2.jpg';
   }
 }

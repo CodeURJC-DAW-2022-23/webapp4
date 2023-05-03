@@ -1,9 +1,14 @@
 package com.idealtrip.idealTrip.service;
 
 import java.util.Optional;
+import java.sql.SQLException;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
+
 import org.springframework.stereotype.Service;
 import com.idealtrip.idealTrip.model.User;
 import com.idealtrip.idealTrip.repository.UserRepository;
@@ -31,8 +36,8 @@ public class UserService {
     }
 
     public Optional<User> findById(long id) {
-        Optional<User> findById = users.findById(id);
-        return findById;
+        Optional<User> user = users.findById(id);
+        return user;
     }
 
     public boolean existEmail(String email) {

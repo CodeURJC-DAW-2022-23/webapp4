@@ -6,19 +6,25 @@ import com.idealtrip.idealTrip.controller.DTOS.UserEditDTO;
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 
 import java.io.IOException;
 import java.net.URI;
 import java.security.Principal;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -51,6 +57,21 @@ public class UserRestController {
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+
+	User currentUser;
+
+    @ModelAttribute
+    public void addAttributes(Model model, HttpServletRequest request) {
+        Principal principal = request.getUserPrincipal();
+
+        if (principal != null) {
+            userService.findByEmail(principal.getName()).ifPresent(us -> currentUser = us);
+            model.addAttribute("curretUser", currentUser);
+
+        } else {
+            model.addAttribute("logged", false);
+        }
+    }
 
 
 	@Operation(summary = "Get information about the current user")
@@ -141,4 +162,19 @@ public class UserRestController {
 			return ResponseEntity.notFound().build();
 		}
 	}
+
+	@GetMapping("/{id}/profileAvatarFile")
+	public ResponseEntity<Resource> downloadProfileAvatar(@PathVariable long id) throws SQLException {
+		Optional<User> user = userService.findById(id);
+
+		if (user.isPresent() && user.get().getProfileAvatarFile()!= null) {
+			Resource file = new InputStreamResource(user.get().getProfileAvatarFile().getBinaryStream());
+			
+			return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
+					.contentLength(user.get().getProfileAvatarFile().length()).body(file);
+		} else {
+			return ResponseEntity.notFound().build();
+		}
+	}
+
 }
