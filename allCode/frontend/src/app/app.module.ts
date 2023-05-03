@@ -9,12 +9,13 @@ import { DestinationComponent } from './components/destination/destination.compo
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 
-import { HeaderLogin } from "./components/Headers/header.component";
+import { HeaderLogin } from "./components/headers/header.component";
 import { InformationComponent } from './components/destination/information/information.component';
 import { CateringComponent } from './components/destination/catering/catering.component';
 import { RatingComponent } from './components/rating/rating.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
     declarations: [
@@ -26,8 +27,9 @@ import { LoginComponent } from './components/login/login.component';
         BrowserModule,
         HttpClientModule,
         FormsModule,
+        NgxPaginationModule,
         routing,
-        
+
     ],
 })
 export class AppModule { }

@@ -1,0 +1,18 @@
+
+
+ .botonMas{
+   background-color: #FF1654;
+   font-size: 16px;
+   line-height: 52px;
+   text-transform: capitalize;
+   font-weight: 600;
+   color: white;
+   padding: 5px;
+   border-radius: 5px;
+   border: none;
+   cursor: pointer;
+ }
+
+ button:hover {
+   background-color: #7e0a29;
+ }
