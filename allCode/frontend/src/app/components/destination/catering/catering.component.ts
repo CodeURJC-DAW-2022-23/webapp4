@@ -19,10 +19,8 @@ export class CateringComponent  {
 
 
   constructor(
-    private router: Router,
     private destinationService: DestinationService,
     private activatedRoute: ActivatedRoute,
-    private userService: UserService
   ) {
     this.currentDestination = activatedRoute.snapshot.params['id'];
     let dest = destinationService.getDestinationById(this.currentDestination)
