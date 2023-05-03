@@ -3,17 +3,16 @@
 
 <figure>
   <div class="title">
-    <!-- <h1>Comida típica de {{name}}</h1> -->
+    <h1>Comida típica de {{nameDestination}}</h1>
   </div>
 
   <div class="gallery">
-    <h1>HOLA</h1>
     <!-- {{#nameDestination}} -->
     <div class="tourismImage" *ngFor="let food of foods">
-      <!-- <img src="/catering/{{id}}/image" alt=""> -->
+      <img [src]="foodImage(food.id)" alt="">
       <div class="capa">
-        <!-- <h3>{{nameFood}}</h3> -->
-        <!-- <p>{{contentFood}}</p> -->
+        <h3>{{food.nameFood}}</h3>
+        <p>{{food.contentFood}}</p>
       </div>
     </div>
     <!-- {{/nameDestination}} -->

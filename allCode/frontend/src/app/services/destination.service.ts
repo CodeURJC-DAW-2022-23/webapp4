@@ -21,13 +21,17 @@ export class DestinationService {
   getCaterings(id: number): Observable<Page<Catering>>{
     return this.httpClient.get<Page<Catering>>(baseUrl+'catering/'+ id)
   }
- ///  api/destinations/9/image
+
+  getDestinationById(id: number): Observable<Destination>{
+    return this.httpClient.get<Destination>(baseUrl+id)
+  }
+
   getImageDestination(destination: Destination){
     return baseUrl + destination.id+ '/image'
   }
 
-  getImageFood(destination: Destination){
-    return baseUrl + 'catering/'+destination.id+'/image'
+  getImageFood(id: number){
+    return baseUrl + 'catering/'+id+'/image'
   }
 
   getImagePlace(destination: Destination){
