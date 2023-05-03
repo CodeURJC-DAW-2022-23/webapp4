@@ -4,7 +4,6 @@ import { filter } from 'rxjs';
 import { Catering } from 'src/app/models/catering.model';
 import { Destination } from 'src/app/models/destination.model';
 import { DestinationService } from 'src/app/services/destination.service';
-import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-catering',
@@ -34,7 +33,6 @@ export class CateringComponent  {
   }
 
   ngOnInit():void {
-    
     this.destinationService.getCaterings(this.currentDestination).subscribe((response) => {
       this.foods = response.content;
     });
