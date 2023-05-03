@@ -1,0 +1,11 @@
+  <br><br><br><br>
+  <div class="title-box">
+    <h1>Registro</h1>
+  </div>
+ <div class="input-box">
+  <input type="text" placeholder="Nombre*" [(ngModel)]="name" name="name" required/>
+  <input type="text" placeholder="Apellido" [(ngModel)]="lastName" name="lastName"/>
+  <input type="text" placeholder="Email*" [(ngModel)]="email" name="email" required/>
+  <input type="password" placeholder="Contraseña*" [(ngModel)]="password" name="password" required/>
+</div>
+    <button (click)="onRegister()">Registrarse</button>
