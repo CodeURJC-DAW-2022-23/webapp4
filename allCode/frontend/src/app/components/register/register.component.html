@@ -1,11 +1,28 @@
-  <br><br><br><br>
-  <div class="title-box">
-    <h1>Registro</h1>
+<div class="box">
+  <div class="pre-box">
+    <h1>IdealTrip</h1>
+    <div class="img-box">
+      <img src="./assets/images/favicon.png" alt="">
+    </div>
   </div>
- <div class="input-box">
-  <input type="text" placeholder="Nombre*" [(ngModel)]="name" name="name" required/>
-  <input type="text" placeholder="Apellido" [(ngModel)]="lastName" name="lastName"/>
-  <input type="text" placeholder="Email*" [(ngModel)]="email" name="email" required/>
-  <input type="password" placeholder="Contraseña*" [(ngModel)]="password" name="password" required/>
+
+  <div class="login-form">
+    <!-- title box -->
+    <div class="title-box">
+      <h1>Registro</h1>
+    </div>
+    <!-- input box-->
+    <div class="input-box">
+      <input type="text" placeholder="Nombre*" [(ngModel)]="name" name="name" required />
+      <input type="text" placeholder="Apellido" [(ngModel)]="lastName" name="lastName" />
+      <input type="text" placeholder="Email*" [(ngModel)]="email" name="email" required />
+      <input type="password" placeholder="Contraseña*" [(ngModel)]="password" name="password" required />
+    </div>
+    <!-- btn box -->
+    <div class="btn-box">
+      <a routerLink="/login" class="box_btn">Iniciar Sesión</a>
+      <button class="box_btn" (click)="onRegister()">Registrarse</button>
+    </div>
+  </div>
+
 </div>
-    <button (click)="onRegister()">Registrarse</button>

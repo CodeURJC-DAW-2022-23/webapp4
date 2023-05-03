@@ -14,10 +14,11 @@ import { InformationComponent } from './components/destination/information/infor
 import { CateringComponent } from './components/destination/catering/catering.component';
 import { RatingComponent } from './components/rating/rating.component';
 import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
     declarations: [
-        AppComponent, DestinationComponent, PrivacyPolicyComponent, ErrorPageComponent, HeaderLogin, InformationComponent, CateringComponent, RatingComponent,RegisterComponent,
+        AppComponent, DestinationComponent, PrivacyPolicyComponent, ErrorPageComponent, HeaderLogin, InformationComponent, CateringComponent, RatingComponent,RegisterComponent, LoginComponent,
     ],
     providers: [],
     bootstrap: [AppComponent],

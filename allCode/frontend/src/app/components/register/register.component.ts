@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
+  styleUrls: ['./register.component.css'],
   templateUrl: './register.component.html',
 })
 export class RegisterComponent {
@@ -16,6 +17,7 @@ export class RegisterComponent {
   constructor(public authService: AuthService, private router: Router) {
 
   }
+  
   onRegister() {
     const userData = {
       name: this.name,

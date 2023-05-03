@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { User } from '../models/user.model';
 
 
 const BASE_URL = '/api/auth/';
@@ -11,10 +12,22 @@ const BASE_URL = '/api/auth/';
 })
 export class AuthService {
 
-  logged: boolean | undefined
+  logged: boolean | undefined;
+  user: User | undefined;
   
   constructor(private httpClient:HttpClient) { }
 
+  userLogged(){
+    this.httpClient.get('/api/users/me', { withCredentials: true }).subscribe(
+      response => {
+          this.user = response as User;
+          this.logged = true;
+      },
+      _ => {
+            throw new Error('Something bad happened');
+      }
+  );
+  }
 
   register(userData:any): Observable<any> {
     return this.httpClient.post("/api/users/", userData)
@@ -28,17 +41,24 @@ export class AuthService {
       );
   }
 
-  login(email:string,encodedPassword:string){
-    
+  login(email: string, password: string): Observable<any> {
+    return this.httpClient.post(BASE_URL + "/login", { username: email, password: password }, { withCredentials: true })
+      .pipe(
+        map((response: any) => { 
+          this.userLogged();
+          return response;
+        }),
+        catchError((error: any) => {
+          return throwError('Login Error');
+        })
+      );
   }
 
   logOut() {
-
     return this.httpClient.post(BASE_URL + '/logout', { withCredentials: true })
-        .subscribe((resp: any) => {
+        .subscribe(() => {
             this.logged = false;
         });
-
   }
 
   isLogged(){
