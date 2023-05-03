@@ -514,6 +514,52 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "GetImageCatering",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8443/api/destinations/catering/29/image",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"destinations",
+						"catering",
+						"29",
+						"image"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetImageTourism",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8443/api/destinations/tourism/72/image",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"destinations",
+						"tourism",
+						"72",
+						"image"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
