@@ -23,6 +23,14 @@ export class InformationComponent {
 
   goToCatering() {
     return this.router.navigate(['/catering/' + this.currentDestination])
-
+  }
+  goToTourism(){
+    return this.router.navigate(['/tourism/' + this.currentDestination])
+  }
+  goToReviews(){
+    return this.router.navigate(['/review/' + this.currentDestination])
+  }
+  goToHouse(){
+    return this.router.navigate(['/house/' + this.currentDestination])
   }
 }

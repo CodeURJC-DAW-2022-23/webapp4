@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Destination } from '../models/destination.model';
 import { Page } from '../models/page.model';
 import { Catering } from '../models/catering.model';
+import { Tourism } from '../models/tourism.model';
 
 const baseUrl = '/api/destinations/';
 
@@ -21,6 +22,10 @@ export class DestinationService {
   getCaterings(id: number): Observable<Page<Catering>>{
     return this.httpClient.get<Page<Catering>>(baseUrl+'catering/'+ id)
   }
+  
+  getTourism(id: number): Observable<Page<Tourism>>{
+    return this.httpClient.get<Page<Tourism>>(baseUrl+'tourism/'+ id)
+  }
 
   getDestinationById(id: number): Observable<Destination>{
     return this.httpClient.get<Destination>(baseUrl+id)
@@ -34,8 +39,8 @@ export class DestinationService {
     return baseUrl + 'catering/'+id+'/image'
   }
 
-  getImagePlace(destination: Destination){
-        return baseUrl + 'tourism/'+destination.id+'/image'
+  getImagePlace(id: number){
+        return baseUrl + 'tourism/'+id+'/image'
   }
 
 }
