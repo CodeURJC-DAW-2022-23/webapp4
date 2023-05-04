@@ -11,7 +11,7 @@ import { LoginComponent } from './components/login/login.component';
 
 import { ProfileComponent } from './components/profile/profile.component';
 
-//import { TourismComponent } from './components/destination/tourism/tourism.component';
+import { TourismComponent } from './components/destination/tourism/tourism.component';
 
 
 const appRoutes = [
@@ -19,7 +19,7 @@ const appRoutes = [
   { path: 'services', component: DestinationComponent },
   { path: 'services/:id', component: InformationComponent },
   { path: 'catering/:id', component: CateringComponent },
-  //{ path: 'tourism/:id', component: TourismComponent },
+  { path: 'tourism/:id', component: TourismComponent },
   { path: 'rating', component: RatingComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
