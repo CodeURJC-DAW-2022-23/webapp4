@@ -36,8 +36,7 @@ public class UserService {
     }
 
     public Optional<User> findById(long id) {
-        Optional<User> user = users.findById(id);
-        return user;
+        return users.findById(id);
     }
 
     public boolean existEmail(String email) {

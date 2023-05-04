@@ -163,11 +163,11 @@ public class UserRestController {
 		}
 	}
 
-	@GetMapping("/{id}/profileAvatarFile")
+	@GetMapping("/profileAvatarFile/{id}")
 	public ResponseEntity<Resource> downloadProfileAvatar(@PathVariable long id) throws SQLException {
 		Optional<User> user = userService.findById(id);
 
-		if (user.isPresent() && user.get().getProfileAvatarFile()!= null) {
+		if (user.isPresent()) {
 			Resource file = new InputStreamResource(user.get().getProfileAvatarFile().getBinaryStream());
 			
 			return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")

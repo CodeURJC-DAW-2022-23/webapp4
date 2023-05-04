@@ -14,12 +14,7 @@ export class UserService {
   constructor(private httpClient: HttpClient) { }
 
   getMe(): Observable<User> {
-    return this.httpClient.get<User>(baseUrl + "me")
-  }
+    return this.httpClient.get<User>(baseUrl + "me") as Observable<User>
+  } 
 
-  getProfileImage(user: User) {
-    return user.profileAvatarFile
-      ? baseUrl + user.id + '/profileAvatarFile'
-      : '/assets/images/c2.jpg';
-  }
 }

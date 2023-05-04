@@ -8,7 +8,6 @@ export interface User {
     lastName: string;
     encodedPassword: string;
     roles: string[];
-    profileAvatarFile: Blob;
     profileAvatar: string;
     purchases: Purchase[];
     reviews: Review[];
