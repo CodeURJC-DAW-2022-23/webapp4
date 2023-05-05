@@ -4,23 +4,29 @@ import static org.springframework.web.servlet.support.ServletUriComponentsBuilde
 
 import com.idealtrip.idealTrip.controller.DTOS.UserEditDTO;
 import org.hibernate.engine.jdbc.BlobProxy;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.io.IOException;
 import java.net.URI;
 import java.security.Principal;
 import java.sql.SQLException;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.swing.text.html.Option;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.event.PublicInvocationEvent;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,10 +39,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.idealtrip.idealTrip.controller.DTOS.UpdateUserDTO;
 import com.idealtrip.idealTrip.controller.DTOS.UserDTO;
+import com.idealtrip.idealTrip.model.Review;
 import com.idealtrip.idealTrip.model.User;
 import com.idealtrip.idealTrip.repository.UserRepository;
+import com.idealtrip.idealTrip.service.ReviewService;
 import com.idealtrip.idealTrip.service.UserService;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -44,7 +53,6 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
-
 
 @RestController
 @RequestMapping("/api/users")
@@ -58,28 +66,30 @@ public class UserRestController {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
+	@Autowired
+	private ReviewService reviewService;
+
 	User currentUser;
 
-    @ModelAttribute
-    public void addAttributes(Model model, HttpServletRequest request) {
-        Principal principal = request.getUserPrincipal();
+	@ModelAttribute
+	public void addAttributes(Model model, HttpServletRequest request) {
+		Principal principal = request.getUserPrincipal();
 
-        if (principal != null) {
-            userService.findByEmail(principal.getName()).ifPresent(us -> currentUser = us);
-            model.addAttribute("curretUser", currentUser);
+		if (principal != null) {
+			userService.findByEmail(principal.getName()).ifPresent(us -> currentUser = us);
+			model.addAttribute("curretUser", currentUser);
 
-        } else {
-            model.addAttribute("logged", false);
-        }
-    }
-
+		} else {
+			model.addAttribute("logged", false);
+		}
+	}
 
 	@Operation(summary = "Get information about the current user")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Found the user", content = {
-                    @Content(mediaType = "application/json", schema = @Schema(implementation = User.class)) }),
-            @ApiResponse(responseCode = "404", description = "User not found ", content = @Content),
-            @ApiResponse(responseCode = "403", description = "Forbiden or don't have permissions", content = @Content) })
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "Found the user", content = {
+					@Content(mediaType = "application/json", schema = @Schema(implementation = User.class)) }),
+			@ApiResponse(responseCode = "404", description = "User not found ", content = @Content),
+			@ApiResponse(responseCode = "403", description = "Forbiden or don't have permissions", content = @Content) })
 	@GetMapping("/me")
 	public ResponseEntity<User> me(HttpServletRequest request) {
 
@@ -99,7 +109,7 @@ public class UserRestController {
 			@ApiResponse(responseCode = "404", description = "User not found ", content = @Content),
 			@ApiResponse(responseCode = "403", description = "Forbiden or don't have permissions", content = @Content) })
 	@PostMapping("/me/edit")
-	public ResponseEntity<User> editMe(HttpServletRequest request,@RequestBody UserEditDTO userDTO) {
+	public ResponseEntity<User> editMe(HttpServletRequest request, @RequestBody UserEditDTO userDTO) {
 
 		Principal principal = request.getUserPrincipal();
 		Optional<User> user = userService.findByEmail(principal.getName());
@@ -111,12 +121,11 @@ public class UserRestController {
 		return ResponseEntity.ok(user.get());
 	}
 
-
 	@Operation(summary = "Register a new user")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "User created", content = {
-                    @Content(mediaType = "application/json", schema = @Schema(implementation = User.class)) }),
-            @ApiResponse(responseCode = "403", description = "Forbiden or don't have permissions", content = @Content) })
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "201", description = "User created", content = {
+					@Content(mediaType = "application/json", schema = @Schema(implementation = User.class)) }),
+			@ApiResponse(responseCode = "403", description = "Forbiden or don't have permissions", content = @Content) })
 	@PostMapping("/")
 	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<User> register(@RequestBody UserDTO userDTO) throws IOException {
@@ -142,23 +151,23 @@ public class UserRestController {
 		}
 	}
 
-
 	@Operation(summary = "Update the user")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Profile updated", content = {
-                    @Content(mediaType = "application/json", schema = @Schema(implementation = User.class)) }),
-            @ApiResponse(responseCode = "404", description = "Profile not found ", content = @Content),
-            @ApiResponse(responseCode = "403", description = "Forbiden o don't have permissions", content = @Content) })
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "Profile updated", content = {
+					@Content(mediaType = "application/json", schema = @Schema(implementation = User.class)) }),
+			@ApiResponse(responseCode = "404", description = "Profile not found ", content = @Content),
+			@ApiResponse(responseCode = "403", description = "Forbiden o don't have permissions", content = @Content) })
 	@PutMapping("/{id}")
-	public ResponseEntity<User> updateUser(@PathVariable long id, @RequestBody UpdateUserDTO updatedUser){
+	public ResponseEntity<User> updateUser(@PathVariable long id, @RequestBody UpdateUserDTO updatedUser) {
 		Optional<User> user = userService.findById(id);
-        if(user.isPresent()){
+		if (user.isPresent()) {
 			User user2 = user.get();
+			user2.setProfileAvatarFile(updatedUser.getProfileAvatarFile());
 			user2.setName(updatedUser.getName());
 			user2.setLastName(updatedUser.getLastName());
 			userService.save(user2);
 			return ResponseEntity.ok(user.get());
-		}else{
+		} else {
 			return ResponseEntity.notFound().build();
 		}
 	}
@@ -169,7 +178,7 @@ public class UserRestController {
 
 		if (user.isPresent()) {
 			Resource file = new InputStreamResource(user.get().getProfileAvatarFile().getBinaryStream());
-			
+
 			return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
 					.contentLength(user.get().getProfileAvatarFile().length()).body(file);
 		} else {
@@ -177,4 +186,21 @@ public class UserRestController {
 		}
 	}
 
+	@Operation(summary = "review the user")
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "done", content = {
+					@Content(mediaType = "application/json", schema = @Schema(implementation = User.class)) }),
+			@ApiResponse(responseCode = "404", description = "review not found ", content = @Content),
+			@ApiResponse(responseCode = "403", description = "Forbiden o don't have permissions", content = @Content) })
+	@GetMapping("/reviews/{id}")
+	@JsonView(Review.Basic.class)
+	public ResponseEntity<List<Review>> userReviews(@PathVariable long id) {
+		Optional<User> user = userService.findById(id);
+		if (user.isPresent()) {
+			List<Review> review = reviewService.findByUserId(user.get().getId());
+			return ResponseEntity.ok(review);
+		} else {
+			return ResponseEntity.notFound().build();
+		}
+	}
 }
