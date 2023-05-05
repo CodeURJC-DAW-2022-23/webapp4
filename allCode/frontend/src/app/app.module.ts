@@ -14,7 +14,9 @@ import { CateringComponent } from './components/destination/catering/catering.co
 import { RatingComponent } from './components/rating/rating.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
-
+import { ContactComponent } from './components/contact/contact.component';
+import { ReviewComponent } from './components/review/review.component';
+import { PurchaseComponent } from './components/purchase/purchase.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { TourismComponent } from './components/destination/tourism/tourism.component';
@@ -22,7 +24,7 @@ import { TourismComponent } from './components/destination/tourism/tourism.compo
 
 @NgModule({
     declarations: [
-        AppComponent, DestinationComponent, PrivacyPolicyComponent, ErrorPageComponent, HeaderLogin, InformationComponent, CateringComponent, RatingComponent, RegisterComponent, LoginComponent, ProfileComponent, TourismComponent,
+        AppComponent, DestinationComponent, PrivacyPolicyComponent, ErrorPageComponent, HeaderLogin, InformationComponent, CateringComponent, RatingComponent, RegisterComponent, LoginComponent, ProfileComponent, ReviewComponent, ContactComponent, PurchaseComponent, TourismComponent,
     ],
     providers: [],
     bootstrap: [AppComponent],
