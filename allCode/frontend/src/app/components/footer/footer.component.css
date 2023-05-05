@@ -4544,7 +4544,7 @@ input[type="button"].btn-block {
 
 .nav-tabs .nav-link:hover,
 .nav-tabs .nav-link:focus {
-  border-color: #e9ecef #e9ecef #dee2e6;
+  border-color: #e9ecef #c5946c #137be4;
 }
 
 .nav-tabs .nav-link.disabled {
@@ -10999,8 +10999,8 @@ a.text-dark:focus {
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url("../../../assets\fonts\fontawesome-webfont.eot?v=4.7.0");
-  src: url("../../../assets\fonts\fontawesome-webfont.eot?#iefix&v=4.7.0") format("embedded-opentype"), url("../../../assets\fonts\fontawesome-webfont.woff2?v=4.7.0") format("woff2"), url("../../../assets\fonts\fontawesome-webfont.woff?v=4.7.0") format("woff"), url("../../../assets\fonts\fontawesome-webfont.ttf?v=4.7.0") format("truetype"), url("../../../assets\fonts\fontawesome-webfont.svg?v=4.7.0#fontawesomeregular") format("svg");
+  src: url("src\assets\fonts\fontawesome-webfont.eot?v=4.7.0");
+  src: url("src\assets\fonts\fontawesome-webfont.eot?#iefix&v=4.7.0") format("embedded-opentype"), url("src\assets\fonts\fontawesome-webfont.woff2?v=4.7.0") format("woff2"), url("src\assets\fonts\fontawesome-webfont.woff?v=4.7.0") format("woff"), url("src\assets\fonts\fontawesome-webfont.ttf?v=4.7.0") format("truetype"), url("src\assets\fonts\fontawesome-webfont.svg?v=4.7.0#fontawesomeregular") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -14974,9 +14974,9 @@ nav ul li a:hover {
   background: transparent none repeat 0 0;
 }
 
-/* .zs-enabled.overlay-plain .zs-slideshow:after {
-  background-image: url(../../../assets/images/plain.png);
-} */
+.zs-enabled.overlay-plain .zs-slideshow:after {
+  /* background-image: url(../../../assets/images); */
+}
 
 .zs-enabled.overlay-dots .zs-slideshow:after {
   background-image: url(../../../assets/images/dots.png);

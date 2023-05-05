@@ -12,9 +12,9 @@ import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 
 import { TourismComponent } from './components/destination/tourism/tourism.component';
-import {ReviewComponent} from "./components/review/review.component";
-import {PurchaseComponent} from "./components/purchase/purchase.component";
-import {ContactComponent} from "./components/contact/contact.component";
+import { ReviewComponent} from "./components/review/review.component";
+import { PurchaseComponent} from "./components/purchase/purchase.component";
+import { ContactComponent} from "./components/contact/contact.component";
 
 
 const appRoutes = [
@@ -30,7 +30,6 @@ const appRoutes = [
   { path: 'review', component: ReviewComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'purchase', component: PurchaseComponent },
-
 
 
   { path: '', component: AppComponent },
