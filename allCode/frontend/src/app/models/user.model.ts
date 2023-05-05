@@ -9,6 +9,7 @@ export interface User {
     encodedPassword: string;
     roles: string[];
     profileAvatar: string;
+    profileAvatarFile: File;
     purchases: Purchase[];
     reviews: Review[];
 

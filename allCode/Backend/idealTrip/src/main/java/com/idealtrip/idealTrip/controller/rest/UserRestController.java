@@ -4,7 +4,9 @@ import static org.springframework.web.servlet.support.ServletUriComponentsBuilde
 
 import com.idealtrip.idealTrip.controller.DTOS.UserEditDTO;
 import org.hibernate.engine.jdbc.BlobProxy;
-
+import org.hibernate.mapping.Any;
+import org.hibernate.tool.hbm2ddl.ForeignKeyMetadata;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.InputStreamResource;
@@ -15,12 +17,14 @@ import org.springframework.data.domain.Pageable;
 import java.io.IOException;
 import java.net.URI;
 import java.security.Principal;
+import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.sql.rowset.serial.SerialBlob;
 import javax.swing.text.html.Option;
 
 import org.springframework.http.HttpHeaders;
@@ -36,10 +40,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.idealtrip.idealTrip.controller.DTOS.UpdateUserDTO;
 import com.idealtrip.idealTrip.controller.DTOS.UserDTO;
 import com.idealtrip.idealTrip.model.Review;
@@ -156,19 +163,28 @@ public class UserRestController {
 			@ApiResponse(responseCode = "200", description = "Profile updated", content = {
 					@Content(mediaType = "application/json", schema = @Schema(implementation = User.class)) }),
 			@ApiResponse(responseCode = "404", description = "Profile not found ", content = @Content),
-			@ApiResponse(responseCode = "403", description = "Forbiden o don't have permissions", content = @Content) })
+			@ApiResponse(responseCode = "403", description = "Forbidden or don't have permissions", content = @Content),
+			@ApiResponse(responseCode = "500", description = "Internal server error", content = @Content) })
 	@PutMapping("/{id}")
-	public ResponseEntity<User> updateUser(@PathVariable long id, @RequestBody UpdateUserDTO updatedUser) {
-		Optional<User> user = userService.findById(id);
-		if (user.isPresent()) {
-			User user2 = user.get();
-			user2.setProfileAvatarFile(updatedUser.getProfileAvatarFile());
-			user2.setName(updatedUser.getName());
-			user2.setLastName(updatedUser.getLastName());
-			userService.save(user2);
-			return ResponseEntity.ok(user.get());
-		} else {
-			return ResponseEntity.notFound().build();
+	public ResponseEntity<?> updateUser(@PathVariable long id,
+			@RequestParam("name") String name,
+			@RequestParam("lastName") String lastName,
+			@RequestParam(value = "profileAvatarFile", required = false) MultipartFile profileAvatarFile) {
+		try {
+			User user = userService.findById(id).orElseThrow();
+			user.setName(name);
+			user.setLastName(lastName);
+
+			if (profileAvatarFile != null) {
+				byte[] imageBytes = profileAvatarFile.getBytes();
+				Blob imageBlob = new SerialBlob(imageBytes);
+				user.setProfileAvatarFile(imageBlob);
+			}
+
+			User updatedUser = userRepository.save(user);
+			return ResponseEntity.ok(updatedUser);
+		} catch (Exception ex) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error updating profile");
 		}
 	}
 

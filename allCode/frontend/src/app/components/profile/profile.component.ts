@@ -13,36 +13,67 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  profileAvatarUrl!: string;
+  profileAvatarUrl!: string
   user: User | undefined
   reviews: Review[] | undefined
+  name!: string;
+  lastName!: string;
+  avatarFile!: File;
 
   constructor(private authService: AuthService, private httpClient: HttpClient,
-    private router: Router, private userService: UserService, public activatedRoute: ActivatedRoute, private reviewService : ReviewService) { }
+    private router: Router, private userService: UserService, public activatedRoute: ActivatedRoute, private reviewService: ReviewService) { }
 
   ngOnInit(): void {
     this.userService.getMe().subscribe((response) => {
       this.user = response;
-      this.httpClient.get('/api/users/profileAvatarFile/' + this.user.id, { responseType: 'blob' })
+
+      this.userService.getProfileAvatar(this.user.id)
         .subscribe(blob => {
           const objectUrl = URL.createObjectURL(blob);
           this.profileAvatarUrl = objectUrl;
         });
 
-        this.reviewService.getUserReviews(this.user.id)
+      this.userService.getUserReviews(this.user.id)
         .subscribe(reviews => {
           this.reviews = reviews;
         });
+      //purchase
     })
   }
+  onFileSelected(event: any) {
+    if (event.target.files && event.target.files.length > 0) {
+      this.avatarFile = event.target.files[0];
+    }
+  }
+
+  editUser() {
+    if (this.user) {
+      if (!this.name) {
+        console.error('Name cant be null!!!');
+        return;
+      }
+      this.user.name = this.name;
+      this.user.lastName = this.lastName;
+      this.userService.editUser(this.user, this.avatarFile).subscribe(
+        (response) => {
+          console.log(this.user);
+        },
+        (error) => {
+          console.error(this.user);
+        }
+      );
+    }
+  }
+
+  deleteUser() {
+
+  }
+
 
   logOut() {
     this.authService.logOut();
     this.router.navigate(['/']);
   }
-  
-
-
 
 }
 

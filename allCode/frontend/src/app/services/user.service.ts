@@ -1,20 +1,47 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../models/user.model';
-import { Observable } from 'rxjs';
+import { Observable, catchError, map, throwError } from 'rxjs';
+import { Review } from '../models/review.model';
 
 
-const baseUrl = '/api/users/';
+
+const baseUrl = '/api/users';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
+
   constructor(private httpClient: HttpClient) { }
 
   getMe(): Observable<User> {
-    return this.httpClient.get<User>(baseUrl + "me") as Observable<User>
-  } 
+    return this.httpClient.get<User>(baseUrl + "/me") as Observable<User>
+  }
 
+  getUserReviews(userId: number): Observable<Review[]> {
+    return this.httpClient.get<Review[]>(baseUrl + '/reviews/' + userId);
+  }
+
+  getProfileAvatar(userId: number): Observable<Blob> {
+    return this.httpClient.get((baseUrl + '/profileAvatarFile/' + userId), { responseType: 'blob' });
+  }
+
+  editUser(user: User, profileAvatarFile?: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('name', user.name || '');
+    formData.append('lastName', user.lastName || '');
+    if (profileAvatarFile) {
+      formData.append('profileAvatarFile', profileAvatarFile);
+    }
+    return this.httpClient.put<User>('/api/users/' + user.id, formData).pipe(
+      map((response: any) => {
+        return response;
+      }),
+      catchError((error: any) => {
+        return throwError('Edit User Error');
+      })
+    );
+  }
 }

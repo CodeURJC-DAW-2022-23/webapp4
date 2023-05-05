@@ -10,11 +10,11 @@ public class UserDTO {
 
     private String passwordEncoded;
 
-    public String getFirstName() {
+    public String getName() {
         return name;
     }
 
-    public void setFirstName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 

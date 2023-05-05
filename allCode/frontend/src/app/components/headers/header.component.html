@@ -29,7 +29,7 @@
       <!-- {{^logged}} -->
       <form action="/login" method="post">
         <div class="d-lg-block d-none">
-          <a href="/login" class="btn btn-style btn-secondary">Iniciar sesión</a>
+          <a class="btn btn-style btn-secondary" routerLink="/login">Iniciar sesión</a>
         </div>
         <!-- <input type="hidden" name="_csrf" value="{{token}}" /> -->
       </form>
@@ -45,10 +45,10 @@
 
       <!-- {{#admin}} -->
       <div class="d-lg-block d-none">
-        <a href="/administrator" class="btn btn-style btn-secondary">Admin</a>
+        <a class="btn btn-style btn-secondary" routerLink="/administrator">Admin</a>
       </div>
       <!-- {{/admin}} -->
-      
+
 
       <!-- {{/logged}} -->
     </nav>
