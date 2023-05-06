@@ -46,7 +46,7 @@ export class DestinationComponent implements OnInit{
   destinationImage(destination: Destination){
     return this.destinationService.getImageDestination(destination);
   }
-
+  
   goToDestination(id: number){
     this.router.navigate(['/services/'+id]);
   }

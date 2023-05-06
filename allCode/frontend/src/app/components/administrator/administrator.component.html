@@ -1,18 +1,20 @@
 <br><br><br><br><br>
 
 <div class="row">
+    <div class="card-header">Usuarios</div>
     <div class="col-lg-3 col-md-4 col-sm-6" *ngFor="let user of userList">
         <div class="card">
+            <br>
             <div class="text-center">
-                <img [src]="profileAvatarUrls[user.id]" class="card-img-top mx-auto d-block"
-                    alt="{{user.name}} avatar" style="max-width:150px; max-height: 150px; object-fit: cover;">
+                <img [src]="profileAvatarUrls[user.id]" class="card-img-top mx-auto d-block" alt="{{user.name}} avatar"
+                    style="max-width:150px; max-height: 150px; object-fit: cover;">
             </div>
             <div class="card-body">
                 <div class="form-group">
 
                     <label for="avatar">Avatar:</label>
                     <input type="file" class="form-control-file" id="avatarFile" name="avatarFile"
-                        accept=".png, .jpg, .jpeg" (change)="onFileSelected($event,user)" >
+                        accept=".png, .jpg, .jpeg" (change)="onFileSelected($event,user)">
                     <br>
                     <h5 class="card-title">{{ user.name }} {{user.lastName}}</h5>
                     <p class="card-text">{{ user.email }}</p>
@@ -25,12 +27,55 @@
 
                     <button (click)="editUser(user)">Editar</button>
                     <button (click)="deleteUser(user)">Delete</button>
+                    <br>
                 </div>
             </div>
         </div>
         <br>
     </div>
 </div>
+
+
+<div class="row">
+        <div class="card-header">Destinos</div>
+        <div class="col-lg-3 col-md-4 col-sm-6" *ngFor="let destination of destinations">
+            <div class="card">
+                <br>
+                <div class="text-center">
+                    <img [src]="destinationImage(destination)" class="card-img-top mx-auto d-block"
+                        alt="{{destination.nameDestination}} avatar"
+                        style="max-width:150px; max-height: 150px; object-fit: cover;">
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="avatar">Imagen:</label>
+                        <input type="file" class="form-control-file" id="destinationImageFile"
+                            name="destinationImageFile" accept=".png, .jpg, .jpeg"
+                            (change)="onDestinationFileSelected($event,destination)">
+                        <br>
+                        <h5 class="card-title">{{ destination.nameDestination }}  {{destination.price}}$</h5>
+                        <p class="card-text">{{destination.contentDestination}}</p>
+                        <br>
+                        <label for="destinationName">destino:</label>
+                        <input type="text" class="form-control" id="destinationName" name="destinationName"
+                            [(ngModel)]="destinationName[destination.id]">
+                        <label for="price">Precio:</label>
+                        <input type="number" class="form-control" id="price" name="price"
+                            [(ngModel)]="destinationPrice[destination.id]">
+                        <label for="destinationContent">Contenido:</label>
+                        <input type="text" class="form-control" id="destinationContent" name="destinationContent"
+                            [(ngModel)]="destinationContent[destination.id]">
+                        <button (click)="editDestination(destination)">Editar</button>
+                        <button (click)="deleteDestination(destination)">Delete</button>
+                        <br>
+                    </div>
+                </div>
+            </div>
+            <br>
+        </div>
+    </div>
+
+
 <div class="card-header">Nuevo destino</div>
 <div class="card-body">
     <form method="post" action="/administrator/addDestination" enctype="multipart/form-data">

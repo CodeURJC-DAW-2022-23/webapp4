@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Destination } from '../models/destination.model';
 import { Page } from '../models/page.model';
@@ -13,34 +13,52 @@ const baseUrl = '/api/destinations/';
 })
 export class DestinationService {
 
+
+
   constructor(private httpClient: HttpClient) { }
 
-  getDestinations(): Observable<Page<Destination>>{
+  getDestinations(): Observable<Page<Destination>> {
     return this.httpClient.get<Page<Destination>>(baseUrl)
   }
 
-  getCaterings(id: number): Observable<Page<Catering>>{
-    return this.httpClient.get<Page<Catering>>(baseUrl+'catering/'+ id)
-  }
-  
-  getTourism(id: number): Observable<Page<Tourism>>{
-    return this.httpClient.get<Page<Tourism>>(baseUrl+'tourism/'+ id)
+  getCaterings(id: number): Observable<Page<Catering>> {
+    return this.httpClient.get<Page<Catering>>(baseUrl + 'catering/' + id)
   }
 
-  getDestinationById(id: number): Observable<Destination>{
-    return this.httpClient.get<Destination>(baseUrl+id)
+  getTourism(id: number): Observable<Page<Tourism>> {
+    return this.httpClient.get<Page<Tourism>>(baseUrl + 'tourism/' + id)
   }
 
-  getImageDestination(destination: Destination){
-    return baseUrl + destination.id+ '/image'
+  getDestinationById(id: number): Observable<Destination> {
+    return this.httpClient.get<Destination>(baseUrl + id)
   }
 
-  getImageFood(id: number){
-    return baseUrl + 'catering/'+id+'/image'
+  getImageDestination(destination: Destination) {
+    return baseUrl + destination.id + '/image'
   }
 
-  getImagePlace(id: number){
-        return baseUrl + 'tourism/'+id+'/image'
+  getImageFood(id: number) {
+    return baseUrl + 'catering/' + id + '/image'
+  }
+
+  getImagePlace(id: number) {
+    return baseUrl + 'tourism/' + id + '/image'
+  }
+
+  editDestination(destination: Destination, destinationImageFile?: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('destinationName', destination.nameDestination || '');
+    formData.append('destinationContent', destination.contentDestination || '');
+    formData.append('price', (destination.price.toString()));
+    if (destinationImageFile) {
+      formData.append('destinationImageFile', destinationImageFile);
+    }
+
+    return this.httpClient.post(baseUrl + "/editDestination/" + destination.id, formData).pipe(
+      catchError((error) => {
+        return throwError(error);
+      })
+    );
   }
 
 }
