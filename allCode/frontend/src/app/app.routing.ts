@@ -15,6 +15,7 @@ import { PurchaseComponent} from "./components/purchase/purchase.component";
 import { ContactComponent} from "./components/contact/contact.component";
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 import { TermsComponent } from './components/terms/terms.component';
+import { AdministratorComponent } from './components/administrator/administrator.component';
 
 
 const appRoutes = [
@@ -31,7 +32,8 @@ const appRoutes = [
   { path: 'contact', component: ContactComponent },
   { path: 'purchase', component: PurchaseComponent },
   { path: 'privacyPolicy', component: PrivacyPolicyComponent}, 
-  { path: 'terms', component: TermsComponent},      
+  { path: 'terms', component: TermsComponent},   
+  { path: 'administrator',component:AdministratorComponent},   
 
   { path: '', component: AppComponent },
   { path: '**', component: ErrorPageComponent },

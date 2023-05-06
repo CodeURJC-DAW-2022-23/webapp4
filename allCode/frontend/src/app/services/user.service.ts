@@ -28,6 +28,10 @@ export class UserService {
     return this.httpClient.get((baseUrl + '/profileAvatarFile/' + userId), { responseType: 'blob' });
   }
 
+  getUserList(): Observable<User[]> {
+    return this.httpClient.get<User[]>(baseUrl + '/userList');
+  }
+
   editUser(user: User, profileAvatarFile?: File): Observable<any> {
 
     const formData = new FormData();
@@ -46,5 +50,9 @@ export class UserService {
 
   deleteUser(user: User) {
     return this.httpClient.delete('/api/users/' + user.id).subscribe();
+  }
+
+  checkAdmin(user: User): Observable<boolean> {
+    return this.httpClient.get<boolean>('/api/users/rol/' + user.id);
   }
 }

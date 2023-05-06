@@ -1,4 +1,4 @@
-import { HttpBackend, HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Review } from 'src/app/models/review.model';
@@ -61,6 +61,7 @@ export class ProfileComponent implements OnInit {
       this.userService.editUser(this.user, this.avatarFile).subscribe(
         (_) => {
           console.log(this.user);
+          this.ngOnInit();
         },
       );
     }

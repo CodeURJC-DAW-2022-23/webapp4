@@ -1,0 +1,67 @@
+<br><br><br><br><br>
+
+<div class="row">
+    <div class="col-lg-3 col-md-4 col-sm-6" *ngFor="let user of userList">
+        <div class="card">
+            <div class="text-center">
+                <img [src]="profileAvatarUrls[user.id]" class="card-img-top mx-auto d-block"
+                    alt="{{user.name}} avatar" style="max-width:150px; max-height: 150px; object-fit: cover;">
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+
+                    <label for="avatar">Avatar:</label>
+                    <input type="file" class="form-control-file" id="avatarFile" name="avatarFile"
+                        accept=".png, .jpg, .jpeg" (change)="onFileSelected($event,user)" >
+                    <br>
+                    <h5 class="card-title">{{ user.name }} {{user.lastName}}</h5>
+                    <p class="card-text">{{ user.email }}</p>
+                    <br>
+                    <label for="name">Name:</label>
+                    <input type="text" class="form-control" id="name" name="name" [(ngModel)]="name[user.id]">
+                    <label for="lastname">Last Name:</label>
+                    <input type="text" class="form-control" id="lastname" name="lastname"
+                        [(ngModel)]="lastName[user.id]">
+
+                    <button (click)="editUser(user)">Editar</button>
+                    <button (click)="deleteUser(user)">Delete</button>
+                </div>
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<div class="card-header">Nuevo destino</div>
+<div class="card-body">
+    <form method="post" action="/administrator/addDestination" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="nameDestination">Nombre del destino:</label>
+            <input type="text" id="nameDestination" name="nameDestination" required>
+        </div>
+        <div class="mb-3">
+            <label for="contentDestination">Contenido del destino:</label>
+            <textarea id="contentDestination" name="contentDestination" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="price">Precio:</label>
+            <input type="number" id="price" name="price" step="10.0" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="titleImageFile">Archivo de imagen:</label>
+            <input type="file" id="titleImageFile" name="titleImageFile">
+        </div>
+        <button type="submit">Agregar destino</button>
+    </form>
+</div>
+
+
+<div class="card-header">Destinos</div>
+<div class="card-body">
+</div>
+
+<div class="card-header">Reseñas</div>
+<div class="review-box">
+    <div class="review-contentbox">
+    </div>
+</div>

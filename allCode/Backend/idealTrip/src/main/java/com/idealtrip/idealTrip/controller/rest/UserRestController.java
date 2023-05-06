@@ -29,7 +29,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -233,4 +232,18 @@ public class UserRestController {
 					.body("Error deleting user data: " + e.getMessage());
 		}
 	}
+
+	@GetMapping("/userList")
+	public ResponseEntity<List<User>> getAllUsers(){
+		List<User> userList = userService.findAll();
+		return ResponseEntity.ok(userList);
+	}
+
+	@GetMapping("/rol/{id}")
+	public boolean checkAdmin(@PathVariable long id){
+		Optional<User> user = userService.findById(id);
+		int userRole = user.get().getRoles().size();
+		return userRole > 1;
+	} 
+
 }

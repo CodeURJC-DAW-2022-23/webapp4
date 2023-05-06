@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { DestinationComponent } from './components/destination/destination.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
-import { HeaderLogin } from "./components/headers/header.component";
+import { HeaderLogin } from "./components/Headers/header.component";
 import { InformationComponent } from './components/destination/information/information.component';
 import { CateringComponent } from './components/destination/catering/catering.component';
 import { RatingComponent } from './components/rating/rating.component';
@@ -22,11 +22,14 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { TourismComponent } from './components/destination/tourism/tourism.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { TermsComponent } from './components/terms/terms.component';
+import { AdministratorComponent } from './components/administrator/administrator.component';
 
 
 @NgModule({
     declarations: [
-        AppComponent, DestinationComponent, PrivacyPolicyComponent, ErrorPageComponent, HeaderLogin, InformationComponent, CateringComponent, RatingComponent, RegisterComponent, LoginComponent, ProfileComponent, ReviewComponent, ContactComponent, PurchaseComponent, TourismComponent, FooterComponent, TermsComponent,
+        AppComponent, DestinationComponent, PrivacyPolicyComponent, ErrorPageComponent, HeaderLogin, InformationComponent, CateringComponent,
+        RatingComponent, RegisterComponent, LoginComponent, ProfileComponent, ReviewComponent, ContactComponent, PurchaseComponent, TourismComponent, 
+        FooterComponent, TermsComponent, AdministratorComponent,
     ],
     providers: [],
     bootstrap: [AppComponent],
