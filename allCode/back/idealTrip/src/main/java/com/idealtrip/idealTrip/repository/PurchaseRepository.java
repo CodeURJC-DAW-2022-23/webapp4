@@ -11,6 +11,7 @@ import com.idealtrip.idealTrip.model.User;
 
 public interface PurchaseRepository extends JpaRepository<Purchase, Long> {
 
-    List<Purchase> findByUser(User user);
+    List<Purchase> findByUserId(Long id);
     Optional<House> findDById(Long id);
+
 }

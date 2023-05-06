@@ -1,5 +1,6 @@
 package com.idealtrip.idealTrip.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,11 @@ public class PurchaseService {
     public Optional<Purchase> findById(long id) {
         return purchases.findById(id);
     }
+
+    public List<Purchase> findByUserId(long id){
+        return purchases.findByUserId(id);
+    }
+
     public void sendEmail(String from, String to, String body) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom(from);

@@ -65,6 +65,10 @@ public class ReviewService {
     public Page<Review> findAllReviewPage(Pageable pageable) {
         return reviews.findAll(pageable);
     }
+
+    public void deleteAll(List<Review> reviews2) {
+        reviews.deleteAll(reviews2);
+    }
     
 
 }

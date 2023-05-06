@@ -37,9 +37,13 @@ export class ProfileComponent implements OnInit {
         .subscribe(reviews => {
           this.reviews = reviews;
         });
-      //purchase
-    })
+      //purchases 
+    },
+      (error) => {
+        this.router.navigate(['/error']);
+      })
   }
+
   onFileSelected(event: any) {
     if (event.target.files && event.target.files.length > 0) {
       this.avatarFile = event.target.files[0];
@@ -49,26 +53,25 @@ export class ProfileComponent implements OnInit {
   editUser() {
     if (this.user) {
       if (!this.name) {
-        console.error('Name cant be null!!!');
+        console.error('Name needed');
         return;
       }
       this.user.name = this.name;
       this.user.lastName = this.lastName;
       this.userService.editUser(this.user, this.avatarFile).subscribe(
-        (response) => {
+        (_) => {
           console.log(this.user);
         },
-        (error) => {
-          console.error(this.user);
-        }
       );
     }
   }
 
   deleteUser() {
-
+    if (this.user) {
+      this.userService.deleteUser(this.user)
+      this.router.navigate(['/']);
+    }
   }
-
 
   logOut() {
     this.authService.logOut();

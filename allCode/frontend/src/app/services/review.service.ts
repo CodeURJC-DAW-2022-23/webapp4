@@ -12,7 +12,5 @@ import { Review } from '../models/review.model';
 export class ReviewService {
 
   constructor(private httpClient: HttpClient) { }
-  getUserReviews(userId: number): Observable<Review[]> {
-    return this.httpClient.get<Review[]>('/api/users/reviews/' + userId);
-  }
+
 }

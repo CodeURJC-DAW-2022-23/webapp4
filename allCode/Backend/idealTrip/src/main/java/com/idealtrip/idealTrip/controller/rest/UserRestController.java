@@ -4,16 +4,10 @@ import static org.springframework.web.servlet.support.ServletUriComponentsBuilde
 
 import com.idealtrip.idealTrip.controller.DTOS.UserEditDTO;
 import org.hibernate.engine.jdbc.BlobProxy;
-import org.hibernate.mapping.Any;
-import org.hibernate.tool.hbm2ddl.ForeignKeyMetadata;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-
 import java.io.IOException;
 import java.net.URI;
 import java.security.Principal;
@@ -25,14 +19,12 @@ import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.sql.rowset.serial.SerialBlob;
-import javax.swing.text.html.Option;
-
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.event.PublicInvocationEvent;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -46,12 +38,12 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonView;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.idealtrip.idealTrip.controller.DTOS.UpdateUserDTO;
 import com.idealtrip.idealTrip.controller.DTOS.UserDTO;
+import com.idealtrip.idealTrip.model.Purchase;
 import com.idealtrip.idealTrip.model.Review;
 import com.idealtrip.idealTrip.model.User;
 import com.idealtrip.idealTrip.repository.UserRepository;
+import com.idealtrip.idealTrip.service.PurchaseService;
 import com.idealtrip.idealTrip.service.ReviewService;
 import com.idealtrip.idealTrip.service.UserService;
 
@@ -75,6 +67,9 @@ public class UserRestController {
 
 	@Autowired
 	private ReviewService reviewService;
+
+	@Autowired
+	private PurchaseService purchaseService;
 
 	User currentUser;
 
@@ -165,7 +160,7 @@ public class UserRestController {
 			@ApiResponse(responseCode = "404", description = "Profile not found ", content = @Content),
 			@ApiResponse(responseCode = "403", description = "Forbidden or don't have permissions", content = @Content),
 			@ApiResponse(responseCode = "500", description = "Internal server error", content = @Content) })
-	@PutMapping("/{id}")
+	@PostMapping("/{id}")
 	public ResponseEntity<?> updateUser(@PathVariable long id,
 			@RequestParam("name") String name,
 			@RequestParam("lastName") String lastName,
@@ -180,7 +175,6 @@ public class UserRestController {
 				Blob imageBlob = new SerialBlob(imageBytes);
 				user.setProfileAvatarFile(imageBlob);
 			}
-
 			User updatedUser = userRepository.save(user);
 			return ResponseEntity.ok(updatedUser);
 		} catch (Exception ex) {
@@ -202,7 +196,7 @@ public class UserRestController {
 		}
 	}
 
-	@Operation(summary = "review the user")
+	@Operation(summary = "user reviews")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "done", content = {
 					@Content(mediaType = "application/json", schema = @Schema(implementation = User.class)) }),
@@ -217,6 +211,26 @@ public class UserRestController {
 			return ResponseEntity.ok(review);
 		} else {
 			return ResponseEntity.notFound().build();
+		}
+	}
+
+	@DeleteMapping("/{userId}")
+	public ResponseEntity<String> deleteUserData(@PathVariable("userId") Long userId) {
+		Optional<User> user = userService.findById(userId);
+		try {
+			if (user.isPresent()) {
+				List<Review> reviews = reviewService.findByUserId(userId);
+				reviewService.deleteAll(reviews);
+
+				List<Purchase> purchases = purchaseService.findByUserId(userId);
+				purchaseService.deleteAll(purchases);
+
+				userService.delete(userId);
+			}
+			return ResponseEntity.ok("UserData deleted for user with id: " + userId);
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+					.body("Error deleting user data: " + e.getMessage());
 		}
 	}
 }

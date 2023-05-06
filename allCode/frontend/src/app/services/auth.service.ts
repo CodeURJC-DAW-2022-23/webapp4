@@ -52,7 +52,7 @@ logIn(user: string, pass: string): Observable<any> {
         return response;
       }),
       catchError((error: any) => {
-        return throwError('Something went wrong');
+        return throwError('user not exist');
       })
     );
 }
