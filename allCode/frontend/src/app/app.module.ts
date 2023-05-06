@@ -21,11 +21,12 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { TourismComponent } from './components/destination/tourism/tourism.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { TermsComponent } from './components/terms/terms.component';
 
 
 @NgModule({
     declarations: [
-        AppComponent, DestinationComponent, PrivacyPolicyComponent, ErrorPageComponent, HeaderLogin, InformationComponent, CateringComponent, RatingComponent, RegisterComponent, LoginComponent, ProfileComponent, ReviewComponent, ContactComponent, PurchaseComponent, TourismComponent, FooterComponent,
+        AppComponent, DestinationComponent, PrivacyPolicyComponent, ErrorPageComponent, HeaderLogin, InformationComponent, CateringComponent, RatingComponent, RegisterComponent, LoginComponent, ProfileComponent, ReviewComponent, ContactComponent, PurchaseComponent, TourismComponent, FooterComponent, TermsComponent,
     ],
     providers: [],
     bootstrap: [AppComponent],
