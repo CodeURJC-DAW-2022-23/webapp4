@@ -16,10 +16,11 @@ import { ContactComponent} from "./components/contact/contact.component";
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 import { TermsComponent } from './components/terms/terms.component';
 import { AdministratorComponent } from './components/administrator/administrator.component';
+import { IndexComponent } from './components/index/index.component';
 
 
 const appRoutes = [
-  { path: 'index', component: AppComponent },
+  { path: 'index', component: IndexComponent },
   { path: 'services', component: DestinationComponent },
   { path: 'services/:id', component: InformationComponent },
   { path: 'catering/:id', component: CateringComponent },
@@ -35,7 +36,7 @@ const appRoutes = [
   { path: 'terms', component: TermsComponent},   
   { path: 'administrator',component:AdministratorComponent},   
 
-  { path: '', component: AppComponent },
+  { path: '', component: IndexComponent },
   { path: '**', component: ErrorPageComponent },
 ]
 

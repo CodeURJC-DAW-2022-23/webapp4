@@ -23,13 +23,14 @@ import { TourismComponent } from './components/destination/tourism/tourism.compo
 import { FooterComponent } from './components/footer/footer.component';
 import { TermsComponent } from './components/terms/terms.component';
 import { AdministratorComponent } from './components/administrator/administrator.component';
+import { IndexComponent } from './components/index/index.component';
 
 
 @NgModule({
     declarations: [
         AppComponent, DestinationComponent, PrivacyPolicyComponent, ErrorPageComponent, HeaderLogin, InformationComponent, CateringComponent,
         RatingComponent, RegisterComponent, LoginComponent, ProfileComponent, ReviewComponent, ContactComponent, PurchaseComponent, TourismComponent, 
-        FooterComponent, TermsComponent, AdministratorComponent,
+        FooterComponent, TermsComponent, AdministratorComponent, IndexComponent,
     ],
     providers: [],
     bootstrap: [AppComponent],
