@@ -20,8 +20,10 @@ import com.idealtrip.idealTrip.controller.DTOS.ReviewDTO;
 import com.fasterxml.jackson.annotation.JsonView;
 import javax.servlet.http.HttpServletRequest;
 import javax.sql.rowset.serial.SerialBlob;
+import javax.sql.rowset.serial.SerialException;
 
 import com.idealtrip.idealTrip.model.*;
+import com.idealtrip.idealTrip.model.Review.Basic;
 import com.idealtrip.idealTrip.repository.DestinationRepository;
 import com.idealtrip.idealTrip.service.*;
 
@@ -45,6 +47,10 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/api/destinations")
@@ -151,6 +157,31 @@ public class CitiesRestController {
         return ResponseEntity.created(location).body(destination);
     }
 
+    @PostMapping("/add")
+    public ResponseEntity<?> addDestination(
+            @RequestParam("destinationName") String name,
+            @RequestParam("destinationContent") String content,
+            @RequestParam("price") int price,
+            @RequestParam(value = "destinationImageFile", required = false) MultipartFile destinationImageFile) {
+        Destination destination = new Destination();
+        destination.setNameDestination(name);
+        destination.setContentDestination(content);
+        destination.setPrice(price);
+
+        try {
+            if (destinationImageFile != null) {
+                byte[] imageBytes = destinationImageFile.getBytes();
+                Blob imageBlob = new SerialBlob(imageBytes);
+                destination.setTitleImageFile(imageBlob);
+            }
+            destinations.save(destination);
+            return ResponseEntity.ok().build();
+        } catch (IOException | SQLException ex) {
+            ex.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
     @PutMapping("/{id}/image")
     public ResponseEntity<Resource> createDestinationImage(@PathVariable long id, @RequestParam MultipartFile image,
             HttpServletRequest request) throws URISyntaxException, SQLException, IOException {
@@ -212,6 +243,12 @@ public class CitiesRestController {
         return houses.findByDestinationName(destinations.findById(id).get().getNameDestination());
     }
 
+    @GetMapping("/reviews")
+    @JsonView(Review.Basic.class)
+    public List<Review> getAllReviews() {
+        return reviews.findAll();
+    }
+
     @Operation(summary = "Get all reviews of one destination")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Found all reviews of one destination", content = {
@@ -254,7 +291,24 @@ public class CitiesRestController {
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
 
+    @Operation(summary = "Delete a review")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Review deleted"),
+            @ApiResponse(responseCode = "404", description = "Review not found"),
+            @ApiResponse(responseCode = "403", description = "Forbidden or don't have permissions")
+    })
+    @DeleteMapping("/reviews/{id}")
+    @JsonView(Review.Basic.class)
+    public ResponseEntity<Review> deleteOneReview(@PathVariable long id) {
+        Optional<Review> review = this.reviews.findById(id);
+        if (review.isPresent()) {
+            reviews.deleteById(id);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @Operation(summary = "Add a review to a destination")

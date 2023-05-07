@@ -54,11 +54,15 @@ export class DestinationService {
       formData.append('destinationImageFile', destinationImageFile);
     }
 
-    return this.httpClient.post(baseUrl + "/editDestination/" + destination.id, formData).pipe(
+    return this.httpClient.post(baseUrl + "editDestination/" + destination.id, formData).pipe(
       catchError((error) => {
         return throwError(error);
       })
     );
+  }
+
+  addDestination(formData:FormData){
+    return this.httpClient.post(baseUrl + "add", formData)
   }
 
 }

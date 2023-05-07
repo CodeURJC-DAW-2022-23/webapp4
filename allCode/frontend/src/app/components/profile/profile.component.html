@@ -47,11 +47,14 @@
       <div class="card-header">Opiniones realizadas</div>
       <div class="card-body">
 
-        <div *ngFor="let review of reviews" class="review">
-          <h4>{{review.titleReview}}</h4>
-          <p>{{review.contentReview}}</p>
+        <div class="container">
+          <div *ngFor="let review of reviews" class="review card mb-3">
+            <div class="card-body">
+              <h4 class="card-title">{{review.titleReview}}</h4>
+              <p class="card-text">{{review.contentReview}}</p>
+            </div>
+          </div>
         </div>
-
         <div *ngIf="!reviews" class="review">
           <p>No hay reviews disponibles por este usuario.</p>
         </div>

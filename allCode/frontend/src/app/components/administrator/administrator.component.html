@@ -37,76 +37,84 @@
 
 
 <div class="row">
-        <div class="card-header">Destinos</div>
-        <div class="col-lg-3 col-md-4 col-sm-6" *ngFor="let destination of destinations">
-            <div class="card">
-                <br>
-                <div class="text-center">
-                    <img [src]="destinationImage(destination)" class="card-img-top mx-auto d-block"
-                        alt="{{destination.nameDestination}} avatar"
-                        style="max-width:150px; max-height: 150px; object-fit: cover;">
-                </div>
-                <div class="card-body">
-                    <div class="form-group">
-                        <label for="avatar">Imagen:</label>
-                        <input type="file" class="form-control-file" id="destinationImageFile"
-                            name="destinationImageFile" accept=".png, .jpg, .jpeg"
-                            (change)="onDestinationFileSelected($event,destination)">
-                        <br>
-                        <h5 class="card-title">{{ destination.nameDestination }}  {{destination.price}}$</h5>
-                        <p class="card-text">{{destination.contentDestination}}</p>
-                        <br>
-                        <label for="destinationName">destino:</label>
-                        <input type="text" class="form-control" id="destinationName" name="destinationName"
-                            [(ngModel)]="destinationName[destination.id]">
-                        <label for="price">Precio:</label>
-                        <input type="number" class="form-control" id="price" name="price"
-                            [(ngModel)]="destinationPrice[destination.id]">
-                        <label for="destinationContent">Contenido:</label>
-                        <input type="text" class="form-control" id="destinationContent" name="destinationContent"
-                            [(ngModel)]="destinationContent[destination.id]">
-                        <button (click)="editDestination(destination)">Editar</button>
-                        <button (click)="deleteDestination(destination)">Delete</button>
-                        <br>
-                    </div>
+    <div class="card-header">Destinos</div>
+    <div class="col-lg-3 col-md-4 col-sm-6" *ngFor="let destination of destinations">
+        <div class="card">
+            <br>
+            <div class="text-center">
+                <img [src]="destinationImage(destination)" class="card-img-top mx-auto d-block"
+                    alt="{{destination.nameDestination}} avatar"
+                    style="max-width:150px; max-height: 150px; object-fit: cover;">
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="avatar">Imagen:</label>
+                    <input type="file" class="form-control-file" id="destinationImageFile" name="destinationImageFile"
+                        accept=".png, .jpg, .jpeg" (change)="onDestinationFileSelected($event,destination)">
+                    <br>
+                    <h5 class="card-title">{{ destination.nameDestination }} {{destination.price}}$</h5>
+                    <p class="card-text">{{destination.contentDestination}}</p>
+                    <br>
+                    <label for="destinationName">destino:</label>
+                    <input type="text" class="form-control" id="destinationName" name="destinationName"
+                        [(ngModel)]="destinationName[destination.id]">
+                    <label for="price">Precio:</label>
+                    <input type="number" class="form-control" id="price" name="price" step="10.0"
+                        [(ngModel)]="destinationPrice[destination.id]">
+                    <label for="destinationContent">Contenido:</label>
+                    <input type="text" class="form-control" id="destinationContent" name="destinationContent"
+                        [(ngModel)]="destinationContent[destination.id]">
+                    <button (click)="editDestination(destination)">Editar</button>
+                    <button (click)="deleteDestination(destination)">Delete</button>
+                    <br>
                 </div>
             </div>
-            <br>
         </div>
+        <br>
     </div>
-
-
-<div class="card-header">Nuevo destino</div>
-<div class="card-body">
-    <form method="post" action="/administrator/addDestination" enctype="multipart/form-data">
-        <div class="mb-3">
-            <label for="nameDestination">Nombre del destino:</label>
-            <input type="text" id="nameDestination" name="nameDestination" required>
-        </div>
-        <div class="mb-3">
-            <label for="contentDestination">Contenido del destino:</label>
-            <textarea id="contentDestination" name="contentDestination" required></textarea>
-        </div>
-        <div class="mb-3">
-            <label for="price">Precio:</label>
-            <input type="number" id="price" name="price" step="10.0" required>
-        </div>
-
-        <div class="mb-3">
-            <label for="titleImageFile">Archivo de imagen:</label>
-            <input type="file" id="titleImageFile" name="titleImageFile">
-        </div>
-        <button type="submit">Agregar destino</button>
-    </form>
 </div>
 
 
-<div class="card-header">Destinos</div>
-<div class="card-body">
-</div>
-
+<div class="card">
+    <div class="card-header">Nuevo destino</div>
+    <div class="card-body">
+        <div class="form-group">
+          <label for="nameDestination">Nombre del destino:</label>
+          <input type="text" [(ngModel)]="destinationName[destinations.length]" class="form-control" id="nameDestination" name="nameDestination" required>
+        </div>
+        <div class="form-group">
+          <label for="contentDestination">Contenido del destino:</label>
+          <textarea class="form-control" [(ngModel)]="destinationContent[destinations.length]" id="contentDestination" name="contentDestination" rows="5"  required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="price">Precio:</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">$</div>
+            </div>
+            <input type="number" class="form-control" [(ngModel)]="destinationPrice[destinations.length]" id="price" name="price" step="10.0" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="titleImageFile">Archivo de imagen:</label>
+          <input type="file" class="form-control-file" id="destinationImageFile" name="destinationImageFile"
+                        accept=".png, .jpg, .jpeg" (change)="onNewDestinationFileSelected($event)">
+        <br>
+        </div>
+        <button class="btn btn-primary" (click)="addDestination()">Agregar destino</button>
+    </div>
+  </div>
+<br>
 <div class="card-header">Reseñas</div>
-<div class="review-box">
-    <div class="review-contentbox">
-    </div>
+<div class="container">
+    <br>
+    <div *ngFor="let review of reviewList" class="review card mb-3">
+        <div class="card-body d-flex align-items-center">
+          <h4 class="card-title">{{review.titleReview}}</h4> <!-- Título a la izquierda -->
+          <button class="btn btn-danger ml-auto" (click)="deleteReview(review)">Eliminar</button> <!-- Botón "eliminar" a la derecha -->
+        </div>
+        <div class="card-body">
+          <p class="card-text">{{review.contentReview}}</p>  
+        </div>
+      </div>
 </div>

@@ -15,12 +15,16 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./administrator.component.css']
 })
 export class AdministratorComponent {
+
   user: User | undefined;
-  destinations: Destination[] = [];
+
   profileAvatarUrls: string[] = [];
   reviews!: Review[];
   isAdmin: boolean | undefined
+
   userList: User[] = [];
+  reviewList: Review[] = [];
+  destinations: Destination[] = [];
 
   name: string[] = [];
   lastName: string[] = [];
@@ -30,11 +34,10 @@ export class AdministratorComponent {
   destinationContent: string[] = [];
   destinationImageFile: File[] = [];
   destinationPrice: number[] = [];
+  destinationSize: number = 0;
 
   constructor(private destinationService: DestinationService, private httpClient: HttpClient,
     private router: Router, private userService: UserService, public activatedRoute: ActivatedRoute, private reviewService: ReviewService) { }
-
-
 
 
   ngOnInit(): void {
@@ -58,9 +61,13 @@ export class AdministratorComponent {
               });
             });
           });
+          this.reviewService.getAllReviews().subscribe(reviews => {
+            this.reviewList = reviews;
+          })
         }
       });
-    });
+    }
+    );
   }
 
   onFileSelected(event: any, user: User) {
@@ -72,12 +79,39 @@ export class AdministratorComponent {
   onDestinationFileSelected(event: any, destination: Destination) {
     if (event.target.files && event.target.files.length > 0) {
       this.destinationImageFile[destination.id] = event.target.files[0];
-      console.log(this.destinationImageFile)
     }
   }
 
-  destinationImage(destination: Destination) {
+  onNewDestinationFileSelected(event: any) {
+    if (event.target.files && event.target.files.length > 0) {
+      this.destinationImageFile[this.destinations.length] = event.target.files[0];
+    }
+  }
+
+  destinationImage(destination: Destination) { 
     return this.destinationService.getImageDestination(destination);
+  }
+
+  addDestination() {
+    const formData = new FormData();
+    formData.append('destinationName', this.destinationName[this.destinations.length] || '');
+    formData.append('destinationContent', this.destinationContent[this.destinations.length] || '');
+    formData.append('price', this.destinationPrice[this.destinations.length].toString())
+    formData.append('destinationImageFile', this.destinationImageFile[this.destinations.length]);
+    console.log(this.destinationImageFile[this.destinations.length])
+    this.destinationService.addDestination(formData).subscribe(
+      (response) => {
+        console.log(response);
+        this.ngOnInit();
+        alert("destination added");
+
+      },
+      (error) => {
+        console.log(error);
+        this.ngOnInit();
+        alert("Error destination");
+      }
+    );
   }
 
 
@@ -96,13 +130,15 @@ export class AdministratorComponent {
       this.destinationService.editDestination(destination, this.destinationImageFile[destination.id]).subscribe(
         (response) => {
           console.log(response);
-          alert("Destination updated successfully");
           this.ngOnInit();
+          alert("Destination updated successfully");
+
         },
         (error) => {
           console.log(error);
-          alert("Error updating destination");
           this.ngOnInit();
+          alert("Error updating destination");
+
         }
       );
     }
@@ -121,11 +157,13 @@ export class AdministratorComponent {
       this.userService.editUser(user, this.avatarFile[user.id]).subscribe(
         (response) => {
           console.log(response);
-          alert("User updated successfully");
           this.ngOnInit();
+          alert("User updated successfully");
+
         },
         (error) => {
           console.log(error);
+          this.ngOnInit();
           alert("Error updating user");
         }
       );
@@ -133,13 +171,20 @@ export class AdministratorComponent {
   }
 
   deleteUser(user: User) {
-    return this.httpClient.delete('/api/users/' + user.id).subscribe(() => {
-      this.ngOnInit();
-    });
+    return this.httpClient.delete('/api/users/' + user.id).subscribe(() =>
+      this.ngOnInit()
+    );
   }
 
   deleteDestination(destination: Destination) {
-    return this.httpClient.delete('/api/destinations/' + destination.id).subscribe(() => this.ngOnInit()
+    return this.httpClient.delete('/api/destinations/' + destination.id).subscribe(() =>
+      this.ngOnInit()
+    )
+  };
+
+  deleteReview(review: Review) {
+    return this.httpClient.delete('/api/destinations/reviews/' + review.id).subscribe(() =>
+      this.ngOnInit()
     )
   };
 }
