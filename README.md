@@ -491,27 +491,27 @@ XXXXXXX
          
 ### David Moreno Martín
 #### Descripción textual: 
-XXXXXXX
+Me he encargado de varias cosas durante esta última fase de la aplicación. Empecé configurando el routing de la aplicación Angular para atender a las diversas URL, entre ellas la de error, y la URL vacia "". Posteriormente, integré el proxy en la aplicación Angular para conectar el front con el Back, y de este modo poder hacer peticiones a la API. Con esto, configure la aplicación para poder ser desplegada en el puerto 8443, que es el puerto backend, pero con la diferencia de que ahora debemos incluir /new, por lo tanto la forma correcta de acceder sería "https://localhost:8443/new/". Es importante recalcar que para que los cambios hechos en Angular surjan efecto en el puerto 8443, es necesario hacer un Build completo y trasladar los archivos de la carpeta "/dist" a la carpeta "src/main/resources/public/new" del backend. También hice el gráfico de barras con las valoraciones de los clientes, estos datos son obtenidos del backend vía API. Por último, realice el componente de House, con los apartamentos para los distintos destinos, también con los datos obtenidos por la API.
 
 #### 5 commits más significativos
 
 | Commit  | Descripción                                      | Link                                                                                            |
 | ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
-| #1            | XXX   | XXX | 
-| #2            | XXX | XXX | 
-| #3            | XXX |XXX | 
-| #4            | XXX	   | XXX | 
-| #5            | XXX			   | XXX | 
+| #1            | Angular routing and Error 404 page   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/faf6833f02d92a2a2e26fadf8b73201adedc1854 | 
+| #2            | Angular Proxy integrated and API destinations format | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/b4374b60de88c73f82bdbf35b6026eb595bfb188 | 
+| #3            | Angular localhost deployment in port 8443/new/ |https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/93ea3c2b7d571ec84daac57f07418dcd88b04fb4 | 
+| #4            | Bar chart added via API	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/bb3b7d29f7a256c5afd2f1ceeeff84c0040a7247 | 
+| #5            | House components and details			   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/46db2496f2e28a764b64b8ef46ba09955c18fe35 | 
 
 #### 5 ficheros más participación
 
 | Número fichero  | Fichero                                      | 
 | ------------- | ------------------------------------------------ |
-| #1            | XXX		   | 
-| #2            | XXX| 
-| #3            | XXX |
-| #4            | XXX	   | 
-| #5            |XXX   | 
+| #1            | [error-page Component](https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/DesarrolloAngular2/allCode/frontend/src/app/components/error-page)		   | 
+| #2            | [destination Components](https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/DesarrolloAngular2/allCode/frontend/src/app/components/destination)| 
+| #3            | [rating Component](https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/DesarrolloAngular2/allCode/frontend/src/app/components/rating) |
+| #4            | [house Component](https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/DesarrolloAngular2/allCode/frontend/src/app/components/destination/house)	   | 
+
   
 ### Adrián Pedroche Rata
 #### Descripción textual: 
