@@ -26,31 +26,17 @@
           </li>
         </ul>
       </div>
-      <!-- {{^logged}} -->
-      <form action="/login" method="post"*ngIf="!isAdmin">
+      <div *ngIf="!loggedIn">
         <div class="d-lg-block d-none">
-          <a class="btn btn-style btn-secondary" routerLink="/login">Iniciar sesión</a>
+          <a class="btn btn-style btn-secondary" routerLink="/login" (click)="ngOnInit()">Iniciar sesión</a>
         </div>
-        <!-- <input type="hidden" name="_csrf" value="{{token}}" /> -->
-        </form>
-        <!-- {{/logged}}{{#logged}} -->
-      <!-- {{^admin}} -->
-      <form action="/profile" method="get" *ngIf="!isAdmin">
-        <div class="d-lg-block d-none">
-          <button class="btn btn-style btn-secondary" routerLink="/profile">Mi perfil</button>
-        </div>
-        <!-- <input type="hidden" name="_csrf" value="{{token}}" /> -->
-      </form>
-      <!-- {{/admin}} -->
-
-      <!-- {{#admin}} -->
-      <div class="d-lg-block d-none" *ngIf="isAdmin">
-        <a class="btn btn-style btn-secondary" routerLink="/administrator">Admin</a>
       </div>
-      <!-- {{/admin}} -->
-
-
-      <!-- {{/logged}} -->
+      
+      <div *ngIf="loggedIn">
+        <div class="d-lg-block d-none">
+          <button class="btn btn-style btn-secondary" routerLink="/profile" (click)="ngOnInit()">Mi perfil</button>
+        </div>
+      </div>
     </nav>
   </div>
 </header>

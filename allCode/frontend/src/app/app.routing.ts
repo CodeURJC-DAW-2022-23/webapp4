@@ -8,16 +8,17 @@ import { CateringComponent } from './components/destination/catering/catering.co
 import { RatingComponent } from './components/rating/rating.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
+import { HeaderLogin } from './components/Headers/header.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { TourismComponent } from './components/destination/tourism/tourism.component';
-import { ReviewComponent} from "./components/destination/review/review.component";
-import { PurchaseComponent} from "./components/destination/purchase/purchase.component";
-import { ContactComponent} from "./components/contact/contact.component";
+import { ReviewComponent } from "./components/destination/review/review.component";
+import { PurchaseComponent } from "./components/destination/purchase/purchase.component";
+import { ContactComponent } from "./components/contact/contact.component";
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 import { TermsComponent } from './components/terms/terms.component';
 import { AdministratorComponent } from './components/administrator/administrator.component';
 import { IndexComponent } from './components/index/index.component';
-import { HouseComponent } from './components/destination/house/house.component';    
+import { HouseComponent } from './components/destination/house/house.component';
 
 
 const appRoutes = [
@@ -34,9 +35,9 @@ const appRoutes = [
   { path: 'review', component: ReviewComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'purchase/:id', component: PurchaseComponent },
-  { path: 'privacyPolicy', component: PrivacyPolicyComponent},
-  { path: 'terms', component: TermsComponent},
-  { path: 'administrator',component:AdministratorComponent},
+  { path: 'privacyPolicy', component: PrivacyPolicyComponent },
+  { path: 'terms', component: TermsComponent },
+  { path: 'administrator', component: AdministratorComponent },
 
   { path: '', component: IndexComponent },
   { path: '**', component: ErrorPageComponent },

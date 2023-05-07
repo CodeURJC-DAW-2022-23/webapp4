@@ -19,7 +19,7 @@ export class ProfileComponent implements OnInit {
   name!: string;
   lastName!: string;
   avatarFile!: File;
-
+  isAdmin :boolean = false;
   numReviewsToShow: number = 3;
   showMoreButton = true;
 
@@ -29,6 +29,10 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getMe().subscribe((response) => {
       this.user = response;
+      this.userService.checkAdmin(this.user).subscribe((response)=>{
+        this.isAdmin = response;
+      }
+      )
 
       this.userService.getProfileAvatar(this.user.id)
         .subscribe(blob => {
@@ -55,6 +59,7 @@ export class ProfileComponent implements OnInit {
 
   showMoreReviews() {
     this.numReviewsToShow += 3;
+    console.log(this.reviews.length)
     this.showMoreButton = this.numReviewsToShow < this.reviews.length;
   }
 

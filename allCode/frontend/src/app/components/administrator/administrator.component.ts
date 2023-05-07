@@ -39,7 +39,7 @@ export class AdministratorComponent {
   numReviewsToShow: number = 3;
   showMoreButton = true;
 
-  constructor(private destinationService: DestinationService, private httpClient: HttpClient,
+  constructor(private destinationService: DestinationService, private httpClient: HttpClient, private authService: AuthService,
     private router: Router, private userService: UserService, public activatedRoute: ActivatedRoute, private reviewService: ReviewService) { }
 
 
@@ -73,6 +73,11 @@ export class AdministratorComponent {
     );
   }
 
+  logOut() {
+    this.authService.logOut()
+    this.router.navigate(['/']);
+  }
+
   showMoreReviews() {
     this.numReviewsToShow += 3;
     this.showMoreButton = this.numReviewsToShow < this.reviews.length;
@@ -96,7 +101,7 @@ export class AdministratorComponent {
     }
   }
 
-  destinationImage(destination: Destination) { 
+  destinationImage(destination: Destination) {
     return this.destinationService.getImageDestination(destination);
   }
 
