@@ -423,3 +423,135 @@ La mayoria de las funcionalidad de admin(agregar destinos, eliminar destinos, pa
 | #4            | profile.html | 
 | #5            | 			   |        
         
+
+# Fase 4: Implementación de la web con arquitectura SPA
+              
+       
+- Preparación del entorno de desarrollo:  
+    - xxx
+           
+- Diagrama de clases y templates de la SPA:  
+                
+
+           
+- Participación de miembros:  
+### Sergio Cuadros Flores
+#### Descripción textual: 
+XXXXXXX
+
+#### 5 commits más significativos
+
+| Commit  | Descripción                                      | Link                                                                                            |
+| ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| #1            | XXX   | XXX | 
+| #2            | XXX | XXX | 
+| #3            | XXX |XXX | 
+| #4            | XXX	   | XXX | 
+| #5            | XXX			   | XXX | 
+
+#### 5 ficheros más participación
+
+| Número fichero  | Fichero                                      | 
+| ------------- | ------------------------------------------------ |
+| #1            | XXX		   | 
+| #2            | XXX| 
+| #3            | XXX |
+| #4            | XXX	   | 
+| #5            |XXX   | 
+         
+### David Moreno Martín
+#### Descripción textual: 
+XXXXXXX
+
+#### 5 commits más significativos
+
+| Commit  | Descripción                                      | Link                                                                                            |
+| ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| #1            | XXX   | XXX | 
+| #2            | XXX | XXX | 
+| #3            | XXX |XXX | 
+| #4            | XXX	   | XXX | 
+| #5            | XXX			   | XXX | 
+
+#### 5 ficheros más participación
+
+| Número fichero  | Fichero                                      | 
+| ------------- | ------------------------------------------------ |
+| #1            | XXX		   | 
+| #2            | XXX| 
+| #3            | XXX |
+| #4            | XXX	   | 
+| #5            |XXX   | 
+  
+### Adrián Pedroche Rata
+#### Descripción textual: 
+XXXXXXX
+
+#### 5 commits más significativos
+
+| Commit  | Descripción                                      | Link                                                                                            |
+| ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| #1            | XXX   | XXX | 
+| #2            | XXX | XXX | 
+| #3            | XXX |XXX | 
+| #4            | XXX	   | XXX | 
+| #5            | XXX			   | XXX | 
+
+#### 5 ficheros más participación
+
+| Número fichero  | Fichero                                      | 
+| ------------- | ------------------------------------------------ |
+| #1            | XXX		   | 
+| #2            | XXX| 
+| #3            | XXX |
+| #4            | XXX	   | 
+| #5            |XXX   | 
+         
+         
+### Jorge Ezequiel	de Francisco Bernal
+#### Descripción textual: 
+XXXXXXX
+
+#### 5 commits más significativos
+
+| Commit  | Descripción                                      | Link                                                                                            |
+| ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| #1            | XXX   | XXX | 
+| #2            | XXX | XXX | 
+| #3            | XXX |XXX | 
+| #4            | XXX	   | XXX | 
+| #5            | XXX			   | XXX | 
+
+#### 5 ficheros más participación
+
+| Número fichero  | Fichero                                      | 
+| ------------- | ------------------------------------------------ |
+| #1            | XXX		   | 
+| #2            | XXX| 
+| #3            | XXX |
+| #4            | XXX	   | 
+| #5            |XXX   |          
+         
+### ShuHeng	Ye
+#### Descripción textual: 
+XXXXXXX
+
+#### 5 commits más significativos
+
+| Commit  | Descripción                                      | Link                                                                                            |
+| ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| #1            | XXX   | XXX | 
+| #2            | XXX | XXX | 
+| #3            | XXX |XXX | 
+| #4            | XXX	   | XXX | 
+| #5            | XXX			   | XXX | 
+
+#### 5 ficheros más participación
+
+| Número fichero  | Fichero                                      | 
+| ------------- | ------------------------------------------------ |
+| #1            | XXX		   | 
+| #2            | XXX| 
+| #3            | XXX |
+| #4            | XXX	   | 
+| #5            |XXX   |  
