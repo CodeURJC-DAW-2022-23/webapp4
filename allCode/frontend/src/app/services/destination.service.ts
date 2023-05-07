@@ -5,6 +5,7 @@ import { Destination } from '../models/destination.model';
 import { Page } from '../models/page.model';
 import { Catering } from '../models/catering.model';
 import { Tourism } from '../models/tourism.model';
+import { House } from '../models/house.model';
 
 const baseUrl = '/api/destinations/';
 
@@ -12,6 +13,8 @@ const baseUrl = '/api/destinations/';
   providedIn: 'root'
 })
 export class DestinationService {
+
+
 
 
 
@@ -29,6 +32,10 @@ export class DestinationService {
     return this.httpClient.get<Page<Tourism>>(baseUrl + 'tourism/' + id)
   }
 
+  getHouse(id: number): Observable<any>{
+    return this.httpClient.get<any>(baseUrl + 'house/' + id)
+  }
+
   getDestinationById(id: number): Observable<Destination> {
     return this.httpClient.get<Destination>(baseUrl + id)
   }
@@ -43,6 +50,10 @@ export class DestinationService {
 
   getImagePlace(id: number) {
     return baseUrl + 'tourism/' + id + '/image'
+  }
+
+  getImageHouse(id: number) {
+    return baseUrl + 'house/' + id + '/image'
   }
 
   editDestination(destination: Destination, destinationImageFile?: File): Observable<any> {

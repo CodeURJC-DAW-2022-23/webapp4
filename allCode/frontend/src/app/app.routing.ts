@@ -17,6 +17,7 @@ import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-poli
 import { TermsComponent } from './components/terms/terms.component';
 import { AdministratorComponent } from './components/administrator/administrator.component';
 import { IndexComponent } from './components/index/index.component';
+import { HouseComponent } from './components/destination/house/house.component';
 
 
 const appRoutes = [
@@ -25,6 +26,7 @@ const appRoutes = [
   { path: 'services/:id', component: InformationComponent },
   { path: 'catering/:id', component: CateringComponent },
   { path: 'tourism/:id', component: TourismComponent },
+  { path: 'house/:id', component: HouseComponent },
   { path: 'rating', component: RatingComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
@@ -32,9 +34,9 @@ const appRoutes = [
   { path: 'review', component: ReviewComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'purchase', component: PurchaseComponent },
-  { path: 'privacyPolicy', component: PrivacyPolicyComponent}, 
-  { path: 'terms', component: TermsComponent},   
-  { path: 'administrator',component:AdministratorComponent},   
+  { path: 'privacyPolicy', component: PrivacyPolicyComponent},
+  { path: 'terms', component: TermsComponent},
+  { path: 'administrator',component:AdministratorComponent},
 
   { path: '', component: IndexComponent },
   { path: '**', component: ErrorPageComponent },

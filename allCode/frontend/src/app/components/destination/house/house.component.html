@@ -1,0 +1,66 @@
+<br><br><br><br>
+<div class="house-details">
+  <div class="house-title">
+    <h1>{{house?.nameHouse}}</h1>
+    <div class="row">
+     <div>
+      <p>Localización: {{nameDestination}} </p>
+     </div>
+    </div>
+   </div>
+   <div class="gallery">
+    <div class="gallery-img-1"><img [src]="houseImage(house?.id)" alt=""></div>
+   </div>
+   <div class="small-details">
+    <h2>Alquiler habitación</h2>
+    <p>2 personas &nbsp; &nbsp; 2 camas &nbsp; &nbsp; 1 baño </p>
+    <h5>&euro; {{house?.price}} /noche</h5>
+   </div>
+
+
+   <!--Purches-->
+   <hr class="line">
+   <div class="check-form">
+    <div>
+     <label >Check-in</label>
+     <input type="text" placeholder="Añadir fecha">
+    </div>
+    <div>
+     <label >Check-out</label>
+     <input type="text" placeholder="Añadir fecha">
+    </div>
+    <div class="guest-field">
+     <label >Límite</label>
+     <input type="text" placeholder="2 personas">
+    </div>
+    <!-- {{#logged}} -->
+      <div style="text-align: center;">
+            <button routerLink="/purchase" class="btn btn-style btn-secondary" id="char"><a style="color: white; " >Comprar</a></button>
+    <!-- {{/logged}} {{^logged}} -->
+      <div style="text-align: center;">
+            <button routerLink="/login" class="btn btn-style btn-secondary" id="char"><a style="color: white; " >Login</a></button>
+    <!-- {{/logged}} -->
+    </div>
+  </div>
+   </div>
+
+
+
+   <hr class="line">
+   <p class="home-descr">{{house?.contentHouse}}</p>
+
+
+   <hr class="line">
+   <div class="host">
+
+    <div>
+     <h2>Alquilado por {{house?.hostName}}</h2>
+     <p>245 reviews &nbsp; &nbsp; Frecuencia respuesta: 100% &nbsp; &nbsp; Tiempo respuesta: 60 min</p>
+
+    </div>
+   </div>
+   <hr class="line">
+  </div>
+
+
+<br><br><br><br>

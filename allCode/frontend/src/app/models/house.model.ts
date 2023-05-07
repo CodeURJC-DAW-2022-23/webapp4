@@ -6,11 +6,13 @@ export interface House {
     nameHouse: string;
     contentHouse: string;
     price: number;
-    houseImageFile: Blob;
-    destination:Destination;
+    hostName: string;
+    destinationName: string;
+      //houseImageFile: Blob;
+      //destination:Destination;
     //imagesHouse:string;
     //hostImageFile: Blob;
     //hostImage:string;
-    purchase: Purchase;
+      //purchase: Purchase;
     //mapa Link?
 }
