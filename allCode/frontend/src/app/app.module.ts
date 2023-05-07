@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { DestinationComponent } from './components/destination/destination.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
-import { HeaderLogin } from "./components/headers/header.component";
+import { HeaderLogin } from "./components/Headers/header.component";
 import { InformationComponent } from './components/destination/information/information.component';
 import { CateringComponent } from './components/destination/catering/catering.component';
 import { RatingComponent } from './components/rating/rating.component';
@@ -30,8 +30,8 @@ import { HouseComponent } from './components/destination/house/house.component';
 @NgModule({
     declarations: [
         AppComponent, DestinationComponent, PrivacyPolicyComponent, ErrorPageComponent, HeaderLogin, InformationComponent, CateringComponent,
-        RatingComponent, RegisterComponent, LoginComponent, ProfileComponent, ReviewComponent, ContactComponent, PurchaseComponent, TourismComponent,
-        FooterComponent, TermsComponent, AdministratorComponent, IndexComponent, HouseComponent,
+        RatingComponent, RegisterComponent, LoginComponent, ProfileComponent, ContactComponent,TourismComponent,
+        FooterComponent, TermsComponent, AdministratorComponent, IndexComponent, HouseComponent,ReviewComponent, PurchaseComponent
     ],
     providers: [],
     bootstrap: [AppComponent],
