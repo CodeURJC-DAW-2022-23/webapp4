@@ -74,6 +74,12 @@ export class ProfileComponent implements OnInit {
     }
   }
 
+  deleteReview(review: Review) {
+    return this.httpClient.delete('/api/destinations/reviews/' + review.id).subscribe(() =>
+      this.ngOnInit()
+    )
+  };
+
   logOut() {
     this.authService.logOut();
     this.router.navigate(['/']);
