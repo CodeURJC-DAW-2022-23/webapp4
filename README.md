@@ -516,27 +516,27 @@ Me he encargado de varias cosas durante esta última fase de la aplicación. Emp
   
 ### Adrián Pedroche Rata
 #### Descripción textual: 
-XXXXXXX
+En esta fasse de la práctica me he encargado de la parte de los componentes de la aplicación web. Empecé añadiendo el componente de tourism, que permitía por cada destino, ver las imágenes con los sitios más turístivos. Posteriormente, realicé los componentes de ptivacyPolicy y el de terms. Luego contiué añadiendo el footer de la aplicación y acabé añadiendo l buscador de países que ofrecemos en la pantalla de inicio. Por último, también he ayudado a realizar los diagramas y el readme. Además de colaborar en el despliegue de la aplicación. 
 
 #### 5 commits más significativos
 
 | Commit  | Descripción                                      | Link                                                                                            |
 | ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
-| #1            | XXX   | XXX | 
-| #2            | XXX | XXX | 
-| #3            | XXX |XXX | 
-| #4            | XXX	   | XXX | 
-| #5            | XXX			   | XXX | 
+| #1            | Tourism component   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/130a56d1881e8073ac03dfe0459de3c500083be5 | 
+| #2            | Footer component | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/f01c09622b56ff1958598da6ab159f488af7b388 | 
+| #3            | privacyPolicy and terms components |https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/3140e59e104143d697a4627a6d433af9e9eb88ed | 
+| #4            | 	Country search   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/004913d5991bae2c865f65d2aa0ce43943662fdf | 
+| #5            | Country search 2.0			   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/f2250111ce8f4fb8cebe779a215d2dc3a0cf02ad | 
 
 #### 5 ficheros más participación
 
 | Número fichero  | Fichero                                      | 
 | ------------- | ------------------------------------------------ |
-| #1            | XXX		   | 
-| #2            | XXX| 
-| #3            | XXX |
-| #4            | XXX	   | 
-| #5            |XXX   | 
+| #1            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/DesarrolloAngular2/allCode/frontend/src/app/components/footer">footer.component</a>  | 
+| #2            |  <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/DesarrolloAngular2/allCode/frontend/src/app/components/destination">destination.component</a>| 
+| #3            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/DesarrolloAngular2/allCode/frontend/src/app/components/index">index.component</a> |
+| #4            |<a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/DesarrolloAngular2/allCode/frontend/src/app/components/destination/tourism">tourism.Component</a>	   | 
+| #5            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/DesarrolloAngular2/allCode/frontend/src/app/components/privacy-policy">privacyPolicy.component</a>   |
          
          
 ### Jorge Ezequiel	de Francisco Bernal
