@@ -8,7 +8,6 @@ import { CateringComponent } from './components/destination/catering/catering.co
 import { RatingComponent } from './components/rating/rating.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
-import { HeaderLogin } from './components/Headers/header.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { TourismComponent } from './components/destination/tourism/tourism.component';
 import { ReviewComponent } from "./components/destination/review/review.component";
