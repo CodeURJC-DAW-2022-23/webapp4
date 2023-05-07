@@ -428,13 +428,13 @@ La mayoria de las funcionalidad de admin(agregar destinos, eliminar destinos, pa
               
        
 - Preparación del entorno de desarrollo:  
-    - Para empezar con la parte de frontend, y más concretamente con Angular, tenemos 2 requisitos fundamentales, sin los cuales nos va a ser imposble trabajar:
+    - Para empezar con la parte de frontend, y más concretamente con Angular, tenemos 2 requisitos fundamentales, sin los cuales nos va a ser imposible trabajar:
         - [Node.js](https://nodejs.org/en)
         - [Angular](https://angular.io)
     - Una vez que tenemos ambas instaladas, podemos comprobar si están funcionando escribiendo en la consola "ng --version" y revisando las versiones.
     -Teniendo esto listo, podemos empezar con Angular como tal, aunque antes es recomendable comprobar que la API de backend funciona, por lo tanto, arrancamos el backend y lo dejamos en segundo plano.
     
-        - Importante mencionar, que para que el backend y el frontend esten conectados, es necesario configurar el proxy, esto se puede hacer con el siguiente comando dentro de la carpeta del proyecto "$ ng serve --proxy-config proxy.conf.json" y en el archivo proxy.conf.json añadir la configuración del puerto y API necesarias. En nuestro caso, esto ya esta hecho y el archivo creado, simplemente con "npm start" se lanzan ambas cosas, el serve, y el proxy
+        - Importante mencionar, que para que el backend y el frontend estén conectados, es necesario configurar el proxy, esto se puede hacer con el siguiente comando dentro de la carpeta del proyecto "$ ng serve --proxy-config proxy.conf.json" y en el archivo proxy.conf.json añadir la configuración del puerto y API necesarias. En nuestro caso, esto ya está hecho y el archivo creado, simplemente con "npm start" se lanzan ambas cosas, el serve, y el proxy
     - Instalamos Angular si no lo hemos hecho antes: 
     ```
     npm install -g @angular/cli
