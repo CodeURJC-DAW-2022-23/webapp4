@@ -17,7 +17,9 @@ export class HouseComponent implements OnInit {
   destination: Destination | undefined;
   house: House | undefined;
 
+
   constructor(
+    private router: Router,
     private destinationService: DestinationService,
     private activatedRoute: ActivatedRoute,
   ){
@@ -47,4 +49,7 @@ export class HouseComponent implements OnInit {
     return this.destinationService.getImageHouse(id);
   }};
 
+  goToPurchase(){
+    return this.router.navigate(['/purchase/' + this.currentDestination])
+  }
 }

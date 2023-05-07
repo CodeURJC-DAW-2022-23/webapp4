@@ -10,8 +10,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { TourismComponent } from './components/destination/tourism/tourism.component';
-import { ReviewComponent} from "./components/review/review.component";
-import { PurchaseComponent} from "./components/purchase/purchase.component";
+import { ReviewComponent} from "./components/destination/review/review.component";
+import { PurchaseComponent} from "./components/destination/purchase/purchase.component";
 import { ContactComponent} from "./components/contact/contact.component";
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 import { TermsComponent } from './components/terms/terms.component';
@@ -33,7 +33,7 @@ const appRoutes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'review', component: ReviewComponent },
   { path: 'contact', component: ContactComponent },
-  { path: 'purchase', component: PurchaseComponent },
+  { path: 'purchase/:id', component: PurchaseComponent },
   { path: 'privacyPolicy', component: PrivacyPolicyComponent},
   { path: 'terms', component: TermsComponent},
   { path: 'administrator',component:AdministratorComponent},
