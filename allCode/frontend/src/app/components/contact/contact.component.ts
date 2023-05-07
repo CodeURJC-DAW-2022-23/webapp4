@@ -25,7 +25,7 @@ export class ContactComponent {
       asunto:this.datos.value.asunto,
       mensaje:this.datos.value.mensaje
     }
-    this.httpclien.post('https://localhost:8443',params).subscribe(resp=>{
+    this.httpclien.post('https://localhost:8443/ápi/contact',params).subscribe(resp=>{
       console.log(resp)
     })
   }
