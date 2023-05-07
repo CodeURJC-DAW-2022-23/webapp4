@@ -32,7 +32,7 @@ const appRoutes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: 'review', component: ReviewComponent },
+  { path: 'review/:id', component: ReviewComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'purchase/:id', component: PurchaseComponent },
   { path: 'privacyPolicy', component: PrivacyPolicyComponent },

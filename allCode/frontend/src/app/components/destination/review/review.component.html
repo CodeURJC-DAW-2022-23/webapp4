@@ -1,43 +1,53 @@
-<section>
-  <br><br><br>
-  <h5>Añadir comentario
-    <button id="review-add-btn" aria-label="add review" title="Add Review"></button></h5>
-  <div id="modal" role="dialog" aria-modal="true" aria-labelledby="add-review-header" class="">
-    <button class="close-btn" aria-label="close" title="Close">x</button>
-    <div id="review-form-container">
-      <h2 id="add-review-header">Reseña</h2>
-      <form id="review-form">
-        <div class="fieldset">
-          <label for="reviewName">Titulo</label>
-          <input name="reviewName" id="reviewName" required="">
-        </div>
-        <div class="fieldset">
-          <label>Calificación</label>
-          <div class="rate">
-            <input type="radio" id="star5" name="rate" value="5" onkeydown="navRadioGroup(event)"
-                   onfocus="setFocus(event)" required="">
-            <label for="star5" title="5 stars">5 stars</label>
-            <input type="radio" id="star4" name="rate" value="4" onkeydown="navRadioGroup(event)">
-            <label for="star4" title="4 stars">4 stars</label>
-            <input type="radio" id="star3" name="rate" value="3" onkeydown="navRadioGroup(event)">
-            <label for="star3" title="3 stars">3 stars</label>
-            <input type="radio" id="star2" name="rate" value="2" onkeydown="navRadioGroup(event)">
-            <label for="star2" title="2 stars">2 stars</label>
-            <input type="radio" id="star1" name="https://codepen.io/pen/rate" value="1"
-                   onkeydown="navRadioGroup(event)" onfocus="setFocus(event)">
-            <label for="star1" title="1 star">1 star</label>
+<!--<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <form class="card mb-4">
+        <div class="card-header">Detalles de la cuenta</div>
+        <div class="card-body">
+          <div class="mb-3">
+            <label for="avatarFile" class="small mb-1">Avatar:</label>
+            <input type="file" class="form-control-file" id="avatarFile" name="avatarFile" accept=".png, .jpg, .jpeg"
+              (change)="onFileSelected($event)">
           </div>
-        </div>
-
-        <div class="fieldset">
-          <label for="reviewComments">Comentarios</label>
-          <textarea name="reviewComments" id="reviewComments" cols="20" rows="5" required=""></textarea>
-        </div>
-        <div class="fieldset right">
-          <button id="submit-review-btn">Publicar</button>
-        </div>
-      </form>
+          <div class="mb-3">
+            <label class="small mb-1" for="userEmail">Usuario (Email)</label>
+            <p>{{user?.email}}</p>
+          </div>
+            <div class="mb-3">
+              <label class="small mb-1" for="userName">Nombre</label>
+              <input class="form-control" name="userName" type="text" [(ngModel)]="name" placeholder="{{user?.name}}">
+            </div>
+            <div class="mb-3">
+              <label class="small mb-1" for="userLastName">Apellido</label>
+              <input class="form-control" name="userLastName" type="text" [(ngModel)]="lastName"
+                     placeholder="{{user?.lastName}}">
+            </div>
+            <button class="btn btn-style btn-third"  (click)="editUser()">Guardar cambios</button>
+            <button class="btn btn-style btn-third"  (click)="logOut()">Cerrar sesión</button>
+            <button class="btn btn-style btn-third" (click)="deleteUser()">Eliminar cuenta</button>
+            </div>
+            </form>
     </div>
   </div>
-  <div class="modal-overlay"></div>
-</section>
+</div>
+<section class="w3l-clients" id="clients">-->
+  <!-- /grids -->
+  <div class="card mb-4">
+    <br>
+    <div class="card-header">Lo que nuestros clientes dicen</div>
+    <div class="card-body">
+
+      <div class="container">
+        <div *ngFor="let review of reviews | slice:0:numReviewsToShow" class="review card mb-3">
+          <div class="card-body">
+            <h4 class="card-title">{{review.titleReview}}</h4>
+            <p class="card-text">{{review.contentReview}}</p>
+            <div class="review-rating"> estrellas: {{review.ratingReview}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <button *ngIf="showMoreButton" class="btn btn-primary mx-auto" (click)="showMoreReviews()">Mostrar más</button>
+    </div>
+  </div>
+

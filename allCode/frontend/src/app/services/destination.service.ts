@@ -6,6 +6,7 @@ import { Page } from '../models/page.model';
 import { Catering } from '../models/catering.model';
 import { Tourism } from '../models/tourism.model';
 import { House } from '../models/house.model';
+import {Review} from "../models/review.model";
 
 const baseUrl = '/api/destinations/';
 
@@ -27,6 +28,11 @@ export class DestinationService {
   getCaterings(id: number): Observable<Page<Catering>> {
     return this.httpClient.get<Page<Catering>>(baseUrl + 'catering/' + id)
   }
+
+  getDestinationReviews(destination: number): Observable<Review[]> {
+    return this.httpClient.get<Review[]>(baseUrl + 'reviews/' + destination);
+  }
+
 
   getTourism(id: number): Observable<Page<Tourism>> {
     return this.httpClient.get<Page<Tourism>>(baseUrl + 'tourism/' + id)

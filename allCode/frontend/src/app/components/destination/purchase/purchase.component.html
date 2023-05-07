@@ -11,11 +11,11 @@
             </div>
             <div class="hours">
               <h6 class="mt-4">Destino:</h6>
-              <p> <a>París</a></p>
-              <h6 class="mt-4">Alojamiento escogido:</h6>
-              <p> El alojamiento escogido en cuestión</p>
+              <p> <a>{{destination?.nameDestination}}</a></p>
+              <h6 class="mt-4">Descripcion del destino:</h6>
+              <p> {{destination?.contentDestination}}</p>
               <h6 class="mt-4">Coste total:</h6>
-              <p class="margin-top"><a href="tel:+44-255-366-88">300€</a></p>
+              <p class="margin-top"><a href="tel:+44-255-366-88">{{destination?.price}}€</a></p>
             </div>
           </div>
         </div>
@@ -24,9 +24,7 @@
             <h5 class="mt-4">Seleccione su método de pago</h5>
           </div>
           <div class="text-left">
-            <button id="btn-abrir-popup" class="btn btn-style btn-primary">TARJETA <i
-              class="fa-brands fa-cc-visa"></i> <i class="fa-brands fa-cc-mastercard"></i> <i
-              class="fa-brands fa-cc-amex"></i></button>
+            <button id="btn-abrir-popup" class="btn btn-style btn-primary">TARJETA</button>
           </div>
           <div class="overlay" id="overlay">
             <div class="popup" id="popup">
@@ -45,8 +43,7 @@
           </div>
           <br>
           <div class="text-left">
-            <button id="btn-abrir-popup2" class="btn btn-style btn-primary">PAYPAL <i
-              class="fa-brands fa-cc-paypal"></i></button>
+            <button id="btn-abrir-popup2" class="btn btn-style btn-primary">PAYPAL</button>
           </div>
           <div class="overlay" id="overlay2">
             <div class="popup" id="popup2">

@@ -256,8 +256,8 @@ public class CitiesRestController {
             @ApiResponse(responseCode = "404", description = "Reviews of destination not found", content = @Content) })
     @GetMapping("/reviews/{id}")
     @JsonView(Review.Basic.class)
-    public Page<Review> getReview(@PathVariable Long id, Pageable page) {
-        return reviews.findByDestination(id, page);
+    public List<Review> getReview(@PathVariable Long id) {
+        return reviews.findByDestination(id);
     }
 
     // show specific review
