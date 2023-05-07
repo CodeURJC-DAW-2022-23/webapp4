@@ -24,9 +24,9 @@
                     <label for="lastname">Last Name:</label>
                     <input type="text" class="form-control" id="lastname" name="lastname"
                         [(ngModel)]="lastName[user.id]">
-
-                    <button (click)="editUser(user)">Editar</button>
-                    <button (click)="deleteUser(user)">Delete</button>
+                    <br>
+                    <button class="btn btn-primary" (click)="editUser(user)">Guardar cambios</button> 
+                    <button class="btn btn-primary" (click)="deleteUser(user)">Eliminar usuario</button>
                     <br>
                 </div>
             </div>
@@ -55,7 +55,7 @@
                     <h5 class="card-title">{{ destination.nameDestination }} {{destination.price}}$</h5>
                     <p class="card-text">{{destination.contentDestination}}</p>
                     <br>
-                    <label for="destinationName">destino:</label>
+                    <label for="destinationName">Destino:</label>
                     <input type="text" class="form-control" id="destinationName" name="destinationName"
                         [(ngModel)]="destinationName[destination.id]">
                     <label for="price">Precio:</label>
@@ -64,8 +64,9 @@
                     <label for="destinationContent">Contenido:</label>
                     <input type="text" class="form-control" id="destinationContent" name="destinationContent"
                         [(ngModel)]="destinationContent[destination.id]">
-                    <button (click)="editDestination(destination)">Editar</button>
-                    <button (click)="deleteDestination(destination)">Delete</button>
+                    <br>
+                    <button class="btn btn-primary" (click)="editDestination(destination)">Guardar cambios</button>
+                    <button class="btn btn-primary" (click)="deleteDestination(destination)">Eliminar destino</button>
                     <br>
                 </div>
             </div>

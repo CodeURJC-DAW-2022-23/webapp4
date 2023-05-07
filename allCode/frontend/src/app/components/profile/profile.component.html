@@ -36,9 +36,9 @@
             <input class="form-control" name="userLastName" type="text" [(ngModel)]="lastName"
               placeholder="{{user?.lastName}}">
           </div>
-          <button (click)="editUser()">Editar</button>
-          <button (click)="logOut()">log Out</button>
-          <button (click)="deleteUser()">Delete</button>
+          <button class="btn btn-style btn-third"  (click)="editUser()">Guardar cambios</button>
+          <button class="btn btn-style btn-third"  (click)="logOut()">Cerrar sesión</button>
+          <button class="btn btn-style btn-third" (click)="deleteUser()">Eliminar cuenta</button>
         </div>
       </form>
     </div>
