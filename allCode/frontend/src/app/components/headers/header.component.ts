@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 	selector: 'headerLogin',
 	templateUrl: './header.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	styleUrls: ['./style-starter.component.css', './style-login.component.css']
+  styleUrls: ['../../../styles.css', './style-login.component.css']
 })
 export class HeaderLogin {
 	constructor(private router: Router, private httpClient: HttpClient) {}

@@ -7,7 +7,7 @@ import { DestinationService } from 'src/app/services/destination.service';
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
-  styleUrls: ['./index.component.css']
+  styleUrls: ['../../../styles.css']
 })
 export class IndexComponent implements OnInit {
   destinations: Destination[] = [];
@@ -20,8 +20,8 @@ export class IndexComponent implements OnInit {
   ngOnInit(): void {
     this.destinationService.getDestinations().subscribe((response) => {
       this.destinations = response.content;
-    }); 
-    this.prueba(); 
+    });
+    this.prueba();
   }
 
   irAPagina() {
