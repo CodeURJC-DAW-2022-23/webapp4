@@ -48,17 +48,18 @@
       <div class="card-body">
 
         <div class="container">
-          <div *ngFor="let review of reviews" class="review card mb-3">
+          <div *ngFor="let review of reviews | slice:0:numReviewsToShow" class="review card mb-3">
             <div class="card-body">
               <h4 class="card-title">{{review.titleReview}}</h4>
               <p class="card-text">{{review.contentReview}}</p>
-              <button class="btn btn-style" (click)="deleteReview(review)">Eliminar</button>
+              <button class="btn btn-danger ml-auto" (click)="deleteReview(review)">Eliminar</button>
             </div>
           </div>
         </div>
         <div *ngIf="!reviews" class="review">
           <p>No hay reviews disponibles por este usuario.</p>
         </div>
+        <button *ngIf="showMoreButton" class="btn btn-primary mx-auto" (click)="showMoreReviews()">Mostrar más</button>
       </div>
     </div>
   </div>

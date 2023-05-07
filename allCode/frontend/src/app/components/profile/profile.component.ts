@@ -15,10 +15,13 @@ import { UserService } from 'src/app/services/user.service';
 export class ProfileComponent implements OnInit {
   profileAvatarUrl!: string
   user: User | undefined
-  reviews: Review[] | undefined
+  reviews: Review[] = [];
   name!: string;
   lastName!: string;
   avatarFile!: File;
+
+  numReviewsToShow: number = 3;
+  showMoreButton = true;
 
   constructor(private authService: AuthService, private httpClient: HttpClient,
     private router: Router, private userService: UserService, public activatedRoute: ActivatedRoute, private reviewService: ReviewService) { }
@@ -48,6 +51,11 @@ export class ProfileComponent implements OnInit {
     if (event.target.files && event.target.files.length > 0) {
       this.avatarFile = event.target.files[0];
     }
+  }
+
+  showMoreReviews() {
+    this.numReviewsToShow += 3;
+    this.showMoreButton = this.numReviewsToShow < this.reviews.length;
   }
 
   editUser() {

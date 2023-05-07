@@ -109,13 +109,13 @@
 <div class="card-header">Reseñas</div>
 <div class="container">
     <br>
-    <div *ngFor="let review of reviewList" class="review card mb-3">
+    <div *ngFor="let review of reviewList | slice:0:numReviewsToShow " class="review card mb-3">
         <div class="card-body d-flex align-items-center">
-          <h4 class="card-title">{{review.titleReview}}</h4> <!-- Título a la izquierda -->
-          <button class="btn btn-danger ml-auto" (click)="deleteReview(review)">Eliminar</button> <!-- Botón "eliminar" a la derecha -->
+          <h4 class="card-title">{{review.titleReview}}</h4>
+          <button class="btn btn-danger ml-auto" (click)="deleteReview(review)">Eliminar</button>
         </div>
         <div class="card-body">
           <p class="card-text">{{review.contentReview}}</p>  
         </div>
       </div>
-</div>
+      <button *ngIf="showMoreButton" class="btn btn-primary mx-auto" (click)="showMoreReviews()">Mostrar más</button>

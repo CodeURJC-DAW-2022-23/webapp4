@@ -36,6 +36,9 @@ export class AdministratorComponent {
   destinationPrice: number[] = [];
   destinationSize: number = 0;
 
+  numReviewsToShow: number = 3;
+  showMoreButton = true;
+
   constructor(private destinationService: DestinationService, private httpClient: HttpClient,
     private router: Router, private userService: UserService, public activatedRoute: ActivatedRoute, private reviewService: ReviewService) { }
 
@@ -68,6 +71,11 @@ export class AdministratorComponent {
       });
     }
     );
+  }
+
+  showMoreReviews() {
+    this.numReviewsToShow += 3;
+    this.showMoreButton = this.numReviewsToShow < this.reviews.length;
   }
 
   onFileSelected(event: any, user: User) {
