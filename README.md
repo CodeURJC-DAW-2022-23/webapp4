@@ -461,33 +461,33 @@ La mayoria de las funcionalidad de admin(agregar destinos, eliminar destinos, pa
     ```
            
 - Diagrama de clases y templates de la SPA:  
-                
+<image src="/images/diagramaClases.jpg" alt="entities relations">
 
            
 - Participación de miembros:  
 ### Sergio Cuadros Flores
 #### Descripción textual: 
-XXXXXXX
+Inicialicé el proyecto. Posteriormente mis tareas comenzaron con la realización del Header con mi compañero Jorge, donde posteriormente averiguamos la forma de introducir bootstrap a la aplicación Angular. Seguí realizando mis tareas con la pantalla principal de los destinos, añadiendo todos los detalles e imagenes desde la API, así como que cada imagen referenciase a su respectiva pantalla con el ID único gracias a la función de ActivatedRoute. De igual forma realicé la pantalla donde se muestras las diferentes actividades por cada destino, así como la referencia por ID de igual forma. Por último realice la operación de la vista de la restauración (Catering) añadiendo las imgenes y detalles desde la API.
 
 #### 5 commits más significativos
 
 | Commit  | Descripción                                      | Link                                                                                            |
 | ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
-| #1            | XXX   | XXX | 
-| #2            | XXX | XXX | 
-| #3            | XXX |XXX | 
-| #4            | XXX	   | XXX | 
-| #5            | XXX			   | XXX | 
+| #1            | Header   | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/6589b59df71f8fad5f521a7fec15b420d7e50ad4#diff-54406dc3e7e3a50e6dddb08b759e5954b6d1a8191947b04cb657c779900c25b8"></a> | 
+| #2            | Information | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/9ede24272eff69dfff473ed3b41f6c08fb9b8345"></a>| 
+| #3            | Catering |<a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/da1a5d6a33706766a9ae4dab7dd3ca9f327dbd5e"></a>| 
+| #4            | Services	   | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/eb46f0b4ccaca0150ea00a6fb0071f8d4fb655c6"> </a> | 
+| #5            | Routing| <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/bf8045bf774f18559f16aaf73051b306935af93f"></a>| 
 
 #### 5 ficheros más participación
 
 | Número fichero  | Fichero                                      | 
 | ------------- | ------------------------------------------------ |
-| #1            | XXX		   | 
-| #2            | XXX| 
-| #3            | XXX |
-| #4            | XXX	   | 
-| #5            |XXX   | 
+| #1            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/blob/DesarrolloAngular2/allCode/frontend/src/app/components/destination/destination.component.ts">Destination</a>| 
+| #2            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/DesarrolloAngular2/allCode/frontend/src/app/components/destination/catering">Catering</a>| 
+| #3            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/DesarrolloAngular2/allCode/frontend/src/app/components/destination/information">Information</a>|
+| #4            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/DesarrolloAngular2/allCode/frontend/src/app/components/headers">Header</a>| 
+| #5            |<a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/blob/DesarrolloAngular2/allCode/frontend/src/app/services/destination.service.ts"> Destination Service </a>| 
          
 ### David Moreno Martín
 #### Descripción textual: 
@@ -516,27 +516,27 @@ Me he encargado de varias cosas durante esta última fase de la aplicación. Emp
   
 ### Adrián Pedroche Rata
 #### Descripción textual: 
-XXXXXXX
+En esta fasse de la práctica me he encargado de la parte de los componentes de la aplicación web. Empecé añadiendo el componente de tourism, que permitía por cada destino, ver las imágenes con los sitios más turístivos. Posteriormente, realicé los componentes de ptivacyPolicy y el de terms. Luego contiué añadiendo el footer de la aplicación y acabé añadiendo l buscador de países que ofrecemos en la pantalla de inicio. Por último, también he ayudado a realizar los diagramas y el readme. Además de colaborar en el despliegue de la aplicación. 
 
 #### 5 commits más significativos
 
 | Commit  | Descripción                                      | Link                                                                                            |
 | ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
-| #1            | XXX   | XXX | 
-| #2            | XXX | XXX | 
-| #3            | XXX |XXX | 
-| #4            | XXX	   | XXX | 
-| #5            | XXX			   | XXX | 
+| #1            | Tourism component   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/130a56d1881e8073ac03dfe0459de3c500083be5 | 
+| #2            | Footer component | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/f01c09622b56ff1958598da6ab159f488af7b388 | 
+| #3            | privacyPolicy and terms components |https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/3140e59e104143d697a4627a6d433af9e9eb88ed | 
+| #4            | 	Country search   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/004913d5991bae2c865f65d2aa0ce43943662fdf | 
+| #5            | Country search 2.0			   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/f2250111ce8f4fb8cebe779a215d2dc3a0cf02ad | 
 
 #### 5 ficheros más participación
 
 | Número fichero  | Fichero                                      | 
 | ------------- | ------------------------------------------------ |
-| #1            | XXX		   | 
-| #2            | XXX| 
-| #3            | XXX |
-| #4            | XXX	   | 
-| #5            |XXX   | 
+| #1            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/DesarrolloAngular2/allCode/frontend/src/app/components/footer">footer.component</a>  | 
+| #2            |  <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/DesarrolloAngular2/allCode/frontend/src/app/components/destination">destination.component</a>| 
+| #3            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/DesarrolloAngular2/allCode/frontend/src/app/components/index">index.component</a> |
+| #4            |<a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/DesarrolloAngular2/allCode/frontend/src/app/components/destination/tourism">tourism.Component</a>	   | 
+| #5            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/DesarrolloAngular2/allCode/frontend/src/app/components/privacy-policy">privacyPolicy.component</a>   |
          
          
 ### Jorge Ezequiel	de Francisco Bernal
