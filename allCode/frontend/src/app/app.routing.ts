@@ -17,7 +17,7 @@ import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-poli
 import { TermsComponent } from './components/terms/terms.component';
 import { AdministratorComponent } from './components/administrator/administrator.component';
 import { IndexComponent } from './components/index/index.component';
-import { HouseComponent } from './components/destination/house/house.component';
+import { HouseComponent } from './components/destination/house/house.component';    
 
 
 const appRoutes = [
