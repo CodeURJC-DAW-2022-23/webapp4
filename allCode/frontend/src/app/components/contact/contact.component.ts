@@ -12,18 +12,18 @@ export class ContactComponent {
   datos: FormGroup;
   constructor(private httpclien:HttpClient) {
     this.datos = new FormGroup({
-      correo: new FormControl('',[Validators.required, Validators.email]),
       nombre: new FormControl('',[Validators.required]),
-      asunto: new FormControl('',[Validators.required]),
-      mensaje: new FormControl('',[Validators.required])
+      email: new FormControl('',[Validators.required, Validators.email]),
+      subject: new FormControl('',[Validators.required]),
+      message: new FormControl('',[Validators.required])
     })
   }
   sendEmail(){
     let params = {
-      email:this.datos.value.correo,
-      name:this.datos.value.nombre,
-      asunto:this.datos.value.asunto,
-      mensaje:this.datos.value.mensaje
+      nombre:this.datos.value.nombre,
+      email:this.datos.value.email,
+      subject:this.datos.value.subject,
+      message:this.datos.value.message
     }
     this.httpclien.post('/api/contact/', params)
       .subscribe(resp => {

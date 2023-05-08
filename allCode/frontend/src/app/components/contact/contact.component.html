@@ -30,14 +30,14 @@
               </div>
               <div class="form-group">
                 <input type="email" name="w3lSender" id="w3lSender" placeholder="Tu correo electrónico*"
-                       class="contact-input" required="" formControlName="correo"/>
+                       class="contact-input" required="" formControlName="email"/>
               </div>
               <div class="form-group">
-                <input type="text" name="w3lSubect" id="w3lSubect" placeholder="Asunto*" class="contact-input" formControlName="asunto"/>
+                <input type="text" name="w3lSubect" id="w3lSubect" placeholder="Asunto*" class="contact-input" formControlName="subject"/>
               </div>
             </div>
             <div class="form-group">
-              <textarea name="w3lMessage" id="w3lMessage" placeholder="Escribe tu mensaje*" required="" formControlName="mensaje"></textarea>
+              <textarea name="w3lMessage" id="w3lMessage" placeholder="Escribe tu mensaje*" required="" formControlName="message"></textarea>
             </div>
             <div class="text-right">
               <button class="btn btn-style btn-primary" (click)="sendEmail()">Enviar mensaje</button>
