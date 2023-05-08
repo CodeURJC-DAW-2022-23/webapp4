@@ -55,6 +55,7 @@ export class DestinationService {
     return baseUrl + destination.id + '/image'
   }
 
+
   getImageFood(id: number) {
     return baseUrl + 'catering/' + id + '/image'
   }
@@ -75,6 +76,8 @@ export class DestinationService {
     if (destinationImageFile) {
       formData.append('destinationImageFile', destinationImageFile);
     }
+
+    
 
     return this.httpClient.post(baseUrl + "editDestination/" + destination.id, formData).pipe(
       catchError((error) => {

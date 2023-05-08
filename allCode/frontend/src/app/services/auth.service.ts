@@ -15,21 +15,26 @@ export class AuthService {
   user: User | undefined;
 
   constructor(private httpClient: HttpClient) {
-    this.reqIsLogged();
   }
 
   private loggedIn = new BehaviorSubject<boolean>(false);
 
   reqIsLogged() {
-    this.httpClient.get('/api/users/me', { withCredentials: true }).subscribe(
-      response => {
-        this.user = response as User;
-        this.loggedIn.next(true);
-      },
-      _ => {
-        throw new Error('Something bad happened');
-      }
-    );
+    try {
+      this.httpClient.get('/api/users/me').subscribe(
+        response => {
+          this.user = response as User;
+          this.loggedIn.next(true);
+        },
+        error => {
+          console.error('Error occurred during request:', error);
+          alert('No se pudo iniciar sesión. Por favor, inténtalo de nuevo más tarde.');
+        }
+      );
+    } catch (error) {
+      console.error('Something went wrong:', error);
+      alert('No se pudo iniciar sesión. Por favor, inténtalo de nuevo más tarde.');
+    }
   }
 
   get isLoggedIn() {
