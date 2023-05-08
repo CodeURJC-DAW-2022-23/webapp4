@@ -464,7 +464,7 @@ La mayoria de las funcionalidad de admin(agregar destinos, eliminar destinos, pa
 <image src="/images/diagramaClases.jpg" alt="entities relations">
 
 -Video Youtube: 
-[VIDEO](https://youtu.be/Hup4jgrPg0g)
+[VIDEO](https://youtu.be/fn1dEgtOr7w)
            
 - Participación de miembros:  
 ### Sergio Cuadros Flores
@@ -518,7 +518,7 @@ Me he encargado de varias cosas durante esta última fase de la aplicación. Emp
   
 ### Adrián Pedroche Rata
 #### Descripción textual: 
-En esta fasse de la práctica me he encargado de la parte de los componentes de la aplicación web. Empecé añadiendo el componente de tourism, que permitía por cada destino, ver las imágenes con los sitios más turístivos. Posteriormente, realicé los componentes de ptivacyPolicy y el de terms. Luego contiué añadiendo el footer de la aplicación y acabé añadiendo l buscador de países que ofrecemos en la pantalla de inicio. Por último, también he ayudado a realizar los diagramas y el readme. Además de colaborar en el despliegue de la aplicación. 
+En esta fasse de la práctica me he encargado de la parte de los componentes de la aplicación web. Empecé añadiendo el componente de tourism, que permitía por cada destino, ver las imágenes con los sitios más turístivos. Posteriormente, realicé los componentes de ptivacyPolicy y el de terms. Luego contiué añadiendo el footer de la aplicación y acabé añadiendo l buscador de países que ofrecemos en la pantalla de inicio. Por último, también he ayudado a realizar los diagramas y el readme.  
 
 #### 5 commits más significativos
 
