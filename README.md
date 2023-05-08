@@ -464,7 +464,7 @@ La mayoria de las funcionalidad de admin(agregar destinos, eliminar destinos, pa
 <image src="/images/diagramaClases.jpg" alt="entities relations">
 
 -Video Youtube: 
-[VIDEO](https://youtu.be/Hup4jgrPg0g)
+[VIDEO](https://www.youtube.com/watch?v=fn1dEgtOr7w)
            
 - Participación de miembros:  
 ### Sergio Cuadros Flores
