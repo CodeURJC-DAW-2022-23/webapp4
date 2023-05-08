@@ -28,8 +28,10 @@
   <div class="card mb-4">
     <br>
     <div class="card-header">Lo que nuestros clientes dicen</div>
+    <br>
+    <button *ngIf="showMoreButton" class="btn btn-primary mx-auto" (click)="showMoreReviews()">Mostrar más</button>
+    <br>
     <div class="card-body">
-
       <div class="container">
         <div *ngFor="let review of reviews.slice(0, numReviewsToShow).reverse()" class="review card mb-3">
           <div class="card-body">
@@ -40,7 +42,6 @@
           </div>
         </div>
       </div>
-      <button *ngIf="showMoreButton" class="btn btn-primary mx-auto" (click)="showMoreReviews()">Mostrar más</button>
     </div>
   </div>
 

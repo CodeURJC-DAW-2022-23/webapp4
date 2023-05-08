@@ -58,16 +58,19 @@
         <div *ngIf="!purchases.length" class="review">
           <p>No hay reviews disponibles por este usuario.</p>
         </div>
-        <button *ngIf="showMorePurchaseButton && purchases.length" class="btn btn-primary mx-auto" (click)="showMorePurchases()">Mostrar más</button>
+        <button *ngIf="(purchases.length>numPurchaseToShow)" class="btn btn-primary mx-auto" (click)="showMorePurchases()">Mostrar más</button>
       </div>
     </div>
   </div>
 
     <div class="card mb-4">
       <div class="card-header">Opiniones realizadas</div>
+      <br>
+      <button *ngIf="!(numReviewsToShow>reviews.length) && reviews.length" class="btn btn-primary mx-auto" (click)="showMoreReviews()">Mostrar más</button>
       <div class="card-body">
+        <br>
         <div class="container">
-          <div *ngFor="let review of reviews | slice:0:numReviewsToShow" class="review card mb-3">
+          <div *ngFor="let review of reviews.slice(0, numReviewsToShow).reverse()" class="review card mb-3">
             <div class="card-body">
               <h4 class="card-title">{{review.titleReview}}</h4>
               <p class="card-text">{{review.contentReview}}</p>
@@ -78,7 +81,6 @@
         <div *ngIf="!reviews.length " class="review">
           <p>No hay reviews disponibles por este usuario.</p>
         </div>
-        <button *ngIf="showMoreButton && reviews.length" class="btn btn-primary mx-auto" (click)="showMoreReviews()">Mostrar más</button>
       </div>
     </div>
   </div>

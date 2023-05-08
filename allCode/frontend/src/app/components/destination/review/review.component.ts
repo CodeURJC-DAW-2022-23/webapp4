@@ -21,7 +21,7 @@ export class ReviewComponent {
   content!: string;
   title!: string;
   rating!: number;
-  currentDestination: number;
+  currentDestination!: number;
   destination: Destination | undefined
 
   numReviewsToShow: number = 3;
@@ -32,23 +32,27 @@ export class ReviewComponent {
     private userService: UserService,
     private activatedRoute: ActivatedRoute,
     private httpClient: HttpClient
-  ) {
-    this.currentDestination = activatedRoute.snapshot.params['id'];
-    let dest = destinationService.getDestinationById(this.currentDestination)
+  ) { this.ngOnInit()}
+
+  ngOnInit(){
+    this.currentDestination = this.activatedRoute.snapshot.params['id'];
+    let dest = this.destinationService.getDestinationById(this.currentDestination)
       .pipe(filter(dest => dest !== undefined))
       .subscribe(dest => {
         this.destination = dest;
       }, error => {
         throw new Error('Unknown destination')
       });
+
     this.destinationService.getDestinationReviews(this.currentDestination).subscribe((response) => {
       this.reviews = response;
-      console.log(this.reviews[1].user);
     });
   }
+
   showMoreReviews() {
     this.numReviewsToShow += 3;
     this.showMoreButton = this.numReviewsToShow < this.reviews.length;
+    this.ngOnInit();
   }
   addReview() {
     const formData = new FormData();
@@ -59,7 +63,9 @@ export class ReviewComponent {
     .subscribe(
       (response) => {
         console.log(response);
-        alert("destination added");
+        this.ngOnInit();
+        alert("Review added");
+        
       },
       (error) => {
         console.log(error);
