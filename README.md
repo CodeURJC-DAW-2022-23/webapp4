@@ -543,27 +543,27 @@ En esta fasse de la práctica me he encargado de la parte de los componentes de 
          
 ### Jorge Ezequiel	de Francisco Bernal
 #### Descripción textual: 
-XXXXXXX
+Para esta parte me he dedicado a los componentes del purchase, contact, review y parte del heather. Del contact he implementado el html nuevo y que tras meter datos en una formulario se envie un correo a la aplicacion. El contact muestra todas las reviews de un destino determinado y el usuario previamente registrado podrá añadir una review. En el heather se mostraran unos botones u otros en función de si el usuario esta registrado o no. Por último en el purchase se mostrará un resumen de la compra y pulsando uno de los botones de compra se le guardara la compra al usuario registrado
 
 #### 5 commits más significativos
 
 | Commit  | Descripción                                      | Link                                                                                            |
 | ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
-| #1            | XXX   | XXX | 
-| #2            | XXX | XXX | 
-| #3            | XXX |XXX | 
-| #4            | XXX	   | XXX | 
-| #5            | XXX			   | XXX | 
+| #1            | poder escribir nuevas. Además de mostrar la información de la compra   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/9a02c96db0864ac5562ee8cb8bc25d831bbd9e60 | 
+| #2            | muestra las reviews de un sitio determinado | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/380d4c7919805122cd71a4074e711838f9fb8070 | 
+| #3            | creados los componentes de review, purchase y contact |https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/754738bc85d87c9b45534595f06053a44f46095c | 
+| #4            | formulario y componente para el envio del | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/41a596690536c766f9caf280552b8107c17f793e | 
+| #5            | creacion de la api para enviar emails	| https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/a6da5a59e911d717b11a2781c1d63da871b4198f | 
 
 #### 5 ficheros más participación
 
 | Número fichero  | Fichero                                      | 
 | ------------- | ------------------------------------------------ |
-| #1            | XXX		   | 
-| #2            | XXX| 
-| #3            | XXX |
-| #4            | XXX	   | 
-| #5            |XXX   |          
+| #1            | contact.component.ts	   | 
+| #2            | review.component.ts| 
+| #3            | purchase.component.ts |
+| #4            | review.component.html	   | 
+| #5            |contact.component.html   |          
          
 ### ShuHeng	Ye
 #### Descripción textual: 
