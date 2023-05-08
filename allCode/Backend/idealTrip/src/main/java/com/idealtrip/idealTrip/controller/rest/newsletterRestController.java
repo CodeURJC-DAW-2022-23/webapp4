@@ -19,7 +19,7 @@ public class newsletterRestController {
                 "\nemail: " + newsletterDTO.getEmail() +
                 "\nAsunto: " + "subscripción confirmada" +
                 "\nMensaje: " + "Usted se ha suscrito a nuestra web Idealtrip, pronto le llegarán noticioas nuestras";
-        mailService.sendEmail(newsletterDTO.getEmail(), "idealtripdaw@gmail.com", message);
+        mailService.sendEmail("idealtripdaw@gmail.com", newsletterDTO.getEmail(), message);
         return ResponseEntity.ok("El correo electrónico se ha enviado correctamente.");
     }
 
