@@ -33,7 +33,7 @@ const appRoutes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'review/:id', component: ReviewComponent },
   { path: 'contact', component: ContactComponent },
-  { path: 'purchase/:id', component: PurchaseComponent },
+  { path: 'purchase/:id/:destinationId', component: PurchaseComponent },
   { path: 'privacyPolicy', component: PrivacyPolicyComponent },
   { path: 'terms', component: TermsComponent },
   { path: 'administrator', component: AdministratorComponent },

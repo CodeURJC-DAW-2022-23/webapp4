@@ -25,8 +25,11 @@ export class ContactComponent {
       asunto:this.datos.value.asunto,
       mensaje:this.datos.value.mensaje
     }
-    this.httpclien.post('https://localhost:8443/ápi/contact',params).subscribe(resp=>{
-      console.log(resp)
-    })
+    this.httpclien.post('/api/contact', params, { headers: { 'X-Skip-Interceptor': 'true' } })
+      .subscribe(resp => {
+        console.log(resp);
+      }, err => {
+        console.log(err);
+      });
   }
 }
