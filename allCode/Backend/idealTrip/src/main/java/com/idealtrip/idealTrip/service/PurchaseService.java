@@ -45,4 +45,8 @@ public class PurchaseService {
         purchases.deleteAll(purchases2);
     }
 
+    public List<Purchase> findAll() {
+        return purchases.findAll();
+    }
+
 }

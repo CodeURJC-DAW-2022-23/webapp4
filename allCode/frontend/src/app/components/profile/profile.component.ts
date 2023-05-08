@@ -1,9 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { each } from 'chart.js/dist/helpers/helpers.core';
+import { Observable } from 'rxjs';
+import { Purchase } from 'src/app/models/purchase.model';
 import { Review } from 'src/app/models/review.model';
 import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
+import { DestinationService } from 'src/app/services/destination.service';
 import { ReviewService } from 'src/app/services/review.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -19,17 +23,23 @@ export class ProfileComponent implements OnInit {
   name!: string;
   lastName!: string;
   avatarFile!: File;
-  isAdmin :boolean = false;
+  isAdmin: boolean = false;
   numReviewsToShow: number = 3;
   showMoreButton = true;
+  purchases: Purchase[] = [];
+  
+  numPurchaseToShow:number = 3;
+  showMorePurchaseButton = true;
+
+  
 
   constructor(private authService: AuthService, private httpClient: HttpClient,
-    private router: Router, private userService: UserService, public activatedRoute: ActivatedRoute, private reviewService: ReviewService) { }
+    private router: Router, private userService: UserService, public activatedRoute: ActivatedRoute, private destinationService: DestinationService) { }
 
   ngOnInit(): void {
     this.userService.getMe().subscribe((response) => {
       this.user = response;
-      this.userService.checkAdmin(this.user).subscribe((response)=>{
+      this.userService.checkAdmin(this.user).subscribe((response) => {
         this.isAdmin = response;
       }
       )
@@ -44,12 +54,17 @@ export class ProfileComponent implements OnInit {
         .subscribe(reviews => {
           this.reviews = reviews;
         });
-      //purchases 
+      this.destinationService.getUserPurchase(this.user.id)
+        .subscribe(purchases => {
+          this.purchases = purchases;
+        });
     },
       (error) => {
         this.router.navigate(['/error']);
       })
   }
+
+
 
   onFileSelected(event: any) {
     if (event.target.files && event.target.files.length > 0) {
@@ -61,6 +76,11 @@ export class ProfileComponent implements OnInit {
     this.numReviewsToShow += 3;
     console.log(this.reviews.length)
     this.showMoreButton = this.numReviewsToShow < this.reviews.length;
+  }
+
+  showMorePurchases() {
+    this.numPurchaseToShow += 3;
+    this.showMorePurchaseButton = this.numPurchaseToShow < this.purchases.length;
   }
 
   editUser() {
@@ -85,6 +105,13 @@ export class ProfileComponent implements OnInit {
       this.userService.deleteUser(this.user)
       this.router.navigate(['/']);
     }
+  }
+
+  deletPurchase(id: number) {
+    this.destinationService.deletePurchase(id).subscribe(() => {
+      console.log("Compra eliminada correctamente");
+    });
+    this.ngOnInit();
   }
 
   deleteReview(review: Review) {

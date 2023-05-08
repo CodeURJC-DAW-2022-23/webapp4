@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Destination } from 'src/app/models/destination.model';
+import { Purchase } from 'src/app/models/purchase.model';
 import { Review } from 'src/app/models/review.model';
 import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
@@ -38,6 +39,9 @@ export class AdministratorComponent {
 
   numReviewsToShow: number = 3;
   showMoreButton = true;
+  numPurchaseToShow:number = 3;
+  showMorePurchaseButton = true;
+  purchases: Purchase[] = [];
 
   constructor(private destinationService: DestinationService, private httpClient: HttpClient, private authService: AuthService,
     private router: Router, private userService: UserService, public activatedRoute: ActivatedRoute, private reviewService: ReviewService) { }
@@ -67,6 +71,10 @@ export class AdministratorComponent {
           this.reviewService.getAllReviews().subscribe(reviews => {
             this.reviewList = reviews;
           })
+          this.destinationService.getAllPurcahse()
+          .subscribe(purchases => {
+            this.purchases = purchases;
+          });
         }
       });
     }
@@ -81,6 +89,11 @@ export class AdministratorComponent {
   showMoreReviews() {
     this.numReviewsToShow += 3;
     this.showMoreButton = this.numReviewsToShow < this.reviews.length;
+  }
+
+  showMorePurchases() {
+    this.numPurchaseToShow += 3;
+    this.showMorePurchaseButton = this.numPurchaseToShow < this.purchases.length;
   }
 
   onFileSelected(event: any, user: User) {
@@ -200,5 +213,12 @@ export class AdministratorComponent {
       this.ngOnInit()
     )
   };
+  
+  deletPurchase(id: number) {
+    this.destinationService.deletePurchase(id).subscribe(() => {
+      console.log("Compra eliminada correctamente");
+    });
+    this.ngOnInit();
+  }
 }
 

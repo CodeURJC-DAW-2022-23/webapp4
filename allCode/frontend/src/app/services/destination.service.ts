@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Observable, catchError, throwError } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { Observable, catchError, of, throwError } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Destination } from '../models/destination.model';
 import { Page } from '../models/page.model';
 import { Catering } from '../models/catering.model';
 import { Tourism } from '../models/tourism.model';
 import { House } from '../models/house.model';
-import {Review} from "../models/review.model";
+import { Review } from "../models/review.model";
+import { Purchase } from '../models/purchase.model';
 
 const baseUrl = '/api/destinations/';
 
@@ -38,11 +39,11 @@ export class DestinationService {
     return this.httpClient.get<Page<Tourism>>(baseUrl + 'tourism/' + id)
   }
 
-  getHouse(id: number): Observable<any>{
+  getHouse(id: number): Observable<any> {
     return this.httpClient.get<any>(baseUrl + 'house/' + id)
   }
 
-  getHouse2(id: number): Observable<any>{
+  getHouse2(id: number): Observable<any> {
     return this.httpClient.get<any>(baseUrl + 'houses/' + id)
   }
 
@@ -82,8 +83,24 @@ export class DestinationService {
     );
   }
 
-  addDestination(formData:FormData){
+  addDestination(formData: FormData) {
     return this.httpClient.post(baseUrl + "add", formData)
   }
 
+  getUserPurchase(id: number): Observable<Purchase[]> {
+    return this.httpClient.get<Purchase[]>("/api/purchases/user/" + id)
+  }
+
+  getAllPurcahse(): Observable<Purchase[]> {
+    return this.httpClient.get<Purchase[]>("/api/purchases/all")
+  }
+
+
+  getNameHouse(id: number): Observable<String> {
+    return this.httpClient.get<String>("/api/purchases/" + id);
+  }
+
+  deletePurchase(id: number) {
+    return this.httpClient.delete("/api/purchases/" + id)
+  }
 }

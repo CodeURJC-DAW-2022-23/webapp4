@@ -45,6 +45,25 @@
     </div>
 
     <div class="card mb-4">
+      <div class="card-header">Compras realizadas</div>
+      <div class="card-body">
+        <div class="container">
+          <div *ngFor="let purchase of purchases | slice:0:numPurchaseToShow" class="purchase card mb-3">
+            <div class="card-body">
+              <h4 class="card-title"> ID de la compra: {{purchase.id}}</h4>
+              <button class="btn btn-danger ml-auto" (click)="deletPurchase(purchase.id)">Eliminar</button>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="!purchases.length" class="review">
+          <p>No hay reviews disponibles por este usuario.</p>
+        </div>
+        <button *ngIf="showMorePurchaseButton && purchases.length" class="btn btn-primary mx-auto" (click)="showMorePurchases()">Mostrar más</button>
+      </div>
+    </div>
+  </div>
+
+    <div class="card mb-4">
       <div class="card-header">Opiniones realizadas</div>
       <div class="card-body">
         <div class="container">
