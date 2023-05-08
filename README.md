@@ -423,3 +423,168 @@ La mayoria de las funcionalidad de admin(agregar destinos, eliminar destinos, pa
 | #4            | profile.html | 
 | #5            | 			   |        
         
+
+# Fase 4: Implementación de la web con arquitectura SPA
+              
+       
+- Preparación del entorno de desarrollo:  
+    - Para empezar con la parte de frontend, y más concretamente con Angular, tenemos 2 requisitos fundamentales, sin los cuales nos va a ser imposible trabajar:
+        - [Node.js](https://nodejs.org/en)
+        - [Angular](https://angular.io)
+    - Una vez que tenemos ambas instaladas, podemos comprobar si están funcionando escribiendo en la consola "ng --version" y revisando las versiones.
+    -Teniendo esto listo, podemos empezar con Angular como tal, aunque antes es recomendable comprobar que la API de backend funciona, por lo tanto, arrancamos el backend y lo dejamos en segundo plano.
+    
+        - Importante mencionar, que para que el backend y el frontend estén conectados, es necesario configurar el proxy, esto se puede hacer con el siguiente comando dentro de la carpeta del proyecto "$ ng serve --proxy-config proxy.conf.json" y en el archivo proxy.conf.json añadir la configuración del puerto y API necesarias. En nuestro caso, esto ya está hecho y el archivo creado, simplemente con "npm start" se lanzan ambas cosas, el serve, y el proxy
+    - Instalamos Angular si no lo hemos hecho antes: 
+    ```
+    npm install -g @angular/cli
+    ```
+    - Clonamos el repositorio y nos ponemos en frontend: 
+    ```
+    cd allCode\frontend
+    ```
+    - Instalamos los módulos necesarios:
+    ```
+    npm install
+    ```
+    - Instalamos bootstrap: 
+    ```
+    npm install bootstrap
+    ```
+    y 
+    ```
+    ng add @ng-bootstrap/ng-bootstrap
+    ```
+    - Ejecutamos la aplicación: 
+    ```
+    npm start
+    ```
+           
+- Diagrama de clases y templates de la SPA:  
+<image src="/images/diagramaClases.jpg" alt="entities relations">
+
+-Video Youtube: 
+[VIDEO](https://youtu.be/Hup4jgrPg0g)
+           
+- Participación de miembros:  
+### Sergio Cuadros Flores
+#### Descripción textual: 
+Inicialicé el proyecto. Posteriormente mis tareas comenzaron con la realización del Header con mi compañero Jorge, donde posteriormente averiguamos la forma de introducir bootstrap a la aplicación Angular. Seguí realizando mis tareas con la pantalla principal de los destinos, añadiendo todos los detalles e imagenes desde la API, así como que cada imagen referenciase a su respectiva pantalla con el ID único gracias a la función de ActivatedRoute. De igual forma realicé la pantalla donde se muestras las diferentes actividades por cada destino, así como la referencia por ID de igual forma. Por último realice la operación de la vista de la restauración (Catering) añadiendo las imgenes y detalles desde la API.
+
+#### 5 commits más significativos
+
+| Commit  | Descripción                                      | Link                                                                                            |
+| ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| #1            | Header   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/6589b59df71f8fad5f521a7fec15b420d7e50ad4#diff-54406dc3e7e3a50e6dddb08b759e5954b6d1a8191947b04cb657c779900c25b8" | 
+| #2            | Information | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/9ede24272eff69dfff473ed3b41f6c08fb9b8345| 
+| #3            | Catering |https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/da1a5d6a33706766a9ae4dab7dd3ca9f327dbd5e| 
+| #4            | Services	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/eb46f0b4ccaca0150ea00a6fb0071f8d4fb655c6| 
+| #5            | Routing| https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/bf8045bf774f18559f16aaf73051b306935af93f| 
+
+#### 5 ficheros más participación
+
+| Número fichero  | Fichero                                      | 
+| ------------- | ------------------------------------------------ |
+| #1            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/blob/DesarrolloAngular2/allCode/frontend/src/app/components/destination/destination.component.ts">Destination</a>| 
+| #2            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/DesarrolloAngular2/allCode/frontend/src/app/components/destination/catering">Catering</a>| 
+| #3            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/DesarrolloAngular2/allCode/frontend/src/app/components/destination/information">Information</a>|
+| #4            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/DesarrolloAngular2/allCode/frontend/src/app/components/headers">Header</a>| 
+| #5            |<a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/blob/DesarrolloAngular2/allCode/frontend/src/app/services/destination.service.ts"> Destination Service </a>| 
+         
+### David Moreno Martín
+#### Descripción textual: 
+Me he encargado de varias cosas durante esta última fase de la aplicación. Empecé configurando el routing de la aplicación Angular para atender a las diversas URL, entre ellas la de error, y la URL vacia "". Posteriormente, integré el proxy en la aplicación Angular para conectar el front con el Back, y de este modo poder hacer peticiones a la API. Con esto, configure la aplicación para poder ser desplegada en el puerto 8443, que es el puerto backend, pero con la diferencia de que ahora debemos incluir /new, por lo tanto la forma correcta de acceder sería "https://localhost:8443/new/". Es importante recalcar que para que los cambios hechos en Angular surjan efecto en el puerto 8443, es necesario hacer un Build completo y trasladar los archivos de la carpeta "/dist" a la carpeta "src/main/resources/public/new" del backend. También hice el gráfico de barras con las valoraciones de los clientes, estos datos son obtenidos del backend vía API. Por último, realice el componente de House, con los apartamentos para los distintos destinos, también con los datos obtenidos por la API.
+
+#### 5 commits más significativos
+
+| Commit  | Descripción                                      | Link                                                                                            |
+| ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| #1            | Angular routing and Error 404 page   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/faf6833f02d92a2a2e26fadf8b73201adedc1854 | 
+| #2            | Angular Proxy integrated and API destinations format | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/b4374b60de88c73f82bdbf35b6026eb595bfb188 | 
+| #3            | Angular localhost deployment in port 8443/new/ |https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/93ea3c2b7d571ec84daac57f07418dcd88b04fb4 | 
+| #4            | Bar chart added via API	   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/bb3b7d29f7a256c5afd2f1ceeeff84c0040a7247 | 
+| #5            | House components and details			   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/46db2496f2e28a764b64b8ef46ba09955c18fe35 | 
+
+#### 5 ficheros más participación
+
+| Número fichero  | Fichero                                      | 
+| ------------- | ------------------------------------------------ |
+| #1            | [error-page Component](https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/DesarrolloAngular2/allCode/frontend/src/app/components/error-page)		   | 
+| #2            | [destination Components](https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/DesarrolloAngular2/allCode/frontend/src/app/components/destination)| 
+| #3            | [rating Component](https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/DesarrolloAngular2/allCode/frontend/src/app/components/rating) |
+| #4            | [house Component](https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/DesarrolloAngular2/allCode/frontend/src/app/components/destination/house)	   | 
+| #5            | [public/new Deployment](https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/DesarrolloAngular2/allCode/Backend/idealTrip/src/main/resources/public/new)	   | 
+
+  
+### Adrián Pedroche Rata
+#### Descripción textual: 
+En esta fasse de la práctica me he encargado de la parte de los componentes de la aplicación web. Empecé añadiendo el componente de tourism, que permitía por cada destino, ver las imágenes con los sitios más turístivos. Posteriormente, realicé los componentes de ptivacyPolicy y el de terms. Luego contiué añadiendo el footer de la aplicación y acabé añadiendo l buscador de países que ofrecemos en la pantalla de inicio. Por último, también he ayudado a realizar los diagramas y el readme. Además de colaborar en el despliegue de la aplicación. 
+
+#### 5 commits más significativos
+
+| Commit  | Descripción                                      | Link                                                                                            |
+| ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| #1            | Tourism component   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/130a56d1881e8073ac03dfe0459de3c500083be5 | 
+| #2            | Footer component | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/f01c09622b56ff1958598da6ab159f488af7b388 | 
+| #3            | privacyPolicy and terms components |https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/3140e59e104143d697a4627a6d433af9e9eb88ed | 
+| #4            | 	Country search   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/004913d5991bae2c865f65d2aa0ce43943662fdf | 
+| #5            | Country search 2.0			   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/f2250111ce8f4fb8cebe779a215d2dc3a0cf02ad | 
+
+#### 5 ficheros más participación
+
+| Número fichero  | Fichero                                      | 
+| ------------- | ------------------------------------------------ |
+| #1            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/DesarrolloAngular2/allCode/frontend/src/app/components/footer">footer.component</a>  | 
+| #2            |  <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/DesarrolloAngular2/allCode/frontend/src/app/components/destination">destination.component</a>| 
+| #3            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/DesarrolloAngular2/allCode/frontend/src/app/components/index">index.component</a> |
+| #4            |<a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/DesarrolloAngular2/allCode/frontend/src/app/components/destination/tourism">tourism.Component</a>	   | 
+| #5            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/DesarrolloAngular2/allCode/frontend/src/app/components/privacy-policy">privacyPolicy.component</a>   |
+         
+         
+### Jorge Ezequiel	de Francisco Bernal
+#### Descripción textual: 
+XXXXXXX
+
+#### 5 commits más significativos
+
+| Commit  | Descripción                                      | Link                                                                                            |
+| ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| #1            | XXX   | XXX | 
+| #2            | XXX | XXX | 
+| #3            | XXX |XXX | 
+| #4            | XXX	   | XXX | 
+| #5            | XXX			   | XXX | 
+
+#### 5 ficheros más participación
+
+| Número fichero  | Fichero                                      | 
+| ------------- | ------------------------------------------------ |
+| #1            | XXX		   | 
+| #2            | XXX| 
+| #3            | XXX |
+| #4            | XXX	   | 
+| #5            |XXX   |          
+         
+### ShuHeng	Ye
+#### Descripción textual: 
+XXXXXXX
+
+#### 5 commits más significativos
+
+| Commit  | Descripción                                      | Link                                                                                            |
+| ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| #1            | XXX   | XXX | 
+| #2            | XXX | XXX | 
+| #3            | XXX |XXX | 
+| #4            | XXX	   | XXX | 
+| #5            | XXX			   | XXX | 
+
+#### 5 ficheros más participación
+
+| Número fichero  | Fichero                                      | 
+| ------------- | ------------------------------------------------ |
+| #1            | XXX		   | 
+| #2            | XXX| 
+| #3            | XXX |
+| #4            | XXX	   | 
+| #5            |XXX   |  

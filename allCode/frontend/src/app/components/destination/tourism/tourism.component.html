@@ -1,0 +1,15 @@
+<figure>
+    <div class="title">
+      <h1>Lugares Turísticos de {{nameDestination}}</h1>
+    </div>
+  
+    <div class="gallery">
+      <div class="tourismImage" *ngFor="let tourism of tourisms">
+        <img [src]="tourismImage(tourism.id)" alt="">
+        <div class="capa">
+          <h3>{{tourism.nameTourism}}</h3>
+          <p>{{tourism.contentTourism}}</p>
+        </div>
+      </div>
+    </div>
+  </figure>

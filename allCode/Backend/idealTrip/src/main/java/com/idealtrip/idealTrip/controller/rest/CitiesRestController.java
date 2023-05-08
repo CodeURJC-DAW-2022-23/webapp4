@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.security.Principal;
+import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -15,10 +16,12 @@ import java.util.Map;
 import java.util.Optional;
 
 import com.idealtrip.idealTrip.controller.DTOS.DestinationDTO;
-import com.idealtrip.idealTrip.controller.DTOS.ReviewDTO;
 import com.fasterxml.jackson.annotation.JsonView;
 import javax.servlet.http.HttpServletRequest;
+import javax.sql.rowset.serial.SerialBlob;
+
 import com.idealtrip.idealTrip.model.*;
+import com.idealtrip.idealTrip.repository.DestinationRepository;
 import com.idealtrip.idealTrip.service.*;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -41,6 +44,10 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/api/destinations")
@@ -57,6 +64,9 @@ public class CitiesRestController {
     private ReviewService reviews;
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private DestinationRepository destinationRepository;
 
     User currentUser;
 
@@ -144,8 +154,34 @@ public class CitiesRestController {
         return ResponseEntity.created(location).body(destination);
     }
 
+    @PostMapping("/add")
+    public ResponseEntity<?> addDestination(
+            @RequestParam("destinationName") String name,
+            @RequestParam("destinationContent") String content,
+            @RequestParam("price") int price,
+            @RequestParam(value = "destinationImageFile", required = false) MultipartFile destinationImageFile) {
+        Destination destination = new Destination();
+        destination.setNameDestination(name);
+        destination.setContentDestination(content);
+        destination.setPrice(price);
+
+        try {
+            if (destinationImageFile != null) {
+                byte[] imageBytes = destinationImageFile.getBytes();
+                Blob imageBlob = new SerialBlob(imageBytes);
+                destination.setTitleImageFile(imageBlob);
+            }
+            destinations.save(destination);
+            return ResponseEntity.ok().build();
+        } catch (IOException | SQLException ex) {
+            ex.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
     @PutMapping("/{id}/image")
-    public ResponseEntity<Resource> createDestinationImage(@PathVariable long id, @RequestParam MultipartFile image, HttpServletRequest request) throws URISyntaxException, SQLException, IOException {
+    public ResponseEntity<Resource> createDestinationImage(@PathVariable long id, @RequestParam MultipartFile image,
+            HttpServletRequest request) throws URISyntaxException, SQLException, IOException {
         Optional<Destination> destination = destinations.findById(id);
         if (destination.isPresent() && image != null && !image.isEmpty()) {
             Destination newDestination = destination.get();
@@ -156,11 +192,11 @@ public class CitiesRestController {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            String baseUrl = ServletUriComponentsBuilder.fromRequestUri(request).replacePath(null).build().toUriString();
+            String baseUrl = ServletUriComponentsBuilder.fromRequestUri(request).replacePath(null).build()
+                    .toUriString();
             Resource file = new InputStreamResource(image.getInputStream());
 
-
-            URI location = new URI(baseUrl + "/api/destinations/"+ id + "/image");
+            URI location = new URI(baseUrl + "/api/destinations/" + id + "/image");
             return ResponseEntity.ok()
                     .header(HttpHeaders.CONTENT_TYPE, "image/jpeg", HttpHeaders.CONTENT_LOCATION, location.toString())
                     .contentLength(newDestination.getTitleImageFile().length()).body(file);
@@ -168,7 +204,6 @@ public class CitiesRestController {
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        
 
     }
 
@@ -204,6 +239,17 @@ public class CitiesRestController {
     public Collection<House> getHouse(@PathVariable long id) {
         return houses.findByDestinationName(destinations.findById(id).get().getNameDestination());
     }
+    @GetMapping("/houses/{id}")
+    @JsonView(House.Basic.class)
+    public Optional<House> getHouse2(@PathVariable long id) {
+        return houses.findById(id);
+    }
+
+    @GetMapping("/reviews")
+    @JsonView(Review.Basic.class)
+    public List<Review> getAllReviews() {
+        return reviews.findAll();
+    }
 
     @Operation(summary = "Get all reviews of one destination")
     @ApiResponses(value = {
@@ -212,8 +258,13 @@ public class CitiesRestController {
             @ApiResponse(responseCode = "404", description = "Reviews of destination not found", content = @Content) })
     @GetMapping("/reviews/{id}")
     @JsonView(Review.Basic.class)
-    public Page<Review> getReview(@PathVariable Long id, Pageable page) {
-        return reviews.findByDestination(id, page);
+    public List<Review> getReview(@PathVariable Long id) {
+        List<Review> reviewlist = this.reviews.findByDestination(id);
+        for (Review review : reviewlist) {
+            Optional<User> user = this.userService.findById(review.getUser().getId());
+            review.setUser(user.get());
+        }
+        return reviewlist;
     }
 
     // show specific review
@@ -247,7 +298,24 @@ public class CitiesRestController {
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
 
+    @Operation(summary = "Delete a review")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Review deleted"),
+            @ApiResponse(responseCode = "404", description = "Review not found"),
+            @ApiResponse(responseCode = "403", description = "Forbidden or don't have permissions")
+    })
+    @DeleteMapping("/reviews/{id}")
+    @JsonView(Review.Basic.class)
+    public ResponseEntity<Review> deleteOneReview(@PathVariable long id) {
+        Optional<Review> review = this.reviews.findById(id);
+        if (review.isPresent()) {
+            reviews.deleteById(id);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @Operation(summary = "Add a review to a destination")
@@ -259,11 +327,14 @@ public class CitiesRestController {
     @PostMapping("/reviews/{id}")
     @ResponseStatus(HttpStatus.CREATED)
     @JsonView(Review.Basic.class)
-    public Review createReview(@PathVariable Long id, @RequestBody ReviewDTO newreview) {
+    public Review createReview(@PathVariable Long id,
+                               @RequestParam("reviewTitle") String title,
+                               @RequestParam("reviewContent") String content,
+                               @RequestParam("rating") int rating) {
 
         Destination currentDestination = destinations.findDestinationById(id).orElse(null);
-        Review auxreview = new Review(currentUser, currentDestination, newreview.getReviewTitle(),
-                newreview.getRating(), newreview.getReviewContent());
+        Review auxreview = new Review(currentUser, currentDestination, title,
+                rating, content);
         reviews.save(auxreview);
         return auxreview;
     }
@@ -309,6 +380,34 @@ public class CitiesRestController {
         }
     }
 
+    @GetMapping("/catering/{id}/image")
+    public ResponseEntity<Resource> downloadImageFood(@PathVariable long id) throws SQLException {
+        Optional<Catering> catering = caterings.findById(id);
+
+        if (catering.isPresent() && catering.get().getImageFoodFile() != null) {
+            Resource file = new InputStreamResource(catering.get().getImageFoodFile().getBinaryStream());
+
+            return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
+                    .contentLength(catering.get().getImageFoodFile().length()).body(file);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/tourism/{id}/image")
+    public ResponseEntity<Resource> downloadImagePlace(@PathVariable long id) throws SQLException {
+        Optional<Tourism> tourism = tourisms.findById(id);
+
+        if (tourism.isPresent() && tourism.get().getImageTourismFile() != null) {
+            Resource file = new InputStreamResource(tourism.get().getImageTourismFile().getBinaryStream());
+
+            return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg")
+                    .contentLength(tourism.get().getImageTourismFile().length()).body(file);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @GetMapping("/house/{id}/image")
     public ResponseEntity<Resource> downloadImageHouse(@PathVariable long id) throws SQLException {
         Optional<House> house = houses.findById(id);
@@ -334,6 +433,30 @@ public class CitiesRestController {
                     .contentLength(house.get().getHostImageFile().length()).body(file);
         } else {
             return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PostMapping("/editDestination/{id}")
+    public ResponseEntity<String> updateUser(@PathVariable long id,
+            @RequestParam("destinationName") String nameDestination,
+            @RequestParam("destinationContent") String contentDestination,
+            @RequestParam("price") int price,
+            @RequestParam(value = "destinationImageFile", required = false) MultipartFile destinationImageFile) {
+        try {
+            Destination destination = destinations.findById(id).orElseThrow();
+            destination.setNameDestination(nameDestination);
+            destination.setContentDestination(contentDestination);
+            destination.setPrice(price);
+            if (destinationImageFile != null) {
+                byte[] imageBytes = destinationImageFile.getBytes();
+                Blob imageBlob = new SerialBlob(imageBytes);
+                destination.setTitleImageFile(imageBlob);
+            }
+
+            destinationRepository.save(destination);
+            return ResponseEntity.ok("Destination updated successfully");
+        } catch (Exception ex) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error updating destination");
         }
     }
 }

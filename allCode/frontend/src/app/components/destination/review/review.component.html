@@ -1,0 +1,47 @@
+<br><br><br><br><br><br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <form class="card mb-4">
+        <div class="card-header">Crea tu opinión</div>
+        <div class="card-body">
+          <div class="mb-3">
+            <label class="small mb-1">Titulo</label>
+            <input class="form-control" name="reviewTitle" type="text" [(ngModel)]="title">
+          </div>
+            <div class="mb-3">
+              <label class="small mb-1">Contenido</label>
+              <input class="form-control" name="reviewContent" type="text" [(ngModel)]="content">
+            </div>
+            <div class="mb-3">
+              <label class="small mb-1">Rating</label>
+              <input class="form-control" name="reviewRating" type="text" [(ngModel)]="rating">
+            </div>
+          <button class="btn btn-primary mx-auto" (click)="addReview()">Añadir</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<section class="w3l-clients" id="clients">
+  <!-- /grids -->
+  <div class="card mb-4">
+    <br>
+    <div class="card-header">Lo que nuestros clientes dicen</div>
+    <br>
+    <button *ngIf="showMoreButton" class="btn btn-primary mx-auto" (click)="showMoreReviews()">Mostrar más</button>
+    <br>
+    <div class="card-body">
+      <div class="container">
+        <div *ngFor="let review of reviews.slice(0, numReviewsToShow).reverse()" class="review card mb-3">
+          <div class="card-body">
+            <h4 class="card-title">{{review.titleReview}}</h4>
+            <p class="card-text">{{review.contentReview}}</p>
+            <div class="review-rating"> estrellas: {{review.ratingReview}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+

@@ -7,15 +7,23 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity(name = "purchaseTable")
 public class Purchase {
+    public interface Basic {}
+
+    public interface Advanced {}
+
     @Id
+    @JsonView(Purchase.Basic.class)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @ManyToOne
     private User user;
-    @ManyToOne(cascade = CascadeType.ALL)
+    
+    @ManyToOne
     private House house;
 
     public Purchase() {
@@ -24,6 +32,7 @@ public class Purchase {
     public Purchase(User user) {
         this.user = user;
     }
+
 
     public Purchase(User user, House currentHouse) {
         this.user = user;

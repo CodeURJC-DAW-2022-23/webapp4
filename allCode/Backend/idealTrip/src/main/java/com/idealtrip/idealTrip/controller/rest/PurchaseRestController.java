@@ -1,14 +1,20 @@
 package com.idealtrip.idealTrip.controller.rest;
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.swing.text.html.Option;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.idealtrip.idealTrip.controller.DTOS.PurchaseDTO;
 import com.idealtrip.idealTrip.model.House;
 import com.idealtrip.idealTrip.model.Purchase;
@@ -55,6 +62,50 @@ public class PurchaseRestController {
 
         } else {
             model.addAttribute("logged", false);
+        }
+    }
+
+    @JsonView(Purchase.Basic.class)
+    @GetMapping("/user/{id}")
+    public ResponseEntity<List<Purchase>> getUserPurchase(@PathVariable Long id) {
+        Optional<User> user = userService.findById(id);
+        List<Purchase> userPurchases = new ArrayList<>();
+
+        if (user.isPresent()) {
+            userPurchases = purchaseService.findByUserId(id);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok().body(userPurchases);
+    }
+
+    @JsonView(Purchase.Basic.class)
+    @GetMapping("/all")
+    public ResponseEntity<List<Purchase>> getAllPurhcases() {
+        List<Purchase> purchasesList = purchaseService.findAll();
+        return ResponseEntity.ok().body(purchasesList);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Object> getNameHouse(@PathVariable Long id) {
+        try {
+            String nameHouse = purchaseService.findById(id).get().getHouse().getNameHouse();
+            return ResponseEntity.ok().body(nameHouse);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(Collections.singletonMap("errorMessage", e.getMessage()));
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Purchase> deletePurchase(@PathVariable Long id) {
+        Optional<Purchase> purchase = purchaseService.findById(id);
+        if (purchase.isPresent()) {
+            purchaseService.deleteById(id);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 

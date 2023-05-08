@@ -1,0 +1,26 @@
+<div class="box">
+  <div class="pre-box">
+    <h1>IdealTrip</h1>
+    <div class="img-box">
+      <img src="./assets/images/favicon.png" alt="">
+    </div>
+  </div>
+
+  <form action="/login" method="post" class="login-form">
+      <!-- title box -->
+      <div class="title-box">
+        <h1>Iniciar Sesión</h1>
+      </div>
+      <!-- input box-->
+      <div class="input-box">
+        <input #username type="text" placeholder="Email*"  name="email" required />
+        <input #password type="password" placeholder="Contraseña*" name="password" required />
+      </div>
+      <!-- btn box -->
+      <div class="btn-box">
+        <a routerLink="/register" class="box_btn">Registrate</a>
+        <button class="box_btn" (click)="onLogin(username.value, password.value)">Iniciar Sesión</button>
+      </div>
+  </form>
+  
+</div>

@@ -11,6 +11,7 @@ import com.idealtrip.idealTrip.model.User;
 
 public interface ReviewRepository extends JpaRepository<Review, Long> {
 
+    List<Review> findByUserId(Long userId);
     Page<Review> findByUser(User user, Pageable pageable);
     List<Review> findByDestinationId(Long destinationId);
     Page<Review> findByDestinationId (Long destinationId, Pageable page); 

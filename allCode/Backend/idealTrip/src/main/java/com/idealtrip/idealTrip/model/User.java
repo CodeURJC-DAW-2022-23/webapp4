@@ -54,7 +54,7 @@ public class User {
     }
     public User(UserDTO userDTO) {
         super();
-        this.name = userDTO.getFirstName();
+        this.name = userDTO.getName();
         this.lastName = userDTO.getLastName();
         this.email = userDTO.getEmail();
         this.encodedPassword = userDTO.getPasswordEncoded();

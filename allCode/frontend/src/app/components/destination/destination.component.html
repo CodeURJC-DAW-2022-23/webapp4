@@ -1,0 +1,36 @@
+<section class="grids-1 py-5">
+    <div class="grids py-lg-5 py-md-4">
+      <div class="container">
+        <br>
+        <h3 class="hny-title mb-5">Destinos</h3>
+        <div style="text-align: center;">
+            <button routerLink="/rating" class="btn btn-style btn-secondary" id="char"><a style="color: white; " >Como valoran los destinos nuestros clientes</a></button>
+            <br><br>
+
+        </div>
+        <div class="row">
+
+          <div class="col-lg-4 col-md-4 col-6" *ngFor="let destination of destinations | paginate: { itemsPerPage: elemPerPage, currentPage: p }">
+            <div class="column">
+              <a (click)="goToDestination(destination.id)"><img [src]="destinationImage(destination)" alt=""
+                  class="img-fluid"></a>
+              <div class="info">
+                <h4><a (click)="goToDestination(destination.id)">{{destination.nameDestination}}</a></h4>
+                <p>{{destination.contentDestination}} </p>
+                <div class="dst-btm">
+                  <h6 class="">Desde</h6>
+                  <span>&euro;{{destination.price}}</span>
+                </div>
+              </div>
+            </div>
+            <br><br>
+          </div>
+
+        <br>
+        </div>
+        <div *ngIf="moreElements" style="text-align: center;">
+        <button class="botonMas" (click)="mostrarMas()">Mostrar más</button>
+        </div>
+        <br><br><br>
+
+

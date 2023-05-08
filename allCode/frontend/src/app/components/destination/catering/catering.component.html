@@ -1,0 +1,15 @@
+<figure>
+  <div class="title">
+    <h1>Comida típica de {{nameDestination}}</h1>
+  </div>
+
+  <div class="gallery">
+    <div class="tourismImage" *ngFor="let food of foods">
+      <img [src]="foodImage(food.id)" alt="">
+      <div class="capa">
+        <h3>{{food.nameFood}}</h3>
+        <p>{{food.contentFood}}</p>
+      </div>
+    </div>
+  </div>
+</figure>

@@ -34,6 +34,10 @@ public class ReviewService {
         return reviews.findByUser(user, pageable);
     }
 
+    public List<Review> findByUserId(Long userId){
+        return reviews.findByUserId(userId);
+    }
+    
     public Page<Review> findReviewsByDestination(Destination destination, Pageable pageable) {
         return reviews.findByDestination(destination, pageable);
     }
@@ -60,6 +64,10 @@ public class ReviewService {
 
     public Page<Review> findAllReviewPage(Pageable pageable) {
         return reviews.findAll(pageable);
+    }
+
+    public void deleteAll(List<Review> reviews2) {
+        reviews.deleteAll(reviews2);
     }
     
 

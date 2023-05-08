@@ -2,7 +2,7 @@ package com.idealtrip.idealTrip.controller.DTOS;
 
 public class UserDTO {
 
-    private String firstName;
+    private String name;
 
     private String lastName;
 
@@ -10,12 +10,12 @@ public class UserDTO {
 
     private String passwordEncoded;
 
-    public String getFirstName() {
-        return firstName;
+    public String getName() {
+        return name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getLastName() {
@@ -42,8 +42,8 @@ public class UserDTO {
         this.passwordEncoded = passwordEncoded;
     }
 
-    public UserDTO(String firstName, String lastName, String email, String passwordEncoded) {
-        this.firstName = firstName;
+    public UserDTO(String name, String lastName, String email, String passwordEncoded) {
+        this.name = name;
         this.lastName = lastName;
         this.email = email;
         this.passwordEncoded = passwordEncoded;

@@ -9,7 +9,7 @@ import com.fasterxml.jackson.databind.Module;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 
 @SpringBootApplication
-public class 	IdealTripApplication {
+public class 	IdealTripApplication{
 
 	public static void main(String[] args) {
 		SpringApplication.run(IdealTripApplication.class, args);

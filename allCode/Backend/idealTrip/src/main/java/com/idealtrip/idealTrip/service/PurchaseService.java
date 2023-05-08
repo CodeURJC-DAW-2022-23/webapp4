@@ -38,8 +38,15 @@ public class PurchaseService {
         message.setFrom(from);
         message.setTo(to);
         message.setText(body);
-
         mailSender.send(message);
+    }
+
+    public void deleteAll(List<Purchase> purchases2){
+        purchases.deleteAll(purchases2);
+    }
+
+    public List<Purchase> findAll() {
+        return purchases.findAll();
     }
 
 }
