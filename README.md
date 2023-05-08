@@ -463,6 +463,8 @@ La mayoria de las funcionalidad de admin(agregar destinos, eliminar destinos, pa
 - Diagrama de clases y templates de la SPA:  
 <image src="/images/diagramaClases.jpg" alt="entities relations">
 
+-Video Youtube: 
+[VIDEO](https://youtu.be/Hup4jgrPg0g)
            
 - Participación de miembros:  
 ### Sergio Cuadros Flores
