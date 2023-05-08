@@ -1,11 +1,21 @@
-FROM maven:3-openjdk-17 as builder
+FROM node:16-alpine as builder
 
+WORKDIR /project
+
+COPY frontend/ .
+
+RUN npm install
+RUN npm run build -- --prod --base-href="/new/"
+
+FROM maven:3-openjdk-17 as backend
 
 WORKDIR /project
 
 COPY Backend/idealTrip/pom.xml /project
 
 COPY Backend/idealTrip/src /project/src
+
+COPY --from=builder /project/dist/* /project/src/main/resources/public/new
 
 RUN mvn package -DskipTests
 
@@ -15,7 +25,7 @@ ENV JAVA_TOOL_OPTIONS="-Xss256K -XX:ReservedCodeCacheSize=64M -XX:MaxMetaspaceSi
 
 WORKDIR /usr/src/app/
 
-COPY --from=builder /project/target/*.jar /usr/src/app/
+COPY --from=backend /project/target/*.jar /usr/src/app/
 
 EXPOSE 8443
 

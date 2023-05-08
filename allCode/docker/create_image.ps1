@@ -2,8 +2,6 @@ Param(
     [String] $image
 )
 
-
-Remove-Item /sq .mysql 
 Set-Location ../
 
 docker build -t scuadrosf/$image -f docker/Dockerfile .
@@ -15,3 +13,4 @@ Set-Location ./docker
 docker compose down
 
 docker compose up
+
