@@ -26,7 +26,7 @@ public class ContactRestController {
                 "\nemail: " + contactDTO.getEmail() +
                 "\nAsunto: " + contactDTO.getSubject() +
                 "\nMensaje: " + contactDTO.getMessage();
-        mailService.sendEmail(contactDTO.getEmail(), "idealtripdaw@gmail.com", contactDTO.getSubject(), message);
+        mailService.sendEmail(contactDTO.getEmail(), contactDTO.getEmail(), contactDTO.getSubject(), message);
         return ResponseEntity.ok("El correo electrónico se ha enviado correctamente.");
     }
 
