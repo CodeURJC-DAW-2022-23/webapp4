@@ -15,11 +15,3 @@ Set-Location ./docker
 docker compose down
 
 docker compose up
-
-Set-Location ../frontend
-
-npm install
-
-ng build --configuration production --base -href="/new/"
-
-copy .\dist\frontend\* ..\Backend\idealTrip\src\main\resources\public\new\

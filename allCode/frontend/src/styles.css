@@ -5008,7 +5008,7 @@ input[type="button"].btn-block {
   color: rgba(255, 255, 255, 0.25);
 }
 
-.navbar-dark .navbar-nav .show>.nav-link,
+.navbar-dark .navbar-nav .show.nav-link,
 .navbar-dark .navbar-nav .active>.nav-link,
 .navbar-dark .navbar-nav .nav-link.show,
 .navbar-dark .navbar-nav .nav-link.active {
@@ -14594,8 +14594,8 @@ a.dropdown-item:hover:before {
   color: var(--secondary-color);
 }
 
-.navbar-dark .navbar-nav .show>.nav-link,
-.navbar-dark .navbar-nav .active>.nav-link,
+.navbar-dark .navbar-nav .show.nav-link,
+.navbar-dark .navbar-nav .active.nav-link,
 .navbar-dark .navbar-nav .nav-link.show,
 .navbar-dark .navbar-nav .nav-link.active {
   color: var(--secondary-color);
@@ -14670,7 +14670,7 @@ header.nav-fixed {
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.05);
 }
 
-.navbar-dark .navbar-nav .show>,
+.navbar-dark .navbar-nav .show,
 .navbar-dark .navbar-nav .nav-link.show {
   color: var(--para-color);
 }
