@@ -59,6 +59,7 @@ export class PurchaseComponent {
     };
     this.httpClient.post('/api/purchases/' + this.currentHouse, purchaseData).subscribe(
       response => {
+        this.router.navigate(['/'])
         console.log('Compra agregada exitosamente');
       },
       error => {
