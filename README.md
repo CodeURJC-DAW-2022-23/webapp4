@@ -567,24 +567,25 @@ XXXXXXX
          
 ### ShuHeng	Ye
 #### Descripción textual: 
-XXXXXXX
+En esta fase de la practica he empezado con la mayoria de los modelos, y he encargado de los componentes: LoginComponent, RegisterComponent, AdminComponent y ProfileComponent, tambien he colaborado en algunas funcionalidades de otros componentes: HeaderComponent implementacion de los botones, ReviewComponent(Reviews paginacion, guardar reviews). He creado los necesarios metodos API REST
+
 
 #### 5 commits más significativos
 
 | Commit  | Descripción                                      | Link                                                                                            |
 | ------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
-| #1            | XXX   | XXX | 
-| #2            | XXX | XXX | 
-| #3            | XXX |XXX | 
-| #4            | XXX	   | XXX | 
-| #5            | XXX			   | XXX | 
+| #1            | adminComponent: Edit and Delete Users and some fix   | https://github.com/CodeURJC-DAW-2022-          23/webapp4/commit/bf90814ff730318b9044cca0d4481df8ff1deb10 | 
+| #2            | Edit profile and api PUT update UserData  | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/3a5fab514a6fa42f575a7ce26f061334ec73a164 | 
+| #3            | profileComponent and api GET profileAvatarFile |https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/da975a9da6dfd226f3fb137197443f41fa8d5397| 
+| #4            | Edit and Delete Destination | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/cf10036c1d476092622d08c106de2d20c5335b93 | 
+| #5            | add Destination and delete review		   | https://github.com/CodeURJC-DAW-2022-23/webapp4/commit/365c2c3774dba4879339890dc5336b83a57bcb5b | 
 
 #### 5 ficheros más participación
 
 | Número fichero  | Fichero                                      | 
 | ------------- | ------------------------------------------------ |
-| #1            | XXX		   | 
-| #2            | XXX| 
-| #3            | XXX |
-| #4            | XXX	   | 
-| #5            |XXX   |  
+| #1            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/DesarrolloAngular2/allCode/frontend/src/app/components/admin">adminComponent</a>   | 
+| #2            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/DesarrolloAngular2/allCode/frontend/src/app/components/profile">profileComponent</a> | 
+| #3            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/DesarrolloAngular2/allCode/frontend/src/app/components/login">LoginComponent</a> |
+| #4            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/DesarrolloAngular2/allCode/frontend/src/app/components/register">registerComponent</a>| 
+| #5            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/DesarrolloAngular2/allCode/frontend/src/app/service/user.service.ts">userService</a> |  
