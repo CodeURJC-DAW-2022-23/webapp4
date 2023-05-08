@@ -584,8 +584,8 @@ En esta fase de la practica he empezado con la mayoria de los modelos, y he enca
 
 | Número fichero  | Fichero                                      | 
 | ------------- | ------------------------------------------------ |
-| #1            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/DesarrolloAngular2/allCode/frontend/src/app/components/admin">adminComponent</a>   | 
+| #1            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/DesarrolloAngular2/allCode/frontend/src/app/components/administrator">adminComponent</a>   | 
 | #2            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/DesarrolloAngular2/allCode/frontend/src/app/components/profile">profileComponent</a> | 
 | #3            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/DesarrolloAngular2/allCode/frontend/src/app/components/login">LoginComponent</a> |
 | #4            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/DesarrolloAngular2/allCode/frontend/src/app/components/register">registerComponent</a>| 
-| #5            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/DesarrolloAngular2/allCode/frontend/src/app/service/user.service.ts">userService</a> |  
+| #5            | <a href="https://github.com/CodeURJC-DAW-2022-23/webapp4/tree/DesarrolloAngular2/allCode/frontend/src/app/services/user.service.ts">userService</a> |  
