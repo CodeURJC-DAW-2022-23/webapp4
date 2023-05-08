@@ -34,14 +34,14 @@
      <p>2 personas</p>
     </div>
     <!-- {{#logged}} -->
-      <div style="text-align: center;">
+      <div style="text-align: center;" *ngIf="loggedIn">
             <button (click)="goToPurchase()" class="btn btn-style btn-secondary" id="char"><a style="color: white; " >Comprar</a></button>
     <!-- {{/logged}} {{^logged}} -->
-      <div style="text-align: center;">
-            <button routerLink="/login" class="btn btn-style btn-secondary" id="char"><a style="color: white; " >Login</a></button>
+      </div>
+      <div style="text-align: center;" *ngIf="!loggedIn">
+            <button routerLink="/login" class="btn btn-style btn-secondary" ><a style="color: white; " >Login</a></button>
     <!-- {{/logged}} -->
     </div>
-  </div>
    </form>
 
 

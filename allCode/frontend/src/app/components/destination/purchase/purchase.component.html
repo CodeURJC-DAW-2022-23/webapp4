@@ -13,7 +13,7 @@
               <h6 class="mt-4">Destino:</h6>
               <p> <a>{{destination?.nameDestination}}</a></p>
               <h6 class="mt-4">Descripcion del destino:</h6>
-              <p> {{destination?.contentDestination}}</p>
+              <p> {{house?.nameHouse}}</p>
               <h6 class="mt-4">Coste total:</h6>
               <p class="margin-top"><a href="tel:+44-255-366-88">{{destination?.price}}€</a></p>
             </div>
@@ -24,7 +24,7 @@
             <h5 class="mt-4">Seleccione su método de pago</h5>
           </div>
           <div class="text-left">
-            <button id="btn-abrir-popup" class="btn btn-style btn-primary">TARJETA</button>
+            <button (click)="addPurchase()"id="btn-abrir-popup" class="btn btn-style btn-primary">TARJETA</button>
           </div>
           <div class="overlay" id="overlay">
             <div class="popup" id="popup">
@@ -43,7 +43,7 @@
           </div>
           <br>
           <div class="text-left">
-            <button id="btn-abrir-popup2" class="btn btn-style btn-primary">PAYPAL</button>
+            <button (click)="addPurchase()" id="btn-abrir-popup2" class="btn btn-style btn-primary">PAYPAL</button>
           </div>
           <div class="overlay" id="overlay2">
             <div class="popup" id="popup2">

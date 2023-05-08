@@ -1,36 +1,29 @@
-<!--<div class="container">
+<br><br><br><br><br><br>
+<div class="container">
   <div class="row">
     <div class="col-md-6 offset-md-3">
       <form class="card mb-4">
-        <div class="card-header">Detalles de la cuenta</div>
+        <div class="card-header">Crea tu opinión</div>
         <div class="card-body">
           <div class="mb-3">
-            <label for="avatarFile" class="small mb-1">Avatar:</label>
-            <input type="file" class="form-control-file" id="avatarFile" name="avatarFile" accept=".png, .jpg, .jpeg"
-              (change)="onFileSelected($event)">
-          </div>
-          <div class="mb-3">
-            <label class="small mb-1" for="userEmail">Usuario (Email)</label>
-            <p>{{user?.email}}</p>
+            <label class="small mb-1">Titulo</label>
+            <input class="form-control" name="reviewTitle" type="text" [(ngModel)]="title">
           </div>
             <div class="mb-3">
-              <label class="small mb-1" for="userName">Nombre</label>
-              <input class="form-control" name="userName" type="text" [(ngModel)]="name" placeholder="{{user?.name}}">
+              <label class="small mb-1">Contenido</label>
+              <input class="form-control" name="reviewContent" type="text" [(ngModel)]="content">
             </div>
             <div class="mb-3">
-              <label class="small mb-1" for="userLastName">Apellido</label>
-              <input class="form-control" name="userLastName" type="text" [(ngModel)]="lastName"
-                     placeholder="{{user?.lastName}}">
+              <label class="small mb-1">Rating</label>
+              <input class="form-control" name="reviewRating" type="text" [(ngModel)]="rating">
             </div>
-            <button class="btn btn-style btn-third"  (click)="editUser()">Guardar cambios</button>
-            <button class="btn btn-style btn-third"  (click)="logOut()">Cerrar sesión</button>
-            <button class="btn btn-style btn-third" (click)="deleteUser()">Eliminar cuenta</button>
-            </div>
-            </form>
+          <button (click)="addReview()">Añadir</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
-<section class="w3l-clients" id="clients">-->
+<section class="w3l-clients" id="clients">
   <!-- /grids -->
   <div class="card mb-4">
     <br>
@@ -38,7 +31,7 @@
     <div class="card-body">
 
       <div class="container">
-        <div *ngFor="let review of reviews | slice:0:numReviewsToShow" class="review card mb-3">
+        <div *ngFor="let review of reviews.slice(0, numReviewsToShow).reverse()" class="review card mb-3">
           <div class="card-body">
             <h4 class="card-title">{{review.titleReview}}</h4>
             <p class="card-text">{{review.contentReview}}</p>

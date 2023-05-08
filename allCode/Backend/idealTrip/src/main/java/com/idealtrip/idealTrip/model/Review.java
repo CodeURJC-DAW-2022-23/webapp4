@@ -28,6 +28,7 @@ public class Review {
     private String contentReview;
 
     @ManyToOne
+    @JsonView(Basic.class)
     private User user;
 
     @ManyToOne

@@ -42,6 +42,10 @@ export class DestinationService {
     return this.httpClient.get<any>(baseUrl + 'house/' + id)
   }
 
+  getHouse2(id: number): Observable<any>{
+    return this.httpClient.get<any>(baseUrl + 'houses/' + id)
+  }
+
   getDestinationById(id: number): Observable<Destination> {
     return this.httpClient.get<Destination>(baseUrl + id)
   }

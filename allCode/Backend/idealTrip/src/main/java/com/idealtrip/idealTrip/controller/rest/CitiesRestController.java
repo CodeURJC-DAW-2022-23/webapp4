@@ -16,14 +16,11 @@ import java.util.Map;
 import java.util.Optional;
 
 import com.idealtrip.idealTrip.controller.DTOS.DestinationDTO;
-import com.idealtrip.idealTrip.controller.DTOS.ReviewDTO;
 import com.fasterxml.jackson.annotation.JsonView;
 import javax.servlet.http.HttpServletRequest;
 import javax.sql.rowset.serial.SerialBlob;
-import javax.sql.rowset.serial.SerialException;
 
 import com.idealtrip.idealTrip.model.*;
-import com.idealtrip.idealTrip.model.Review.Basic;
 import com.idealtrip.idealTrip.repository.DestinationRepository;
 import com.idealtrip.idealTrip.service.*;
 
@@ -242,6 +239,11 @@ public class CitiesRestController {
     public Collection<House> getHouse(@PathVariable long id) {
         return houses.findByDestinationName(destinations.findById(id).get().getNameDestination());
     }
+    @GetMapping("/houses/{id}")
+    @JsonView(House.Basic.class)
+    public Optional<House> getHouse2(@PathVariable long id) {
+        return houses.findById(id);
+    }
 
     @GetMapping("/reviews")
     @JsonView(Review.Basic.class)
@@ -257,7 +259,12 @@ public class CitiesRestController {
     @GetMapping("/reviews/{id}")
     @JsonView(Review.Basic.class)
     public List<Review> getReview(@PathVariable Long id) {
-        return reviews.findByDestination(id);
+        List<Review> reviewlist = this.reviews.findByDestination(id);
+        for (Review review : reviewlist) {
+            Optional<User> user = this.userService.findById(review.getUser().getId());
+            review.setUser(user.get());
+        }
+        return reviewlist;
     }
 
     // show specific review
@@ -320,11 +327,14 @@ public class CitiesRestController {
     @PostMapping("/reviews/{id}")
     @ResponseStatus(HttpStatus.CREATED)
     @JsonView(Review.Basic.class)
-    public Review createReview(@PathVariable Long id, @RequestBody ReviewDTO newreview) {
+    public Review createReview(@PathVariable Long id,
+                               @RequestParam("reviewTitle") String title,
+                               @RequestParam("reviewContent") String content,
+                               @RequestParam("rating") int rating) {
 
         Destination currentDestination = destinations.findDestinationById(id).orElse(null);
-        Review auxreview = new Review(currentUser, currentDestination, newreview.getReviewTitle(),
-                newreview.getRating(), newreview.getReviewContent());
+        Review auxreview = new Review(currentUser, currentDestination, title,
+                rating, content);
         reviews.save(auxreview);
         return auxreview;
     }

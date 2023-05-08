@@ -6,6 +6,8 @@ import {DestinationService} from "../../../services/destination.service";
 import {ActivatedRoute} from "@angular/router";
 import { ReviewService } from 'src/app/services/review.service';
 import {filter} from "rxjs";
+import {UserService} from "../../../services/user.service";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-review',
@@ -16,9 +18,9 @@ export class ReviewComponent {
   profileAvatarUrl!: string
   user: User | undefined
   reviews: Review[] = [];
-  name!: string;
-  lastName!: string;
-  avatarFile!: File;
+  content!: string;
+  title!: string;
+  rating!: number;
   currentDestination: number;
   destination: Destination | undefined
 
@@ -27,7 +29,9 @@ export class ReviewComponent {
 
   constructor(
     private destinationService: DestinationService,
+    private userService: UserService,
     private activatedRoute: ActivatedRoute,
+    private httpClient: HttpClient
   ) {
     this.currentDestination = activatedRoute.snapshot.params['id'];
     let dest = destinationService.getDestinationById(this.currentDestination)
@@ -39,12 +43,28 @@ export class ReviewComponent {
       });
     this.destinationService.getDestinationReviews(this.currentDestination).subscribe((response) => {
       this.reviews = response;
+      console.log(this.reviews[1].user);
     });
-    console.log(this.reviews);
   }
-
   showMoreReviews() {
     this.numReviewsToShow += 3;
     this.showMoreButton = this.numReviewsToShow < this.reviews.length;
+  }
+  addReview() {
+    const formData = new FormData();
+    formData.append('reviewTitle', this.title || '');
+    formData.append('reviewContent', this.content || '');
+    formData.append('rating', this.rating.toString())
+    this.httpClient.post('/api/destinations/reviews/' + this.currentDestination, formData)
+    .subscribe(
+      (response) => {
+        console.log(response);
+        alert("destination added");
+      },
+      (error) => {
+        console.log(error);
+        alert("Error destination");
+      }
+    );
   }
 }
