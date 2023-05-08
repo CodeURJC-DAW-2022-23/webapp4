@@ -25,7 +25,7 @@ export class ContactComponent {
       asunto:this.datos.value.asunto,
       mensaje:this.datos.value.mensaje
     }
-    this.httpclien.post('/api/contact', params, { headers: { 'X-Skip-Interceptor': 'true' } })
+    this.httpclien.post('/api/contact/', params)
       .subscribe(resp => {
         console.log(resp);
       }, err => {
